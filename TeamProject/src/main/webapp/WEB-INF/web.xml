@@ -9,4 +9,16 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
+  
+  <servlet-mapping>
+	<servlet-name>HostMemberController</servlet-name>
+	<url-pattern>*.hme</url-pattern>
+</servlet-mapping>
+
+<servlet>
+	<servlet-name>HostMemberController</servlet-name>
+	<servlet-class>com.itwillbs.controller.HostMemberController</servlet-class>
+</servlet>
+
+
 </web-app>
