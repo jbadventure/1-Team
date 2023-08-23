@@ -2,18 +2,18 @@ package com.itwillbs.domain;
 
 public class HostMemberDTO {
 
-	private int hostNum;
-	private String hostId;
-	private String hostPassword;
-	private String hostName;
-	private String hostNickname;
-	private String hostGender;
-	private String hostBirthday;
-	private String hostPhoneNum;
-	private String hostEmail;
-	private String businessNum;
-	private String mailOrderNum;
-	private String hostProfileImagePath;
+	private int hostNum; // 호스틓 회원번호
+	private String hostId; // 호스트 아이디
+	private String hostPassword; // 호스트 패스워드
+	private String hostName; // 호스트 이름
+	private String hostNickname; // 호스트 닉네임
+	private String hostGender; // 호스트 성별
+	private String hostBirthday; // 호스트 생년월일
+	private String hostPhoneNum; // 호스트 휴대 전화번호
+	private String hostEmail; // 호스트 이메일
+	private String businessNum; // 사업자 번호
+	private String mailOrderNum; // 통신판매업 신고번호
+	private String hostProfileImagePath; // 호스트 프로필 사진 경로
 	
 	public int getHostNum() {
 		return hostNum;

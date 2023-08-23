@@ -2,17 +2,17 @@ package com.itwillbs.domain;
 
 public class GuestMemberDTO {
 	
-	private int guestNum;
-	private String guestId;
-	private String guestPassword;
-	private String guestName;
-	private String guestNickname;
-	private String guestGender;
-	private String guestBirthday;
-	private String guestPhoneNum;
-	private String guestEmail;
-	private String guestLocation;
-	private String guestProfileImagePath;
+	private int guestNum; // 게스트 회원 번호
+	private String guestId; // 게스트 아이디
+	private String guestPassword; // 게스트 패스워드
+	private String guestName; // 게스트 이름
+	private String guestNickname; // 게스트 닉네임
+	private String guestGender; // 게스트 성별
+	private String guestBirthday; // 게스트 생년월일
+	private String guestPhoneNum; // 게스트 휴대 전화번호
+	private String guestEmail; // 게스트 이메일
+	private String guestLocation; // 게스트 선호 지역
+	private String guestProfileImagePath; // 게스트 프로필 사진 경로
 	
 	public int getGuestNum() {
 		return guestNum;
