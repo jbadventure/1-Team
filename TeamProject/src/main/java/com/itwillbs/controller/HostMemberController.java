@@ -23,6 +23,7 @@ public class HostMemberController extends HttpServlet {
 	}//doPost()
 	
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("HostMemberController doProcess()");		
+		System.out.println("HostMemberController doProcess()");
+		
 	}
 }
