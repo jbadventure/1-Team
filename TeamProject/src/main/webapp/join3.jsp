@@ -63,7 +63,7 @@
 // 사업자번호 bNum
 
 $(document).ready(function(){
-	// '회원가입' 버튼 클릭 시
+	// '회원가입' 버튼 클릭시
 	$('#btn1').click(function(){
 		
 		// 아이디
