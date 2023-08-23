@@ -11,18 +11,18 @@ public class GuestMemberController extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("MemberController doGet()");
+		System.out.println("GuestMemberController doGet()");
 		doProcess(request, response);
 	}//doGet()
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("MemberController doPost()");
+		System.out.println("GuestMemberController doPost()");
 		doProcess(request, response);
 	}//doPost()
 	
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		System.out.println("GuestMemberController doProcess()");
 		
 	}
 }
