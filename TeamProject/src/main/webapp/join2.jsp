@@ -60,7 +60,7 @@
 // 지역 address
 
 $(document).ready(function(){
-	// '회원가입' 버튼 클릭시
+	// '회원가입' 버튼 클릭 시
 	$('#btn1').click(function(){
 		
 		// 아이디
