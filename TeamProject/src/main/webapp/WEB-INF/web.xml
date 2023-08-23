@@ -20,5 +20,85 @@
 	<servlet-class>com.itwillbs.controller.HostMemberController</servlet-class>
 </servlet>
 
+  <servlet-mapping>
+	<servlet-name>GuestMemberController</servlet-name>
+	<url-pattern>*.gme</url-pattern>
+</servlet-mapping>
+
+<servlet>
+	<servlet-name>GuestMemberController</servlet-name>
+	<servlet-class>com.itwillbs.controller.GuestMemberController</servlet-class>
+</servlet>
+
+  <servlet-mapping>
+	<servlet-name>ClassBoardController</servlet-name>
+	<url-pattern>*.cbo</url-pattern>
+</servlet-mapping>
+
+<servlet>
+	<servlet-name>ClassBoardController</servlet-name>
+	<servlet-class>com.itwillbs.controller.ClassBoardController</servlet-class>
+</servlet>
+
+  <servlet-mapping>
+	<servlet-name>NoticeBoardController</servlet-name>
+	<url-pattern>*.nbo</url-pattern>
+</servlet-mapping>
+
+<servlet>
+	<servlet-name>NoticeBoardController</servlet-name>
+	<servlet-class>com.itwillbs.controller.NoticeBoardController</servlet-class>
+</servlet>
+
+  <servlet-mapping>
+	<servlet-name>ReviewBoardController</servlet-name>
+	<url-pattern>*.rbo</url-pattern>
+</servlet-mapping>
+
+<servlet>
+	<servlet-name>ReviewBoardController</servlet-name>
+	<servlet-class>com.itwillbs.controller.ReviewBoardController</servlet-class>
+</servlet>
+
+  <servlet-mapping>
+	<servlet-name>QuestionBoardController</servlet-name>
+	<url-pattern>*.qbo</url-pattern>
+</servlet-mapping>
+
+<servlet>
+	<servlet-name>QuestionBoardController</servlet-name>
+	<servlet-class>com.itwillbs.controller.QuestionBoardController</servlet-class>
+</servlet>
+
+  <servlet-mapping>
+	<servlet-name>ReserveController</servlet-name>
+	<url-pattern>*.re</url-pattern>
+</servlet-mapping>
+
+<servlet>
+	<servlet-name>ReserveController</servlet-name>
+	<servlet-class>com.itwillbs.controller.ReserveController</servlet-class>
+</servlet>
+
+  <servlet-mapping>
+	<servlet-name>PaymentController</servlet-name>
+	<url-pattern>*.pa</url-pattern>
+</servlet-mapping>
+
+<servlet>
+	<servlet-name>PaymentController</servlet-name>
+	<servlet-class>com.itwillbs.controller.PaymentController</servlet-class>
+</servlet>
+
+  <servlet-mapping>
+	<servlet-name>SearchLogController</servlet-name>
+	<url-pattern>*.se</url-pattern>
+</servlet-mapping>
+
+<servlet>
+	<servlet-name>SearchLogController</servlet-name>
+	<servlet-class>com.itwillbs.controller.SearchLogController</servlet-class>
+</servlet>
+
 
 </web-app>
