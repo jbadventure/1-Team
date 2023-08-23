@@ -8,6 +8,7 @@
 </head>
 <body>   
 <input type="submit" value="사용자 회원가입">
-<input type="submit" value="호스트 회원가입">
+<input type="submit" value="호스트 회원가입"> 
+gh
 </body>
 </html>
