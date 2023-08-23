@@ -29,13 +29,14 @@ public class GuestMemberController extends HttpServlet{
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("GuestMemberController doProcess()");
 		
-		String sPath = request.getServletPath(); 
+		String sPath = request.getServletPath();
 		
-		if(sPath.equals("/login.me")) {
+		System.out.println("뽑아온 가상주소 : " + sPath);
+		
+		if(sPath.equals("/main.gme")){
 			dispatcher 
-			= request.getRequestDispatcher("member/login.jsp");
-			dispatcher.forward(request, response);
+		    = request.getRequestDispatcher("main/main.jsp");
+		dispatcher.forward(request, response);
 		}
-		
 	}
 }
