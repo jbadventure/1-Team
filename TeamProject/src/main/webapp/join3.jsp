@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>join3.jsp</title>
-</head>
+</head> 
 
 <!-- body -->
 <body>
