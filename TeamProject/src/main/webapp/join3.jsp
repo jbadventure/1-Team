@@ -15,7 +15,7 @@
 
 <!-- form -->
 <form action="test1.html" method="get" id="fr">
-
+ 
 
 아이디 : <input type="text" name="id" id="id"><br>
 	   <div id="div1"></div>
