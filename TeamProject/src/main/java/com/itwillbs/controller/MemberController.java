@@ -38,5 +38,7 @@ public class MemberController extends HttpServlet{
 			dispatcher = request.getRequestDispatcher("member/login/login.jsp");
 			dispatcher.forward(request, response);
 		}
+		
+		
 	}
 }
