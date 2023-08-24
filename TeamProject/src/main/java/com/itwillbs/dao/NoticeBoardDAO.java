@@ -87,6 +87,45 @@ public class NoticeBoardDAO {
 		}
 		return boardList;
 	}
+	public NoticeBoardDTO getBoard(int noticeNum) {
+		NoticeBoardDTO boardDTO = null;
+		try {
+			con = new SQLConnection().getConnection();
+			String sql = "select * from notice where notice_num =?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, noticeNum);
+			rs =pstmt.executeQuery();
+			if(rs.next()) {
+			boardDTO = new NoticeBoardDTO();
+			boardDTO.setNoticeNum(rs.getInt("notice_num"));
+			boardDTO.setNoticeSubject(rs.getString("notice_subject"));
+			boardDTO.setNoticeContent(rs.getString("notice_content"));
+			boardDTO.setNoticeIssueDate(rs.getTimestamp("notice_issuedate"));
+			boardDTO.setNoticeReadcount(rs.getInt("notice_readcount"));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			dbClose();
+		}
+		return boardDTO;
+	} // getBoard
+	public void updateReadcount(int noticeNum) {
+		try {
+			con = new SQLConnection().getConnection();
+			String sql = "update notice set = notice_readcount+1 where notice_num = ?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, noticeNum);
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			dbClose();
+		}
+		
+	}
 	
 
 

@@ -47,6 +47,31 @@ public class NoticeBoardService {
 			e.printStackTrace();
 		}
 		return boardList;
-	}
+	} // getBoardList
+	
+	public NoticeBoardDTO getBoard(HttpServletRequest request) {
+		NoticeBoardDTO boardDTO = null;
+		try {
+			int noticeNum = Integer.parseInt(request.getParameter("noticeNum"));
+			boardDAO = new NoticeBoardDAO();
+			boardDTO = boardDAO.getBoard(noticeNum);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return boardDTO;
+	} // getBoard
+
+
+	public void updateReadcount(HttpServletRequest request) {
+		try {
+			int noticeNum = Integer.parseInt(request.getParameter("noticeNum"));
+			boardDAO = new NoticeBoardDAO();
+			boardDAO.updateReadcount(noticeNum);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	} // updateReadcount
+
 
 }
