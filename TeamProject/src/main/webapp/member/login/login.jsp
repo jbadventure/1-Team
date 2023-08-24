@@ -8,7 +8,7 @@
 </head>
 <body>
 <h1>로그인</h1>
-<form action="loginProGuest.gme" method="post">
+<form action="loginPro.me" method="post">
 
 아이디 : <input type="text" name="id"><br>
 비밀번호 : <input type="password" name="pass"><br>
