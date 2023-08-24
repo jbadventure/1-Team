@@ -35,6 +35,11 @@ public class MemberController extends HttpServlet{
 		
 		System.out.println("뽑아온 가상주소 : " + sPath);
 		
+		if(sPath.equals("/main.me")) {
+			dispatcher = request.getRequestDispatcher("main/main.jsp");
+			dispatcher.forward(request, response);
+		} //main.me
+		
 		if(sPath.equals("/login.me")) {
 			// member/login/login.jsp 주소변경없이 이동
 			dispatcher = request.getRequestDispatcher("member/login/login.jsp");
