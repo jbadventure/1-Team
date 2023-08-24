@@ -54,7 +54,14 @@ $(document).ready(function(){
 			$('#div1').html("이메일을 선택해주세요").css("color","red"); 
 			$('#emailop').focus();
 			return false;
-		}else {
+		}else if {
+			//MemberDTO memberDTO = memberDTO.getReadData(member_id){    <- 뭔가 이렇게하는게아닌거같음
+			//if(memberDTO == null || memberDTO.getMemberEmail().equals(member_email)){
+				alert("회원정보가 존재하지 않습니다");
+			//}
+			//https://chicken-tender-2019.tistory.com/126 참고하여 내일 수정하겠읍니다.
+		} else {
+			}
 		}
 	});
 });
