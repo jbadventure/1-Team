@@ -34,6 +34,7 @@ public class GuestMemberController extends HttpServlet{
 		System.out.println("뽑아온 가상주소 : " + sPath);
 		
 		if(sPath.equals("/main.gme")){
+			System.out.println("뽑아온 가상주소 : " + sPath);
 			dispatcher 
 		    = request.getRequestDispatcher("main/main.jsp");
 		dispatcher.forward(request, response);

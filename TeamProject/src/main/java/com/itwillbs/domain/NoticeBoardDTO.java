@@ -10,6 +10,11 @@ public class NoticeBoardDTO {
 	private Timestamp noticeIssueDate; // 공지 작성일시
 	private int noticeReadcount; // 조회수
 	
+	@Override
+	public String toString() {
+		return "NoticeBoardDTO [noticeNum=" + noticeNum + ", noticeSubject=" + noticeSubject + ", noticeContent="
+				+ noticeContent + ", noticeIssueDate=" + noticeIssueDate + ", noticeReadcount=" + noticeReadcount + "]";
+	}
 	public int getNoticeNum() {
 		return noticeNum;
 	}

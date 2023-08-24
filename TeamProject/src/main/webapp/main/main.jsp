@@ -70,7 +70,7 @@
                   <div class="rd-navbar-brand"><a class="brand" href="index.html"><img class="brand-logo-dark" src="images/logo-198x66.png" alt="" width="198" height="66"/></a></div>
                 </div>
                 <div class="menu-search">
-                	<div class="rd-nav-item"><a class="rd-nav-link" href="#" style="font-size:18px">공지사항</a></div>
+                	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/noticeList.nbo" style="font-size:18px">공지사항</a></div>
                 	<div class="rd-nav-item"><a class="rd-nav-link" href="#">자주 묻는 질문</a></div>
                 	<div class="rd-nav-item"><input type="search" placeholder="지금 생각나는 취미를 검색하세요." class="rd-nav-searchbar"></div>
                 	<div class="rd-nav-item"><a class="rd-nav-link" href="#">회원가입</a></div>
