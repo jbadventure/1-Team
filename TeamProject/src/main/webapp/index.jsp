@@ -3,8 +3,8 @@
    
 <%
 
-response.sendRedirect("main.gme");
-// response.sendRedirect("login.hme");
+// response.sendRedirect("main.me");
+response.sendRedirect("login.me");
 
 
 
