@@ -1,5 +1,5 @@
 package com.itwillbs.service;
 
-public class HostMemberService {
+public class MemberService {
 
 }
