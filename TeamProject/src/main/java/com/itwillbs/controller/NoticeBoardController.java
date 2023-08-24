@@ -54,6 +54,8 @@ public class NoticeBoardController extends HttpServlet{
 		}
 		
 		if (spath.equals("/noticeContent.nbo")) {
+			boardService = new NoticeBoardService();
+//			boardService.updateReadcount(request);
 			dispatcher = request.getRequestDispatcher("/board/notice/content.jsp");
 			dispatcher.forward(request, response);
 		}
