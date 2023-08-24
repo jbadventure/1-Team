@@ -2,7 +2,12 @@
     pageEncoding="UTF-8"%>
    
 <%
+
 response.sendRedirect("main.gme");
 // response.sendRedirect("login.hme");
+
+
+
+
 
 %>

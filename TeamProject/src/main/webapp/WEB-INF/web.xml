@@ -11,24 +11,15 @@
   </welcome-file-list>
   
   <servlet-mapping>
-	<servlet-name>HostMemberController</servlet-name>
-	<url-pattern>*.hme</url-pattern>
+	<servlet-name>MemberController</servlet-name>
+	<url-pattern>*.me</url-pattern>
 </servlet-mapping>
 
 <servlet>
-	<servlet-name>HostMemberController</servlet-name>
-	<servlet-class>com.itwillbs.controller.HostMemberController</servlet-class>
+	<servlet-name>MemberController</servlet-name>
+	<servlet-class>com.itwillbs.controller.MemberController</servlet-class>
 </servlet>
 
-  <servlet-mapping>
-	<servlet-name>GuestMemberController</servlet-name>
-	<url-pattern>*.gme</url-pattern>
-</servlet-mapping>
-
-<servlet>
-	<servlet-name>GuestMemberController</servlet-name>
-	<servlet-class>com.itwillbs.controller.GuestMemberController</servlet-class>
-</servlet>
 
   <servlet-mapping>
 	<servlet-name>ClassBoardController</servlet-name>

@@ -6,7 +6,7 @@
 <!-- head -->
 <head>
 <meta charset="UTF-8">
-<title>join3.jsp</title>
+<title>insertHost.jsp</title>
 </head> 
 
 <!-- body -->
@@ -14,53 +14,58 @@
 <h1>호스트 회원가입</h1>
 
 <!-- form -->
-<form action="test1.html" method="get" id="fr">
- 
+<form action="insertGuest.gme" method="post" id="fr">
 
-아이디 : <input type="text" name="id" id="id"><br>
+아이디 : <input type="text" name="id" id="id"> <input type="button" value="중복확인" name="idup" id="idup"><br>
 	   <div id="div1"></div>
 비밀번호 : <input type="password" name="pass" id="pass"><br>
 		<div id="div2"></div>
 비밀번호 확인 : <input type="password" name="pass2" id="pass2"><br>
 		   <div id="div3"></div>
-이름 : <input type="text" name="name" id="name"><br>
-	  <div id="div4"></div>
+닉네임 : <input type="text" name="nick" id="nick"> <input type="button" value="중복확인" name="ndup" id="ndup"><br>
+	   <div id="div4"></div>
+이름 : <input type="text" name="name" id="name"> <br>
+	  <div id="div5"></div>
 생년월일 : <input type="date" name="birth" id="birth"><br>
-		<div id="div5"></div>
+		<div id="div6"></div>
+성별 : <input type="radio" name="gender" value="남" id="gender1">남
+      <input type="radio" name="gender" value="여" id="gender2">여<br>
+      <div id="div7"></div>
 전화번호 : <input type="text" name="phone1" id="phone1" maxlength="3" size="3">-<input type="text" name="phone2" id="phone2" maxlength="4" size="4">-<input type="text" name="phone3" id="phone3" maxlength="4" size="4"><br>
-	    <div id="div6"></div>
+	    <div id="div8"></div>
 이메일 : <input type="text" name="email" id="email">@<select name="emailop" id="emailop">
 												   <option value="">이메일을 선택해주세요</option>
 												   <option value="naver">naver.com</option>
 												   <option value="gmail">gmail.com</option>
         							   		   	   </select><br>
-        							   		   	   <div id="div7"></div>
-지역 : <select name="address" id="address">
-	 <option value="">지역을 선택해주세요</option>
-	 <option value="Seoul">서울</option>
-	 <option value="Busan">부산</option>
-	 </select><br>
-	 <div id="div8"></div>
-사업자번호 : <input type="text" name="bNum" id="bNum"><br>
-		 <div id="div9"></div>
+        							   		   	   <div id="div9"></div>
+사업자등록번호 : <input type="text" name="bNum" id="bNum"><br>
+			<div id="div11"></div>
 
+<input type="checkbox" value="이용약관" id="agree">위 이용약관에 동의합니다. <a href="../join/agree.jsp">이용약관</a><br>
+<div id="div12"></div>
 <input type="button" value="회원가입" id="btn1">
 </form>
 
 <!-- script -->
-<script type="text/javascript" src="script/jquery-3.7.0.js"></script>
+<script type="text/javascript" src="../../script/jquery-3.7.0.js"></script>
 <script type="text/javascript">
 
 // 아이디 id
+// 아이디 중복확인 idup
 // 비밀번호 pass
 // 비밀번호 확인 pass2
+// 닉네임 nick
+// 닉네임 중복확인 ndup
 // 이름 name
 // 생년월일 birth
+// 성별 (남)gender1, (여)gender2
 // 전화번호 phone1-phone2-phone3
 // 이메일 email
 // 이메일 선택 emailop
 // 지역 address
-// 사업자번호 bNum
+// 사업자등록번호 bNum
+// 이용약관 agree
 
 $(document).ready(function(){
 	// '회원가입' 버튼 클릭 시
@@ -87,6 +92,19 @@ $(document).ready(function(){
 			$('#pass').focus();
 		}
 		
+// 		$('.idup').click(function(){
+// // 			alert("클릭");
+// 			$.ajax({
+// 				url:'idCheck.me',
+// 				// 파라미터이름 : val() 값
+// 				data:{'id':$('.id').val()},
+// 				success:function(result){
+// // result 아이디 중복, 아이디 사용가능 결과 출력값 받아오는 변수
+// //		          class="divdup" 안에 아이디 중복 값을 넣기
+// 					$('.divdup').html(result);
+// 				}
+// 			});
+		
 		// 비밀번호
 		if($('#pass').val() == ""){
 			$('#div2').html("비밀번호를 입력해주세요").css("color","red");
@@ -108,78 +126,109 @@ $(document).ready(function(){
 			return;
 		}else {
 			$('#div3').empty();
-			$('#name').focus();
+			$('#nick').focus();
 		}
-		
-		// 이름
-		if($('#name').val() == ""){
-			$('#div4').html("이름을 입력해주세요").css("color","red");
-			$('#name').focus();
+			
+		// 닉네임
+		if($('#nick').val() == ""){
+			$('#div4').html("닉네임을 입력해주세요").css("color","red");
+			$('#nick').focus();
 			return;
 		}else {
 			$('#div4').empty();
+			$('#name').focus();
+		}
+		
+// 		// 닉네임 중복확인
+// 		$('.idup').click(function(){
+// // 			alert("클릭");
+// 			$.ajax({
+// 				url:'idCheck.me',
+// 				// 파라미터이름 : val() 값
+// 				data:{'id':$('.id').val()},
+// 				success:function(result){
+// // result 아이디 중복, 아이디 사용가능 결과 출력값 받아오는 변수
+// //		          class="divdup" 안에 아이디 중복 값을 넣기
+// 					$('.divdup').html(result);
+// 				}
+// 			});
+		
+		// 이름
+		if($('#name').val() == ""){
+			$('#div5').html("이름을 입력해주세요").css("color","red");
+			$('#name').focus();
+			return false;
+		}else {
+			$('#div5').empty();
 			$('#birth').focus();
 		}
 		
 		// 생년월일
 		if($('#birth').val() == ""){
-			$('#div5').html("생년월일을 선택해주세요").css("color","red");
+			$('#div6').html("생년월일을 선택해주세요").css("color","red");
 			$('#birth').focus();
-			return;
+			return false;
 		}else {
-			$('#div5').empty();
+			$('#div6').empty();
+			$('#gender').focus();
+		}
+		
+		// 성별
+		if($('#gender1').is(':checked')==false && $('#gender2').is(':checked')==false){
+			$('#div7').html("성별을 선택해주세요").css('color','red');
+			return false;
+		} else {
+			$('#div7').empty();
 			$('#phone1').focus();
 		}
 		
 		// 전화번호
     	if($('#phone1').val().length != 3){
-	    	$('#div6').html("전화번호를 확인해주세요").css("color","red"); 
+	    	$('#div8').html("전화번호를 확인해주세요").css("color","red"); 
 			$('#phone1').focus();
-			return;
+			return false;
 		}else if($('#phone2').val().length != 4){
-	    	$('#div6').html("전화번호를 확인해주세요").css("color","red"); 
+	    	$('#div8').html("전화번호를 확인해주세요").css("color","red"); 
 			$('#phone2').focus();
-			return;
+			return false;
 		}else if($('#phone3').val().length != 4){
-	    	$('#div6').html("전화번호를 확인해주세요").css("color","red"); 
+	    	$('#div8').html("전화번호를 확인해주세요").css("color","red"); 
 			$('#phone3').focus();
-			return;
+			return false;
 		}else {
-			$('#div6').empty();
+			$('#div8').empty();
 			$('#email').focus();
 		}
     	
     	// 이메일
 		if($('#email').val() == "" ){
-			$('#div7').html("이메일을 입력해주세요").css("color","red"); 
+			$('#div9').html("이메일을 입력해주세요").css("color","red"); 
 			$('#email').focus();
-			return;
+			return false;
 		}else if($('#emailop').val() == "" ){
-			$('#div7').html("이메일을 선택해주세요").css("color","red"); 
+			$('#div9').html("이메일을 선택해주세요").css("color","red"); 
 			$('#emailop').focus();
-			return;
-		}else {
-			$('#div7').empty();
-			$('#address').focus();
-		}
-    	
-		// 지역
-		if($('#address').val() == "" ){
-			$('#div8').html("지역을 선택해주세요").css("color","red"); 
-			$('#address').focus();
-			return;
-		}else {
-			$('#div8').empty();
-			$('#bNum').focus();
-		}
-		
-		// 사업자번호
-		if($('#bNum').val() == "" ){
-			$('#div9').html("사업자번호를 입력해주세요").css("color","red"); 
-			$('#bNum').focus();
-			return;
+			return false;
 		}else {
 			$('#div9').empty();
+			$('#address').focus();
+		}
+		
+		// 사업자등록번호
+		if($('#bNum').val() == "" ){
+			$('#div11').html("사업자등록번호를 입력해주세요").css("color","red");
+			$('#bNum').focus();
+			return false;
+		} else{
+			$('#div11').empty();
+		}
+		
+		// 이용약관
+		if($('#agree').prop('checked') == false ){
+		    $('#div12').html("이용약관에 동의해주세요").css("color","red"); 
+			return
+		} else {
+		    $('#div12').empty();
 		}
 		$('#fr').submit();
 	});
