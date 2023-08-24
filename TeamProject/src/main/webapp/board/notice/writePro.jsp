@@ -25,7 +25,7 @@ String dbUrl="jdbc:mysql://itwillbs.com/c1d2304t1";
 String dbUser="c1d2304t1";
 String dbPass="1234";
 Connection con=DriverManager.getConnection(dbUrl, dbUser, dbPass);
-String sql2 = "select max(notice_num) from board";
+String sql2 = "select max(noticeNum) from board";
 PreparedStatement pstmt2=con.prepareStatement(sql2);
 
 ResultSet rs=pstmt2.executeQuery();
@@ -33,7 +33,7 @@ ResultSet rs=pstmt2.executeQuery();
 if(rs.next()){
 	noticeNum=rs.getInt("max(noticeNum)")+1;
 }
-String sql = "insert into board(notice_num, notice_subject, notice_content, notice_issuedate, notice_readcount) values(?,?,?,?,?)";
+String sql = "insert into board(noticeNum, noticeSubject, noticeContent, noticeIssuedate, noticeReadcount) values(?,?,?,?,?)";
 PreparedStatement pstmt = con.prepareStatement(sql);
 pstmt.setInt(1, noticeNum);
 pstmt.setString(2, noticeSubject);

@@ -31,36 +31,56 @@ public class NoticeBoardController extends HttpServlet{
 	}//doPost()
 	
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String spath = request.getServletPath();
+		String sPath = request.getServletPath();
 		
 		
-		if (spath.equals("/noticeList.nbo")) {
+		if (sPath.equals("/noticeList.nbo")) {
 			boardService = new NoticeBoardService();
 			List<NoticeBoardDTO> boardList = boardService.getBoardList();
 			request.setAttribute("boarList", boardList);
 			dispatcher = request.getRequestDispatcher("/board/notice/list.jsp");
 			dispatcher.forward(request,response);
-		} 
-		if (spath.equals("/noticeWrite.nbo")) {
+		} // list 
+		if (sPath.equals("/noticeWrite.nbo")) {
 			dispatcher = request.getRequestDispatcher("/board/notice/write.jsp");
 			dispatcher.forward(request, response);
-		}  
-		if(spath.equals("/noticeWritePro.nbo")) {
+		} // write 
+		if(sPath.equals("/noticeWritePro.nbo")) {
 			request.setCharacterEncoding("utf-8");
 			boardService = new NoticeBoardService();
 			boardService.insertBoard(request);
 			response.sendRedirect("noticeList.nbo");
-			
-		}
+		} //writepro
 		
-		if (spath.equals("/noticeContent.nbo")) {
+		if (sPath.equals("/noticeContent.nbo")) {
 			boardService = new NoticeBoardService();
 			boardService.updateReadcount(request);
 			NoticeBoardDTO boardDTO = boardService.getBoard(request);
 			request.setAttribute("boardDTO", boardDTO);
 			dispatcher = request.getRequestDispatcher("/board/notice/content.jsp");
 			dispatcher.forward(request, response);
-		}
+		} // content
+		
+		if(sPath.equals("/noticeUpdate.bo")) {
+			boardService = new NoticeBoardService();
+			NoticeBoardDTO boardDTO = boardService.getBoard(request);
+			request.setAttribute("boardDTO", boardDTO);
+			dispatcher = request.getRequestDispatcher("/board/notice/update.jsp");
+			dispatcher.forward(request, response);
+		} // update
+		
+		if(sPath.equals("/noticeUpdatePro.bo")) {
+			boardService = new NoticeBoardService();
+			boardService.updateBoard(request);
+			response.sendRedirect("noticeList.nbo");
+		} // updatePro
+		
+		if(sPath.equals("/noticeDelete.bo")) {
+			boardService = new NoticeBoardService();
+			boardService.deleteBoard(request);
+			response.sendRedirect("noticeList.bo");
+			
+		} // delete
 				
 	}
 }

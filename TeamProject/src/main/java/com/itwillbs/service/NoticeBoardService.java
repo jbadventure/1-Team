@@ -73,5 +73,37 @@ public class NoticeBoardService {
 		}
 	} // updateReadcount
 
+	public void updateBoard(HttpServletRequest request) {
+		try {
+			request.setCharacterEncoding("utf-8");
+			int noticeNum = Integer.parseInt(request.getParameter("noticeNum"));
+			String noticeSubject = request.getParameter("noticeSubject");
+			String noticeContent = request.getParameter("noticeContent");
+			
+			NoticeBoardDTO boardDTO = new NoticeBoardDTO();
+			boardDTO.setNoticeNum(noticeNum);
+			boardDTO.setNoticeSubject(noticeSubject);
+			boardDTO.setNoticeContent(noticeContent);
+			
+			boardDAO = new NoticeBoardDAO();
+			boardDAO.updateBoard(boardDTO);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	} // updateBoard
+
+	public void deleteBoard(HttpServletRequest request) {
+		try {
+			int noticeNum = Integer.parseInt(request.getParameter("noticeNum"));
+			boardDAO = new NoticeBoardDAO();
+			boardDAO.deleteBoard(noticeNum);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
 
 }

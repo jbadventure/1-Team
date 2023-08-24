@@ -29,7 +29,7 @@ public class NoticeBoardDAO {
 	public void insertBoard(NoticeBoardDTO boardDTO) {
 		try {
 			con = new SQLConnection().getConnection();
-			String sql = "insert into notice(notice_num, notice_subject, notice_content, notice_issuedate, notice_readcount) values(?,?,?,?,?)";
+			String sql = "insert into notice(noticeNum, noticeSubject, noticeContent, noticeIssuedate, noticeReadcount) values(?,?,?,?,?)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, boardDTO.getNoticeNum());
 			pstmt.setString(2, boardDTO.getNoticeSubject());
@@ -49,11 +49,11 @@ public class NoticeBoardDAO {
 		int noticeNum = 0;
 		try {
 			con = new SQLConnection().getConnection();
-			String sql = "select max(notice_num) from notice";
+			String sql = "select max(noticeNum) from notice";
 			pstmt=con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				noticeNum = rs.getInt("max(notice_num)");
+				noticeNum = rs.getInt("max(noticeNum)");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -66,17 +66,17 @@ public class NoticeBoardDAO {
 		List<NoticeBoardDTO> boardList = null;
 		try {
 			con = new SQLConnection().getConnection();
-			String sql = "select * from notice order by notice_num desc";
+			String sql = "select * from notice order by noticeNum desc";
 			pstmt=con.prepareStatement(sql);
 			rs =pstmt.executeQuery();
 			boardList = new ArrayList<>();
 			while(rs.next()) {
 				NoticeBoardDTO boardDTO = new NoticeBoardDTO();
-				boardDTO.setNoticeNum(rs.getInt("notice_num"));
-				boardDTO.setNoticeSubject(rs.getString("notice_subject"));
-				boardDTO.setNoticeContent(rs.getString("notice_content"));
-				boardDTO.setNoticeIssueDate(rs.getTimestamp("notice_issuedate"));
-				boardDTO.setNoticeReadcount(rs.getInt("notice_readcount"));
+				boardDTO.setNoticeNum(rs.getInt("noticeNum"));
+				boardDTO.setNoticeSubject(rs.getString("noticeSubject"));
+				boardDTO.setNoticeContent(rs.getString("noticeContent"));
+				boardDTO.setNoticeIssueDate(rs.getTimestamp("noticeIssuedate"));
+				boardDTO.setNoticeReadcount(rs.getInt("noticeReadcount"));
 				boardList.add(boardDTO);
 				}
 			
@@ -91,17 +91,17 @@ public class NoticeBoardDAO {
 		NoticeBoardDTO boardDTO = null;
 		try {
 			con = new SQLConnection().getConnection();
-			String sql = "select * from notice where notice_num =?";
+			String sql = "select * from notice where noticeNum =?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, noticeNum);
 			rs =pstmt.executeQuery();
 			if(rs.next()) {
 			boardDTO = new NoticeBoardDTO();
-			boardDTO.setNoticeNum(rs.getInt("notice_num"));
-			boardDTO.setNoticeSubject(rs.getString("notice_subject"));
-			boardDTO.setNoticeContent(rs.getString("notice_content"));
-			boardDTO.setNoticeIssueDate(rs.getTimestamp("notice_issuedate"));
-			boardDTO.setNoticeReadcount(rs.getInt("notice_readcount"));
+			boardDTO.setNoticeNum(rs.getInt("noticeNum"));
+			boardDTO.setNoticeSubject(rs.getString("noticeSubject"));
+			boardDTO.setNoticeContent(rs.getString("noticeContent"));
+			boardDTO.setNoticeIssueDate(rs.getTimestamp("noticeIssuedate"));
+			boardDTO.setNoticeReadcount(rs.getInt("noticeReadcount"));
 			}
 			
 		} catch (Exception e) {
@@ -114,11 +114,41 @@ public class NoticeBoardDAO {
 	public void updateReadcount(int noticeNum) {
 		try {
 			con = new SQLConnection().getConnection();
-			String sql = "update notice set = notice_readcount+1 where notice_num = ?";
+			String sql = "update notice set = noticeReadcount+1 where noticeNum = ?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, noticeNum);
 			pstmt.executeUpdate();
 			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			dbClose();
+		}
+		
+	}
+	public void updateBoard(NoticeBoardDTO boardDTO) {
+		try {
+			con = new SQLConnection().getConnection();
+			String sql = "update notice set noticeSubject=?,noticeContent=? where num=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, boardDTO.getNoticeSubject());
+			pstmt.setString(2, boardDTO.getNoticeContent());
+			pstmt.setInt(3, boardDTO.getNoticeNum());
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			dbClose();
+		}
+		
+	} // updateBoard
+	public void deleteBoard(int noticeNum) {
+		try {
+			con = new SQLConnection().getConnection();
+			String sql = "delete from notice where noticeNum=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, noticeNum);
+			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
