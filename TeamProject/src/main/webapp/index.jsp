@@ -3,6 +3,6 @@
    
 <%
 // response.sendRedirect("main.gme");
-response.sendRedirect("login.hme");
+response.sendRedirect("login.me");
 
 %>
