@@ -161,7 +161,6 @@ public class MemberController extends HttpServlet{
 			HttpSession session = request.getSession();
 			// "memberId" 세션값 가져오기=> String memberId 변수 저장
 			String memberId = (String)session.getAttribute("memberId");
-			System.out.println(memberId);
 			// MemberService 객체생성
 			memberService = new MemberService();
 			// MemberDTO memberDTO = getMember(memberId) 메서드 호출
