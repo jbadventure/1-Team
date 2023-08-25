@@ -74,7 +74,7 @@
                 	<div class="rd-nav-item"><a class="rd-nav-link" href="#">자주 묻는 질문</a></div>
                 	<div class="rd-nav-item"><input type="search" placeholder="지금 생각나는 취미를 검색하세요." class="rd-nav-searchbar"></div>
                 	<div class="rd-nav-item"><a class="rd-nav-link" href="#">회원가입</a></div>
-                	<div class="rd-nav-item"><a class="rd-nav-link" href="#">로그인</a></div>
+                	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/login.me" >로그인</a></div>
                 	<div class="rd-nav-item"><a class="rd-nav-link" href="#">마이페이지</a></div>
                 </div>
                 <!-- <ul class="menu-search">

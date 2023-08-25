@@ -2,20 +2,20 @@ package com.itwillbs.domain;
 
 public class MemberDTO {
 	
-	private int memberNum; // 게스트 회원 번호
-	private String memberId; // 게스트 아이디
-	private String memberPassword; // 게스트 패스워드
-	private String memberName; // 게스트 이름
-	private String memberNickname; // 게스트 닉네임
-	private String memberGender; // 게스트 성별
-	private String memberBirthday; // 게스트 생년월일
-	private String memberPhoneNum; // 게스트 휴대 전화번호
-	private String memberEmail; // 게스트 이메일
+	private int memberNum; // 회원 번호
+	private String memberId; // 아이디
+	private String memberPassword; // 패스워드
+	private String memberName; // 이름
+	private String memberNickname; // 닉네임
+	private String memberGender; // 성별
+	private String memberBirthday; // 생년월일
+	private String memberPhoneNum; // 휴대 전화번호
+	private String memberEmail; // 이메일
 	private String memberType; // 회원 타입(guest, host)
 	private String memberLocation; // 게스트 선호 지역
 	private String businessNum; // 사업자 번호
 	private String mailOrderNum; // 통신판매업 신고번호
-	private String memberProfileImagePath; // 게스트 프로필 사진 경로
+	private String memberProfileImagePath; // 프로필 사진 경로
 	
 	public int getMemberNum() {
 		return memberNum;

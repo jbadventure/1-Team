@@ -83,6 +83,22 @@ public class MemberController extends HttpServlet{
 			
 		}// logout.me
 		
+		if(sPath.equals("/findId.me")) { //아이디 찾기 
+				MemberService = new MemberService();
+				MemberDTO memberDTO = MemberService.userinfoCheck(request);
+				// 
+				if(memberDTO!=null) { 
+					// 이름, 메일 회원정보와 일치하면  세션값 저장하고 
+				HttpSession session = request.getSession();
+				session.setAttribute("id", memberDTO.getMemberId());
+				response.sendRedirect("idReport.me");  //idReport로 이동
+			} else { 
+				dispatcher 
+				= request.getRequestDispatcher("member/msg.jsp");
+				dispatcher.forward(request, response); 
+			}
+		}// findId
+		
 		
 	}
 }

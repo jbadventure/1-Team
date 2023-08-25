@@ -29,7 +29,7 @@ public class MemberDAO {
 			con = new SQLConnection().getConnection();
 			
 			//3단계 sql문
-			String sql = "select * from members where memberId=? and memberPassword=?";
+			String sql = "select * from member where memberId=? and memberPassword=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, memberDTO2.getMemberId());
 			pstmt.setString(2, memberDTO2.getMemberPassword());

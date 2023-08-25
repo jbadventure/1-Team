@@ -34,5 +34,11 @@ public class MemberService {
 			e.printStackTrace();
 		}
 		return memberDTO;
-	}// userCheck()
+	}// userCheck() 
+	
+	
+	public MemberDTO userinfoCheck(HttpServletRequest request) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
