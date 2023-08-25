@@ -110,15 +110,22 @@ public class MemberController extends HttpServlet{
 				
 
 		}// findId
+
+		if(sPath.equals("/idReport.me")) { //아이디 보여주기
+			// member/join/idReport.jsp 주소변경없이 이동
+			dispatcher = request.getRequestDispatcher("member/login/idReport.jsp");
+			dispatcher.forward(request, response);
+			
+		}// idReport
 		
-		if(sPath.equals("/findPassword.me")) { //아이디 찾기 
+		if(sPath.equals("/findPassword.me")) { //비밀번호 찾기 
 			// member/join/findPassword.jsp 주소변경없이 이동
 			dispatcher = request.getRequestDispatcher("member/login/findPassword.jsp");
 			dispatcher.forward(request, response);
 		
 		}// findPassword
 		
-		if(sPath.equals("/PasswordReset.me")) { //아이디 찾기 
+		if(sPath.equals("/PasswordReset.me")) { //비밀번호 재설정
 			// member/join/PasswordReset.jsp 주소변경없이 이동
 			dispatcher = request.getRequestDispatcher("member/login/PasswordReset.jsp");
 			dispatcher.forward(request, response);

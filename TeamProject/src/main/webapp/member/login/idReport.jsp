@@ -11,8 +11,8 @@
 
 <br>
 <p align="center">
-<input type="button" value="로그인 하기" onclick="location.href='login.jsp'"> 
-<input type="button" value ="비밀번호 찾기"  onclick="location.href='findPassword.jsp'" >
+<input type="button" value="로그인 하기" onclick="location.href='login.me'"> 
+<input type="button" value ="비밀번호 찾기"  onclick="location.href='findPassword.me'" >
 </p>
 </body>
 </html>
