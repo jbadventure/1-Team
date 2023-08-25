@@ -42,11 +42,23 @@ public class MemberService {
 	}// userCheck() 
 	
 	
-	public MemberDTO userinfoCheck(HttpServletRequest request) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	public MemberDTO userInfoCheck(HttpServletRequest request) {
+		System.out.println("MemberService userInfoCheck()");
+		MemberDTO memberDTO = null;
+		try {
+			request.setCharacterEncoding("utf-8");
+			String memberName = request.getParameter("memberName");
+			String memberEmail = request.getParameter("memberEmail");
+			MemberDTO memberDTO3 = new MemberDTO();
+			memberDTO3.setMemberName(memberName);
+			memberDTO3.setMemberEmail(memberEmail);
+			memberDAO = new MemberDAO();
+			memberDTO=memberDAO.userInfoCheck(memberDTO3);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return memberDTO;
+	}//userInfoCheck
 
 	public MemberDTO pwCheck(HttpServletRequest request) {
 		System.out.println("MemberService pwCheck()");
@@ -118,4 +130,7 @@ public class MemberService {
 			e.printStackTrace();
 		}
 	}//updatePwMember()	
+
+
+	
 }

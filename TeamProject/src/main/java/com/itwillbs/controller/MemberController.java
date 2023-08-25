@@ -90,26 +90,29 @@ public class MemberController extends HttpServlet{
 			
 		}
 		
-		if(sPath.equals("/findId.me")) { //아이디 찾기 
-			// member/join/findId.jsp 주소변경없이 이동
+		if(sPath.equals("/findId.me")) { //비밀번호 찾기 
+			// member/join/findPassword.jsp 주소변경없이 이동
 			dispatcher = request.getRequestDispatcher("member/login/findId.jsp");
 			dispatcher.forward(request, response);
-//				memberService = new MemberService();
-//				MemberDTO memberDTO = memberService.userinfoCheck(request);
-//				// 
-//				if(memberDTO!=null) { 
-//					// 이름, 메일 회원정보와 일치하면  세션값 저장하고 
-//				HttpSession session = request.getSession();
-//				session.setAttribute("id", memberDTO.getMemberId());
-//				response.sendRedirect("idReport.me");  //idReport로 이동
-//			} else { 
-//				dispatcher 
-//				= request.getRequestDispatcher("member/msg.jsp");
-//				dispatcher.forward(request, response); 
-//			} 
+		}
+		
+		if(sPath.equals("/findIdPro.me")) { //아이디 찾기 
+				System.out.println("뽑은 가상주소 비교 : /findId.me");
+				memberService = new MemberService();
+				MemberDTO memberDTO = memberService.userInfoCheck(request);
 				
-
-		}// findId
+				if(memberDTO != null) { 
+					// 입력한회원정보 일치하면  세션값 저장 ->idReport.me로 이동 
+					HttpSession session = request.getSession();
+					session.setAttribute("memberId", memberDTO.getMemberId());
+					response.sendRedirect("idReport.me");	
+				} else {
+					// memberDTO == null 아이디 비밀번호 틀림=> member/msg.jsp
+					dispatcher 
+				    = request.getRequestDispatcher("member/msg.jsp");
+				dispatcher.forward(request, response);
+				}
+			}
 
 		if(sPath.equals("/idReport.me")) { //아이디 보여주기
 			// member/join/idReport.jsp 주소변경없이 이동
