@@ -40,6 +40,23 @@ public class MemberController extends HttpServlet{
 			dispatcher.forward(request, response);
 		} //main.me 
 		
+		// 게스트 회원가입
+				if(sPath.equals("/insertGuest.me")) {
+					// 주소가 변경되지 않으면서 이동
+					// request, response 정보도 들고 이동
+					dispatcher  = request.getRequestDispatcher("member/join/insertGuest.jsp");
+					dispatcher.forward(request, response);
+						}// insert.me
+					
+				if(sPath.equals("/insertProGuest.me")) {
+					System.out.println("뽑은 가상주소 비교 : /insertProGuest.me");
+					// MemberService 객체생성
+					memberService = new MemberService();
+					// insertGuest() 메서드 호출
+					memberService.insertGuest(request);
+					//로그인 이동 => 주소변경하면서 이동
+					response.sendRedirect("main.me");
+					}
 		
 		// 호스트 회원가입
 		if(sPath.equals("/insertHost.me")) {

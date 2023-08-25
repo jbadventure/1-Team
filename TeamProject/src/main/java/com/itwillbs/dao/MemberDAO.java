@@ -24,6 +24,37 @@ public class MemberDAO {
 		if(con != null) {try {con.close();} catch (SQLException e) {	}}
 	}
 	
+	// Guest 회원가입 
+		public void insertGuest(MemberDTO memberDTO) {
+			System.out.println("MemberDAO insertGuest()");
+			try {
+				// 1단계 JDBC 프로그램 가져오기 
+				// 2단계 디비 연결
+				con = new SQLConnection().getConnection();
+				// 3단계 문자열 -> sql구문 변경
+				String sql = "insert into member(memberId,memberPassword,memberNickname,memberName,memberBirthday,memberGender,memberPhoneNum,memberEmail,memberLocation) values(?,?,?,?,?,?,?,?,?)";
+				pstmt=con.prepareStatement(sql);
+				pstmt.setString(1, memberDTO.getMemberId());
+				pstmt.setString(2, memberDTO.getMemberPassword()); 
+				pstmt.setString(3, memberDTO.getMemberNickname());
+				pstmt.setString(4, memberDTO.getMemberName());
+				pstmt.setString(5, memberDTO.getMemberBirthday());
+				pstmt.setString(6, memberDTO.getMemberGender());
+				pstmt.setString(7, memberDTO.getMemberPhoneNum());
+				pstmt.setString(8, memberDTO.getMemberEmail());
+				pstmt.setString(9, memberDTO.getMemberLocation());
+
+				// 4단계 sql구문 실행
+				pstmt.executeUpdate();
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				dbClose();
+			}
+			
+		}//insertMember()
+		
 	// insertHost
 	public void insertHost(MemberDTO memberDTO) {
 		System.out.println("MemberDAO insertHost()");
