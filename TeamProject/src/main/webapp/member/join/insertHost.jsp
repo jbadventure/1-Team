@@ -35,8 +35,8 @@
 	    <div id="div8"></div>
 이메일 : <input type="text" name="email" id="email">@<select name="emailop" id="emailop">
 												   <option value="">이메일을 선택해주세요</option>
-												   <option value="naver">naver.com</option>
-												   <option value="gmail">gmail.com</option>
+												   <option value="naver.com">naver.com</option>
+												   <option value="gmail.com">gmail.com</option>
         							   		   	   </select><br>
         							   		   	   <div id="div9"></div>
 사업자등록번호 : <input type="text" name="bNum" id="bNum"><br>
@@ -48,7 +48,7 @@
 </form>
 
 <!-- script -->
-<script type="text/javascript" src="../../script/jquery-3.7.0.js"></script>
+<script type="text/javascript" src="script/jquery-3.7.0.js"></script>
 <script type="text/javascript">
 
 // 아이디 id
