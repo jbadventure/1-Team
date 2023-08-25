@@ -11,10 +11,11 @@ import javax.servlet.http.HttpSession;
 
 import com.itwillbs.domain.MemberDTO;
 import com.itwillbs.service.MemberService;
+import com.itwillbs.service.NoticeBoardService;
 
 public class MemberController extends HttpServlet{
 	RequestDispatcher dispatcher =null;
-	MemberService MemberService = null;
+	MemberService memberService = null;
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -38,7 +39,8 @@ public class MemberController extends HttpServlet{
 		if(sPath.equals("/main.me")) {
 			dispatcher = request.getRequestDispatcher("main/main.jsp");
 			dispatcher.forward(request, response);
-		} //main.me
+		} //main.me 
+		
 		
 		if(sPath.equals("/login.me")) {
 			// member/login/login.jsp 주소변경없이 이동
@@ -50,10 +52,10 @@ public class MemberController extends HttpServlet{
 			System.out.println("뽑은 가상주소 비교 : /loginPro.me");
 			
 			// MemberService 객체생성
-			MemberService = new MemberService();
+			memberService = new MemberService();
 			
 			// MemberDTO memberDTO = userCheck(request) 메서드 호출
-			MemberDTO memberDTO = MemberService.userCheck(request);
+			MemberDTO memberDTO = memberService.userCheck(request);
 			
 			if(memberDTO != null) {
 				// 아이디 비밀번호 일치 -> 로그인(세션에 로그인값 저장) -> main.me 이동
@@ -84,8 +86,8 @@ public class MemberController extends HttpServlet{
 		}// logout.me
 		
 		if(sPath.equals("/findId.me")) { //아이디 찾기 
-				MemberService = new MemberService();
-				MemberDTO memberDTO = MemberService.userinfoCheck(request);
+				memberService = new MemberService();
+				MemberDTO memberDTO = memberService.userinfoCheck(request);
 				// 
 				if(memberDTO!=null) { 
 					// 이름, 메일 회원정보와 일치하면  세션값 저장하고 
@@ -96,8 +98,11 @@ public class MemberController extends HttpServlet{
 				dispatcher 
 				= request.getRequestDispatcher("member/msg.jsp");
 				dispatcher.forward(request, response); 
-			}
+			} 
+				
+
 		}// findId
+		
 		
 		
 	}

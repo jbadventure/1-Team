@@ -6,7 +6,8 @@ import com.itwillbs.dao.MemberDAO;
 import com.itwillbs.domain.MemberDTO;
 
 public class MemberService {
-	MemberDAO memberDAO = null;
+	MemberDAO memberDAO = null; 
+	
 	public MemberDTO userCheck(HttpServletRequest request) {
 		System.out.println("MemberService userCheck()");
 		// MemberDTO memberDTO 변수 선언 => 초기값 null
@@ -27,7 +28,7 @@ public class MemberService {
 			
 			// MemberDAO 객체생성
 			memberDAO = new MemberDAO();
-			// memberDTO = userCheck() 메서드 호출
+			// memberDTO = userCheck(memberDTO2) 메서드 호출
 			memberDTO = memberDAO.userCheck(memberDTO2);
 		
 		} catch (Exception e) {

@@ -5,14 +5,19 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
+
 import com.itwillbs.domain.MemberDTO;
 
 public class MemberDAO {
 	
 	Connection con=null;
 	PreparedStatement pstmt=null;
-	ResultSet rs =null;
+	ResultSet rs =null; 
 	
+	//기억장소 해제 메서드()
 	public void dbClose() {
 		if(rs != null) {try {rs.close();} catch (SQLException e) {	}}			
 		if(pstmt != null) {try {pstmt.close();} catch (SQLException e) {	}}
@@ -43,6 +48,7 @@ public class MemberDAO {
 				// 열접근 각각의 컬럼값 => MemberDTO에 담아서 리턴
 				// MemberDTO 객체생성 => 기억장소 할당 => 각각의 컬럼값 저장
 				memberDTO = new MemberDTO();
+				memberDTO.setMemberNum(rs.getInt("memberNum"));
 				memberDTO.setMemberId(rs.getString("memberId"));
 				memberDTO.setMemberPassword(rs.getString("memberPassword"));
 				memberDTO.setMemberName(rs.getString("memberName"));

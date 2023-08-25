@@ -55,12 +55,12 @@ $(document).ready(function(){
 			$('#emailop').focus();
 			return false;
 		}else if ($()){
-			//MemberDTO memberDTO = memberDTO.getReadData(member_id){    <- 뭔가 이렇게하는게아닌거같음
-			//if(memberDTO == null || memberDTO.getMemberEmail().equals(member_email)){
-				$('#div1').html("회원정보가 일치하지 않습니다").css("color","red"); 
+			
+			//	$('#div1').html("회원정보가 일치하지 않습니다").css("color","red"); 
 			//}
 			//https://chicken-tender-2019.tistory.com/126 참고하여 내일 수정하겠습니다.
 		} else {
+			
 			// return;
 			}
 		}
