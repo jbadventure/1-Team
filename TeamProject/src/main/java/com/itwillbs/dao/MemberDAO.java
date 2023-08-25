@@ -286,14 +286,16 @@ public class MemberDAO {
 	}//getMember()
 
 	public void updatePwMember(MemberDTO memberDTO) {
+		System.out.println("MemberDAO updatePwMember()");
 		try {
 			//1,2 디비연결
 			con = new SQLConnection().getConnection();
 			//3 sql update members set name = ? where id = ?
-			String sql = "update members set memberPassword = ? where memberId = ?";
+			String sql = "update member set memberPassword = ? where memberId = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, memberDTO.getMemberPassword());
 			pstmt.setString(2, memberDTO.getMemberId());
+			System.out.println(pstmt);
 			//4 실행
 			pstmt.executeUpdate();
 		} catch (Exception e) {

@@ -191,17 +191,12 @@ public class MemberController extends HttpServlet{
 		}// findPasswordPro
 
 		if(sPath.equals("/PasswordReset.me")) { //비밀번호 재설정
-			//수정하기 전에 디비 나의 정보 조회(세션값 memberId)
+			// 수정하기 전에 디비 나의 정보 조회(세션값 memberId)
 			// 세션 객체생성
 			HttpSession session = request.getSession();
-			// "memberId" 세션값 가져오기=> String memberId 변수 저장
+			// "memberId" 세션값 가져오기 => String memberId 변수 저장
 			String memberId = (String)session.getAttribute("memberId");
-			// MemberService 객체생성
-			memberService = new MemberService();
-			// MemberDTO memberDTO = getMember(memberId) 메서드 호출
-			MemberDTO memberDTO = memberService.getMember(memberId);
-			// request에 memberDTO 저장 ("이름",값)
-			request.setAttribute("memberDTO", memberDTO);
+			System.out.println(memberId); // memberId값 확인용
 			// member/join/PasswordReset.jsp 주소변경없이 이동
 			dispatcher = request.getRequestDispatcher("member/login/PasswordReset.jsp");
 			dispatcher.forward(request, response);
@@ -210,21 +205,23 @@ public class MemberController extends HttpServlet{
 		
 		if(sPath.equals("/PasswordResetPro.me")) { //비밀번호 재설정
 			System.out.println("뽑은 가상주소 비교 : /PasswordResetPro.me");
-			// request안에 폼에서 입력한 수정할 값이 저장
+			HttpSession session = request.getSession();
+			// "memberId" 세션값 가져오기 => String memberId 변수 저장
+			String memberId = (String)session.getAttribute("memberId");
+			System.out.println(memberId); // memberId값 확인용
 			// MemberService 객체생성
 			memberService = new MemberService();
-			// MemberDTO memberDTO = pwCheck(request) 메서드 호출
-			MemberDTO memberDTO = memberService.pwCheck(request);
-			System.out.println(request.getParameter("memberId"));
-			if(memberDTO != null) {
-				// memberDTO != null 아이디 이름 이메일 일치=> 
-				// 수정  리턴할형없음  updatePwMember(request) 메서드 호출 
-				//  sql =>  update members set name = ? where id = ? 
+			if(memberId != null) {
+				// 저장된 memberId값이 있으면 => updatePwMember(request) 메서드 호출 
+				// sql =>  update member set memberPassword = ? where memberId = ? 
 				memberService.updatePwMember(request);
-				// =>main.me
-				response.sendRedirect("login.me");
+				// 팝업창 띄운 후 => 로그인페이지로 이동
+				dispatcher 
+				= request.getRequestDispatcher("member/loginsuccess.jsp");
+				dispatcher.forward(request, response);
+//				response.sendRedirect("login.me");
 			}else {
-				// memberDTO == null 아이디 이름 이메일 틀림=> member/msg.jsp
+				// 저장된 memberId값이 없으면 => 팝업창 띄운다.
 				dispatcher 
 			    = request.getRequestDispatcher("member/msg.jsp");
 				dispatcher.forward(request, response);

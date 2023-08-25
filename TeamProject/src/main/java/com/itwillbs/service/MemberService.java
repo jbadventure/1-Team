@@ -208,19 +208,19 @@ public class MemberService {
 
 	public void updatePwMember(HttpServletRequest request) {
 		System.out.println("MemberService updatePwMember()");
+		System.out.println(request.getParameter("memberId"));
 		try {
 			// request 한글처리
 			request.setCharacterEncoding("utf-8");
-			// request 파라미터 가져오기
+			// 변수에 값 담기
 			String memberId = request.getParameter("memberId");
-			String memberName = request.getParameter("memberName");
-			String memberEmail = request.getParameter("memberEmail");
+			String memberPassword = request.getParameter("memberPassword");
+			System.out.println(memberId);
 			// MemberDTO 객체생성 
 			MemberDTO memberDTO = new MemberDTO();
 			// set메서드 호출 파라미터값 저장
 			memberDTO.setMemberId(memberId);
-			memberDTO.setMemberName(memberName);
-			memberDTO.setMemberEmail(memberEmail);
+			memberDTO.setMemberPassword(memberPassword);
 			// MemberDAO 객체생성
 			memberDAO = new MemberDAO();
 			// updateMember(memberDTO) 메서드 호출
