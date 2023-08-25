@@ -83,25 +83,46 @@ public class MemberController extends HttpServlet{
 			
 		}// logout.me
 		
+		if(sPath.equals("/ghselect.me")) { // 회원가입 페이지로
+			// member/join/ghselect.jsp 주소변경없이 이동
+			dispatcher = request.getRequestDispatcher("member/join/ghselect.jsp");
+			dispatcher.forward(request, response);
+			
+		}
+		
 		if(sPath.equals("/findId.me")) { //아이디 찾기 
-				memberService = new MemberService();
-				MemberDTO memberDTO = memberService.userinfoCheck(request);
-				// 
-				if(memberDTO!=null) { 
-					// 이름, 메일 회원정보와 일치하면  세션값 저장하고 
-				HttpSession session = request.getSession();
-				session.setAttribute("id", memberDTO.getMemberId());
-				response.sendRedirect("idReport.me");  //idReport로 이동
-			} else { 
-				dispatcher 
-				= request.getRequestDispatcher("member/msg.jsp");
-				dispatcher.forward(request, response); 
-			} 
+			// member/join/findId.jsp 주소변경없이 이동
+			dispatcher = request.getRequestDispatcher("member/login/findId.jsp");
+			dispatcher.forward(request, response);
+//				memberService = new MemberService();
+//				MemberDTO memberDTO = memberService.userinfoCheck(request);
+//				// 
+//				if(memberDTO!=null) { 
+//					// 이름, 메일 회원정보와 일치하면  세션값 저장하고 
+//				HttpSession session = request.getSession();
+//				session.setAttribute("id", memberDTO.getMemberId());
+//				response.sendRedirect("idReport.me");  //idReport로 이동
+//			} else { 
+//				dispatcher 
+//				= request.getRequestDispatcher("member/msg.jsp");
+//				dispatcher.forward(request, response); 
+//			} 
 				
 
 		}// findId
 		
+		if(sPath.equals("/findPassword.me")) { //아이디 찾기 
+			// member/join/findPassword.jsp 주소변경없이 이동
+			dispatcher = request.getRequestDispatcher("member/login/findPassword.jsp");
+			dispatcher.forward(request, response);
 		
+		}// findPassword
 		
+		if(sPath.equals("/PasswordReset.me")) { //아이디 찾기 
+			// member/join/PasswordReset.jsp 주소변경없이 이동
+			dispatcher = request.getRequestDispatcher("member/login/PasswordReset.jsp");
+			dispatcher.forward(request, response);
+			
+		}// PasswordReset
 	}
 }
