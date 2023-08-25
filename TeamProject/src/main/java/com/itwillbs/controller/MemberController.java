@@ -31,16 +31,14 @@ public class MemberController extends HttpServlet{
 	
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("MemberController doProcess()");
-		
+		// 가상주소 뽑아오기
 		String sPath = request.getServletPath();
-		
 		System.out.println("뽑아온 가상주소 : " + sPath);
 		
 		if(sPath.equals("/main.me")) {
 			dispatcher = request.getRequestDispatcher("main/main.jsp");
 			dispatcher.forward(request, response);
 		} //main.me 
-		
 		
 		if(sPath.equals("/login.me")) {
 			// member/login/login.jsp 주소변경없이 이동

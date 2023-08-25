@@ -38,13 +38,19 @@ public class MemberDAO {
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, memberDTO2.getMemberId());
 			pstmt.setString(2, memberDTO2.getMemberPassword());
+			System.out.println(pstmt);
 			
 			//4단계 sql구문 실행한 결과를 ResultSet(변수rs)으로 저장하겠다
 			rs = pstmt.executeQuery();
 			//5단계 : if 행 접근 -> 데이터 있으면 true -> 아이디 비밀번호 일치 출력
 //				     else			  없으면 false -> 아이디 비밀번호 틀림 출력
+//			System.out.println(rs.next());
+//			if(rs.next()) {
+//				System.out.println("DAO if문 들어옴-1");
+//				
+//			}
 			if(rs.next()){
-				// true 아이디 비밀번호 일치 => 세션값 저장 => main.jsp로 이동
+				System.out.println("DAO if문 들어옴-2");
 				// 열접근 각각의 컬럼값 => MemberDTO에 담아서 리턴
 				// MemberDTO 객체생성 => 기억장소 할당 => 각각의 컬럼값 저장
 				memberDTO = new MemberDTO();

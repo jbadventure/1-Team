@@ -11,8 +11,8 @@
 
 <form action="loginPro.me" method="post">
 
-아이디 : <input type="text" name="id"><br>
-비밀번호 : <input type="password" name="pass"><br>
+아이디 : <input type="text" name="memberId"><br>
+비밀번호 : <input type="password" name="memberPassword"><br>
 
 <input type="submit" value="로그인"><br>
 <input type="button" value="회원가입" onclick ="location.href='join.jsp'">

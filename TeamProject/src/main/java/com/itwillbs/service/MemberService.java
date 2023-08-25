@@ -10,6 +10,7 @@ public class MemberService {
 	
 	public MemberDTO userCheck(HttpServletRequest request) {
 		System.out.println("MemberService userCheck()");
+		System.out.println(request.getParameter("memberId"));
 		// MemberDTO memberDTO 변수 선언 => 초기값 null
 		MemberDTO memberDTO = null;
 		try {
@@ -20,11 +21,14 @@ public class MemberService {
 			//request에 저장된 id, pass 가져와서 -> 변수에 저장
 			String memberId = request.getParameter("memberId");
 			String memberPassword = request.getParameter("memberPassword");
+			System.out.println(memberId);
 			
 			// MemberDTO2 저장
 			MemberDTO memberDTO2 = new MemberDTO();
 			memberDTO2.setMemberId(memberId);
 			memberDTO2.setMemberPassword(memberPassword);
+			System.out.println(memberDTO2.getMemberId());
+			System.out.println(memberDTO2.getMemberPassword());
 			
 			// MemberDAO 객체생성
 			memberDAO = new MemberDAO();
