@@ -15,9 +15,9 @@
 비밀번호 : <input type="password" name="memberPassword"><br>
 
 <input type="submit" value="로그인"><br>
-<input type="button" value="회원가입" onclick ="location.href='join.jsp'">
-<input type="button" value="아이디찾기" onclick ="location.href='findId.jsp'">
-<input type="button" value="비밀번호찾기" onclick ="location.href='findPassword.jsp'">
+<input type="button" value="회원가입" onclick ="location.href='ghselect.me'">
+<input type="button" value="아이디찾기" onclick ="location.href='findId.me'">
+<input type="button" value="비밀번호찾기" onclick ="location.href='findPassword.me'">
 </form>
 
 </body>
