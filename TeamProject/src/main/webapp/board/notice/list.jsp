@@ -15,7 +15,7 @@
 <link rel = "stylesheet" href = "./css/list.css">
 <body>
 <%
-List<NoticeBoardDTO> boardList =(List<NoticeBoardDTO>)request.getAttribute("boarList");
+List<NoticeBoardDTO> boardList =(List<NoticeBoardDTO>)request.getAttribute("boardList");
 %>
 <header>
     <h1>공지사항</h1>
@@ -25,7 +25,8 @@ List<NoticeBoardDTO> boardList =(List<NoticeBoardDTO>)request.getAttribute("boar
 for(int i=0; i<boardList.size(); i++){
 	NoticeBoardDTO boardDTO = boardList.get(i);
 	%>
-	<div class="notice" onclick="window.location.href='/TeamProject/noticeContent.nbo'">
+	<div class="notice" onclick="window.location.href='noticeContent.nbo?noticeNum=<%=boardDTO.getNoticeNum() %>'">
+    <tr><td>글번호</td><td><%=boardDTO.getNoticeNum() %></td></tr>
         <h2><%=boardDTO.getNoticeSubject() %></h2>
         <p><%=boardDTO.getNoticeContent() %></p>
         <small>작성일: <%=boardDTO.getNoticeIssueDate() %></small>

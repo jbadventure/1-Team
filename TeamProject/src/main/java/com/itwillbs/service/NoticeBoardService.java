@@ -50,9 +50,14 @@ public class NoticeBoardService {
 	} // getBoardList
 	
 	public NoticeBoardDTO getBoard(HttpServletRequest request) {
+		System.out.println("NoticeBoardService getBoard()");
 		NoticeBoardDTO boardDTO = null;
 		try {
+			// request 한글처리 
+			request.setCharacterEncoding("utf-8");
+			System.out.println(request.getParameter("noticeNum"));
 			int noticeNum = Integer.parseInt(request.getParameter("noticeNum"));
+			System.out.println(noticeNum);
 			boardDAO = new NoticeBoardDAO();
 			boardDTO = boardDAO.getBoard(noticeNum);
 			
