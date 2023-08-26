@@ -175,6 +175,7 @@ public class MemberDAO {
 			
 			if(rs.next()) {
 				System.out.println("DAO if");
+				memberDTO = new MemberDTO();
 				memberDTO.setMemberId(rs.getString("MemberId"));
 		      }
 		} catch (Exception e) {

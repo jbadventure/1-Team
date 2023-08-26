@@ -125,7 +125,7 @@ public class MemberController extends HttpServlet {
 
 		}
 
-		if (sPath.equals("/findId.me")) { // 비밀번호 찾기
+		if (sPath.equals("/findId.me")) { // 아이디 찾기
 			// member/join/findPassword.jsp 주소변경없이 이동
 			dispatcher = request.getRequestDispatcher("member/login/findId.jsp");
 			dispatcher.forward(request, response);
@@ -147,6 +147,12 @@ public class MemberController extends HttpServlet {
 				dispatcher.forward(request, response);
 			}
 		}//findIdPro 
+		
+		if (sPath.equals("/idReport.me")) { // 아이디 보여주기
+			// member/join/findPassword.jsp 주소변경없이 이동
+			dispatcher = request.getRequestDispatcher("member/login/idReport.jsp");
+			dispatcher.forward(request, response);
+		}
 		
 		if(sPath.equals("/idReportPro.me")) {  // 아이디 보여주기
 			System.out.println("뽑은 가상주소 비교 : /idReportPro.me");
