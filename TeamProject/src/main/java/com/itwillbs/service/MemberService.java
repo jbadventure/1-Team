@@ -157,7 +157,8 @@ public class MemberService {
 			e.printStackTrace();
 		}
 		return memberDTO;
-	}//userInfoCheck
+	}//userInfoCheck 
+
 
 	public MemberDTO pwCheck(HttpServletRequest request) {
 		System.out.println("MemberService pwCheck()");
@@ -229,6 +230,7 @@ public class MemberService {
 			e.printStackTrace();
 		}
 	}//updatePwMember()	
+
 
 
 	

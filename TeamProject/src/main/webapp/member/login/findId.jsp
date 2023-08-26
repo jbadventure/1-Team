@@ -10,12 +10,12 @@
 <h1>아이디찾기</h1>
 
 <!-- form -->
-<form action="idReport.me" method="post" id="checkForm">
-이름 : <input type="text" name="memberName" id="name"><br>
-이메일 : <input type="text" name="memberEmail" id="email">@<select name="emailop" id="emailop">
+<form action="idReportPro.me" method="post"  id="checkForm">
+이름 : <input type="text" name="memberName"><br>
+이메일 : <input type="text" name="emailop1" id="emailop1">@<select name="emailop2" id="emailop2">
 												   <option value="">이메일을 선택해주세요</option>
-												   <option value="naver">naver.com</option>
-												   <option value="gmail">gmail.com</option>
+												   <option value="naver.com">naver.com</option>
+												   <option value="gmail.com">gmail.com</option>
         							   		   	   </select><br>
 <div id="div1"></div>
  
@@ -64,7 +64,9 @@
 // 			}
 // 		}
 // 	});
-// });
+// }); 
+
+
 </script>
 
 </body>
