@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.itwillbs.domain.ClassBoardDTO;
+import com.itwillbs.domain.PageDTO;
 import com.itwillbs.service.ClassBoardService;
 import com.itwillbs.service.NoticeBoardService;
 
@@ -37,9 +38,51 @@ public class ClassBoardController extends HttpServlet {
 		System.out.println("뽑은 가상주소"+sPath);
 		
 		if (sPath.equals("/classList.cbo")) { // 메인에서 클래스테스트 누르면 클래스 리스트 보여줌 
+			// 한페이지에 출력될 게시물 수 pageSize
+			int pageSize = 6;
+			//페이지 번호
+			String pageNum = request.getParameter("pageNum");
+			// 페이지 번호 없으면 1페이지 설정 
+			if(pageNum == null) {
+				pageNum = "1";
+			}
+			// 페이지 번호를 정수형으로 변겅
+			 int currentPage = Integer.parseInt(pageNum);
+				
+			 PageDTO pageDTO = new PageDTO();
+			 pageDTO.setPageSize(pageSize);
+			 pageDTO.setPageNum(pageNum);
+			 pageDTO.setCurrentPage(currentPage);
+			
+			//ClassBoardService 객체생성 
 			boardService = new ClassBoardService();
-			List<ClassBoardDTO> boardList = boardService.getBoardList();
+			List<ClassBoardDTO> boardList = boardService.getBoardList(pageDTO); 
+			
+			// 게시판 전체 글 개수 구하기 
+			int count = boardService.getBoardCount();
+			// 한화면에 출력될 페이지개수  pageBlock
+			int pageBlock = 10;
+			// 시작하는 페이지번호 startPage
+			int startPage=(currentPage-1)/pageBlock*pageBlock+1;
+			// 끝나는페이지번호 endPage
+			int endPage=startPage+pageBlock-1;
+			int pageCount = count/pageSize + (count%pageSize==0?0:1);
+			
+			if(endPage >pageCount) {
+				endPage = pageCount; 
+			}
+			
+			// pageDTO에 저장  
+			pageDTO.setCount(count);
+			pageDTO.setPageBlock(pageBlock);
+			pageDTO.setStartPage(startPage);
+			pageDTO.setEndPage(endPage);
+			pageDTO.setPageCount(pageCount);
+			
+			
 			request.setAttribute("boardList", boardList);
+			request.setAttribute("pageDTO", pageDTO);
+			
 			System.out.println(boardList);
 			dispatcher = request.getRequestDispatcher("board/class/list.jsp");
 			dispatcher.forward(request, response);

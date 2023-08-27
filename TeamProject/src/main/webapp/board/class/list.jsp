@@ -1,3 +1,4 @@
+<%@page import="com.itwillbs.domain.PageDTO"%>
 <%@page import="com.itwillbs.domain.ClassBoardDTO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -112,6 +113,7 @@
         <h3>클래스 목록</h3>
 <%
 List<ClassBoardDTO> boardList =(List<ClassBoardDTO>)request.getAttribute("boardList");
+PageDTO pageDTO = (PageDTO)request.getAttribute("pageDTO");
 %>
         <div class="product-list">
         
@@ -122,10 +124,10 @@ for(int i=0; i<boardList.size(); i++){
              <a href="#" class="product">
                 <img src="images/cat-space.gif" width="225" height="225px">
                 <div class="product-name">
-                	제목 :<%=boardDTO.getClassSubject() %>
+                	제목 : <%=boardDTO.getClassSubject() %>
                 </div>
                 <div class="product-price">
-                	금액 :<%=boardDTO.getClassPrice() %>
+                	금액 : <%=boardDTO.getClassPrice() %>
                 </div>
             </a>        
            
@@ -133,6 +135,34 @@ for(int i=0; i<boardList.size(); i++){
 }
 %>
  
+ <div id="page_control">
+<%
+// 시작페이지 1페이지 prev 없음 
+// 시작페이지 11,21,31, prev 보임 
+if(pageDTO.getStartPage() > pageDTO.getPageBlock()){
+	%>
+	<a href = "classList.cbo?pageNum=<%=pageDTO.getStartPage()-pageDTO.getPageBlock() %>">Prev</a>
+	<%
+}	
+%>
+<%
+for(int i = pageDTO.getStartPage(); i<=pageDTO.getEndPage(); i++){
+	%>
+	<a href = "classList.cbo?pageNum=<%=i %>"><%=i %></a>
+	<%
+}	
+	%>
+	
+<%
+//끝페이지번호  전체페이지수 비교 => 전체페이지수 크면 => Next보임
+if(pageDTO.getEndPage() < pageDTO.getPageCount()){
+	%>
+	<a href="classList.cbo?pageNum=<%=pageDTO.getStartPage()+pageDTO.getPageBlock()%>">Next</a>
+	<%
+}
+%>
+
+</div>
             <div class="clearfix"></div>
         </div>
 
