@@ -117,7 +117,7 @@ public class ClassBoardDAO {
 		ClassBoardDTO boardDTO = null;
 		try {
 			con = new SQLConnection().getConnection();
-			String sql = "select * from class where classNum =?";
+			String sql = "select * from class where classNum=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, classNum);
 			rs =pstmt.executeQuery();
