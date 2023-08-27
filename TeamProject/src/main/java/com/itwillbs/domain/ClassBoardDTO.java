@@ -12,7 +12,15 @@ public class ClassBoardDTO {
 	private String classCategory; // 해당 클래스 카테고리
 	private String classContent; // 클래스 내용
     private int classPrice; //클래스 금액 
+	private String classFile; // 클래스 첨부파일
     
+    
+	public String getClassFile() {
+		return classFile;
+	}
+	public void setClassFile(String classFile) {
+		this.classFile = classFile;
+	}
 	public int getClassNum() {
 		return classNum;
 	}

@@ -137,7 +137,7 @@ public class MemberDAO {
 				memberDTO.setMemberLocation(rs.getString("memberLocation"));
 				memberDTO.setBusinessNum(rs.getString("businessNum"));
 				memberDTO.setMailOrderNum(rs.getString("mailOrderNum"));
-				memberDTO.setMemberProfileImagePath(rs.getString("memberProfileImagePath"));
+				memberDTO.setMemberFile(rs.getString("memberFile"));
 			}else{
 				// false 아이디 비밀번호 틀림, 뒤로이동
 				// 열접근 못함 => memberDTO에 null을 담아서 리턴
@@ -230,7 +230,7 @@ public class MemberDAO {
 				memberDTO.setMemberLocation(rs.getString("memberLocation"));
 				memberDTO.setBusinessNum(rs.getString("businessNum"));
 				memberDTO.setMailOrderNum(rs.getString("mailOrderNum"));
-				memberDTO.setMemberProfileImagePath(rs.getString("memberProfileImagePath"));
+				memberDTO.setMemberFile(rs.getString("memberFile"));
 			}else{
 				// false 아이디 비밀번호 틀림, 뒤로이동
 				// 열접근 못함 => memberDTO에 null을 담아서 리턴
@@ -276,7 +276,7 @@ public class MemberDAO {
 				memberDTO.setMemberLocation(rs.getString("memberLocation"));
 				memberDTO.setBusinessNum(rs.getString("businessNum"));
 				memberDTO.setMailOrderNum(rs.getString("mailOrderNum"));
-				memberDTO.setMemberProfileImagePath(rs.getString("memberProfileImagePath"));
+				memberDTO.setMemberFile(rs.getString("memberFile"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

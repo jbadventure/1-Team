@@ -15,11 +15,23 @@ public class MemberDTO {
 	private String memberLocation; // 게스트 선호 지역
 	private String businessNum; // 사업자 번호
 	private String mailOrderNum; // 통신판매업 신고번호
-	private String memberProfileImagePath; // 프로필 사진 경로
+    private String memberFile; // 멤버 첨부파일(프로필사진)
 	
+    
+	
+	
+	public String getMemberFile() {
+		return memberFile;
+	}
+
+	public void setMemberFile(String memberFile) {
+		this.memberFile = memberFile;
+	}
+
 	public int getMemberNum() {
 		return memberNum;
 	}
+
 	public void setMemberNum(int memberNum) {
 		this.memberNum = memberNum;
 	}
@@ -95,12 +107,7 @@ public class MemberDTO {
 	public void setMailOrderNum(String mailOrderNum) {
 		this.mailOrderNum = mailOrderNum;
 	}
-	public String getMemberProfileImagePath() {
-		return memberProfileImagePath;
-	}
-	public void setMemberProfileImagePath(String memberProfileImagePath) {
-		this.memberProfileImagePath = memberProfileImagePath;
-	}
+
 	
 	
 }
