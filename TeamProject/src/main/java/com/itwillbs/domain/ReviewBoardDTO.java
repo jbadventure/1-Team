@@ -46,7 +46,7 @@ public class ReviewBoardDTO {
 	public void setReviewFile(String reviewFile) {
 		this.reviewFile = reviewFile;
 	}
-	
+
 	
 	
 }
