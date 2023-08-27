@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.itwillbs.domain.ClassBoardDTO;
+import com.itwillbs.domain.NoticeBoardDTO;
 import com.itwillbs.domain.PageDTO;
 
 public class ClassBoardDAO {
@@ -112,4 +113,34 @@ public class ClassBoardDAO {
 		}
 	}//insertBoard()
 
+	public ClassBoardDTO getBoard(int classNum) {
+		System.out.println("ClassBoardDAO getBoard()");
+		ClassBoardDTO boardDTO = null;
+		try {
+			con = new SQLConnection().getConnection();
+			String sql = "select * from class where classNum =?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, classNum);
+			rs =pstmt.executeQuery();
+			
+			if(rs.next()) {
+				boardDTO = new ClassBoardDTO();
+				boardDTO.setClassNum(rs.getInt("classNum"));
+				boardDTO.setClassSubject(rs.getString("classSubject"));
+				boardDTO.setHostNum(rs.getInt("hostNum"));
+				boardDTO.setClassIssueDate(rs.getTimestamp("classIssuedate"));
+				boardDTO.setClassLocation(rs.getString("classLocation"));
+				boardDTO.setClassCategory(rs.getString("classCategory"));
+				boardDTO.setClassContent(rs.getString("classContent"));
+				boardDTO.setClassPrice(rs.getInt("classPrice"));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			dbClose();
+		}
+		return boardDTO;
+	} // getBoard
+	
 }

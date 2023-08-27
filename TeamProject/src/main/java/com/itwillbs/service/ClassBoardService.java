@@ -5,7 +5,9 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import com.itwillbs.dao.ClassBoardDAO;
+import com.itwillbs.dao.NoticeBoardDAO;
 import com.itwillbs.domain.ClassBoardDTO;
+import com.itwillbs.domain.NoticeBoardDTO;
 import com.itwillbs.domain.PageDTO;
 
 public class ClassBoardService {
@@ -76,6 +78,23 @@ public class ClassBoardService {
 			e.printStackTrace();
 		}
 	}//insertBoard()
+
+	public ClassBoardDTO getBoard(HttpServletRequest request) {
+		System.out.println("ClassBoardService getBoard()");
+		ClassBoardDTO boardDTO = null;
+		try {
+			// request 한글처리 
+			request.setCharacterEncoding("utf-8");
+			int classNum = Integer.parseInt(request.getParameter("classNum"));
+			System.out.println(classNum);
+			boardDAO = new ClassBoardDAO();
+			boardDTO = boardDAO.getBoard(classNum);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return boardDTO;
+	} // getBoard
 	
 
 }// 클래스

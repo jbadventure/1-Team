@@ -121,7 +121,7 @@ PageDTO pageDTO = (PageDTO)request.getAttribute("pageDTO");
 for(int i=0; i<boardList.size(); i++){
 	ClassBoardDTO boardDTO = boardList.get(i);
 	%>
-             <a href="#" class="product">
+             <a href="classContent.cbo" class="product">
                 <img src="images/cat-space.gif" width="225" height="225px">
                 <div class="product-name">
                 	제목 : <%=boardDTO.getClassSubject() %>

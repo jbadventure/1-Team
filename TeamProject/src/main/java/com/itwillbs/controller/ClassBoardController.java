@@ -102,7 +102,17 @@ public class ClassBoardController extends HttpServlet {
 			boardService.insertBoard(request);
 			// classList.cbo 주소변경되면서 이동 
 			response.sendRedirect("classList.cbo");
-		} // classWritePro
+		} // classWritePro 
+		
+		if(sPath.equals("/classContent.cbo")) { // 클래스 리스트에서 게시물 클릭하면 글내용보기 
+			System.out.println("뽑은 가상주소 비교  : /classContent.cbo");
+			// BoardService 객체생성
+			boardService = new ClassBoardService();
+			ClassBoardDTO boardDTO = boardService.getBoard(request);
+			request.setAttribute("boardDTO", boardDTO);
+			dispatcher = request.getRequestDispatcher("board/class/content.jsp");
+			dispatcher.forward(request, response);
+		}// classContent
 		
 	} // doProcess
 }// class
