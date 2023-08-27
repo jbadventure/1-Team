@@ -96,6 +96,7 @@ public class NoticeBoardDAO {
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, noticeNum);
 			rs =pstmt.executeQuery();
+			
 			if(rs.next()) {
 			boardDTO = new NoticeBoardDTO();
 			boardDTO.setNoticeNum(rs.getInt("noticeNum"));

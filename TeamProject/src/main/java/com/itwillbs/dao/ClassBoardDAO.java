@@ -64,7 +64,7 @@ public class ClassBoardDAO {
 			// 1단계 2단계 
 			con = new SQLConnection().getConnection();
 			// 3단계 문자열 -> sql구문 변경			// 3 select count(*) from board	
-			String sql = "select count(*) from board;";
+			String sql = "select count(*) from class;";
 			pstmt=con.prepareStatement(sql);
 			//4 실행 => 결과저장
 			rs =pstmt.executeQuery();
@@ -80,5 +80,36 @@ public class ClassBoardDAO {
 		}
 		return count;
 	}//getBoardCount
+
+	public void insertBoard(ClassBoardDTO boardDTO) {
+		System.out.println("BoardDAO insertBoard()");
+		// board 테이블 file 열추가 
+		// mysql -uroot -p1234 jspdb
+		// alter table board 
+		// add file varchar(100);
+		try {
+			// 1단계 JDBC 프로그램 가져오기 
+			// 2단계 디비 연결
+			con = new SQLConnection().getConnection();
+
+			// 3단계 문자열 -> sql구문 변경
+			String sql = "insert into class(classSubject,classPrice,classCategory,classLocation,classContent) values(?,?,?,?,?)";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, boardDTO.getClassSubject()); 
+			pstmt.setInt(2, boardDTO.getClassPrice());
+			pstmt.setString(3, boardDTO.getClassCategory());
+			pstmt.setString(4, boardDTO.getClassLocation());
+			pstmt.setString(5, boardDTO.getClassContent());
+			// 파일 추가 
+//			pstmt.setString(7, boardDTO.getFile());
+			// 4단계 sql구문 실행
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			dbClose();
+		}
+	}//insertBoard()
 
 }

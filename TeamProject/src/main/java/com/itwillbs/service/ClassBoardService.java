@@ -47,6 +47,35 @@ public class ClassBoardService {
 			}
 		return count;
 	}//getBoardCount
+
+	public void insertBoard(HttpServletRequest request) {
+		System.out.println("BoardService insertBoard()");
+		try {
+			// request 한글처리 
+			request.setCharacterEncoding("utf-8");
+			// request 파라미터값 가져오기 
+			String classSubject = request.getParameter("classSubject");
+			int classPrice = Integer.parseInt(request.getParameter("classPrice"));
+			String classCategory = request.getParameter("classCategory");
+			String classLocation = request.getParameter("classLocation");
+			String classContent = request.getParameter("classContent");
+			// BoardDAO 객체생성 
+			boardDAO = new ClassBoardDAO();
+			// BoardDTO 객체생성  
+			ClassBoardDTO boardDTO = new ClassBoardDTO();
+			// set메서드 호출 파라미터값 저장 
+			boardDTO.setClassSubject(classSubject);
+			boardDTO.setClassPrice(classPrice);
+			boardDTO.setClassCategory(classCategory);
+			boardDTO.setClassLocation(classLocation);
+			boardDTO.setClassContent(classContent);
+			System.out.println(boardDTO.getClassLocation());
+			// 리턴할형없음 insertBoard(boardDTO) 호출 
+			boardDAO.insertBoard(boardDTO);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}//insertBoard()
 	
 
 }// 클래스

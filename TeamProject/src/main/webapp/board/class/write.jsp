@@ -10,7 +10,7 @@
 
 	<h1>Class 등록</h1>
 	
-	<form action="writePro.bo" method="post">
+	<form action="classWritePro.cbo" method="post">
 		<table id="notice">
 			<tr>
 				<td>Class 제목</td>

@@ -130,11 +130,14 @@ for(int i=0; i<boardList.size(); i++){
                 	금액 : <%=boardDTO.getClassPrice() %>
                 </div>
             </a>        
-           
+          
 <%
 }
 %>
- 
+
+  <input type="button" value="글쓰기" class="btn" 
+       					onclick="location.href='classWrite.cbo'">
+       					
  <div id="page_control">
 <%
 // 시작페이지 1페이지 prev 없음 
