@@ -6,12 +6,13 @@ public class ClassBoardDTO {
 
 	private int classNum; // 클래스 번호
 	private String classSubject; // 클래스 제목
-	private int hostNum; // 클래스 호스트 번호 -> 호스트 테이블 참조
+	private String hostId; // 클래스 호스트 번호 -> 호스트 테이블 참조
 	private Timestamp classIssueDate; // 클래스 작성일시
 	private String classLocation; // 클래스 개최 지역
 	private String classCategory; // 해당 클래스 카테고리
 	private String classContent; // 클래스 내용
     private int classPrice; //클래스 금액 
+    private String classFile; // 클래스 첨부파일
     
 	public int getClassNum() {
 		return classNum;
@@ -25,11 +26,11 @@ public class ClassBoardDTO {
 	public void setClassSubject(String classSubject) {
 		this.classSubject = classSubject;
 	}
-	public int getHostNum() {
-		return hostNum;
+	public String getHostId() {
+		return hostId;
 	}
-	public void setHostNum(int hostNum) {
-		this.hostNum = hostNum;
+	public void setHostId(String hostId) {
+		this.hostId = hostId;
 	}
 	public Timestamp getClassIssueDate() {
 		return classIssueDate;
@@ -60,6 +61,12 @@ public class ClassBoardDTO {
 	}
 	public void setClassPrice(int classPrice) {
 		this.classPrice = classPrice;
+	}
+	public String getClassFile() {
+		return classFile;
+	}
+	public void setClassFile(String classFile) {
+		this.classFile = classFile;
 	}
     
     

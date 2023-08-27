@@ -114,6 +114,7 @@
 <%
 List<ClassBoardDTO> boardList =(List<ClassBoardDTO>)request.getAttribute("boardList");
 PageDTO pageDTO = (PageDTO)request.getAttribute("pageDTO");
+String memberId = (String)session.getAttribute("memberId");
 %>
         <div class="product-list">
         

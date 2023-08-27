@@ -7,7 +7,9 @@
 <title>Class 수정</title>
 </head>
 <body>
-
+<%
+String memberId = (String)session.getAttribute("memberId");
+%>
 	<h1>Class 수정</h1>
 	
 	<form action="classUpdatePro.cbo" method="post">

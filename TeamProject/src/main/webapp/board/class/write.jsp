@@ -7,7 +7,9 @@
 <title>Class 등록</title>
 </head>
 <body>
-
+<%
+String memberId = (String)session.getAttribute("memberId");
+%>
 	<h1>Class 등록</h1>
 	
 	<form action="classWritePro.cbo" method="post">

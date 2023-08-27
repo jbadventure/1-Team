@@ -3,10 +3,12 @@ package com.itwillbs.service;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import com.itwillbs.dao.ClassBoardDAO;
 import com.itwillbs.domain.ClassBoardDTO;
 import com.itwillbs.domain.PageDTO;
+import com.mysql.cj.Session;
 
 public class ClassBoardService {
 	
@@ -35,7 +37,7 @@ public class ClassBoardService {
 	}// getBoardList
 
 	public int getBoardCount() {
-		System.out.println("BoardService getBoardCount()");
+		System.out.println("ClassBoardService getBoardCount()");
 		int count=0; 
 		try {
 			// BoardDAO 객체생성 
@@ -49,7 +51,7 @@ public class ClassBoardService {
 	}//getBoardCount
 
 	public void insertBoard(HttpServletRequest request) {
-		System.out.println("BoardService insertBoard()");
+		System.out.println("ClassBoardService insertBoard()");
 		try {
 			// request 한글처리 
 			request.setCharacterEncoding("utf-8");
@@ -63,13 +65,15 @@ public class ClassBoardService {
 			boardDAO = new ClassBoardDAO();
 			// BoardDTO 객체생성  
 			ClassBoardDTO boardDTO = new ClassBoardDTO();
+			HttpSession session = request.getSession();
 			// set메서드 호출 파라미터값 저장 
 			boardDTO.setClassSubject(classSubject);
+			boardDTO.setHostId(session.getAttribute("memberId").toString());
 			boardDTO.setClassPrice(classPrice);
 			boardDTO.setClassCategory(classCategory);
 			boardDTO.setClassLocation(classLocation);
 			boardDTO.setClassContent(classContent);
-			System.out.println(boardDTO.getClassLocation());
+			System.out.println(boardDTO.getHostId());
 			// 리턴할형없음 insertBoard(boardDTO) 호출 
 			boardDAO.insertBoard(boardDTO);
 		} catch (Exception e) {

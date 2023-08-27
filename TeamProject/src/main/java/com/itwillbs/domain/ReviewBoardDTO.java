@@ -8,7 +8,7 @@ public class ReviewBoardDTO {
 	private String reviewId; // 후기 작성자
 	private Timestamp reviewIssueDate; // 후기 작성일시
 	private String reviewContent; // 후기 내용
-	private String reviewImagePath; // 후기 대표 이미지 경로
+	private String reviewFile; // 후기 대표 이미지 경로
 	
 	public int getClassNum() {
 		return classNum;
@@ -40,11 +40,11 @@ public class ReviewBoardDTO {
 	public void setReviewContent(String reviewContent) {
 		this.reviewContent = reviewContent;
 	}
-	public String getReviewImagePath() {
-		return reviewImagePath;
+	public String getReviewFile() {
+		return reviewFile;
 	}
-	public void setReviewImagePath(String reviewImagePath) {
-		this.reviewImagePath = reviewImagePath;
+	public void setReviewFile(String reviewFile) {
+		this.reviewFile = reviewFile;
 	}
 	
 	

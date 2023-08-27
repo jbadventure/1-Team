@@ -122,15 +122,16 @@ ClassBoardDTO boardDTO = (ClassBoardDTO)request.getAttribute("boardDTO");
 <table id="class-content">
 <tr><td>글번호</td><td><%=boardDTO.getClassNum() %></td></tr>
 <tr><td>제목</td><td><%=boardDTO.getClassSubject() %></td></tr>
-<tr><td>글쓴이</td><td><%=boardDTO.getHostNum() %></td></tr>
+<tr><td>글쓴이</td><td><%=boardDTO.getHostId() %></td></tr>
 <tr><td>글쓴날짜</td><td><%=boardDTO.getClassIssueDate() %></td></tr>
 <tr><td>지역</td><td><%=boardDTO.getClassLocation() %></td></tr>
 <tr><td>카테고리</td><td><%=boardDTO.getClassCategory() %></td></tr>    
 <tr><td>내용</td><td><%=boardDTO.getClassContent() %></td></tr>    
 <tr><td>가격</td><td><%=boardDTO.getClassPrice() %></td></tr>    
+<tr><td>이미지파일</td><td><%=boardDTO.getClassFile() %></td></tr>    
 </table>
         
-<input type="button" value="글목록" class="btn" onclick = "location.href='classList.cbo'">
+<input type="button" value="클래스 목록" class="btn" onclick = "location.href='classList.cbo'">
 <input type="button" value="예약하기" class="btn" 
        					onclick="location.href='classWrite.cbo'">       					
 
