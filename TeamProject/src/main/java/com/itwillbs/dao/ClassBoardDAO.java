@@ -47,6 +47,7 @@ public class ClassBoardDAO {
 				boardDTO.setClassCategory(rs.getString("classCategory"));
 				boardDTO.setClassContent(rs.getString("classContent"));
 				boardDTO.setClassPrice(rs.getInt("classPrice"));
+				boardDTO.setClassFile(rs.getString("classFile"));
 				boardList.add(boardDTO);
 				}
 		} catch (Exception e) {
@@ -132,6 +133,7 @@ public class ClassBoardDAO {
 				boardDTO.setClassCategory(rs.getString("classCategory"));
 				boardDTO.setClassContent(rs.getString("classContent"));
 				boardDTO.setClassPrice(rs.getInt("classPrice"));
+				boardDTO.setClassFile(rs.getString("classFile"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

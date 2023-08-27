@@ -112,7 +112,7 @@
     <div class="products">
         <h3>클래스 제목</h3>
 <%
-String memberId = (String)session.getAttribute("memberId");
+
 ClassBoardDTO boardDTO = (ClassBoardDTO)request.getAttribute("boardDTO");
 %>
 
