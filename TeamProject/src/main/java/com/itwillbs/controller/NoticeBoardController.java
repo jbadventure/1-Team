@@ -65,7 +65,7 @@ public class NoticeBoardController extends HttpServlet{
 			dispatcher.forward(request, response);
 		} // content
 		
-		if(sPath.equals("/noticeUpdate.bo")) {
+		if(sPath.equals("/noticeUpdate.nbo")) {
 			boardService = new NoticeBoardService();
 			NoticeBoardDTO boardDTO = boardService.getBoard(request);
 			request.setAttribute("boardDTO", boardDTO);
@@ -73,13 +73,13 @@ public class NoticeBoardController extends HttpServlet{
 			dispatcher.forward(request, response);
 		} // update
 		
-		if(sPath.equals("/noticeUpdatePro.bo")) {
+		if(sPath.equals("/noticeUpdatePro.nbo")) {
 			boardService = new NoticeBoardService();
 			boardService.updateBoard(request);
 			response.sendRedirect("noticeList.nbo");
 		} // updatePro
 		
-		if(sPath.equals("/noticeDelete.bo")) {
+		if(sPath.equals("/noticeDelete.nbo")) {
 			boardService = new NoticeBoardService();
 			boardService.deleteBoard(request);
 			response.sendRedirect("noticeList.bo");

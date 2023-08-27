@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.itwillbs.domain.ClassBoardDTO;
-import com.itwillbs.domain.NoticeBoardDTO;
 import com.itwillbs.domain.PageDTO;
 
 public class ClassBoardDAO {
@@ -134,7 +133,6 @@ public class ClassBoardDAO {
 				boardDTO.setClassContent(rs.getString("classContent"));
 				boardDTO.setClassPrice(rs.getInt("classPrice"));
 			}
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -142,5 +140,46 @@ public class ClassBoardDAO {
 		}
 		return boardDTO;
 	} // getBoard
+	
+	public void updateBoard(ClassBoardDTO boardDTO) {
+		try {
+			// 1단계 JDBC 프로그램 가져오기 
+			// 2단계 디비 연결
+			con= new SQLConnection().getConnection();
+			// 3단계 sql구문 
+			String sql = "update class set classSubject=?,classPrice=?,classCategory=?,classLocation=?,classContent=? where classNum=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, boardDTO.getClassSubject()); 
+			pstmt.setInt(2, boardDTO.getClassPrice());
+			pstmt.setString(3, boardDTO.getClassCategory());
+			pstmt.setString(4, boardDTO.getClassLocation());
+			pstmt.setString(5, boardDTO.getClassContent());
+			pstmt.setInt(6, boardDTO.getClassNum());
+			// 4단계 실행
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			dbClose();
+		}
+	}// updateBoard
+
+	public void deleteBoard(int classNum) {
+		try {
+			// 1단계 JDBC 프로그램 가져오기 
+			// 2단계 디비 연결
+			con= new SQLConnection().getConnection();
+			// 3
+			String sql = "delete from class where classNum=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, classNum);  
+			// 4
+			pstmt.executeUpdate();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				dbClose();
+			}
+	}// deleteBoard
 	
 }

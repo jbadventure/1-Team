@@ -135,8 +135,12 @@ for(int i=0; i<boardList.size(); i++){
 }
 %>
 
-  <input type="button" value="글쓰기" class="btn" 
+   <input type="button" value="클래스 등록" class="btn" 
        					onclick="location.href='classWrite.cbo'">
+  <input type="button" value="클래스 수정" class="btn" 
+       					onclick="location.href='classUpdate.cbo'">
+  <input type="button" value="클래스 삭제" class="btn" 
+       					onclick="location.href='classDelete.cbo'">
        					
  <div id="page_control">
 <%

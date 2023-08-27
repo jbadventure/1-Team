@@ -5,9 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import com.itwillbs.dao.ClassBoardDAO;
-import com.itwillbs.dao.NoticeBoardDAO;
 import com.itwillbs.domain.ClassBoardDTO;
-import com.itwillbs.domain.NoticeBoardDTO;
 import com.itwillbs.domain.PageDTO;
 
 public class ClassBoardService {
@@ -85,9 +83,12 @@ public class ClassBoardService {
 		try {
 			// request 한글처리 
 			request.setCharacterEncoding("utf-8");
+			// request에 classNum 파라미터 값 가져오기
 			int classNum = Integer.parseInt(request.getParameter("classNum"));
 			System.out.println(classNum);
+			// BoardDAO 객체생성 
 			boardDAO = new ClassBoardDAO();
+			// boardDTO = getBoard(classNum);
 			boardDTO = boardDAO.getBoard(classNum);
 			
 		} catch (Exception e) {
@@ -95,6 +96,44 @@ public class ClassBoardService {
 		}
 		return boardDTO;
 	} // getBoard
+	
+	public void updateBoard(HttpServletRequest request) {
+		try {
+			// => request 한글처리, request 값 가져오기, BoardDTO 값저장
+			request.setCharacterEncoding("utf-8");
+			String classSubject = request.getParameter("classSubject");
+			int classPrice = Integer.parseInt(request.getParameter("classPrice"));
+			String classCategory = request.getParameter("classCategory");
+			String classLocation = request.getParameter("classLocation");
+			String classContent = request.getParameter("classContent");
+			
+			ClassBoardDTO boardDTO =new ClassBoardDTO();
+			boardDTO.setClassSubject(classSubject);
+			boardDTO.setClassPrice(classPrice);
+			boardDTO.setClassCategory(classCategory);
+			boardDTO.setClassLocation(classLocation);
+			boardDTO.setClassContent(classContent);
+			
+			// BoardDAO 객체생성 updateBoard(boardDTO) 호출
+			boardDAO = new ClassBoardDAO();
+			boardDAO.updateBoard(boardDTO);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}// updateBoard
+	}
+
+	public void deleteBoard(HttpServletRequest request) {
+		try {
+			// request 파라미터값 가져오기
+			int classNum = Integer.parseInt(request.getParameter("classNum"));
+			// => BoardDAO 객체생성 deleteBoard(classNum) 호출
+			boardDAO = new ClassBoardDAO();
+			boardDAO.deleteBoard(classNum);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+	}// deleteBoard
 	
 
 }// 클래스

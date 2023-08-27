@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.itwillbs.domain.ClassBoardDTO;
 import com.itwillbs.domain.PageDTO;
 import com.itwillbs.service.ClassBoardService;
-import com.itwillbs.service.NoticeBoardService;
 
 public class ClassBoardController extends HttpServlet { 
 	
@@ -88,7 +87,7 @@ public class ClassBoardController extends HttpServlet {
 			dispatcher.forward(request, response);
 			} // list 
 		
-		if (sPath.equals("/classWrite.cbo")) {
+		if (sPath.equals("/classWrite.cbo")) { // 클래스 등록
 			// 주소변경없이 이동 board/class/write.jsp
 			dispatcher = request.getRequestDispatcher("board/class/write.jsp");
 			dispatcher.forward(request, response);
@@ -102,7 +101,7 @@ public class ClassBoardController extends HttpServlet {
 			boardService.insertBoard(request);
 			// classList.cbo 주소변경되면서 이동 
 			response.sendRedirect("classList.cbo");
-		} // classWritePro 
+		} // classWritePro
 		
 		if(sPath.equals("/classContent.cbo")) { // 클래스 리스트에서 게시물 클릭하면 글내용보기 
 			System.out.println("뽑은 가상주소 비교  : /classContent.cbo");
@@ -113,6 +112,38 @@ public class ClassBoardController extends HttpServlet {
 			dispatcher = request.getRequestDispatcher("board/class/content.jsp");
 			dispatcher.forward(request, response);
 		}// classContent
+		
+		if(sPath.equals("/classUpdate.cbo")) { // 클래스 수정
+			// BoardService 객체생성
+			boardService = new ClassBoardService();
+			// ClassBoardDTO boardDTO  = getBoard(request) 메서드 호출
+			ClassBoardDTO boardDTO = boardService.getBoard(request);
+			// request 데이터(boardDTO) 담아서
+			request.setAttribute("boardDTO", boardDTO);
+			// 수정하면 board/class/update.jsp 이동
+			dispatcher = request.getRequestDispatcher("board/class/update.jsp");
+			dispatcher.forward(request, response);
+		} // classUpdate
+		
+		if(sPath.equals("/classUpdatePro.cbo")) {
+			// BoardService 객체생성
+			boardService = new ClassBoardService();
+			// updateBoard(request) 호출
+			boardService.updateBoard(request);
+			// 주소 변경되면서 list.bo 이동 
+			response.sendRedirect("classList.cbo");
+		} // classUpdatePro
+		
+		if(sPath.equals("/classDelete.cbo")) { // 클래스 삭제
+			// BoardService 객체생성
+			boardService = new ClassBoardService();
+			//  deleteBoard(request) 호출
+			boardService.deleteBoard(request);
+			// 주소 변경되면서 list.bo 이동 
+			response.sendRedirect("list.bo");
+		} // classDelete
+		
+		
 		
 	} // doProcess
 }// class
