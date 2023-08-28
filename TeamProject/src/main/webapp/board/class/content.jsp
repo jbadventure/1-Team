@@ -183,10 +183,16 @@ if(memberId != null){
        					onclick="location.href='classDelete.cbo?classNum=<%=boardDTO.getClassNum()%>'">
 		<%
 	}else{
-	%>
-		<input type="button" value="예약하기" class="btn" 
-       					onclick="location.href='classWrite.cbo'"> 
-    <%   }   					
+		%>
+		<input type="button" value="예약하기" class="btn" onclick="location.href='classWrite.cbo'"> 
+		<% 
+	 }
+	 %>
+<%
+}else{
+%>
+		<input type="button" value="예약하기" class="btn" onclick="location.href='classWrite.cbo'"> 
+<%	
 }
 %>
 <input type="button" value="클래스 목록" class="btn" onclick = "location.href='classList.cbo'">
