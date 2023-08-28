@@ -298,6 +298,17 @@ public class MemberController extends HttpServlet {
 				dispatcher.forward(request, response);
 			}
 		} // PasswordResetPro
+		
+		if (sPath.equals("/info.me")) {
+			dispatcher = request.getRequestDispatcher("member/memberInfo/info.jsp");
+			dispatcher.forward(request, response);
+		} // info.me
+
+		
+		if (sPath.equals("/update.me")) {
+			dispatcher = request.getRequestDispatcher("member/memberInfo/update.jsp");
+			dispatcher.forward(request, response);
+		} // update.me
 
 	}
 }
