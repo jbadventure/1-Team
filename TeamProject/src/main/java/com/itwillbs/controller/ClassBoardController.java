@@ -143,8 +143,8 @@ public class ClassBoardController extends HttpServlet {
 			boardService.deleteBoard(request);
 			// 주소 변경되면서 list.bo 이동 
 			response.sendRedirect("classList.cbo");
-		} // classDelete
-		
+		} // classDelete 
+
 		
 		
 	} // doProcess

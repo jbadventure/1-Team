@@ -11,8 +11,8 @@
 
 <form action="loginPro.me" method="post">
 
-아이디 : <input type="text" name="memberId"><br>
-비밀번호 : <input type="password" name="memberPassword"><br>
+<input type="text" placeholder="아이디" name="memberId"><br>
+<input type="password" placeholder="비밀번호" name="memberPassword"><br>
 
 <input type="submit" value="로그인"><br>
 <input type="button" value="회원가입" onclick ="location.href='ghselect.me'">

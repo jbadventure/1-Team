@@ -17,9 +17,9 @@ String memberId = (String)session.getAttribute("memberId");
 
 <form action="PasswordResetPro.me" method="post">
 
-아이디 : <input type="text" name="memberId" value="<%=memberId %>"><br>
-새 비밀번호 : <input type="password" name="memberPassword"><br>
-새 비밀번호 확인 : <input type="password" ><br>
+<%=memberId %>님의 새 비밀번호를 설정해주세요.<br>
+<input type="password" placeholder="새 비밀번호" name="memberPassword"><br>
+<input type="password" placeholder="새 비밀번호 확인" ><br>
 
 <input type="submit" value="변경하기">
 </form>

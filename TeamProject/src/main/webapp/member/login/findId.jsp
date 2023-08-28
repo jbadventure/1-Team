@@ -11,8 +11,8 @@
 
 <!-- form -->
 <form action="findIdPro.me" method="post"  id="checkForm">
-이름 : <input type="text" name="memberName"><br>
-이메일 : <input type="text" name="memberEmail">
+<input type="text" placeholder="이름" name="memberName"><br>
+<input type="text" placeholder="이메일" name="memberEmail">
 <div id="div1"></div>
  
  <input type="submit" value="찾기" id="find">

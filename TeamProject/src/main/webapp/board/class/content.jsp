@@ -129,7 +129,7 @@ ul.tabs li.current{
 <body>
 
     <div class="navbar">
-        <a href="#" id="logo">
+        <a href="main.me" id="logo">
             <img src="images/logo-198x66.png" height="60">
         </a>
 
@@ -191,7 +191,7 @@ if(memberId != null){
 <%
 }else{
 %>
-		<input type="button" value="예약하기" class="btn" onclick="location.href='classWrite.cbo'"> 
+		<input type="button" value="예약하기" class="btn" onclick="location.href='reservation.re'"> 
 <%	
 }
 %>
