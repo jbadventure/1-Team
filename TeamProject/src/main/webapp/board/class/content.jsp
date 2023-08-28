@@ -191,7 +191,7 @@ if(memberId != null){
 <%
 }else{
 %>
-		<input type="button" value="예약하기" class="btn" onclick="location.href='classWrite.cbo'"> 
+		<input type="button" value="예약하기" class="btn" onclick="location.href='reservation.re'"> 
 <%	
 }
 %>
