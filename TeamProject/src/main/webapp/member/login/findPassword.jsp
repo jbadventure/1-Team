@@ -12,9 +12,9 @@
 
 <form action="findPasswordPro.me" method="post">
 
-아이디 : <input type="text" name="memberId"><br>
-이름 : <input type="text" name="memberName"><br>
-이메일 : <input type="email" name="memberEmail"><br>
+<input type="text" placeholder="아이디" name="memberId"><br>
+<input type="text" placeholder="이름" name="memberName"><br>
+<input type="email" placeholder="이메일" name="memberEmail"><br>
 
 <input type="submit" value="비밀번호 재설정하기">
 </form>
