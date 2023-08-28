@@ -145,7 +145,7 @@ ul.tabs li.current{
         <h3>클래스 제목</h3> 
         
  <%
-
+String memberId = (String)session.getAttribute("memberId");
 ClassBoardDTO boardDTO = (ClassBoardDTO)request.getAttribute("boardDTO");
 %>       
 
@@ -171,10 +171,25 @@ ClassBoardDTO boardDTO = (ClassBoardDTO)request.getAttribute("boardDTO");
 <tr><td>가격</td><td><%=boardDTO.getClassPrice() %></td></tr>    
 <tr><td>이미지파일</td><td><%=boardDTO.getClassFile() %></td></tr>    
 </table>
-        
+<%
+// 로그인 필수
+// 로그인, 글쓴이 일치하면 => 글수정, 글삭제 보이기
+if(memberId != null){
+	if(memberId.equals(boardDTO.getHostId())){
+		%>    
+		<input type="button" value="클래스 수정" class="btn" 
+       					onclick="location.href='classUpdate.cbo?num=<%=boardDTO.getClassNum()%>'">
+  		<input type="button" value="클래스 삭제" class="btn" 
+       					onclick="location.href='classDelete.cbo?num=<%=boardDTO.getClassNum()%>'">
+		<%
+	}else{
+	%>
+		<input type="button" value="예약하기" class="btn" 
+       					onclick="location.href='classWrite.cbo'"> 
+    <%   }   					
+}
+%>
 <input type="button" value="클래스 목록" class="btn" onclick = "location.href='classList.cbo'">
-<input type="button" value="예약하기" class="btn" 
-       					onclick="location.href='classWrite.cbo'">       					
 
 </div>
   </div>

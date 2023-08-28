@@ -114,6 +114,7 @@ public class ClassBoardController extends HttpServlet {
 		}// classContent
 		
 		if(sPath.equals("/classUpdate.cbo")) { // 클래스 수정
+			System.out.println("뽑은 가상주소 비교  : /classUpdate.cbo");
 			// BoardService 객체생성
 			boardService = new ClassBoardService();
 			// ClassBoardDTO boardDTO  = getBoard(request) 메서드 호출
@@ -126,6 +127,7 @@ public class ClassBoardController extends HttpServlet {
 		} // classUpdate
 		
 		if(sPath.equals("/classUpdatePro.cbo")) {
+			System.out.println("뽑은 가상주소 비교  : /classUpdatePro.cbo");
 			// BoardService 객체생성
 			boardService = new ClassBoardService();
 			// updateBoard(request) 호출
