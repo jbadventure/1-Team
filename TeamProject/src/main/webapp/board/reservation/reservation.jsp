@@ -142,15 +142,16 @@ ul.tabs li.current{
     <div class="hero-header"></div>
 
     <div class="products">
-        <h3>예약일 선택하세요 </h3> 
-        
-
+        <h3>예약정보</h3> 
 
   <div class="container" align="center">
- 
- <input type = "date" id ="date">
-
-<input type="button" value="클래스 목록" class="btn" onclick = "location.href='classList.cbo'">
+ <div>예약일</div><br>
+<input type="date" id="datePicker" min="" max="" value=""><br>
+<br>
+<div>예약인수</div><br>
+<div>총 결제금액</div><br>
+<input type="button" value="결제하기" class="btn" onclick = "location.href='payment.pa'">
+<input type="button" value="클래스 목록으로 돌아가기" class="btn" onclick = "location.href='classList.cbo'">
 
 </div>
   </div>
@@ -177,19 +178,27 @@ ul.tabs li.current{
 <script type="text/javascript" 
         src="script/jquery-3.7.0.js"></script>
 <script type="text/javascript">
-$(document).ready(function(){
-   
-  $('ul.tabs li').click(function(){
-    var tab_id = $(this).attr('data-tab');
- 
-    $('ul.tabs li').removeClass('current');
-    $('.tab-content').removeClass('current');
- 
-    $(this).addClass('current');
-    $("#"+tab_id).addClass('current');
-  })
- 
-})
+//Get today's date
+const today = new Date();
+
+// Calculate the date for tomorrow
+const tomorrow = new Date(today);
+tomorrow.setDate(today.getDate() + 1);
+
+// Calculate the date 28 days from today
+const maxDate = new Date(today);
+maxDate.setDate(today.getDate() + 29);
+
+// Format the dates in 'YYYY-MM-DD' format
+const formattedTomorrow = tomorrow.toISOString().split('T')[0];
+const formattedMaxDate = maxDate.toISOString().split('T')[0];
+
+// Set the minimum and maximum values for the input
+const datePicker = document.getElementById('datePicker');
+datePicker.min = formattedTomorrow;
+datePicker.max = formattedMaxDate;
+
+
 
 </script>
 
