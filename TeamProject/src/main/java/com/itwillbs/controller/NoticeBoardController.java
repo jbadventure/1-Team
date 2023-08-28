@@ -82,7 +82,7 @@ public class NoticeBoardController extends HttpServlet{
 		if(sPath.equals("/noticeDelete.nbo")) {
 			boardService = new NoticeBoardService();
 			boardService.deleteBoard(request);
-			response.sendRedirect("noticeList.bo");
+			response.sendRedirect("noticeList.nbo");
 			
 		} // delete
 				

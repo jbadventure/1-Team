@@ -12,19 +12,13 @@
 NoticeBoardDTO boardDTO = (NoticeBoardDTO)request.getAttribute("boardDTO");
 %>
 <h1>글수정</h1>
-<div class="container">
 <form action="noticeUpdatePro.nbo" method="post">
-<input type="hidden" name="noticeNum" value="<%=boardDTO.getNoticeNum() %>">
+<input type="hidden" name="noticeNum" value="<%=boardDTO.getNoticeNum()%>">
 <table border = "1">
-        <div class="form-group">
-            <label for="title">제목</label>
-            <input type="text" id="title" name="noticeSubject" required>
-        </div>
-        <div class="form-group">
-            <label for="content">내용</label>
-            <textarea id="content" name="noticeContent" rows="5" required></textarea>
-        </div>
-        <div class="form-group">
+<tr><td>제목</td>
+            <td><input type="text" name="noticeSubject" value="<%=boardDTO.getNoticeSubject() %>"></td></tr>
+            <tr><td>글내용</td>
+            <td><textarea name="noticeContent" rows="5" ><%=boardDTO.getNoticeContent() %></textarea></td></tr>
             <label for="date">수정일</label>
             <input type="date" id="date" name="noticeIssueDate" required>
         </div>
@@ -34,7 +28,6 @@ NoticeBoardDTO boardDTO = (NoticeBoardDTO)request.getAttribute("boardDTO");
 </table>
 
 </form>
-</div>
 
 </body>
 </html>
