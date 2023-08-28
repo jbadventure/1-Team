@@ -1,6 +1,7 @@
 package com.itwillbs.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -74,6 +75,59 @@ public class MemberController extends HttpServlet {
 			memberService.insertHost(request);
 			response.sendRedirect("main.me");
 		}
+		
+			//아이디 중복체크
+			if(sPath.equals("/idCheck.me")) {
+				System.out.println("뽑은 가상주소 비교 : /idCheck.me");
+				String memberId = request.getParameter("memberId");
+				System.out.println("받은 아이디 : " + memberId);
+				// MemberService 객체생성
+				memberService = new MemberService();
+				// getMember() 메서드 호출
+				MemberDTO memberDTO = memberService.getMember(memberId);
+				String result="";
+				if(memberDTO != null) {
+					//아이디 있음 => 아이디 중복
+					System.out.println("아이디 있음 => 아이디 중복");
+					result = "중복되는 아이디입니다";
+				}else {
+					//아이디 없음 => 아이디 사용가능
+					System.out.println("아이디 없음 => 아이디 사용가능");
+					result = "사용가능한 아이디입니다";
+				}
+					//이동하지 않고 =>결과 웹에 출력 => 출력 결과를 가지고 되돌아감
+					response.setContentType("text/html; charset=UTF-8");
+					PrintWriter printWriter = response.getWriter();
+					printWriter.println(result);
+					printWriter.close();
+				}//idCheck.me
+				
+			// 닉네임 중복체크
+			if(sPath.equals("/nickCheck.me")) {
+				System.out.println("뽑은 가상주소 비교 : /nickCheck.me");
+				String memberNickname = request.getParameter("memberNickname");
+				System.out.println("받은 아이디 : " + memberNickname);
+				// MemberService 객체생성
+				memberService = new MemberService();
+				// getMember() 메서드 호출
+				MemberDTO memberDTO = memberService.getMemberNick(memberNickname);
+				String result="";
+				if(memberDTO != null) {
+					//아이디 있음 => 아이디 중복
+					System.out.println("닉네임 있음 => 닉네임 중복");
+					result = "중복되는 닉네임입니다";
+				}else {
+					//아이디 없음 => 아이디 사용가능
+					System.out.println("닉네임 없음 => 닉네임 사용가능");
+					result = "사용가능한 닉네임입니다";
+				}
+					//이동하지 않고 =>결과 웹에 출력 => 출력 결과를 가지고 되돌아감
+					response.setContentType("text/html; charset=UTF-8");
+					PrintWriter printWriter = response.getWriter();
+					printWriter.println(result);
+					printWriter.close();
+					
+				}//nickCheck.me
 
 		if (sPath.equals("/login.me")) {
 			// member/login/login.jsp 주소변경없이 이동

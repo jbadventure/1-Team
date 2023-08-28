@@ -285,6 +285,45 @@ public class MemberDAO {
 		}
 		return memberDTO;
 	}//getMember()
+	
+	public MemberDTO getMemberNick(String memberNickname) {
+		System.out.println("MemberDAO getMember()");
+		MemberDTO memberDTO = null;
+		try {
+			//1,2 디비연결
+			con = new SQLConnection().getConnection();
+			//3 sql 
+			String sql="select * from member where memberNickname=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, memberNickname);
+			System.out.println(pstmt);
+			//4 실행 => 결과저장
+			rs = pstmt.executeQuery();
+			//5 행접근 memberDTO 객체생성 set메서드호출 열접근 저장
+			if(rs.next()) {
+				memberDTO = new MemberDTO();
+				memberDTO.setMemberNum(rs.getInt("memberNum"));
+				memberDTO.setMemberId(rs.getString("memberId"));
+				memberDTO.setMemberPassword(rs.getString("memberPassword"));
+				memberDTO.setMemberName(rs.getString("memberName"));
+				memberDTO.setMemberNickname(rs.getString("memberNickname"));
+				memberDTO.setMemberGender(rs.getString("memberGender"));
+				memberDTO.setMemberBirthday(rs.getString("memberBirthday"));
+				memberDTO.setMemberPhoneNum(rs.getString("memberPhoneNum"));
+				memberDTO.setMemberEmail(rs.getString("memberEmail"));
+				memberDTO.setMemberType(rs.getString("memberType"));
+				memberDTO.setMemberLocation(rs.getString("memberLocation"));
+				memberDTO.setBusinessNum(rs.getString("businessNum"));
+				memberDTO.setMailOrderNum(rs.getString("mailOrderNum"));
+				memberDTO.setMemberFile(rs.getString("memberFile"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			dbClose();
+		}
+		return memberDTO;
+	}//getMemberNick()
 
 	public void updatePwMember(MemberDTO memberDTO) {
 		System.out.println("MemberDAO updatePwMember()");

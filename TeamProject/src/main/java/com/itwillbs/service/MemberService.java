@@ -205,6 +205,20 @@ public class MemberService {
 		}
 		return memberDTO;
 	}//getMember()
+	
+	public MemberDTO getMemberNick(String memberNickname) {
+		System.out.println("MemberService getMemberNick()");
+		MemberDTO memberDTO = null;
+		try {
+			// MemberDAO 객체생성
+			memberDAO = new MemberDAO();
+			// memberDTO  = getMember(memberId) 메서드 호출
+			memberDTO = memberDAO.getMemberNick(memberNickname);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return memberDTO;
+	}// getMemberNick
 
 
 	public void updatePwMember(HttpServletRequest request) {

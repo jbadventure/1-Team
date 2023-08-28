@@ -238,6 +238,34 @@ $(document).ready(function(){
 		$('#fr').submit();
 	});
 });
+
+	//아이디 중복확인
+	$('#idup').click(function(){
+		alert("클릭");
+			$.ajax({
+				url:'idCheck.me',
+				// 파라미터이름 : val() 값
+				data:{'memberId':$('#id').val()},
+				success:function(result){
+	// result 아이디 중복, 아이디 사용가능 결과 출력값 받아오는 변수
+	//		          class="divdup" 안에 아이디 중복 값을 넣기
+					$('#div1').html(result).css("color","blue");
+				}
+			});
+	});
+
+	$('#ndup').click(function(){
+	alert("클릭");
+		$.ajax({
+			url:'nickCheck.me',
+			// 파라미터이름 : val() 값
+			data:{'memberNickname':$('#nick').val()},
+			success:function(result){
+				$('#div4').html(result).css("color","blue");
+			}
+		});
+});
+
 </script>
 </body>
 </html>
