@@ -9,7 +9,6 @@
 </head>
 <body>
 <%
-String memberId = (String)session.getAttribute("memberId");
 ClassBoardDTO boardDTO = (ClassBoardDTO)request.getAttribute("boardDTO");
 %>
 	<h1>Class 수정</h1>

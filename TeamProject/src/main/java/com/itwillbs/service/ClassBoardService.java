@@ -132,6 +132,8 @@ public class ClassBoardService {
 
 	public void deleteBoard(HttpServletRequest request) {
 		try {
+			// request 한글처리
+			request.setCharacterEncoding("utf-8");
 			// request 파라미터값 가져오기
 			int classNum = Integer.parseInt(request.getParameter("classNum"));
 			// => BoardDAO 객체생성 deleteBoard(classNum) 호출

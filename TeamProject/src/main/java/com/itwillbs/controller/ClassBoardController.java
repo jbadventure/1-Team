@@ -142,7 +142,7 @@ public class ClassBoardController extends HttpServlet {
 			//  deleteBoard(request) 호출
 			boardService.deleteBoard(request);
 			// 주소 변경되면서 list.bo 이동 
-			response.sendRedirect("list.bo");
+			response.sendRedirect("classList.cbo");
 		} // classDelete
 		
 		

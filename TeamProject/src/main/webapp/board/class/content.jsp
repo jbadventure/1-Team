@@ -178,9 +178,9 @@ if(memberId != null){
 	if(memberId.equals(boardDTO.getHostId())){
 		%>    
 		<input type="button" value="클래스 수정" class="btn" 
-       					onclick="location.href='classUpdate.cbo?num=<%=boardDTO.getClassNum()%>'">
+       					onclick="location.href='classUpdate.cbo?classNum=<%=boardDTO.getClassNum()%>'">
   		<input type="button" value="클래스 삭제" class="btn" 
-       					onclick="location.href='classDelete.cbo?num=<%=boardDTO.getClassNum()%>'">
+       					onclick="location.href='classDelete.cbo?classNum=<%=boardDTO.getClassNum()%>'">
 		<%
 	}else{
 	%>

@@ -27,10 +27,10 @@
 			<small>작성일: <%=boardDTO.getNoticeIssueDate()%></small>
 		</div>
 		<div class="add-button">
-			<button onclick="window.location.href='noticeUpdate.nbo'">공지 수정</button>
+			<button onclick="window.location.href='noticeUpdate.nbo?noticeNum=<%=boardDTO.getNoticeNum()%>'">공지 수정</button>
 		</div>
 		<div class="add-button">
-			<button onclick="window.location.href='noticeDelete.nbo'">공지 삭제</button>
+			<button onclick="window.location.href='noticeDelete.nbo?noticeNum=<%=boardDTO.getNoticeNum()%>'">공지 삭제</button>
 		</div>
 	</div>
 </body>
