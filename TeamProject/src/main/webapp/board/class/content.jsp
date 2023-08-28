@@ -3,10 +3,14 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
-  <title>Shop</title> 
+<meta charset="UTF-8">
+ <title>Shop</title> 
+</head>
+
+
   <style type="text/css">
   .navbar{
     height: 60px;
@@ -89,11 +93,39 @@
     margin-right: 10px;
     text-decoration:none;
 }
+
+ul.tabs{
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+}
+ul.tabs li{
+  background: none;
+  color: #222;
+  display: inline-block;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+ul.tabs li.current{
+  background: #ededed;
+  color: #222;
+}
+
+.tab-content{
+  display: none;  
+  padding: 15px 0;
+  border-top:3px solid #eee;
+}
+
+.tab-content.current{
+  display: inherit;
+}
   </style>
   <meta charset="utf-8">
   <link rel="stylesheet" href="shopcss.css">
   <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
-</head>
+
 <body>
 
     <div class="navbar">
@@ -110,15 +142,24 @@
     <div class="hero-header"></div>
 
     <div class="products">
-        <h3>클래스 제목</h3>
-<%
+        <h3>클래스 제목</h3> 
+        
+ <%
 
 ClassBoardDTO boardDTO = (ClassBoardDTO)request.getAttribute("boardDTO");
-%>
+%>       
 
+ <div class="container">
+ 
+  <ul class="tabs">
+    <li class="tab-link current" data-tab="tab-1">클래스 내용</li>
+    <li class="tab-link" data-tab="tab-2">클래스 정보</li>
+    <li class="tab-link" data-tab="tab-3">클래스 리뷰</li>
+  </ul>
+ 
+  <div id="tab-1" class="tab-content current">
 <div class="product-content">
-        
-        
+           
 <table id="class-content">
 <tr><td>글번호</td><td><%=boardDTO.getClassNum() %></td></tr>
 <tr><td>제목</td><td><%=boardDTO.getClassSubject() %></td></tr>
@@ -136,6 +177,18 @@ ClassBoardDTO boardDTO = (ClassBoardDTO)request.getAttribute("boardDTO");
        					onclick="location.href='classWrite.cbo'">       					
 
 </div>
+  </div>
+  
+  <div id="tab-2" class="tab-content">
+  클래스 정보
+  </div>
+  
+  <div id="tab-3" class="tab-content">
+  클래스 리뷰 
+   </div>
+ 
+</div>
+
             <div class="clearfix"></div>
         </div>
 
@@ -151,5 +204,27 @@ ClassBoardDTO boardDTO = (ClassBoardDTO)request.getAttribute("boardDTO");
             </a>
         </div>
     </div>
+
+
+<script type="text/javascript" 
+        src="script/jquery-3.7.0.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+   
+  $('ul.tabs li').click(function(){
+    var tab_id = $(this).attr('data-tab');
+ 
+    $('ul.tabs li').removeClass('current');
+    $('.tab-content').removeClass('current');
+ 
+    $(this).addClass('current');
+    $("#"+tab_id).addClass('current');
+  })
+ 
+})
+
+</script>
+
+
 </body>
 </html>
