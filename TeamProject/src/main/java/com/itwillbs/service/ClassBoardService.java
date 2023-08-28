@@ -102,9 +102,11 @@ public class ClassBoardService {
 	} // getBoard
 	
 	public void updateBoard(HttpServletRequest request) {
+		System.out.println("ClassBoardService updateBoard()");
 		try {
 			// => request 한글처리, request 값 가져오기, BoardDTO 값저장
 			request.setCharacterEncoding("utf-8");
+			int classNum = Integer.parseInt(request.getParameter("classNum"));
 			String classSubject = request.getParameter("classSubject");
 			int classPrice = Integer.parseInt(request.getParameter("classPrice"));
 			String classCategory = request.getParameter("classCategory");
@@ -112,6 +114,7 @@ public class ClassBoardService {
 			String classContent = request.getParameter("classContent");
 			
 			ClassBoardDTO boardDTO =new ClassBoardDTO();
+			boardDTO.setClassNum(classNum);
 			boardDTO.setClassSubject(classSubject);
 			boardDTO.setClassPrice(classPrice);
 			boardDTO.setClassCategory(classCategory);
@@ -129,6 +132,8 @@ public class ClassBoardService {
 
 	public void deleteBoard(HttpServletRequest request) {
 		try {
+			// request 한글처리
+			request.setCharacterEncoding("utf-8");
 			// request 파라미터값 가져오기
 			int classNum = Integer.parseInt(request.getParameter("classNum"));
 			// => BoardDAO 객체생성 deleteBoard(classNum) 호출

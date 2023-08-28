@@ -51,28 +51,17 @@ public class MemberDAO {
 				e.printStackTrace();
 			}finally {
 				dbClose();
-			}
+			} 
 			
 		}//insertMember()
 		
 	// insertHost
 	public void insertHost(MemberDTO memberDTO) {
 		System.out.println("MemberDAO insertHost()");
-		System.out.println("바구니(MemberDTO) 주소값 : " + memberDTO);
-		System.out.println("주소를 찾아가서 Id값 가져오기 : " + memberDTO.getMemberId());
-		System.out.println("주소를 찾아가서 Password값 가져오기 : " + memberDTO.getMemberPassword());
-		System.out.println("주소를 찾아가서 Name값 가져오기 : " + memberDTO.getMemberName());
-		System.out.println("주소를 찾아가서 Nickname값 가져오기 : " + memberDTO.getMemberNickname());
-		System.out.println("주소를 찾아가서 Gender값 가져오기 : " + memberDTO.getMemberGender());
-		System.out.println("주소를 찾아가서 Birthday값 가져오기 : " + memberDTO.getMemberBirthday());
-		System.out.println("주소를 찾아가서 PhoneNum값 가져오기 : " + memberDTO.getMemberPhoneNum());
-		System.out.println("주소를 찾아가서 Email값 가져오기 : " + memberDTO.getMemberEmail());
-		System.out.println("주소를 찾아가서 BusinessNum값 가져오기 : " + memberDTO.getBusinessNum());
-
 		try {
 			con=new SQLConnection().getConnection();
 
-			String sql = "insert into member(memberId,memberPassword,memberNickname,memberName,memberBirthday,memberGender,memberPhoneNum,memberEmail,memberLocation) values(?,?,?,?,?,?,?,?,?)";
+			String sql = "insert into member(memberId,memberPassword,memberNickname,memberName,memberBirthday,memberGender,memberPhoneNum,memberEmail,BusinessNum) values(?,?,?,?,?,?,?,?,?)";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, memberDTO.getMemberId());
 			pstmt.setString(2, memberDTO.getMemberPassword()); 
@@ -86,7 +75,7 @@ public class MemberDAO {
 
 			// sql구문 실행결과를 ResultSet 내장객체에 저장
 			pstmt.executeUpdate();
-					
+						
 		}catch (Exception e) {
 			e.printStackTrace();
 		}finally {
