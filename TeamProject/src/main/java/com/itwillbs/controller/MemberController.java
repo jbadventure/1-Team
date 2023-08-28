@@ -302,7 +302,7 @@ public class MemberController extends HttpServlet {
 		if (sPath.equals("/info.me")) {
 			dispatcher = request.getRequestDispatcher("member/memberInfo/info.jsp");
 			dispatcher.forward(request, response);
-		} // info.me
+		} // classWrite 
 
 		
 		if (sPath.equals("/update.me")) {

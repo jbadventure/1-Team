@@ -15,7 +15,7 @@ String memberNickname = (String) session.getAttribute("memberNickname");
 <p>닉네임 <%= memberNickname %></p>
 
 <img src="nnn.jpg" alt="기존이미지" width="300" height="250"><br>
-<input type="button" value="회원정보변경" id="회원정보변경"><br>
+<input type="button" value="회원정보변경" id="회원정보변경"  onclick="location.href='update.me'"><br>
 <input type="button" value="클래스관리" id="클래스관리"><br>
 <input type="button" value="예약관리" id="예약관리">
 
