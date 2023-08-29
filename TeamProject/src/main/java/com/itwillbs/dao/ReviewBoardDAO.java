@@ -44,39 +44,29 @@ public class ReviewBoardDAO {
 		
 	} // insertBoard
 
-	public int getMaxNum() {
-		int reviewNum = 0;
-		try {
-			con = new SQLConnection().getConnection();
-			String sql = "select max(reviewNum) from notice";
-			pstmt=con.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-			if(rs.next()) {
-				reviewNum = rs.getInt("max(noticeNum)");
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			dbClose();
-		}
-		return reviewNum;
-	} // getMaxNum
 	
 	public List<ReviewBoardDTO> getBoardList() {
 		List<ReviewBoardDTO> boardList = null;
 		try {
 			con = new SQLConnection().getConnection();
+			// 3
 			String sql = "select * from notice order by reviewNum desc";
 			pstmt=con.prepareStatement(sql);
+			// 4
 			rs = pstmt.executeQuery();
 			boardList = new ArrayList<>();
+			// 5
 			while(rs.next()) {
 				ReviewBoardDTO boardDTO = new ReviewBoardDTO();
 				boardDTO.setReviewNum(rs.getInt("reviewNum"));
 				boardDTO.setReviewId(rs.getString("reviewID"));
+				boardDTO.setClassNum(rs.getInt("classNum"));
+				boardDTO.setReviewContent(rs.getString("reviewContent"));
+				boardDTO.setReviewFile(rs.getString("reviewFile"));
+				boardDTO.setReviewIssueDate(rs.getTimestamp("reviewIssueDate"));
 			}
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 		return boardList;
 	}
@@ -84,11 +74,12 @@ public class ReviewBoardDAO {
 
 
 	public ReviewBoardDTO getBoard(int reviewNum) {
+		System.out.println("ReviewBoardDTO getBoard");
 		ReviewBoardDTO boardDTO = null;
 		try {
 			con = new SQLConnection().getConnection();
 			// sql 구문
-			String sql = "select * from review where num=?";
+			String sql = "select * from review where reviewNum=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, reviewNum);
 			// 실행
@@ -119,10 +110,40 @@ public class ReviewBoardDAO {
 		try {
 			con = new SQLConnection().getConnection();
 			// sql 구문
-			
+			String sql = "update review set reviewContent=?, reviewFile=?, classNum=? where reviewNum=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, boardDTO.getReviewContent());
+			pstmt.setString(2, boardDTO.getReviewFile());
+			pstmt.setInt(3, boardDTO.getClassNum());
+			pstmt.setInt(4, boardDTO.getReviewNum());
+			// 실행
+			pstmt.executeUpdate();
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			dbClose();
 		}
+		
+	} // updateBoard
+
+
+
+	public void deleteBoard(int reviewNum) {
+		try {
+			// 1단계 JDBC 프로그램 가져오기 
+			// 2단계 디비 연결
+			con= new SQLConnection().getConnection();
+			// 3
+			String sql = "delete from review where reviewNum=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, reviewNum);  
+			// 4
+			pstmt.executeUpdate();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				dbClose();
+			}
 		
 	}
 
