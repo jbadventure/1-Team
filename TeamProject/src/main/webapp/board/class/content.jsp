@@ -12,6 +12,8 @@
 
 
   <style type="text/css">
+  
+   <!--배경--> 
   .navbar{
     height: 60px;
     padding-left: 30px;
@@ -93,7 +95,7 @@
     margin-right: 10px;
     text-decoration:none;
 }
-
+<!--탭 -->
 ul.tabs{
   margin: 0px;
   padding: 0px;
@@ -230,6 +232,8 @@ if(memberId != null){
 <script type="text/javascript" 
         src="script/jquery-3.7.0.js"></script>
 <script type="text/javascript">
+
+// !탭
 $(document).ready(function(){
    
   $('ul.tabs li').click(function(){
