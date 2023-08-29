@@ -106,6 +106,7 @@ String memberId = (String)session.getAttribute("memberId");
             <img src="images/logo-198x66.png" height="60">
         </a>
  <%
+ // 상단바 로그인세션에 따라 다르게보이게  
  if(memberId == null){
  %>       
       <ul id="menu">
