@@ -192,10 +192,10 @@ String reservationAmount = request.getParameter("reservationAmount");
 <form action="payPro.pa" method="post">
 <table id="class-content">
 <tr><td>글번호</td><td></td></tr>
-<tr><td>제목</td><td></td></tr>
+<tr><td>제목 <%=classSubject %></td><td></td></tr>
 <tr><td>글쓴이</td><td></td></tr>
-<tr><td>글쓴날짜</td><td></td></tr>
-<tr><td>지역</td><td></td></tr>
+<tr><td>예약날짜<%=reservationDate %></td><td></td></tr>
+<tr><td>예약인원<%=reservationAmount %></td><td></td></tr>
 <%-- <tr><td>카테고리</td><td><%=boardDTO.getClassCategory() %></td></tr>     --%>
 <%-- <tr><td>내용</td><td><%=boardDTO.getClassContent() %></td></tr>     --%>
 <%-- <tr><td>가격</td><td><%=boardDTO.getClassPrice() %></td></tr>     --%>
