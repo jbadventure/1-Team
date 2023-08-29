@@ -182,7 +182,12 @@ ul.tabs li.current{
  <%
 String memberId = (String)session.getAttribute("memberId");
 %>       
-
+<%
+request.setCharacterEncoding("utf-8");
+String classSubject = request.getParameter("classSubject"); // 제목전달
+String reservationDate = request.getParameter("reservationDate");
+String reservationAmount = request.getParameter("reservationAmount");
+%>
  
 <form action="payPro.pa" method="post">
 <table id="class-content">

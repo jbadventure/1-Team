@@ -238,11 +238,15 @@ if(memberId != null){
 <div id="modalWrap">
     <div id="modalBody">  
     <div class="container" align="center">  
-     <h4>예약정보확인</h4> 
-       <div>예약일</div><input type="date" id="datePicker" min="" max="" value=""><br>
+     <h4>상세예약정보입력</h4>
+      	<div>예약 클래스 제목 : <%=boardDTO.getClassSubject() %></div>
+      	<input type="hidden" name ="classSubject"  id="classSubject" value="<%=boardDTO.getClassSubject() %>"><!-- classSubject값 전달 -->
+      	 <input type="hidden" name ="classNum"  id="classNum" value="<%=boardDTO.getClassNum() %>"><!-- classNum값 전달 -->
+      	  <input type="hidden" name ="reservationId"  id="reservationId" value="<%=boardDTO.getClassNum() %>"><!-- reservationId값 전달 -->
+       <div>예약일</div><input type="date" name="reservationDate" id="datePicker" min="" max="" value=""><br>
        <br>
 	<div>예약인수</div>
-	<select id="peopleCount">
+	<select name ="reservationAmount"  id="peopleCount">
             <!-- 1부터 10까지 옵션 생성 -->
             <option value="1">1명</option>
             <option value="2">2명</option>
