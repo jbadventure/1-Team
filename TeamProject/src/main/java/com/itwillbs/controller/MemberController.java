@@ -309,6 +309,7 @@ public class MemberController extends HttpServlet {
 			dispatcher = request.getRequestDispatcher("member/memberInfo/update.jsp");
 			dispatcher.forward(request, response);
 		} // update.me
+		
 
 	} 
 }

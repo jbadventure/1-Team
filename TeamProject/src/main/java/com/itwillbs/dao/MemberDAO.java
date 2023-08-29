@@ -32,7 +32,7 @@ public class MemberDAO {
 				// 2단계 디비 연결
 				con = new SQLConnection().getConnection();
 				// 3단계 문자열 -> sql구문 변경
-				String sql = "insert into member(memberId,memberPassword,memberNickname,memberName,memberBirthday,memberGender,memberPhoneNum,memberEmail,memberLocation) values(?,?,?,?,?,?,?,?,?)";
+				String sql = "insert into member(memberId,memberPassword,memberNickname,memberName,memberBirthday,memberGender,memberPhoneNum,memberEmail,memberLocation,memberType) values(?,?,?,?,?,?,?,?,?,?)";
 				pstmt=con.prepareStatement(sql);
 				pstmt.setString(1, memberDTO.getMemberId());
 				pstmt.setString(2, memberDTO.getMemberPassword()); 
@@ -43,7 +43,8 @@ public class MemberDAO {
 				pstmt.setString(7, memberDTO.getMemberPhoneNum());
 				pstmt.setString(8, memberDTO.getMemberEmail());
 				pstmt.setString(9, memberDTO.getMemberLocation());
-
+				pstmt.setString(10, memberDTO.getMemberType());
+				
 				// 4단계 sql구문 실행
 				pstmt.executeUpdate();
 				
@@ -61,7 +62,7 @@ public class MemberDAO {
 		try {
 			con=new SQLConnection().getConnection();
 
-			String sql = "insert into member(memberId,memberPassword,memberNickname,memberName,memberBirthday,memberGender,memberPhoneNum,memberEmail,BusinessNum) values(?,?,?,?,?,?,?,?,?)";
+			String sql = "insert into member(memberId,memberPassword,memberNickname,memberName,memberBirthday,memberGender,memberPhoneNum,memberEmail,BusinessNum,memberType) values(?,?,?,?,?,?,?,?,?,?)";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, memberDTO.getMemberId());
 			pstmt.setString(2, memberDTO.getMemberPassword()); 
@@ -72,6 +73,7 @@ public class MemberDAO {
 			pstmt.setString(7, memberDTO.getMemberPhoneNum());
 			pstmt.setString(8, memberDTO.getMemberEmail());
 			pstmt.setString(9, memberDTO.getBusinessNum());
+			pstmt.setString(10, memberDTO.getMemberType());
 
 			// sql구문 실행결과를 ResultSet 내장객체에 저장
 			pstmt.executeUpdate();

@@ -28,7 +28,8 @@ public class MemberService {
 				String emailop1 = request.getParameter("emailop1");
 				String emailop2 = request.getParameter("emailop2");
 				String address = request.getParameter("address");
-
+				String memberType = request.getParameter("memberType");
+				
 				String phoneNum = phone1+phone2+phone3;
 				String email = emailop1+'@'+emailop2;
 				
@@ -44,6 +45,7 @@ public class MemberService {
 				memberDTO.setMemberPhoneNum(phoneNum);
 				memberDTO.setMemberEmail(email);
 				memberDTO.setMemberLocation(address);
+				memberDTO.setMemberType(memberType);
 				 
 				System.out.println(memberDTO);
 				
@@ -81,6 +83,7 @@ public class MemberService {
 				String emailop1 = request.getParameter("emailop1");
 				String emailop2 = request.getParameter("emailop2");
 				String bNum = request.getParameter("bNum");
+				String memberType = request.getParameter("memberType");
 						
 				String phoneNum = phone1 + phone2 + phone3;
 				String email = emailop1 + '@' + emailop2;
@@ -96,6 +99,7 @@ public class MemberService {
 				memberDTO.setMemberPhoneNum(phoneNum);
 				memberDTO.setMemberEmail(email);
 				memberDTO.setBusinessNum(bNum);
+				memberDTO.setMemberType(memberType);
 						
 				// MemberDAO 객체생성 후 insertMember() 메서드 정의 : MemberDTO 데이터(id,pass,name 등)가 저장된 주소값을 들고감
 				memberDAO = new MemberDAO();
