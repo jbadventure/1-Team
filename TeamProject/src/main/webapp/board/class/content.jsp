@@ -11,16 +11,14 @@
 </head>
 
 
-  <style type="text/css">
+ <style type="text/css">
   
-   <!--배경--> 
+<!--배경css--> 
   .navbar{
     height: 60px;
     padding-left: 30px;
     padding-right: 30px;
-
 }
-
 .hero-header{
     height: 450px;
     background-image: url("images/wine.jpg");
@@ -28,24 +26,20 @@
     background-size: cover;
     background-position: center center;
     }
-      
 .navbar #logo{
     line-height: 60px;
 }
-
 .navbar #menu{
     float: right;
     list-style-type: none;
     padding: 0;
     margin: 0;
 }
-
 .navbar #menu li{
     float: left;
     margin-left: 50px;
     line-height: 60px;
 }
-
 .navbar #menu li a{
     color: #545454;
     font-size: 13px;
@@ -63,7 +57,13 @@
     margin-bottom: 60px;
     text-align: center;
 }
-
+.products h4{
+    font-size: 24px;
+    color: #545454;
+    margin-top:15px;
+    margin-bottom: 15px;
+    text-align: center;
+}
 .product{
     display: block;
     width: 225px;
@@ -75,12 +75,10 @@
     margin-right: 10px;
     margin-bottom: 30px;
 }
-
 .product-name{
     margin-top: 20px;
     margin-bottom: 4px;
 }
-
 .clearfix{
     clear: both;
 }
@@ -89,13 +87,12 @@
     margin-top: 40px;
     margin-bottom: 40px;
 }
-
 .footer a{
     margin-left: 10px;
     margin-right: 10px;
     text-decoration:none;
 }
-<!--탭 -->
+<!--탭css -->
 ul.tabs{
   margin: 0px;
   padding: 0px;
@@ -108,22 +105,61 @@ ul.tabs li{
   padding: 10px 15px;
   cursor: pointer;
 }
-
 ul.tabs li.current{
   background: #ededed;
   color: #222;
 }
-
 .tab-content{
   display: none;  
   padding: 15px 0;
   border-top:3px solid #eee;
 }
-
 .tab-content.current{
   display: inherit;
 }
-  </style>
+<!--모달창 css-->
+* {
+  padding:0;
+  margin:0;
+  box-sizing: border-box;
+}
+#btnWrap {
+  width: 500px;
+  margin: 100px auto;
+}
+#popupBtn {
+  width: 150px;
+  height: 50px;
+  padding: 10px 5px;
+}
+#modalWrap {
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  display: none;
+}
+#modalBody {
+  width: 500px;
+  height: 300px;
+  padding: 30px 30px;
+  margin: 0 auto;
+  border: 1px solid #777;
+  background-color: #fff;
+}
+#closeBtn {
+  float:right;
+  font-weight: bold;
+  color: #777;
+  font-size:15px;
+  cursor: pointer;
+}
+ </style>
   <meta charset="utf-8">
   <link rel="stylesheet" href="shopcss.css">
   <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
@@ -131,11 +167,11 @@ ul.tabs li.current{
 <body>
 
     <div class="navbar">
-        <a href="main.me" id="logo">
+        <a href="main.me" id="logo"><!--로고-->
             <img src="images/logo-198x66.png" height="60">
         </a>
 
-        <ul id="menu">
+        <ul id="menu"><!--상단우측-->
             <li><a href="#"><b>Contact</b></a></li>
             <li><a href="#"><b>Login</b></a></li>
         </ul>
@@ -153,13 +189,13 @@ ClassBoardDTO boardDTO = (ClassBoardDTO)request.getAttribute("boardDTO");
 
  <div class="container">
  
-  <ul class="tabs">
+  <ul class="tabs"><!--탭메뉴-->
     <li class="tab-link current" data-tab="tab-1">클래스 내용</li>
     <li class="tab-link" data-tab="tab-2">클래스 정보</li>
     <li class="tab-link" data-tab="tab-3">클래스 리뷰</li>
   </ul>
  
-  <div id="tab-1" class="tab-content current">
+  <div id="tab-1" class="tab-content current"><!--탭1내용-->
 <div class="product-content">
            
 <table id="class-content">
@@ -193,26 +229,44 @@ if(memberId != null){
 <%
 }else{
 %>
-		<input type="button" value="예약하기" class="btn" onclick="location.href='reservation.re'"> 
+	<div id="btnWrap">
+  <button typ="button" id="popupBtn">예약하기</button>
+</div>
+
+<div id="modalWrap">
+    <div id="modalBody">  
+    <div class="container" align="center">  
+     <h4>예약정보</h4> 
+       <div>예약일</div><input type="date" id="datePicker" min="" max="" value=""><br>
+       <br>
+	<div>예약인수</div><br>
+	<br>
+	<div>총 결제금액</div><br>
+<input type="button" value="결제하기" class="btn" onclick = "location.href='payment.pa'">
+
+<span id="closeBtn">창닫기</span>
+    </div>
+</div>
+</div>
 <%	
 }
 %>
-<input type="button" value="클래스 목록" class="btn" onclick = "location.href='classList.cbo'">
+<input type="button" value="클래스 목록으로 돌아가기" class="btn" onclick = "location.href='classList.cbo'">
 
 </div>
   </div>
   
-  <div id="tab-2" class="tab-content">
+  <div id="tab-2" class="tab-content"><!--탭2내용-->
   클래스 정보
   </div>
   
-  <div id="tab-3" class="tab-content">
+  <div id="tab-3" class="tab-content"><!--탭3내용-->
   클래스 리뷰 
    </div>
  
 </div>
 
-            <div class="clearfix"></div>
+     <div class="clearfix"></div>
         </div>
 
         <div class="footer">
@@ -233,7 +287,7 @@ if(memberId != null){
         src="script/jquery-3.7.0.js"></script>
 <script type="text/javascript">
 
-// !탭
+// !탭 
 $(document).ready(function(){
    
   $('ul.tabs li').click(function(){
@@ -245,8 +299,47 @@ $(document).ready(function(){
     $(this).addClass('current');
     $("#"+tab_id).addClass('current');
   })
- 
 })
+
+// !모달기능
+const btn = document.getElementById('popupBtn');
+const modal = document.getElementById('modalWrap');
+const closeBtn = document.getElementById('closeBtn');
+
+btn.onclick = function() {
+  modal.style.display = 'block';
+}
+closeBtn.onclick = function() {
+  modal.style.display = 'none';
+}
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+
+// !달력날짜선택
+//Get today's date
+const today = new Date();
+
+// Calculate the date for tomorrow
+const tomorrow = new Date(today);
+tomorrow.setDate(today.getDate() + 1);
+
+// Calculate the date 28 days from today
+const maxDate = new Date(today);
+maxDate.setDate(today.getDate() + 28);
+
+// Format the dates in 'YYYY-MM-DD' format
+const formattedTomorrow = tomorrow.toISOString().split('T')[0];
+const formattedMaxDate = maxDate.toISOString().split('T')[0];
+
+// Set the minimum and maximum values for the input
+const datePicker = document.getElementById('datePicker');
+datePicker.min = formattedTomorrow;
+datePicker.max = formattedMaxDate;
 
 </script>
 
