@@ -230,19 +230,34 @@ if(memberId != null){
 }else{
 %>
 	<div id="btnWrap">
-  <button typ="button" id="popupBtn">예약하기</button>
+  <button id="popupBtn">예약하기</button>
 </div>
 
+<!-- 모달->입력값 전송 -->
+<form action = "pay.pa" method="post" id="fr">
 <div id="modalWrap">
     <div id="modalBody">  
     <div class="container" align="center">  
-     <h4>예약정보</h4> 
+     <h4>예약정보확인</h4> 
        <div>예약일</div><input type="date" id="datePicker" min="" max="" value=""><br>
        <br>
-	<div>예약인수</div><br>
-	<br>
-	<div>총 결제금액</div><br>
-<input type="button" value="결제하기" class="btn" onclick = "location.href='payment.pa'">
+	<div>예약인수</div>
+	<select id="peopleCount">
+            <!-- 1부터 10까지 옵션 생성 -->
+            <option value="1">1명</option>
+            <option value="2">2명</option>
+            <option value="3">3명</option>
+            <option value="4">4명</option>
+            <option value="5">5명</option>
+            <option value="6">6명</option>
+            <option value="7">7명</option>
+            <option value="8">8명</option>
+            <option value="9">9명</option>
+            <option value="10">10명</option>
+        </select><br>
+        <br>
+	<div>총 결제금액 <br> classPrice파라미터값 *셀렉트값 </div><br>
+<input type="submit" value="결제하기" class="btn">
 
 <span id="closeBtn">창닫기</span>
     </div>
@@ -251,8 +266,9 @@ if(memberId != null){
 <%	
 }
 %>
-<input type="button" value="클래스 목록으로 돌아가기" class="btn" onclick = "location.href='classList.cbo'">
+</form>
 
+<input type="button" value="클래스 목록으로 돌아가기" class="btn" onclick = "location.href='classList.cbo'">
 </div>
   </div>
   
@@ -302,6 +318,7 @@ $(document).ready(function(){
 })
 
 // !모달기능
+
 const btn = document.getElementById('popupBtn');
 const modal = document.getElementById('modalWrap');
 const closeBtn = document.getElementById('closeBtn');
@@ -318,7 +335,6 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
-
 
 // !달력날짜선택
 //Get today's date
@@ -340,6 +356,16 @@ const formattedMaxDate = maxDate.toISOString().split('T')[0];
 const datePicker = document.getElementById('datePicker');
 datePicker.min = formattedTomorrow;
 datePicker.max = formattedMaxDate;
+
+//모달-셀렉트박스 인원선택 
+const peopleCount = document.getElementById("peopleCount");
+    
+
+confirmBtn.addEventListener("click", () => {
+        const selectedCount = peopleCount.value;
+        alert(`선택된 인원 수: ${selectedCount}`);
+        modal.style.display = "none";
+    });
 
 </script>
 

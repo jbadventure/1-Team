@@ -95,27 +95,41 @@
   <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
 </head>
 <body>
-
-    <div class="navbar">
-        <a href="main.me" id="logo">
-            <img src="images/logo-198x66.png" height="60">
-        </a>
-
-        <ul id="menu">
-            <li><a href="#"><b>Contact</b></a></li>
-            <li><a href="#"><b>Login</b></a></li>
-        </ul>
-    </div>
-
-    <div class="hero-header"></div>
-
-    <div class="products">
-        <h3>클래스 목록</h3>
 <%
 List<ClassBoardDTO> boardList =(List<ClassBoardDTO>)request.getAttribute("boardList");
 PageDTO pageDTO = (PageDTO)request.getAttribute("pageDTO");
 String memberId = (String)session.getAttribute("memberId");
 %>
+
+    <div class="navbar">
+        <a href="main.me" id="logo">
+            <img src="images/logo-198x66.png" height="60">
+        </a>
+ <%
+ if(memberId == null){
+ %>       
+      <ul id="menu">
+            <li><a href="#"><b>Contact</b></a></li>
+            <li><a href="login.me"><b>Login</b></a></li>
+        </ul>
+    </div>
+<%
+}else{   
+%>
+	<ul id="menu">
+            <li><a href="#"><b>Contact</b></a></li>
+            <li><a href="login.me"><b><%=memberId %>님</b></a></li>
+             <li><a href="logout.me"><b>logout</b></a></li>
+        </ul>
+    </div>
+ <%	
+}
+%>
+    <div class="hero-header"></div>
+
+    <div class="products">
+        <h3>클래스 목록</h3>
+
         <div class="product-list">
         
         <%
