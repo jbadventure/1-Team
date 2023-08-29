@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>결제</title>
+<title>결제하기</title>
 </head>
 <style type="text/css">
   
@@ -177,30 +177,41 @@ ul.tabs li.current{
     <div class="hero-header"></div>
 
     <div class="products">
-        <h3>결제</h3> 
         
+<h3>결제</h3> 
  <%
 String memberId = (String)session.getAttribute("memberId");
 %>       
 <%
 request.setCharacterEncoding("utf-8");
-String classSubject = request.getParameter("classSubject"); // 제목전달
+String thumnail = request.getParameter("thumnail"); // 전달
+String classSubject = request.getParameter("classSubject");
+String classPrice = request.getParameter("classPrice");
 String reservationDate = request.getParameter("reservationDate");
 String reservationAmount = request.getParameter("reservationAmount");
 %>
  
 <form action="payPro.pa" method="post">
+                <img src="images/logo-198x66.png" width="107" height="71">
 <table id="class-content">
-<tr><td>글번호</td><td></td></tr>
-<tr><td>제목 <%=classSubject %></td><td></td></tr>
-<tr><td>글쓴이</td><td></td></tr>
-<tr><td>예약날짜<%=reservationDate %></td><td></td></tr>
-<tr><td>예약인원<%=reservationAmount %></td><td></td></tr>
-<%-- <tr><td>카테고리</td><td><%=boardDTO.getClassCategory() %></td></tr>     --%>
-<%-- <tr><td>내용</td><td><%=boardDTO.getClassContent() %></td></tr>     --%>
-<%-- <tr><td>가격</td><td><%=boardDTO.getClassPrice() %></td></tr>     --%>
-<%-- <tr><td>이미지파일</td><td><%=boardDTO.getClassFile() %></td></tr>     --%>
+<tr><td>팔레트정보</td></tr>
+<tr><td>이미지파일</td><td>
+    <%      
+      		if(thumnail == null){
+     %>
+                <img src="images/logo-198x66.png" width="107" height="71" name="thumnail">
+     <%		}else{
+     %>           
+            	<img src="upload/<%=thumnail %>" width="107" height="71" name="thumnail">
+     <%			 }
+     %>
+</td></tr> 
+<tr><td>클래스제목 <%=classSubject %></td></tr>
+<tr><td>예약날짜 <%=reservationDate %></td></tr>
+<tr><td>예약인원 <%=reservationAmount %></td></tr>
+<tr><td>총 결제금액 <%=classPrice %> * <%=reservationAmount %></td></tr>    
 </table>
+<input type="submit" value="결제하기" class="btn">
 </form>
 </body>
 </html>

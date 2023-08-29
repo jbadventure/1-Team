@@ -211,10 +211,10 @@ ClassBoardDTO boardDTO = (ClassBoardDTO)request.getAttribute("boardDTO");
     <%      
       		if(boardDTO.getClassFile() == null){
      %>
-                <img src="images/logo-198x66.png" width="320" height="212">
+                <img src="images/logo-198x66.png" width="320" height="212" name="thumnail">
      <%		}else{
      %>           
-            	<img src="upload/<%=boardDTO.getClassFile() %>" width="320" height="212">
+            	<img src="upload/<%=boardDTO.getClassFile() %>" width="320" height="212" name="thumnail">
      <%			 }
      %>
 </td></tr>
@@ -240,9 +240,11 @@ if(memberId != null){
                   <div class="container" align="center">  
                    <h4>상세예약정보입력</h4>
       	            <div>예약 클래스 제목 : <%=boardDTO.getClassSubject() %></div>
-      	           <input type="hidden" name ="classSubject"  id="classSubject" value="<%=boardDTO.getClassSubject() %>"><!-- classSubject값 전달 -->
-      	           <input type="hidden" name ="classNum"  id="classNum" value="<%=boardDTO.getClassNum() %>"><!-- classNum값 전달 -->
-      	           <input type="hidden" name ="reservationId"  id="reservationId" value="<%=boardDTO.getClassNum() %>"><!-- reservationId값 전달 -->
+      	            <input type="hidden" name ="thumnail"  id="thumnail" value="thumnail"><!-- classFile값 전달 -->
+      				<input type="hidden" name ="classSubject"  id="classSubject" value="<%=boardDTO.getClassSubject() %>"><!-- classSubject값 전달 -->
+      				<input type="hidden" name ="classNum"  id="classNum" value="<%=boardDTO.getClassNum() %>"><!-- classNum값 전달 -->
+      				<input type="hidden" name ="classPrice"  id="classPrice" value="<%=boardDTO.getClassPrice() %>"><!-- classPrice값 전달 -->
+      				<input type="hidden" name ="reservationId"  id="reservationId" value="<%=boardDTO.getClassNum() %>"><!-- reservationId값 전달 -->
                    <div>예약일</div><input type="date" name="reservationDate" id="datePicker" min="" max="" value=""><br><br>
 	               <div>예약인수</div>	<select name ="reservationAmount"  id="peopleCount">
                                                           <!-- 1부터 10까지 옵션 생성 -->
@@ -252,7 +254,8 @@ if(memberId != null){
                                                           <option value="4">4명</option>
                                                           <option value="5">5명</option>
                                                      </select><br><br>
-	               <div>총 결제금액 <br> classPrice파라미터값 *셀렉트값 </div><br>
+<%--         <%String reservationAmount = request.getParameter("reservationAmount"); %> --%>
+<%-- 		 <div>총 결제금액 <br> <%=boardDTO.getClassPrice() %> * <%=reservationAmount %> </div><br> --%>
                   <input type="submit" value="결제하기" class="btn">
              <span id="closeBtn">창닫기</span>
              </div></div></div>
