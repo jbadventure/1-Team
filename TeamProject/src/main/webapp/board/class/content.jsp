@@ -207,7 +207,7 @@ ClassBoardDTO boardDTO = (ClassBoardDTO)request.getAttribute("boardDTO");
 <tr><td>카테고리</td><td><%=boardDTO.getClassCategory() %></td></tr>    
 <tr><td>내용</td><td><%=boardDTO.getClassContent() %></td></tr>    
 <tr><td>가격</td><td><%=boardDTO.getClassPrice() %></td></tr>    
-<tr><td>이미지파일</td><td><%=boardDTO.getClassFile() %></td></tr>    
+<tr><td>이미지파일</td><td><img src="upload/<%=boardDTO.getClassFile() %>" width="320" height="212"></td></tr>    
 </table>
 <%
 // 로그인 필수

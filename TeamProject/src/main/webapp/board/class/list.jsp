@@ -137,7 +137,15 @@ for(int i=0; i<boardList.size(); i++){
 	ClassBoardDTO boardDTO = boardList.get(i);
 	%>
              <a href="classContent.cbo?classNum=<%=boardDTO.getClassNum() %>" class="product">
+     <%      
+      		if(boardDTO.getClassFile() == null){
+     %>
                 <img src="images/cat-space.gif" width="225" height="225px">
+     <%		}else{
+     %>           
+            	<img src="upload/<%=boardDTO.getClassFile() %>" width="225" height="225px">
+     <%			 }
+     %>
                 <div class="product-name">
                 	제목 : <%=boardDTO.getClassSubject() %>
                 </div>

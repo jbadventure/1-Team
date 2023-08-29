@@ -83,18 +83,14 @@ public class ClassBoardDAO {
 	}//getBoardCount
 
 	public void insertBoard(ClassBoardDTO boardDTO) {
-		System.out.println("BoardDAO insertBoard()");
-		// board 테이블 file 열추가 
-		// mysql -uroot -p1234 jspdb
-		// alter table board 
-		// add file varchar(100);
+		System.out.println("ClassBoardDTO insertBoard()");
 		try {
 			// 1단계 JDBC 프로그램 가져오기 
 			// 2단계 디비 연결
 			con = new SQLConnection().getConnection();
 
 			// 3단계 문자열 -> sql구문 변경
-			String sql = "insert into class(classSubject,hostId,classPrice,classCategory,classLocation,classContent) values(?,?,?,?,?,?)";
+			String sql = "insert into class(classSubject,hostId,classPrice,classCategory,classLocation,classContent, classFile) values(?,?,?,?,?,?,?)";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, boardDTO.getClassSubject()); 
 			pstmt.setString(2, boardDTO.getHostId()); 
@@ -102,11 +98,9 @@ public class ClassBoardDAO {
 			pstmt.setString(4, boardDTO.getClassCategory());
 			pstmt.setString(5, boardDTO.getClassLocation());
 			pstmt.setString(6, boardDTO.getClassContent());
-			// 파일 추가 
-//			pstmt.setString(7, boardDTO.getFile());
+			pstmt.setString(7, boardDTO.getClassFile());
 			// 4단계 sql구문 실행
 			pstmt.executeUpdate();
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {

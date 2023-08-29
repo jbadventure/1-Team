@@ -177,7 +177,7 @@ ul.tabs li.current{
     <div class="hero-header"></div>
 
     <div class="products">
-        <h3>클래스 제목</h3> 
+        <h3>결제</h3> 
         
  <%
 String memberId = (String)session.getAttribute("memberId");
