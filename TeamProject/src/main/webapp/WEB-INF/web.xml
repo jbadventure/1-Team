@@ -72,13 +72,13 @@
 </servlet>
 
   <servlet-mapping>
-	<servlet-name>PaymentController</servlet-name>
+	<servlet-name>PayController</servlet-name>
 	<url-pattern>*.pa</url-pattern>
 </servlet-mapping>
 
 <servlet>
-	<servlet-name>PaymentController</servlet-name>
-	<servlet-class>com.itwillbs.controller.PaymentController</servlet-class>
+	<servlet-name>PayController</servlet-name>
+	<servlet-class>com.itwillbs.controller.PayController</servlet-class>
 </servlet>
 
   <servlet-mapping>

@@ -2,7 +2,7 @@ package com.itwillbs.domain;
 
 import java.sql.Timestamp;
 
-public class PaymentDTO {
+public class PayDTO {
 
 	private int paymentNum; // 결제번호
 	private int reserveNum; // 예약 번호

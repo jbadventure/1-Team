@@ -1,5 +1,5 @@
 package com.itwillbs.dao;
 
-public class PaymentDAO {
+public class PayDAO {
 
 }
