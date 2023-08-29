@@ -151,6 +151,7 @@ public class MemberController extends HttpServlet {
 				// 세션 객체생성 => 세션 기억장소 안에 로그인값 저장
 				HttpSession session = request.getSession();
 				session.setAttribute("memberId", memberDTO.getMemberId());
+				session.setAttribute("memberType", memberDTO.getMemberType());
 				// 주소 변경하면서 이동 -> 가상주소 main.me 이동
 				response.sendRedirect("main.me");
 			} else {
@@ -310,6 +311,23 @@ public class MemberController extends HttpServlet {
 			dispatcher.forward(request, response);
 		} // update.me
 		
+		if (sPath.equals("/info.me")) {
+			HttpSession session = request.getSession();
+			
+			String memberId = (String)session.getAttribute("memberId");
+			String memberType = (String) session.getAttribute("memberType");
+			System.out.println(memberType);
+			System.out.println(memberId);
+			
+			memberService = new MemberService();
+			
+			if ("guest".equals(memberType)) {
+				 memberService.infoType(request);
+				 response.sendRedirect("member/memberInfo/infoGuest.me");
+			} else {
+			    response.sendRedirect("member/memberInfo/info.me");
+			}
+		}// info.me - 마이페이지 연결
 
 	} 
 }

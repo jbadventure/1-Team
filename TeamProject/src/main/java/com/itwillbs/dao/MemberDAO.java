@@ -335,6 +335,25 @@ public class MemberDAO {
 			dbClose();
 		}
 	}//updatePwMember()
+	
+	public void infoType(MemberDTO memberDTO) {
+		System.out.println("MemberDAO infoType()");
+		try {
+			//1,2 디비연결
+			con = new SQLConnection().getConnection();
+			//3 sql update members set name = ? where id = ?
+			String sql = "select * from member where memberType = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, memberDTO.getMemberType());
+			System.out.println(pstmt);
+			//4 실행
+			rs = pstmt.executeQuery();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			dbClose();
+		}
+	}// infoType() - 마이페이지
 
 
 }

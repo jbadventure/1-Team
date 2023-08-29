@@ -249,7 +249,25 @@ public class MemberService {
 		}
 	}//updatePwMember()	
 
+	public void infoType(HttpServletRequest request) {
+		System.out.println("MemberService infoType()");
+		try {
+			// request 한글처리
+			request.setCharacterEncoding("utf-8");
+			// 변수에 값 담기
+			String memberType = request.getParameter("memberType");
+			// MemberDTO 객체생성 
+			MemberDTO memberDTO = new MemberDTO();
+			// set메서드 호출 파라미터값 저장
+			memberDTO.setMemberId(memberType);
+			// MemberDAO 객체생성
+			memberDAO = new MemberDAO();
+			// updateMember(memberDTO) 메서드 호출
+			memberDAO.infoType(memberDTO);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} // infoType() - 마이페이지
 
 
-	
+	}
 }
