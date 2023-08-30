@@ -34,13 +34,13 @@ public class ReserveController extends HttpServlet{
 		System.out.println("뽑은 가상주소"+sPath);
 		
 		if(sPath.equals("/order.re")) {
-			System.out.println("뽑은가상주소비교 :/writePro.bo");
+			System.out.println("뽑은가상주소비교 :/order.re");
 			// BoardService 객체생성 
 			reserveService = new ReserveService();
 			// 리턴할 형 insertBoard(request) 메서드 호출
 			reserveService.insertReserve(request);
 			// list.bo 주소변경되면서 이동 
-			response.sendRedirect("pay.bo");
+			response.sendRedirect("pay.pa");
 		}
 
 		

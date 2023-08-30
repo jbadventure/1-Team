@@ -26,6 +26,7 @@
  <%
 String memberId = (String)session.getAttribute("memberId");
 ClassBoardDTO boardDTO = (ClassBoardDTO)request.getAttribute("boardDTO");
+
 %>       
 
  <div class="container"> 
@@ -74,19 +75,20 @@ if(memberId != null){
 		%>
 			<div id="btnWrap"><button id="popupBtn">예약하기</button></div>
                  <!-- 모달->입력값 전송 -->
-              <form action = "pay.pa" method="post" id="fr">
+              <form action = "order.re" method="post" id="fr">
                <div id="modalWrap">
                  <div id="modalBody">  
                   <div class="container" align="center">  
                    <h4>상세예약정보입력</h4>
       	            <div>예약 클래스 제목 : <%=boardDTO.getClassSubject() %></div>
+      	            <input type="hidden" name ="payComplete"  id="payComplete" value="no"><!-- payComplete값 기본false전달 -->
       	            <input type="hidden" name ="thumnail"  id="thumnail" value="thumnail"><!-- classFile값 전달 -->
       				<input type="hidden" name ="classSubject"  id="classSubject" value="<%=boardDTO.getClassSubject() %>"><!-- classSubject값 전달 -->
       				<input type="hidden" name ="classNum"  id="classNum" value="<%=boardDTO.getClassNum() %>"><!-- classNum값 전달 -->
       				<input type="hidden" name ="classPrice"  id="classPrice" value="<%=boardDTO.getClassPrice() %>"><!-- classPrice값 전달 -->
       				<input type="hidden" name ="reservationId"  id="reservationId" value="<%=boardDTO.getClassNum() %>"><!-- reservationId값 전달 -->
-                   <div>예약일</div><input type="date" name="reservationDate" id="datePicker" min="" max="" value=""><br><br>
-	               <div>예약인수</div>	<select name ="reservationAmount"  id="peopleCount">
+                   <div>예약일</div><input type="date" name="reservationDate" id="datePicker" min="" max="" value=""><br><br><!-- reservationDate값 전달 -->
+	               <div>예약인수</div>	<select name ="reservationAmount"  id="peopleCount"><!-- reservationAmount값 전달 -->
                                                           <!-- 1부터 10까지 옵션 생성 -->
                                                           <option value="1">1명</option>
                                                           <option value="2">2명</option>

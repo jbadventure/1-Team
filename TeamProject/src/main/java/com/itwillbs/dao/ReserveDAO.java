@@ -20,12 +20,12 @@ public class ReserveDAO {
 	}
 
 	public void insertReserve(ReserveDTO reserveDTO) {
-		System.out.println();
+		System.out.println("ReserveDAO insertReserve");
 		try {
 			//1 2
 			con = new SQLConnection().getConnection();
 			// 3
-			String sql = "insert into reservation (classNum, reservationDate, reservationId, reservationAmount, payComplete) values(?,?,?,?,?)";
+			String sql = "insert into reservation(classNum,reservationDate,reservationId,reservationAmount,payComplete) values(?,?,?,?,?)";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, reserveDTO.getClassNum());
 			pstmt.setTimestamp(2, reserveDTO.getReservationDate());
