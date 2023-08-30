@@ -5,12 +5,18 @@
 
 <!-- head -->
 <head>
+  <link rel="stylesheet" href="shopcss.css">
+  <link href="css/newfile.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>insertGuest.jsp</title>
 </head> 
 
 <!-- body -->
 <body>
+<!-- 헤더들어가는 곳 -->
+<jsp:include page="../../inc/top.jsp"></jsp:include>
+<!-- 헤더들어가는 곳 --> 
 <h1>게스트 회원가입</h1>
 
 <!-- form -->
@@ -268,5 +274,8 @@ $(document).ready(function(){
 });
 
 </script>
+<!-- 푸터들어가는 곳 -->
+<jsp:include page="../../inc/bottom.jsp"></jsp:include>
+<!-- 푸터들어가는 곳 -->
 </body>
 </html>

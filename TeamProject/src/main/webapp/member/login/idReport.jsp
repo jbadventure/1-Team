@@ -3,10 +3,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link rel="stylesheet" href="shopcss.css">
+  <link href="css/newfile.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>idCheck</title>
 </head>
 <body>
+<!-- 헤더들어가는 곳 -->
+<jsp:include page="../../inc/top.jsp"></jsp:include>
+<!-- 헤더들어가는 곳 --> 
 <%
 //로그인 하면 => 로그인한 정보를 세션 저장
 //세션에 로그인 정보 가져오기
@@ -28,5 +34,8 @@ if(memberId != null){
 <input type="button" value="로그인 하기" onclick="location.href='login.me'"> 
 <input type="button" value ="비밀번호 찾기"  onclick="location.href='findPassword.me'" >
 </p>
+<!-- 푸터들어가는 곳 -->
+<jsp:include page="../../inc/bottom.jsp"></jsp:include>
+<!-- 푸터들어가는 곳 -->
 </body>
 </html>
