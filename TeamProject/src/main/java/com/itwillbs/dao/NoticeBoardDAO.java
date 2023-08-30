@@ -131,7 +131,7 @@ public class NoticeBoardDAO {
 	public void updateBoard(NoticeBoardDTO boardDTO) {
 		try {
 			con = new SQLConnection().getConnection();
-			String sql = "update notice set noticeSubject=?,noticeContent=? where num=?";
+			String sql = "update notice set noticeSubject=?,noticeContent=? where noticeNum=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, boardDTO.getNoticeSubject());
 			pstmt.setString(2, boardDTO.getNoticeContent());
