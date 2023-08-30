@@ -353,30 +353,6 @@ public class MemberDAO {
 		}finally {
 			dbClose();
 		}
-	}// infoType() - 마이페이지
-
-	public void getInfoGuest(MemberDTO memberDTO) {
-		System.out.println("MemberDAO getInfoGuest()");
-		try {
-			con = new SQLConnection().getConnection();
-			String sql = "select * from member where memberNickname=? and memberFile=?"; 
-			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1, memberDTO.getMemberNickname());
-			pstmt.setString(2, memberDTO.getMemberFile());
-			System.out.println(pstmt);
-			rs = pstmt.executeQuery();
-			
-//			if(rs.next()) {
-//				memberDTO = new MemberDTO();
-//				memberDTO.setMemberNickname(rs.getString("memberNickname"));
-//				memberDTO.setMemberFile(rs.getString("memberFile"));
-//			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			dbClose();
-		}
-//		return memberDTO;
-	}
+	}// infoType()
 
 }

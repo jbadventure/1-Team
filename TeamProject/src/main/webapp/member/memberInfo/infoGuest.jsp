@@ -11,27 +11,26 @@
 
 <%
 // 세션에서 로그인 정보 가져오기
-
-MemberDTO memberDTO=(MemberDTO)request.getAttribute("memberDTO");
-
-// if (memberNickname == null) {
-//     // 로그인하지 않았을 경우 로그인 페이지로 이동
-//     response.sendRedirect("../login/login.jsp");
-// } else {
+String memberNickname = (String) session.getAttribute("memberNickname");
+String memberFile = (String) session.getAttribute("memberFile");
 %>
 
 
 <h1>게스트 마이페이지</h1>
-<p>닉네임 : <%= memberDTO.getMemberNickname() %></p>
+닉네임 | <%= memberNickname %> <br>
 
-<p>프로필사진 : <a href="upload/<%= memberDTO.getMemberFile() %>" download>
-        <%= memberDTO.getMemberFile() %></a>
-<img src="upload/<%= memberDTO.getMemberFile() %>" 
-         width="100" height="100"></p>
-<input type="button" value="개인정보수정" id="개인정보수정" onclick="location.href='update.me'"><br><br>
-<input type="button" value="예약정보" id="예약정보"><br>
-<input type="button" value="예약관리" id="결제내역"><br>
-<input type="button" value="나의 게시판 활동내역" id="나의 게시판 활동내역">
-<%-- <%} %> --%>
+프로필사진 | <%if(memberFile == null){
+     %>
+                <img src="../../images/DefaultProfile.jpg" width="100" height="100px">
+     <%		}else{
+     %>           
+            	<img src="upload/<%=memberFile %>" width="100" height="100px">
+     <%			 }
+     %><br>
+<input type="button" value="개인정보수정" id="개인정보수정" onclick="location.href='update.me'"><br>
+<input type="button" value="예약정보" id="예약정보" onclick="location.href='reserveInfo.me'"><br>
+<input type="button" value="결제내역" id="결제내역" onclick="location.href='payment.me'"><br>
+<input type="button" value="나의 게시판 활동내역" id="나의 게시판 활동내역"><br>
+
 </body>
 </html>

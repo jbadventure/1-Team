@@ -305,8 +305,10 @@ public class MemberController extends HttpServlet {
 			
 			String memberId = (String)session.getAttribute("memberId");
 			String memberType = (String) session.getAttribute("memberType");
+			String memberFile=(String)session.getAttribute("memberFile");
 			System.out.println(memberType);
 			System.out.println(memberId);
+			System.out.println(memberFile);
 			
 			memberService = new MemberService();
 			
@@ -316,19 +318,36 @@ public class MemberController extends HttpServlet {
 			} else {
 			    response.sendRedirect("member/memberInfo/info.jsp");
 			}
-		}// info.me - 마이페이지 연결
+		}// info.me
 		
 		if(sPath.equals("/infoGuest.me")) {
-			System.out.println("뽑은 가상주소 비교 : /PasswordResetPro.me");
+			System.out.println("뽑은 가상주소 비교 : /infoGuest.me");
 			HttpSession session = request.getSession();
 			String memberNickname=(String)session.getAttribute("memberNickname");
 			String memberFile=(String)session.getAttribute("memberFile");
-			memberService = new MemberService();
-//			MemberDTO memberDTO = memberService.getInfoGuest(memberNickname, memberFile);
-//			request.setAttribute("memberDTO", memberDTO);
+			System.out.println(memberNickname);
+			System.out.println(memberFile);
 			dispatcher 
 		    = request.getRequestDispatcher("member/memberInfo/infoGuest.jsp");
 		dispatcher.forward(request, response);
-		}
+		} // infoGuest.me()
+		
+		if(sPath.equals("/update.me")) {
+			System.out.println("뽑은 가상주소 비교 : /update.me");
+			HttpSession session = request.getSession();
+			String memberId = (String)session.getAttribute("memberId");
+			String memberNickname = (String)session.getAttribute("memberNickname");
+			String memberName = (String)session.getAttribute("memberName");
+			String memberBirthday = (String)session.getAttribute("memberBirthday");
+			String memberGender = (String)session.getAttribute("memberGender");
+			String memberPhoneNumber = (String)session.getAttribute("memberPhoneNumber");
+			String memberEmail = (String)session.getAttribute("memberEmail");
+			
+//			memberService = new MemberService();
+//			request.setAttribute("memberDTO", memberDTO);
+			dispatcher 
+		    = request.getRequestDispatcher("member/memberInfo/update.jsp");
+		dispatcher.forward(request, response);
+		}// update.me()
 	} 
 }

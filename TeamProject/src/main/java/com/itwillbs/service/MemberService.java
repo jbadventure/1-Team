@@ -268,30 +268,4 @@ public class MemberService {
 			e.printStackTrace();
 		}
 	}// infoType() - 마이페이지
-
-		public void getInfoGuest(HttpServletRequest request) {
-			System.out.println("MemberService getInfoGuest()");
-			try {
-				request.setCharacterEncoding("utf-8");
-				String memberNickname=(String)request.getSession().getAttribute("memberNickname");
-				String memberFile=(String)request.getSession().getAttribute("memberFile");
-				MemberDTO memberDTO = new MemberDTO();
-				memberDTO.setMemberNickname(memberNickname);
-				memberDTO.setMemberFile(memberFile);
-				memberDAO = new MemberDAO();
-				memberDAO.getInfoGuest(memberDTO);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-//			MemberDTO memberDTO = null;
-//			try {
-//				memberDAO = new MemberDAO();
-//				memberDTO = memberDAO.getInfoGuest(memberNickname, memberFile);
-//
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			}
-//			return memberDTO;
-		}
-
 }
