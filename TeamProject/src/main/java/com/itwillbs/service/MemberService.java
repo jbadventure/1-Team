@@ -28,7 +28,8 @@ public class MemberService {
 				String emailop1 = request.getParameter("emailop1");
 				String emailop2 = request.getParameter("emailop2");
 				String address = request.getParameter("address");
-
+				String memberType = request.getParameter("memberType");
+				
 				String phoneNum = phone1+phone2+phone3;
 				String email = emailop1+'@'+emailop2;
 				
@@ -44,6 +45,7 @@ public class MemberService {
 				memberDTO.setMemberPhoneNum(phoneNum);
 				memberDTO.setMemberEmail(email);
 				memberDTO.setMemberLocation(address);
+				memberDTO.setMemberType(memberType);
 				 
 				System.out.println(memberDTO);
 				
@@ -81,6 +83,7 @@ public class MemberService {
 				String emailop1 = request.getParameter("emailop1");
 				String emailop2 = request.getParameter("emailop2");
 				String bNum = request.getParameter("bNum");
+				String memberType = request.getParameter("memberType");
 						
 				String phoneNum = phone1 + phone2 + phone3;
 				String email = emailop1 + '@' + emailop2;
@@ -96,6 +99,7 @@ public class MemberService {
 				memberDTO.setMemberPhoneNum(phoneNum);
 				memberDTO.setMemberEmail(email);
 				memberDTO.setBusinessNum(bNum);
+				memberDTO.setMemberType(memberType);
 						
 				// MemberDAO 객체생성 후 insertMember() 메서드 정의 : MemberDTO 데이터(id,pass,name 등)가 저장된 주소값을 들고감
 				memberDAO = new MemberDAO();
@@ -245,7 +249,23 @@ public class MemberService {
 		}
 	}//updatePwMember()	
 
-
-
-	
+	public void infoType(HttpServletRequest request) {
+		System.out.println("MemberService infoType()");
+		try {
+			// request 한글처리
+			request.setCharacterEncoding("utf-8");
+			// 변수에 값 담기
+			String memberType=(String)request.getSession().getAttribute("memberType");
+			// MemberDTO 객체생성 
+			MemberDTO memberDTO = new MemberDTO();
+			// set메서드 호출 파라미터값 저장
+			memberDTO.setMemberType(memberType);
+			// MemberDAO 객체생성
+			memberDAO = new MemberDAO();
+			// updateMember(memberDTO) 메서드 호출
+			memberDAO.infoType(memberDTO);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}// infoType() - 마이페이지
 }

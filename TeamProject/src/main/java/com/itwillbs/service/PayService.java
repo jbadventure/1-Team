@@ -1,5 +1,5 @@
 package com.itwillbs.service;
 
-public class PaymentService {
+public class PayService {
 
 }

@@ -47,6 +47,10 @@ ClassBoardDTO boardDTO = (ClassBoardDTO)request.getAttribute("boardDTO");
 				<td>Class 소개</td>
 				<td><textarea rows="10" cols="20" name="classContent"><%=boardDTO.getClassContent() %></textarea></td>
 			</tr>
+			<tr><td>대표 이미지</td>
+			<td><input type="file" name="classFile">
+			    <input type="hidden" name="oldclassFile" value="<%=boardDTO.getClassFile()%>"><br>
+			    <%=boardDTO.getClassFile()%></td></tr>
 		</table>
 		<div id="table_search">
 			<input type="submit" value="글쓰기" class="btn">

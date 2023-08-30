@@ -9,6 +9,8 @@ import com.itwillbs.dao.ClassBoardDAO;
 import com.itwillbs.domain.ClassBoardDTO;
 import com.itwillbs.domain.PageDTO;
 import com.mysql.cj.Session;
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 public class ClassBoardService {
 	
@@ -55,12 +57,25 @@ public class ClassBoardService {
 		try {
 			// request 한글처리 
 			request.setCharacterEncoding("utf-8");
-			// request 파라미터값 가져오기 
-			String classSubject = request.getParameter("classSubject");
-			int classPrice = Integer.parseInt(request.getParameter("classPrice"));
-			String classCategory = request.getParameter("classCategory");
-			String classLocation = request.getParameter("classLocation");
-			String classContent = request.getParameter("classContent");
+			
+//			MultipartRequest 객체생성 사용 => 폴더에 파일업로드, 파라미터정보저장
+//			import com.oreilly.servlet.MultipartRequest;
+//			생성자 1) request 2) 업로드 할 파일경로 3) 파일크기 4) 한글처리 5) 파일이름변경
+//			업로드 폴더 만들기 webapp - upload 폴더만들기
+//			업로드 폴더 경로 => 물리적 경로
+			String uploadPath = request.getRealPath("/upload");
+			int maxSize = 10*1024*1024; 
+			MultipartRequest multi 
+			= new MultipartRequest(request, uploadPath, maxSize, "utf-8", new DefaultFileRenamePolicy());
+			
+			// multi 파라미터값 가져오기 
+			String classSubject = multi.getParameter("classSubject");
+			int classPrice = Integer.parseInt(multi.getParameter("classPrice"));
+			String classCategory = multi.getParameter("classCategory");
+			String classLocation = multi.getParameter("classLocation");
+			String classContent = multi.getParameter("classContent");
+			String classFile = multi.getFilesystemName("classFile");
+			
 			// BoardDAO 객체생성 
 			boardDAO = new ClassBoardDAO();
 			// BoardDTO 객체생성  
@@ -73,6 +88,7 @@ public class ClassBoardService {
 			boardDTO.setClassCategory(classCategory);
 			boardDTO.setClassLocation(classLocation);
 			boardDTO.setClassContent(classContent);
+			boardDTO.setClassFile(classFile);
 			System.out.println(boardDTO.getHostId());
 			// 리턴할형없음 insertBoard(boardDTO) 호출 
 			boardDAO.insertBoard(boardDTO);
@@ -81,26 +97,6 @@ public class ClassBoardService {
 		}
 	}//insertBoard()
 
-	public ClassBoardDTO getBoard(HttpServletRequest request) {
-		System.out.println("ClassBoardService getBoard()");
-		ClassBoardDTO boardDTO = null;
-		try {
-			// request 한글처리 
-			request.setCharacterEncoding("utf-8");
-			// request에 classNum 파라미터 값 가져오기
-			int classNum = Integer.parseInt(request.getParameter("classNum"));
-			System.out.println(classNum);
-			// BoardDAO 객체생성 
-			boardDAO = new ClassBoardDAO();
-			// boardDTO = getBoard(classNum);
-			boardDTO = boardDAO.getBoard(classNum);
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return boardDTO;
-	} // getBoard
-	
 	public void updateBoard(HttpServletRequest request) {
 		System.out.println("ClassBoardService updateBoard()");
 		try {
@@ -143,6 +139,26 @@ public class ClassBoardService {
 				e.printStackTrace();
 			}
 	}// deleteBoard
+
+	public ClassBoardDTO getBoard(HttpServletRequest request) {
+		System.out.println("ClassBoardService getBoard()");
+		ClassBoardDTO boardDTO = null;
+		try {
+			// request 한글처리 
+			request.setCharacterEncoding("utf-8");
+			// request에 classNum 파라미터 값 가져오기
+			int classNum = Integer.parseInt(request.getParameter("classNum"));
+			System.out.println(classNum);
+			// BoardDAO 객체생성 
+			boardDAO = new ClassBoardDAO();
+			// boardDTO = getBoard(classNum);
+			boardDTO = boardDAO.getBoard(classNum);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return boardDTO;
+	} // getBoard
 	
 
 }// 클래스

@@ -5,12 +5,19 @@
 
 <!-- head -->
 <head>
+  <link rel="stylesheet" href="shopcss.css">
+  <link href="css/newfile.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
 <meta charset="UTF-8"> 
+  
 <title>insertHost.jsp</title>
 </head> 
-
 <!-- body -->
 <body>
+<!-- 헤더들어가는 곳 -->
+<jsp:include page="../../inc/top.jsp"></jsp:include>
+<!-- 헤더들어가는 곳 --> 
+
 <h1>호스트 회원가입</h1>
 
 <!-- form -->
@@ -44,6 +51,7 @@
 
 <input type="checkbox" value="이용약관" id="agree">위 이용약관에 동의합니다. <a href="../join/agree.jsp">이용약관</a><br>
 <div id="div12"></div>
+<input type="hidden" value="host" name="memberType" id="memberType">
 <input type="button" value="회원가입" id="btn1">
 </form>
 
@@ -262,5 +270,8 @@ alert("클릭");
 });
 
 </script>
+ <!-- 푸터들어가는 곳 -->
+<jsp:include page="../../inc/bottom.jsp"></jsp:include>
+<!-- 푸터들어가는 곳 -->
 </body>
 </html>

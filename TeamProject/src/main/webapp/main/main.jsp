@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ 
 <!DOCTYPE html>
 <html>
 <head>
@@ -69,15 +70,34 @@
                   <!-- RD Navbar Brand-->
                   <div class="rd-navbar-brand"><a class="brand" href="index.html"><img class="brand-logo-dark" src="images/logo-198x66.png" alt="" width="198" height="66"/></a></div>
                 </div>
+                <%
+                String memberId=(String)session.getAttribute("memberId");
+                if(memberId == null)  {
+                %> 
                 <div class="menu-search">
                 	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/noticeList.nbo" style="font-size:18px">공지사항</a></div>
                 	<div class="rd-nav-item"><a class="rd-nav-link" href="#">자주 묻는 질문</a></div>
                 	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/classList.cbo">클래스테스트</a></div>
+                	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/pay.pa">결제테스트</a></div>
                 	<div class="rd-nav-item"><input type="search" placeholder="지금 생각나는 취미를 검색하세요." class="rd-nav-searchbar"></div>
                 	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/ghselect.me">회원가입</a></div>
                 	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/login.me" >로그인</a></div>
+                </div>
+                <%
+                } else {
+                %>
+                <div class="menu-search">
+                	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/noticeList.nbo" style="font-size:18px">공지사항</a></div>
+                	<div class="rd-nav-item"><a class="rd-nav-link" href="#">자주 묻는 질문</a></div>
+                	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/classList.cbo">클래스테스트</a></div>
+                	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/pay.pa">결제테스트</a></div>
+                	<div class="rd-nav-item"><input type="search" placeholder="지금 생각나는 취미를 검색하세요." class="rd-nav-searchbar"></div>
+                	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/logout.me" >로그아웃</a></div>
                 	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/info.me">마이페이지</a></div>
                 </div>
+                <%
+                }
+                %>
                 <!-- <ul class="menu-search">
                       <li class="rd-nav-item active" style="padding:1px 50px"><a class="rd-nav-link" href="index.html" style="font-size:18px; padding:32px 50px">공지사항</a>
                       </li>

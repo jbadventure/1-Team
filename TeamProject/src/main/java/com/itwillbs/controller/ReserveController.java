@@ -8,12 +8,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.itwillbs.service.ReserveService;
 import com.itwillbs.service.ClassBoardService;
 
 public class ReserveController extends HttpServlet{
 	
 	RequestDispatcher dispatcher =null;
-	ClassBoardService boardService = null;
+	ReserveService reserveService = null;
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -32,9 +33,16 @@ public class ReserveController extends HttpServlet{
 		String sPath = request.getServletPath();
 		System.out.println("뽑은 가상주소"+sPath);
 		
-		if (sPath.equals("/reservation.re")) {
-			dispatcher = request.getRequestDispatcher("board/reservation/reservation.jsp");
-			dispatcher.forward(request, response);
-		} // classWrite 
+		if(sPath.equals("/order.re")) {
+			System.out.println("뽑은가상주소비교 :/order.re");
+			// BoardService 객체생성 
+			reserveService = new ReserveService();
+			// 리턴할 형 insertBoard(request) 메서드 호출
+			reserveService.insertReserve(request);
+			// list.bo 주소변경되면서 이동 
+			response.sendRedirect("pay.pa");
+		}
+
+		
 	}
 }

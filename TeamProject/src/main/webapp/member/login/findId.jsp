@@ -3,10 +3,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link rel="stylesheet" href="shopcss.css">
+  <link href="css/newfile.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
+<!-- 헤더들어가는 곳 -->
+<jsp:include page="../../inc/top.jsp"></jsp:include>
+<!-- 헤더들어가는 곳 --> 
 <h1>아이디찾기</h1>
 
 <!-- form -->
@@ -53,7 +59,6 @@
 			
 // 			//	$('#div1').html("회원정보가 일치하지 않습니다").css("color","red"); 
 // 			//}
-// 			//https://chicken-tender-2019.tistory.com/126 참고하여 내일 수정하겠습니다.
 // 		} else {
 			
 // 			// return;
@@ -64,9 +69,9 @@
 
 
 </script>
-
-</body>
-</html>
+<!-- 푸터들어가는 곳 -->
+<jsp:include page="../../inc/bottom.jsp"></jsp:include>
+<!-- 푸터들어가는 곳 -->
 
 </body>
 </html>

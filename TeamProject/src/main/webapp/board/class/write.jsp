@@ -12,7 +12,7 @@ String memberId = (String)session.getAttribute("memberId");
 %>
 	<h1>Class 등록</h1>
 	
-	<form action="classWritePro.cbo" method="post">
+	<form action="classWritePro.cbo" method="post" enctype="multipart/form-data">
 		<table id="notice">
 			<tr>
 				<td>Class 제목</td>
@@ -45,6 +45,8 @@ String memberId = (String)session.getAttribute("memberId");
 				<td>Class 소개</td>
 				<td><textarea rows="10" cols="20" name="classContent"></textarea></td>
 			</tr>
+			<tr><td>대표 이미지</td>
+			<td><input type="file" name="classFile"></td></tr>
 		</table>
 		<div id="table_search">
 			<input type="submit" value="글쓰기" class="btn">

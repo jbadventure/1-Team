@@ -151,6 +151,7 @@ public class MemberController extends HttpServlet {
 				// 세션 객체생성 => 세션 기억장소 안에 로그인값 저장
 				HttpSession session = request.getSession();
 				session.setAttribute("memberId", memberDTO.getMemberId());
+				session.setAttribute("memberType", memberDTO.getMemberType());
 				// 주소 변경하면서 이동 -> 가상주소 main.me 이동
 				response.sendRedirect("main.me");
 			} else {
@@ -300,15 +301,53 @@ public class MemberController extends HttpServlet {
 		} // PasswordResetPro
 		
 		if (sPath.equals("/info.me")) {
-			dispatcher = request.getRequestDispatcher("member/memberInfo/info.jsp");
-			dispatcher.forward(request, response);
-		} // info.me
-
+			HttpSession session = request.getSession();
+			
+			String memberId = (String)session.getAttribute("memberId");
+			String memberType = (String) session.getAttribute("memberType");
+			String memberFile=(String)session.getAttribute("memberFile");
+			System.out.println(memberType);
+			System.out.println(memberId);
+			System.out.println(memberFile);
+			
+			memberService = new MemberService();
+			
+			if(memberType.equals("guest")){
+				 memberService.infoType(request);
+				 response.sendRedirect("member/memberInfo/infoGuest.jsp");
+			} else {
+			    response.sendRedirect("member/memberInfo/info.jsp");
+			}
+		}// info.me
 		
-		if (sPath.equals("/update.me")) {
-			dispatcher = request.getRequestDispatcher("member/memberInfo/update.jsp");
-			dispatcher.forward(request, response);
-		} // update.me
-
+		if(sPath.equals("/infoGuest.me")) {
+			System.out.println("뽑은 가상주소 비교 : /infoGuest.me");
+			HttpSession session = request.getSession();
+			String memberNickname=(String)session.getAttribute("memberNickname");
+			String memberFile=(String)session.getAttribute("memberFile");
+			System.out.println(memberNickname);
+			System.out.println(memberFile);
+			dispatcher 
+		    = request.getRequestDispatcher("member/memberInfo/infoGuest.jsp");
+		dispatcher.forward(request, response);
+		} // infoGuest.me()
+		
+		if(sPath.equals("/update.me")) {
+			System.out.println("뽑은 가상주소 비교 : /update.me");
+			HttpSession session = request.getSession();
+			String memberId = (String)session.getAttribute("memberId");
+			String memberNickname = (String)session.getAttribute("memberNickname");
+			String memberName = (String)session.getAttribute("memberName");
+			String memberBirthday = (String)session.getAttribute("memberBirthday");
+			String memberGender = (String)session.getAttribute("memberGender");
+			String memberPhoneNumber = (String)session.getAttribute("memberPhoneNumber");
+			String memberEmail = (String)session.getAttribute("memberEmail");
+			
+//			memberService = new MemberService();
+//			request.setAttribute("memberDTO", memberDTO);
+			dispatcher 
+		    = request.getRequestDispatcher("member/memberInfo/update.jsp");
+		dispatcher.forward(request, response);
+		}// update.me()
 	} 
 }
