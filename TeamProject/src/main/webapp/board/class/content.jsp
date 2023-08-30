@@ -134,77 +134,14 @@ if(memberId != null){
 </div>
 </div>
 
-
-<script type="text/javascript" 
-        src="script/jquery-3.7.0.js"></script>
-<script type="text/javascript">
-
-// !탭 
-$(document).ready(function(){
-   
-  $('ul.tabs li').click(function(){
-    var tab_id = $(this).attr('data-tab');
- 
-    $('ul.tabs li').removeClass('current');
-    $('.tab-content').removeClass('current');
- 
-    $(this).addClass('current');
-    $("#"+tab_id).addClass('current');
-  })
-})
-
-// !모달기능
-
-const btn = document.getElementById('popupBtn');
-const modal = document.getElementById('modalWrap');
-const closeBtn = document.getElementById('closeBtn');
-
-btn.onclick = function() {
-  modal.style.display = 'block';
-}
-closeBtn.onclick = function() {
-  modal.style.display = 'none';
-}
-
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
-
-// !달력날짜선택
-//Get today's date
-const today = new Date();
-
-// Calculate the date for tomorrow
-const tomorrow = new Date(today);
-tomorrow.setDate(today.getDate() + 1);
-
-// Calculate the date 28 days from today
-const maxDate = new Date(today);
-maxDate.setDate(today.getDate() + 28);
-
-// Format the dates in 'YYYY-MM-DD' format
-const formattedTomorrow = tomorrow.toISOString().split('T')[0];
-const formattedMaxDate = maxDate.toISOString().split('T')[0];
-
-// Set the minimum and maximum values for the input
-const datePicker = document.getElementById('datePicker');
-datePicker.min = formattedTomorrow;
-datePicker.max = formattedMaxDate;
-
-//모달-셀렉트박스 인원선택 
-const peopleCount = document.getElementById("peopleCount");
-    
-
-confirmBtn.addEventListener("click", () => {
-        const selectedCount = peopleCount.value;
-        alert(`선택된 인원 수: ${selectedCount}`);
-        modal.style.display = "none";
-    });
-
-</script>
-
-
+<script type="text/javascript"  src="script/jquery-3.7.0.js"></script>
+<script src ="js/modal.js"> </script>
+<script src ="js/tabs.js"></script>
+<script src ="js/selectDate.js"></script>
+<script src ="js/selectBox.js"></script>
+<script type="text/javascript"></script>
+<!-- 푸터들어가는 곳 -->
+<jsp:include page="../../inc/bottom.jsp"></jsp:include>
+<!-- 푸터들어가는 곳 -->
 </body>
 </html>
