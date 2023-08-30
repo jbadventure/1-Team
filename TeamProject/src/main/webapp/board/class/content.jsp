@@ -28,8 +28,7 @@ String memberId = (String)session.getAttribute("memberId");
 ClassBoardDTO boardDTO = (ClassBoardDTO)request.getAttribute("boardDTO");
 %>       
 
- <div class="container">
- 
+ <div class="container"> 
   <ul class="tabs"><!--탭메뉴-->
     <li class="tab-link current" data-tab="tab-1">클래스 내용</li>
     <li class="tab-link" data-tab="tab-2">클래스 정보</li>

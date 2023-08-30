@@ -9,8 +9,6 @@
 // response.sendRedirect("insertGuest.me");
 //response.sendRedirect("insertHost.me");
 
- 
-
 
 
 %>

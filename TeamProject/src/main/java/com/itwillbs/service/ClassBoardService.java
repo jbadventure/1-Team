@@ -97,26 +97,6 @@ public class ClassBoardService {
 		}
 	}//insertBoard()
 
-	public ClassBoardDTO getBoard(HttpServletRequest request) {
-		System.out.println("ClassBoardService getBoard()");
-		ClassBoardDTO boardDTO = null;
-		try {
-			// request 한글처리 
-			request.setCharacterEncoding("utf-8");
-			// request에 classNum 파라미터 값 가져오기
-			int classNum = Integer.parseInt(request.getParameter("classNum"));
-			System.out.println(classNum);
-			// BoardDAO 객체생성 
-			boardDAO = new ClassBoardDAO();
-			// boardDTO = getBoard(classNum);
-			boardDTO = boardDAO.getBoard(classNum);
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return boardDTO;
-	} // getBoard
-	
 	public void updateBoard(HttpServletRequest request) {
 		System.out.println("ClassBoardService updateBoard()");
 		try {
@@ -159,6 +139,26 @@ public class ClassBoardService {
 				e.printStackTrace();
 			}
 	}// deleteBoard
+
+	public ClassBoardDTO getBoard(HttpServletRequest request) {
+		System.out.println("ClassBoardService getBoard()");
+		ClassBoardDTO boardDTO = null;
+		try {
+			// request 한글처리 
+			request.setCharacterEncoding("utf-8");
+			// request에 classNum 파라미터 값 가져오기
+			int classNum = Integer.parseInt(request.getParameter("classNum"));
+			System.out.println(classNum);
+			// BoardDAO 객체생성 
+			boardDAO = new ClassBoardDAO();
+			// boardDTO = getBoard(classNum);
+			boardDTO = boardDAO.getBoard(classNum);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return boardDTO;
+	} // getBoard
 	
 
 }// 클래스
