@@ -28,7 +28,7 @@ public class ReserveDAO {
 			String sql = "insert into reservation(classNum,reservationDate,reservationId,reservationAmount,payComplete) values(?,?,?,?,?)";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, reserveDTO.getClassNum());
-			pstmt.setTimestamp(2, reserveDTO.getReservationDate());
+			pstmt.setString(2, reserveDTO.getReservationDate());
 			pstmt.setString(3, reserveDTO.getReservationId()); 
 			pstmt.setInt(4, reserveDTO.getReservationAmount());
 			pstmt.setString(5, reserveDTO.getPayComplete()); 			
