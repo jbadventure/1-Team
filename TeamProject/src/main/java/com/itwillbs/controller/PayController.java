@@ -19,13 +19,13 @@ public class PayController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("PayController doGet()");
 		doProcess(request, response);
-	}//doGet()
+	}// doGet()
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("PayController doPost()");
 		doProcess(request, response);
-	}//doPost()
+	}// doPost()
 	
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("PayController doProcess()");
@@ -37,5 +37,13 @@ public class PayController extends HttpServlet {
 			dispatcher.forward(request, response);
 		}
 		
-	}
-}
+//		if (sPath.equals("/payPro.pa")) { // 결제페이지로 이동
+//			dispatcher = request.getRequestDispatcher("order/kakaopay.jsp");
+//			dispatcher.forward(request, response);
+//		}
+		
+		
+		
+		
+	}// doProcess()
+}// class

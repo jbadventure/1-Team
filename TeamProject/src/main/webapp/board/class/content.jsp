@@ -52,10 +52,10 @@ ClassBoardDTO boardDTO = (ClassBoardDTO)request.getAttribute("boardDTO");
     <%      
       		if(boardDTO.getClassFile() == null){
      %>
-                <img src="images/logo-198x66.png" width="320" height="212" name="thumnail">
+                <img src="images/logo-198x66.png" width="320" height="212">
      <%		}else{
      %>           
-            	<img src="upload/<%=boardDTO.getClassFile() %>" width="320" height="212" name="thumnail">
+            	<img src="upload/<%=boardDTO.getClassFile() %>" width="320" height="212">
      <%			 }
      %>
 </td></tr>
@@ -82,7 +82,7 @@ if(memberId != null){
                    <h4>상세예약정보입력</h4>
       	            <div>예약 클래스 제목 : <%=boardDTO.getClassSubject() %></div>
       	            <input type="hidden" name ="payComplete"  id="payComplete" value="no"><!-- payComplete값 기본false전달 -->
-      	            <input type="hidden" name ="thumnail"  id="thumnail" value="thumnail"><!-- classFile값 전달 -->
+      	            <input type="hidden" name ="classFile"  id="classFile" value="<%=boardDTO.getClassFile() %>"><!-- classFile값 전달 -->
       				<input type="hidden" name ="classSubject"  id="classSubject" value="<%=boardDTO.getClassSubject() %>"><!-- classSubject값 전달 -->
       				<input type="hidden" name ="classNum"  id="classNum" value="<%=boardDTO.getClassNum() %>"><!-- classNum값 전달 -->
       				<input type="hidden" name ="classPrice"  id="classPrice" value="<%=boardDTO.getClassPrice() %>"><!-- classPrice값 전달 -->

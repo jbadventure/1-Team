@@ -6,6 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>결제하기</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 </head>
 <style type="text/css">
   
@@ -181,37 +183,117 @@ ul.tabs li.current{
 <h3>결제</h3> 
  <%
 String memberId = (String)session.getAttribute("memberId");
-%>       
+%>   
+ 
 <%
 request.setCharacterEncoding("utf-8");
-String thumnail = request.getParameter("thumnail"); // 전달
+String classFile = request.getParameter("classFile"); // 전달
 String classSubject = request.getParameter("classSubject");
 String classPrice = request.getParameter("classPrice");
+// int classPrice = Integer.parseInt(request.getParameter("classPrice"));
 String reservationDate = request.getParameter("reservationDate");
 String reservationAmount = request.getParameter("reservationAmount");
+// int reservationAmount = Integer.parseInt(request.getParameter("reservationAmount"));
+// int totalPrice = classPrice*reservationAmount;
 %>
  
-<form action="payPro.pa" method="post">
-                <img src="images/logo-198x66.png" width="107" height="71">
-<table id="class-content">
-<tr><td>팔레트정보</td></tr>
-<tr><td>이미지파일</td><td>
+<form action="payPro.pa" method="post" id="myfr">
+<fieldset style="border:0">
+<legend>팔레트정보</legend>
+<table>
+<tr><td>
     <%      
-      		if(thumnail == null){
+      		if(classFile == null){
      %>
-                <img src="images/logo-198x66.png" width="107" height="71" name="thumnail">
+                <img src="images/logo-198x66.png" width="107" height="71">
      <%		}else{
      %>           
-            	<img src="upload/<%=thumnail %>" width="107" height="71" name="thumnail">
+            	<img src="upload/<%=classFile %>" width="107" height="71">
      <%			 }
      %>
 </td></tr> 
 <tr><td>클래스제목 <%=classSubject %></td></tr>
 <tr><td>예약날짜 <%=reservationDate %></td></tr>
 <tr><td>예약인원 <%=reservationAmount %></td></tr>
-<tr><td>총 결제금액 <%=classPrice %> * <%=reservationAmount %></td></tr>    
 </table>
-<input type="submit" value="결제하기" class="btn">
+</fieldset>
+<fieldset style="border:0">
+<legend>결제수단</legend>
+<input type="radio" name="payMethod" id="card" value="card">신용/체크카드<br>
+<input type="radio" name="payMethod" id="kakaopay" value="kakaopay" checked>카카오페이<br>
+<input type="radio" name="payMethod" id="deposit" value="deposit">무통장입금<br>
+</fieldset>
+
+<%-- <legend>총 결제금액 <%=totalPrice%></legend> --%>
+<!-- <input type="hidden" name ="payMethod" id="card" value="card"> -->
+<!-- <input type="hidden" name ="payMethod" id="kakaopay" value="kakaopay"> -->
+<!-- <input type="hidden" name ="payMethod" id="deposit" value="deposit"> -->
+<!-- <input type="button" id="payment-kakaopay" value="카카오페이 결제하기"> -->
+<input type="submit" value="결제하기">
 </form>
+
+<script type="text/javascript">
+// var payCheck = $('input[name=payMethod]:checked').val();
+
+$(document).ready(function() {
+	$('#myfr').submit(function() {
+	    if($('input[name=payMethod]:checked').val() == "kakaopay") {
+	        var IMP = window.IMP; // 생략가능
+	        IMP.init('imp42834230'); 
+	        // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
+	        // i'mport 관리자 페이지 -> 내정보 -> 가맹점식별코드
+	        IMP.request_pay({
+	            pg: 'kakaopay', // version 1.1.0부터 지원.
+	            pay_method: 'card',
+	            /* 
+	                'samsung':삼성페이, 
+	                'card':신용카드, 
+	                'trans':실시간계좌이체,
+	                'vbank':가상계좌,
+	                'phone':휴대폰소액결제 
+	            */
+	            merchant_uid: 'merchant_' + new Date().getTime(),
+	            /* 
+	                merchant_uid에 경우 
+	                https://docs.iamport.kr/implementation/payment
+	                위에 url에 따라가시면 넣을 수 있는 방법이 있습니다.
+	                참고하세요. 
+	                나중에 포스팅 해볼게요.
+	             */
+	            name: '주문명:결제테스트',
+	            //결제창에서 보여질 이름
+	            amount: 1000, 
+	            //가격 
+	            buyer_email: 'iamport@siot.do',
+	            buyer_name: '구매자이름',
+	            buyer_tel: '010-1234-5678',
+	            buyer_addr: '서울특별시 강남구 삼성동',
+	            buyer_postcode: '123-456',
+	            m_redirect_url: 'https://www.yourdomain.com/payments/complete'
+	            /*  
+	                모바일 결제시,
+	                결제가 끝나고 랜딩되는 URL을 지정 
+	                (카카오페이, 페이코, 다날의 경우는 필요없음. PC와 마찬가지로 callback함수로 결과가 떨어짐) 
+	                */
+	        }, function (rsp) {
+	            console.log(rsp);
+	            if (rsp.success) {
+	                var msg = '결제가 완료되었습니다.';
+	                msg += '고유ID : ' + rsp.imp_uid;
+	                msg += '상점 거래ID : ' + rsp.merchant_uid;
+	                msg += '결제 금액 : ' + rsp.paid_amount;
+	                msg += '카드 승인번호 : ' + rsp.apply_num;
+	            } else {
+	                var msg = '결제에 실패하였습니다.';
+	                msg += '에러내용 : ' + rsp.error_msg;
+	            }
+	            alert(msg);
+	        });
+// 	        return true;
+	    });
+    });
+</script>
+
+
 </body>
 </html>
