@@ -183,18 +183,18 @@ ul.tabs li.current{
 <h3>결제</h3> 
  <%
 String memberId = (String)session.getAttribute("memberId");
-%>   
- 
-<%
-request.setCharacterEncoding("utf-8");
-String classFile = request.getParameter("classFile"); // 전달
-String classSubject = request.getParameter("classSubject");
-String classPrice = request.getParameter("classPrice");
+// request.setCharacterEncoding("utf-8");
+// String classFile = request.getParameter("classFile"); // 전달
+// String classSubject = request.getParameter("classSubject");
+// String classPrice = request.getParameter("classPrice");
 // int classPrice = Integer.parseInt(request.getParameter("classPrice"));
-String reservationDate = request.getParameter("reservationDate");
-String reservationAmount = request.getParameter("reservationAmount");
+// String reservationDate = request.getParameter("reservationDate");
+// String reservationAmount = request.getParameter("reservationAmount");
 // int reservationAmount = Integer.parseInt(request.getParameter("reservationAmount"));
 // int totalPrice = classPrice*reservationAmount;
+
+String classFile = (String)session.getAttribute("classFile");
+String classSubject = (String)session.getAttribute("classSubject");
 %>
  
 <form action="payPro.pa" method="post" id="myfr">
@@ -213,8 +213,8 @@ String reservationAmount = request.getParameter("reservationAmount");
      %>
 </td></tr> 
 <tr><td>클래스제목 <%=classSubject %></td></tr>
-<tr><td>예약날짜 <%=reservationDate %></td></tr>
-<tr><td>예약인원 <%=reservationAmount %></td></tr>
+<tr><td>예약날짜 </td></tr>
+<tr><td>예약인원 </td></tr>
 </table>
 </fieldset>
 <fieldset style="border:0">
@@ -225,6 +225,7 @@ String reservationAmount = request.getParameter("reservationAmount");
 </fieldset>
 
 <%-- <legend>총 결제금액 <%=totalPrice%></legend> --%>
+
 <!-- <input type="hidden" name ="payMethod" id="card" value="card"> -->
 <!-- <input type="hidden" name ="payMethod" id="kakaopay" value="kakaopay"> -->
 <!-- <input type="hidden" name ="payMethod" id="deposit" value="deposit"> -->
@@ -233,15 +234,17 @@ String reservationAmount = request.getParameter("reservationAmount");
 </form>
 
 <script type="text/javascript">
-// var payCheck = $('input[name=payMethod]:checked').val();
 
 $(document).ready(function() {
+alert("시작");	
+
 	$('#myfr').submit(function() {
+// 		alert($('input[name=payMethod]:checked').val());
+	
+	
 	    if($('input[name=payMethod]:checked').val() == "kakaopay") {
 	        var IMP = window.IMP; // 생략가능
-	        IMP.init('imp42834230'); 
-	        // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
-	        // i'mport 관리자 페이지 -> 내정보 -> 가맹점식별코드
+	        IMP.init('imp42834230'); // 가맹점 식별코드
 	        IMP.request_pay({
 	            pg: 'kakaopay', // version 1.1.0부터 지원.
 	            pay_method: 'card',
@@ -260,10 +263,8 @@ $(document).ready(function() {
 	                참고하세요. 
 	                나중에 포스팅 해볼게요.
 	             */
-	            name: '주문명:결제테스트',
-	            //결제창에서 보여질 이름
-	            amount: 1000, 
-	            //가격 
+	            name: '주문명:결제테스트', //결제창에서 보여질 이름
+	            amount: 1000, //가격 
 	            buyer_email: 'iamport@siot.do',
 	            buyer_name: '구매자이름',
 	            buyer_tel: '010-1234-5678',
@@ -288,7 +289,9 @@ $(document).ready(function() {
 	                msg += '에러내용 : ' + rsp.error_msg;
 	            }
 	            alert(msg);
+	        	
 	        });
+		}
 // 	        return true;
 	    });
     });
