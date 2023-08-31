@@ -21,7 +21,7 @@ String memberFile = (String) session.getAttribute("memberFile");
 
 프로필사진 | <%if(memberFile == null){
      %>
-                <img src="../../images/DefaultProfile.jpg" width="100" height="100px">
+                <img src="images/DefaultProfile.jpg" width="100" height="100px">
      <%		}else{
      %>           
             	<img src="upload/<%=memberFile %>" width="100" height="100px">

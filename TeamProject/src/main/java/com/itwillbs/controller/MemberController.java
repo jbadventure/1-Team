@@ -334,20 +334,30 @@ public class MemberController extends HttpServlet {
 		
 		if(sPath.equals("/update.me")) {
 			System.out.println("뽑은 가상주소 비교 : /update.me");
+			
 			HttpSession session = request.getSession();
 			String memberId = (String)session.getAttribute("memberId");
-			String memberNickname = (String)session.getAttribute("memberNickname");
-			String memberName = (String)session.getAttribute("memberName");
-			String memberBirthday = (String)session.getAttribute("memberBirthday");
-			String memberGender = (String)session.getAttribute("memberGender");
-			String memberPhoneNumber = (String)session.getAttribute("memberPhoneNumber");
-			String memberEmail = (String)session.getAttribute("memberEmail");
 			
 //			memberService = new MemberService();
+//			MemberDTO memberDTO = memberService.getMember(memberId);
 //			request.setAttribute("memberDTO", memberDTO);
+		
 			dispatcher 
 		    = request.getRequestDispatcher("member/memberInfo/update.jsp");
 		dispatcher.forward(request, response);
 		}// update.me()
-	} 
+		
+		if(sPath.equals("/updatePro.me")) {
+			System.out.println("뽑은 가상주소 비교 : /updatePro.me");
+			HttpSession session = request.getSession();
+			String memberId = (String) session.getAttribute("memberId");
+			memberService = new MemberService();
+			memberService.updateMember(request);
+//			dispatcher 
+//		    = request.getRequestDispatcher("updatesuuccess.jsp  ");
+//		dispatcher.forward(request, response);
+			response.sendRedirect("main.me");
+		}// updatePro.me
+		
+			}
 }
