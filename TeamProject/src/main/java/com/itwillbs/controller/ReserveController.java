@@ -10,7 +10,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.itwillbs.service.ReserveService;
+import com.itwillbs.domain.MemberDTO;
+import com.itwillbs.domain.ReserveDTO;
 import com.itwillbs.service.ClassBoardService;
+import com.itwillbs.service.MemberService;
 
 public class ReserveController extends HttpServlet{
 	
@@ -50,6 +53,21 @@ public class ReserveController extends HttpServlet{
 			// pay.pa 주소변경되면서 이동 
 			response.sendRedirect("pay.pa");
 		}
+		
+		if(sPath.equals("/orderInfo.re")){
+			System.out.println("뽑은가상주소비교 :/orderInfo.re");
+
+			// Service 객체 생성 
+			reserveService = new ReserveService();
+			// DTO = reservationComplete(id) 메서드 호출
+			ReserveDTO reserveDTO = reserveService.reservationComplete(request);
+			//info.jsp 이동할때 request에 담아서 이동 
+			request.setAttribute("reserveDTO", reserveDTO);
+			// 주소 변경없이 이동 => reservationInfo 이동
+			dispatcher
+			= request.getRequestDispatcher("order/reservationInfo.jsp");
+			dispatcher.forward(request, response);
+		}// 
 
 		
 	}

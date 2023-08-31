@@ -53,8 +53,7 @@ public class PayController extends HttpServlet {
 			// 리턴할 형 insertPay(request) 메서드 호출
 			payService.insertPay(request);
 			// classList.cbo 주소변경되면서 이동 
-			
-			
+						
 			dispatcher = request.getRequestDispatcher("order/reservationInfo.jsp");
 			dispatcher.forward(request, response);
 		}

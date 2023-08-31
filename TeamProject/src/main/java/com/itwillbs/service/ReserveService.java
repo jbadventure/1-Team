@@ -1,7 +1,5 @@
 package com.itwillbs.service;
 
-import java.sql.Timestamp;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -39,5 +37,20 @@ public class ReserveService {
 			e.printStackTrace();
 		}
 	} //insertReserve
+
+	public ReserveDTO reservationComplete(HttpServletRequest request) {
+		System.out.println("ReserveService reservationComplete()");
+		ReserveDTO reserveDTO = null;
+		try {
+			// request 한글처리 
+			request.setCharacterEncoding("utf-8");
+			int reservationNum = Integer.parseInt(request.getParameter("reservationNum"));
+			reserveDAO = new ReserveDAO();
+		    reserveDTO = reserveDAO.reservationComplete(reservationNum);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return reserveDTO;
+	}
 
 }
