@@ -20,7 +20,7 @@
 <% 
 // MemberDTO memberDTO
 // =(MemberDTO)request.getAttribute("memberDTO");
-
+// ㅇㅇ
 String memberId = (String) session.getAttribute("memberId");
 String memberNickname = (String) session.getAttribute("memberNickname");
 String memberName = (String) session.getAttribute("memberName");
