@@ -272,7 +272,6 @@ public class MemberService {
 	public void updateMember(HttpServletRequest request) {
 		System.out.println("MemberService updateMember()");
 		try {
-			request.setCharacterEncoding("utf-8");
 			String memberId = request.getParameter("memberId");
 			String memberNickname = request.getParameter("memberNickname");
 			String memberPhoneNum = request.getParameter("memberPhoneNum");
