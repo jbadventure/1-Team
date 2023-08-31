@@ -33,7 +33,7 @@ ClassBoardDTO boardDTO = (ClassBoardDTO)request.getAttribute("boardDTO");
   <ul class="tabs"><!--탭메뉴-->
     <li class="tab-link current" data-tab="tab-1">클래스 내용</li>
     <li class="tab-link" data-tab="tab-2">클래스 정보</li>
-    <li class="tab-link" data-tab="tab-3">클래스 리뷰</li>
+    <li class="tab-link" data-tab="tab-3" onclick="window.location.href='/TeamProject/reviewList.rbo'" >클래스 리뷰</li>
   </ul>
  
   <div id="tab-1" class="tab-content current"><!--탭1내용-->

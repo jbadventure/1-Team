@@ -23,16 +23,16 @@ for(int i=0; i<boardList.size(); i++){
   <div class = "review" href="reviewContent.rbo?reviewNum<%=boardDTO.getReviewNum() %>">
     
     <div class = "reviewNum">
-          리뷰 번호 : <%=boardDTO.getReviewNum() %>
+          리뷰번호 : <%=boardDTO.getReviewNum() %>
        </div>
     <div class = "classNum">
-          클래스 번호 : <%=boardDTO.getClassNum() %>
+          클래스번호 : <%=boardDTO.getClassNum() %>
        </div>
     <div class = "reviewID">
-          후기 작성자 : <%=boardDTO.getReviewId() %>
+          후기작성자 : <%=boardDTO.getReviewId() %>
        </div>
     <div class = "reviewIssueDate">
-          후기 작성일시 : <%=boardDTO.getReviewIssueDate() %>
+          작성일자 : <%=boardDTO.getReviewIssueDate() %>
        </div>
     
  </div>
