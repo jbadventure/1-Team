@@ -152,6 +152,8 @@ public class MemberController extends HttpServlet {
 				HttpSession session = request.getSession();
 				session.setAttribute("memberId", memberDTO.getMemberId());
 				session.setAttribute("memberType", memberDTO.getMemberType());
+				session.setAttribute("memberNickname", memberDTO.getMemberNickname());
+				session.setAttribute("memberFile", memberDTO.getMemberFile());
 				// 주소 변경하면서 이동 -> 가상주소 main.me 이동
 				response.sendRedirect("main.me");
 			} else {
@@ -314,9 +316,9 @@ public class MemberController extends HttpServlet {
 			
 			if(memberType.equals("guest")){
 				 memberService.infoType(request);
-				 response.sendRedirect("member/memberInfo/infoGuest.jsp");
+				 response.sendRedirect("infoGuest.me");
 			} else {
-			    response.sendRedirect("member/memberInfo/info.jsp");
+			    response.sendRedirect("info.me");
 			}
 		}// info.me
 		
@@ -338,10 +340,9 @@ public class MemberController extends HttpServlet {
 			HttpSession session = request.getSession();
 			String memberId = (String)session.getAttribute("memberId");
 			
-//			memberService = new MemberService();
-//			MemberDTO memberDTO = memberService.getMember(memberId);
-//			request.setAttribute("memberDTO", memberDTO);
-		
+			memberService = new MemberService();
+			MemberDTO memberDTO = memberService.getMember(memberId);
+			request.setAttribute("memberDTO", memberDTO);
 			dispatcher 
 		    = request.getRequestDispatcher("member/memberInfo/update.jsp");
 		dispatcher.forward(request, response);
@@ -349,8 +350,9 @@ public class MemberController extends HttpServlet {
 		
 		if(sPath.equals("/updatePro.me")) {
 			System.out.println("뽑은 가상주소 비교 : /updatePro.me");
-			HttpSession session = request.getSession();
-			String memberId = (String) session.getAttribute("memberId");
+			request.setCharacterEncoding("utf-8");
+//			HttpSession session = request.getSession();
+//			String memberId = (String) session.getAttribute("memberId");
 			memberService = new MemberService();
 			memberService.updateMember(request);
 //			dispatcher 

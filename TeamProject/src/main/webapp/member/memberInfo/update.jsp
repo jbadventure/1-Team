@@ -18,32 +18,32 @@
 <!-- 헤더들어가는 곳 --> 
 <h1>나의정보수정</h1>
 <% 
-// MemberDTO memberDTO
-// =(MemberDTO)request.getAttribute("memberDTO");
+MemberDTO memberDTO
+=(MemberDTO)request.getAttribute("memberDTO");
 // ㅇㅇ
-String memberId = (String) session.getAttribute("memberId");
-String memberNickname = (String) session.getAttribute("memberNickname");
-String memberName = (String) session.getAttribute("memberName");
-String memberBirthday = (String) session.getAttribute("memberBirthday");
-String memberGender = (String) session.getAttribute("memberGender");
-String memberPhoneNum = (String) session.getAttribute("memberPhoneNum");
-String memberEmail = (String) session.getAttribute("memberEmail");
+// String memberId = (String) session.getAttribute("memberId");
+// String memberNickname = (String) session.getAttribute("memberNickname");
+// String memberName = (String) session.getAttribute("memberName");
+// String memberBirthday = (String) session.getAttribute("memberBirthday");
+// String memberGender = (String) session.getAttribute("memberGender");
+// String memberPhoneNum = (String) session.getAttribute("memberPhoneNum");
+// String memberEmail = (String) session.getAttribute("memberEmail");
 %>
 <!-- form -->
 <form action = "updatePro.me" method="post" id="fr">
 
-아이디 : <input type="text" name="id" value="<%=memberId %>" readonly><br>
+아이디 : <input type="text" name="id" value="<%=memberDTO.getMemberId() %>" readonly><br>
 비밀번호 : <input type="submit" value="비밀번호 재설정" id="rePass" onclick="location.href='PasswordReset.me'"><br>
-닉네임 : <input type="text" name = "nick" value="<%=memberNickname%>" id="nick"> <input type="button" value="중복확인" name="ndup" id="ndup"><br>
+닉네임 : <input type="text" name = "nick" value="<%=memberDTO.getMemberNickname() %>" id="nick"> <input type="button" value="중복확인" name="ndup" id="ndup"><br>
 	   <div id="div1"></div>
 <div id="div1"></div>
-이름 : <input type="text" name="name" value="<%=memberName %>" readonly><br>
-생년월일 : <input type="text" name="birth" value="<%=memberBirthday %>" readonly><br>
-성별 : <input type="text" name="gender" value="<%=memberGender%>" readonly><br>
-전화번호 :<input type="text" name="phone" value="<%=memberPhoneNum%>" 
+이름 : <input type="text" name="name" value="<%=memberDTO.getMemberName() %>" readonly><br>
+생년월일 : <input type="text" name="birth" value="<%=memberDTO.getMemberBirthday() %>" readonly><br>
+성별 : <input type="text" name="gender" value="<%=memberDTO.getMemberGender()%>" readonly><br>
+전화번호 :<input type="text" name="phone" value="<%=memberDTO.getMemberPhoneNum() %>" 
 			maxlength="11" size="20" placeholder="'-'빼고 숫자만 입력해주세요" id="phone" ><br>
 <div id="div2"></div>
-이메일 : <input type="text" name="email" value="<%=memberEmail%>" id="email"><br>
+이메일 : <input type="text" name="email" value="<%=memberDTO.getMemberEmail() %>" id="email"><br>
 <div id= "div3"></div>
 <input type="button" name="update" value="수정하기" id="btn">
 </form>
