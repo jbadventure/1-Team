@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.itwillbs.service.ReserveService;
 import com.itwillbs.service.ClassBoardService;
@@ -35,11 +36,15 @@ public class ReserveController extends HttpServlet{
 		
 		if(sPath.equals("/order.re")) {
 			System.out.println("뽑은가상주소비교 :/order.re");
+			HttpSession session = request.getSession();
+			String classFile = (String)session.getAttribute("classFile");
+			String classSubject = (String)session.getAttribute("classSubject");
+			System.out.println(classSubject);
 			// BoardService 객체생성 
 			reserveService = new ReserveService();
 			// 리턴할 형 insertBoard(request) 메서드 호출
 			reserveService.insertReserve(request);
-			// list.bo 주소변경되면서 이동 
+			// pay.pa 주소변경되면서 이동 
 			response.sendRedirect("pay.pa");
 		}
 

@@ -34,17 +34,17 @@ public class PayController extends HttpServlet {
 		System.out.println("뽑은 가상주소"+sPath);
 		
 		if (sPath.equals("/pay.pa")) { // 결제페이지로 이동
-			HttpSession session = request.getSession();
-			String classFile = (String)session.getAttribute("classFile");
-			String classSubject = (String)session.getAttribute("classSubject");
+//			HttpSession session = request.getSession();
+//			String classFile = (String)session.getAttribute("classFile");
+//			String classSubject = (String)session.getAttribute("classSubject");
 			dispatcher = request.getRequestDispatcher("order/pay.jsp");
 			dispatcher.forward(request, response);
 		}
 		
-//		if (sPath.equals("/payPro.pa")) { // 결제페이지로 이동
-//			dispatcher = request.getRequestDispatcher("order/kakaopay.jsp");
-//			dispatcher.forward(request, response);
-//		}
+		if (sPath.equals("/payPro.pa")) { // 결제페이지로 이동
+			dispatcher = request.getRequestDispatcher("order/reservationInfo.jsp");
+			dispatcher.forward(request, response);
+		}
 		
 		
 		

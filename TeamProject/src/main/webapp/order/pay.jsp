@@ -230,7 +230,7 @@ String classSubject = (String)session.getAttribute("classSubject");
 <!-- <input type="hidden" name ="payMethod" id="kakaopay" value="kakaopay"> -->
 <!-- <input type="hidden" name ="payMethod" id="deposit" value="deposit"> -->
 <!-- <input type="button" id="payment-kakaopay" value="카카오페이 결제하기"> -->
-<input type="submit" value="결제하기">
+<input type="button" value="결제하기" id="btn">
 </form>
 
 <script type="text/javascript">
@@ -238,8 +238,8 @@ String classSubject = (String)session.getAttribute("classSubject");
 $(document).ready(function() {
 alert("시작");	
 
-	$('#myfr').submit(function() {
-// 		alert($('input[name=payMethod]:checked').val());
+	$('#btn').click(function() {
+		alert($('input[name=payMethod]:checked').val());
 	
 	
 	    if($('input[name=payMethod]:checked').val() == "kakaopay") {
@@ -284,11 +284,14 @@ alert("시작");
 	                msg += '상점 거래ID : ' + rsp.merchant_uid;
 	                msg += '결제 금액 : ' + rsp.paid_amount;
 	                msg += '카드 승인번호 : ' + rsp.apply_num;
+		            alert(msg);
+					$('#myfr').submit();
 	            } else {
 	                var msg = '결제에 실패하였습니다.';
 	                msg += '에러내용 : ' + rsp.error_msg;
+		            alert(msg);
+	                return;
 	            }
-	            alert(msg);
 	        	
 	        });
 		}
