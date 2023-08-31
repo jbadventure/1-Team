@@ -39,7 +39,7 @@ String memberEmail = (String) session.getAttribute("memberEmail");
 <div id="div1"></div>
 이름 : <input type="text" name="name" value="<%=memberName %>" readonly><br>
 생년월일 : <input type="text" name="birth" value="<%=memberBirthday %>" readonly><br>
-성별 : <input type="text" name="gender" value="<%=memberGender%>" readonly><br>
+성별 : <input type="text" naㅅme="gender" value="<%=memberGender%>" readonly><br>
 전화번호 :<input type="text" name="phone" value="<%=memberPhoneNum%>" 
 			maxlength="11" size="20" placeholder="'-'빼고 숫자만 입력해주세요" id="phone" ><br>
 <div id="div2"></div>

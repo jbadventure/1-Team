@@ -314,9 +314,9 @@ public class MemberController extends HttpServlet {
 			
 			if(memberType.equals("guest")){
 				 memberService.infoType(request);
-				 response.sendRedirect("member/memberInfo/infoGuest.jsp");
+				 response.sendRedirect("infoGuest.me");
 			} else {
-			    response.sendRedirect("member/memberInfo/info.jsp");
+			    response.sendRedirect("info.me");
 			}
 		}// info.me
 		
@@ -329,7 +329,7 @@ public class MemberController extends HttpServlet {
 			System.out.println(memberFile);
 			dispatcher 
 		    = request.getRequestDispatcher("member/memberInfo/infoGuest.jsp");
-		dispatcher.forward(request, response);
+			dispatcher.forward(request, response);
 		} // infoGuest.me()
 		
 		if(sPath.equals("/update.me")) {
@@ -344,7 +344,7 @@ public class MemberController extends HttpServlet {
 		
 			dispatcher 
 		    = request.getRequestDispatcher("member/memberInfo/update.jsp");
-		dispatcher.forward(request, response);
+			dispatcher.forward(request, response);
 		}// update.me()
 		
 		if(sPath.equals("/updatePro.me")) {
