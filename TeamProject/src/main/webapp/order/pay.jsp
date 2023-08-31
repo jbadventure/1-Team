@@ -191,7 +191,7 @@ String memberId = (String)session.getAttribute("memberId");
 // String reservationDate = request.getParameter("reservationDate");
 // String reservationAmount = request.getParameter("reservationAmount");
 // int reservationAmount = Integer.parseInt(request.getParameter("reservationAmount"));
-// int totalPrice = classPrice*reservationAmount;
+// int payPrice = classPrice*reservationAmount;
 
 String classFile = (String)session.getAttribute("classFile");
 String classSubject = (String)session.getAttribute("classSubject");
@@ -224,7 +224,7 @@ String classSubject = (String)session.getAttribute("classSubject");
 <input type="radio" name="payMethod" id="deposit" value="deposit">무통장입금<br>
 </fieldset>
 
-<%-- <legend>총 결제금액 <%=totalPrice%></legend> --%>
+<%-- <legend>총 결제금액 <%=payPrice%></legend> --%>
 
 <!-- <input type="hidden" name ="payMethod" id="card" value="card"> -->
 <!-- <input type="hidden" name ="payMethod" id="kakaopay" value="kakaopay"> -->

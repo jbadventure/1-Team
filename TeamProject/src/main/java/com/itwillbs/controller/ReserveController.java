@@ -36,9 +36,12 @@ public class ReserveController extends HttpServlet{
 		
 		if(sPath.equals("/order.re")) {
 			System.out.println("뽑은가상주소비교 :/order.re");
+			request.setCharacterEncoding("utf-8");
+			String classFile = request.getParameter("classFile");
+			String classSubject = request.getParameter("classSubject");
 			HttpSession session = request.getSession();
-			String classFile = (String)session.getAttribute("classFile");
-			String classSubject = (String)session.getAttribute("classSubject");
+			session.setAttribute("classFile", classFile);
+			session.setAttribute("classSubject", classSubject);
 			System.out.println(classSubject);
 			// BoardService 객체생성 
 			reserveService = new ReserveService();

@@ -34,6 +34,7 @@ public class PayController extends HttpServlet {
 		System.out.println("뽑은 가상주소"+sPath);
 		
 		if (sPath.equals("/pay.pa")) { // 결제페이지로 이동
+			System.out.println("뽑은 가상주소 비교  : /pay.pa");
 //			HttpSession session = request.getSession();
 //			String classFile = (String)session.getAttribute("classFile");
 //			String classSubject = (String)session.getAttribute("classSubject");
@@ -42,6 +43,18 @@ public class PayController extends HttpServlet {
 		}
 		
 		if (sPath.equals("/payPro.pa")) { // 결제페이지로 이동
+			System.out.println("뽑은 가상주소 비교  : /payPro.pa");
+			request.setCharacterEncoding("utf-8");
+			int reservationNum = Integer.parseInt(request.getParameter("reservationNum"));
+			HttpSession session = request.getSession();
+			session.setAttribute("reservationNum", reservationNum);
+			// payService 객체생성
+			payService = new PayService();
+			// 리턴할 형 insertPay(request) 메서드 호출
+			payService.insertPay(request);
+			// classList.cbo 주소변경되면서 이동 
+			
+			
 			dispatcher = request.getRequestDispatcher("order/reservationInfo.jsp");
 			dispatcher.forward(request, response);
 		}

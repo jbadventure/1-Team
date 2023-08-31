@@ -14,13 +14,14 @@ String memberId = (String)session.getAttribute("memberId");
 <%
 request.setCharacterEncoding("utf-8");
 String classSubject = request.getParameter("classSubject");
-String classPrice = request.getParameter("classPrice");
-String reservationNum = request.getParameter("reservationNum");
+int classPrice = Integer.parseInt(request.getParameter("classPrice"));
+int reservationNum = Integer.parseInt(request.getParameter("reservationNum"));
 String reservationId = request.getParameter("reservationId");
 String reservationDate = request.getParameter("reservationDate");
-String reservationAmount = request.getParameter("reservationAmount");
+int reservationAmount = Integer.parseInt(request.getParameter("reservationAmount"));
 String payDate = request.getParameter("payDate");
 String payMethod = request.getParameter("payMethod");
+// int payPrice = classPrice*reservationAmount;
 %>
 
 <table id="class-content">
@@ -30,7 +31,7 @@ String payMethod = request.getParameter("payMethod");
 <tr><td>클래스제목 <%=classSubject %></td></tr>
 <tr><td>예약날짜 <%=reservationDate %></td></tr>
 <tr><td>예약인원 <%=reservationAmount %></td></tr>
-<tr><td>총 결제금액 <%=classPrice %> * <%=reservationAmount %></td></tr>
+<%-- <tr><td>총 결제금액 <%=payPrice %></td></tr> --%>
 <tr><td>결제일 <%=payDate %></td></tr>
 <tr><td>결제방법 <%=payMethod %></td></tr>
 </table>
