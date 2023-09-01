@@ -49,16 +49,16 @@ public class PayController extends HttpServlet {
 			request.setCharacterEncoding("utf-8");
 			int reservationNum = Integer.parseInt(request.getParameter("reservationNum"));
 			System.out.println(reservationNum);
-//			HttpSession session = request.getSession();
-//			session.setAttribute("reservationNum", reservationNum);
 			// payService 객체생성
 			payService = new PayService();
 			// 리턴할 형 insertPay(request) 메서드 호출
 			payService.insertPay(request);
-			// classList.cbo 주소변경되면서 이동 
-						
-			dispatcher = request.getRequestDispatcher("order/reservationInfo.jsp");
-			dispatcher.forward(request, response);
+			
+//			ReserveService reserveService = new ReserveService();
+//			ReserveDTO reserveDTO = reserveService.getReserve(request);
+//			request.setAttribute("reserveDTO", reserveDTO);
+			// order/reservationInfo.jsp 주소변경되면서 이동 
+			response.sendRedirect("order/reservationInfo.jsp");			
 		}
 		
 		

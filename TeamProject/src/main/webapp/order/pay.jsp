@@ -219,8 +219,10 @@ int payPrice = classPrice*reserveDTO.getReservationAmount();
 
 </table>
 </fieldset>
+
 <input type="hidden" name ="reservationNum"  id="reservationNum" value="<%=reserveDTO.getReservationNum() %>"><!-- reservationNum값 전달 -->
 <input type="hidden" name ="payPrice"  id="payPrice" value="<%=payPrice %>"><!-- reservationNum값 전달 -->
+
 <fieldset style="border:0">
 <legend>결제수단</legend>
 <input type="radio" name="payMethod" id="card" value="card">신용/체크카드<br>
@@ -230,10 +232,6 @@ int payPrice = classPrice*reserveDTO.getReservationAmount();
 
 <legend>총 결제금액 <%=payPrice%></legend>
 
-<!-- <input type="hidden" name ="payMethod" id="card" value="card"> -->
-<!-- <input type="hidden" name ="payMethod" id="kakaopay" value="kakaopay"> -->
-<!-- <input type="hidden" name ="payMethod" id="deposit" value="deposit"> -->
-<!-- <input type="button" id="payment-kakaopay" value="카카오페이 결제하기"> -->
 <input type="button" value="결제하기" id="btn">
 </form>
 
