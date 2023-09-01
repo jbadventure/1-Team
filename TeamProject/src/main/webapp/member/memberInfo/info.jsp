@@ -18,6 +18,8 @@
 MemberDTO memberDTO=(MemberDTO)request.getAttribute("memberDTO");
 if(memberDTO.getMemberType().equals("guest")){
 	response.sendRedirect("infoGuest.me");
+}else if(memberDTO.getMemberType().equals("3")){
+	response.sendRedirect("infoAdmin.me");
 }
 %>
 

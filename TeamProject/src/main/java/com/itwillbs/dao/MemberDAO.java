@@ -62,7 +62,7 @@ public class MemberDAO {
 		try {
 			con=new SQLConnection().getConnection();
 
-			String sql = "insert into member(memberId,memberPassword,memberNickname,memberName,memberBirthday,memberGender,memberPhoneNum,memberEmail,BusinessNum,memberType) values(?,?,?,?,?,?,?,?,?,?)";
+			String sql = "insert into member(memberId,memberPassword,memberNickname,memberName,memberBirthday,memberGender,memberPhoneNum,memberEmail,memberLocation,businessNum,memberType) values(?,?,?,?,?,?,?,?,?,?,?)";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, memberDTO.getMemberId());
 			pstmt.setString(2, memberDTO.getMemberPassword()); 
@@ -72,8 +72,9 @@ public class MemberDAO {
 			pstmt.setString(6, memberDTO.getMemberGender());
 			pstmt.setString(7, memberDTO.getMemberPhoneNum());
 			pstmt.setString(8, memberDTO.getMemberEmail());
-			pstmt.setString(9, memberDTO.getBusinessNum());
-			pstmt.setString(10, memberDTO.getMemberType());
+			pstmt.setString(9, memberDTO.getMemberLocation());
+			pstmt.setString(10, memberDTO.getBusinessNum());
+			pstmt.setString(11, memberDTO.getMemberType());
 
 			// sql구문 실행결과를 ResultSet 내장객체에 저장
 			pstmt.executeUpdate();
@@ -361,12 +362,15 @@ public class MemberDAO {
 			//1,2 디비연결
 			con = new SQLConnection().getConnection();
 			//3 sql update members set name = ? where id = ?
-			String sql = "update member set memberNickname=?, memberPhoneNum=?, memberEmail=? where memberId=?";
+			String sql = "update member set memberFile=?, memberNickname=?, memberPhoneNum=?, memberEmail=?, memberLocation=?, businessNum=? where memberId=?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, memberDTO.getMemberNickname());
-			pstmt.setString(2, memberDTO.getMemberPhoneNum());
-			pstmt.setString(3, memberDTO.getMemberEmail());
-			pstmt.setString(4, memberDTO.getMemberId());
+			pstmt.setString(1, memberDTO.getMemberFile());
+			pstmt.setString(2, memberDTO.getMemberNickname());
+			pstmt.setString(3, memberDTO.getMemberPhoneNum());
+			pstmt.setString(4, memberDTO.getMemberEmail());
+			pstmt.setString(5, memberDTO.getMemberLocation());
+			pstmt.setString(6, memberDTO.getBusinessNum());
+			pstmt.setString(7, memberDTO.getMemberId());
 			System.out.println(pstmt);
 			//4 실행
 			pstmt.executeUpdate();
