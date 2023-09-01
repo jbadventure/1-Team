@@ -68,7 +68,7 @@ public class ReserveDAO {
 			dbClose();
 		}
 
-		return null;
+		return reserveDTO;
 	}
 	
 	public ReserveDTO getReserve(int reservationNum) {

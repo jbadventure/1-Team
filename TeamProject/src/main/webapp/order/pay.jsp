@@ -195,6 +195,7 @@ String classSubject = (String)session.getAttribute("classSubject");
 int classPrice = (int)session.getAttribute("classPrice");
 // int reservationAmount = (int)session.getAttribute("reservationAmount");
 int payPrice = classPrice*reserveDTO.getReservationAmount();
+//int classNum = ()
 
 %>
  
