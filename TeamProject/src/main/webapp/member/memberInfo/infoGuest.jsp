@@ -11,20 +11,21 @@
 
 <%
 // 세션에서 로그인 정보 가져오기
-String memberNickname = (String) session.getAttribute("memberNickname");
-String memberFile = (String) session.getAttribute("memberFile");
+MemberDTO memberDTO=(MemberDTO)request.getAttribute("memberDTO");
+// String memberNickname = (String) session.getAttribute("memberNickname");
+// String memberFile = (String) session.getAttribute("memberFile");
 %>
 
 
 <h1>게스트 마이페이지</h1>
-닉네임 | <%= memberNickname %> <br>
+닉네임 | <%= memberDTO.getMemberNickname() %> <br>
 
-프로필사진 | <%if(memberFile == null){
+프로필사진 | <%if(memberDTO.getMemberFile()== null){
      %>
                 <img src="images/DefaultProfile.jpg" width="100" height="100px">
      <%		}else{
      %>           
-            	<img src="upload/<%=memberFile %>" width="100" height="100px">
+            	<img src="upload/<%=memberDTO.getMemberFile() %>" width="100" height="100px">
      <%			 }
      %><br>
 <input type="button" value="개인정보수정" id="개인정보수정" onclick="location.href='update.me'"><br>

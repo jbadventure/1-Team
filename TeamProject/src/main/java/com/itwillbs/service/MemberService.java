@@ -255,11 +255,13 @@ public class MemberService {
 			// request 한글처리
 			request.setCharacterEncoding("utf-8");
 			// 변수에 값 담기
-			String memberType=(String)request.getSession().getAttribute("memberType");
+			String memberNickname = request.getParameter("memberNickname");
+			String memberFile = request.getParameter("memberFile");
 			// MemberDTO 객체생성 
 			MemberDTO memberDTO = new MemberDTO();
 			// set메서드 호출 파라미터값 저장
-			memberDTO.setMemberType(memberType);
+			memberDTO.setMemberNickname(memberNickname);
+			memberDTO.setMemberFile(memberFile);
 			// MemberDAO 객체생성
 			memberDAO = new MemberDAO();
 			// updateMember(memberDTO) 메서드 호출
@@ -272,6 +274,7 @@ public class MemberService {
 	public void updateMember(HttpServletRequest request) {
 		System.out.println("MemberService updateMember()");
 		try {
+			request.setCharacterEncoding("utf-8");
 			String memberId = request.getParameter("memberId");
 			String memberNickname = request.getParameter("memberNickname");
 			String memberPhoneNum = request.getParameter("memberPhoneNum");
@@ -287,6 +290,8 @@ public class MemberService {
 			memberDTO.setMemberNickname(memberNickname);
 			memberDTO.setMemberPhoneNum(memberPhoneNum);
 			memberDTO.setMemberEmail(memberEmail);
+			System.out.println(memberId);
+			System.out.println(memberEmail);
 			// MemberDAO 객체생성
 			memberDAO = new MemberDAO();
 			// updateMember(memberDTO) 메서드 호출
@@ -297,4 +302,3 @@ public class MemberService {
 	}// updateMember()
 
 }
-
