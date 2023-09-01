@@ -1,4 +1,4 @@
-<%@page import="com.itwillbs.domain.ClassBoardDTO"%>
+<%@page import="com.itwillbs.domain.ReserveDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -192,7 +192,7 @@ String memberId = (String)session.getAttribute("memberId");
 // String reservationAmount = request.getParameter("reservationAmount");
 // int reservationAmount = Integer.parseInt(request.getParameter("reservationAmount"));
 // int payPrice = classPrice*reservationAmount;
-
+ReserveDTO reserveDTO = (ReserveDTO)request.getAttribute("reserveDTO"); 
 String classFile = (String)session.getAttribute("classFile");
 String classSubject = (String)session.getAttribute("classSubject");
 %>
@@ -213,10 +213,12 @@ String classSubject = (String)session.getAttribute("classSubject");
      %>
 </td></tr> 
 <tr><td>클래스제목 <%=classSubject %></td></tr>
-<tr><td>예약날짜 </td></tr>
-<tr><td>예약인원 </td></tr>
+<tr><td>예약날짜 <%=reserveDTO.getReservationDate() %></td></tr>
+<tr><td>예약인원 <%=reserveDTO.getReservationAmount() %></td></tr>
+
 </table>
 </fieldset>
+<input type="hidden" name ="reservationNum"  id="reservationNum" value="<%=reserveDTO.getReservationNum() %>"><!-- reservationNum값 전달 -->
 <fieldset style="border:0">
 <legend>결제수단</legend>
 <input type="radio" name="payMethod" id="card" value="card">신용/체크카드<br>
@@ -263,7 +265,7 @@ alert("시작");
 	                참고하세요. 
 	                나중에 포스팅 해볼게요.
 	             */
-	            name: '주문명:결제테스트', //결제창에서 보여질 이름
+	            name: '<%=classSubject %>', //결제창에서 보여질 이름
 	            amount: 100, //가격 
 	            buyer_email: 'iamport@siot.do',
 	            buyer_name: '구매자이름',
@@ -317,7 +319,7 @@ alert("시작");
 	                참고하세요. 
 	                나중에 포스팅 해볼게요.
 	             */
-	            name: '주문명:결제테스트', //결제창에서 보여질 이름
+	            name: '<%=classSubject %>', //결제창에서 보여질 이름
 	            amount: 100, //가격 
 	            buyer_email: 'iamport@siot.do',
 	            buyer_name: '구매자이름',
@@ -371,7 +373,7 @@ alert("시작");
 	                참고하세요. 
 	                나중에 포스팅 해볼게요.
 	             */
-	            name: '주문명:결제테스트', //결제창에서 보여질 이름
+	            name: '<%=classSubject %>', //결제창에서 보여질 이름
 	            amount: 100, //가격 
 	            buyer_email: 'iamport@siot.do',
 	            buyer_name: '구매자이름',

@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.itwillbs.domain.ReserveDTO;
 import com.itwillbs.service.PayService;
+import com.itwillbs.service.ReserveService;
 
 public class PayController extends HttpServlet {
 	
@@ -35,9 +37,15 @@ public class PayController extends HttpServlet {
 		
 		if (sPath.equals("/pay.pa")) { // 결제페이지로 이동
 			System.out.println("뽑은 가상주소 비교  : /pay.pa");
+//			request.setCharacterEncoding("utf-8");
+//			int reservationNum = Integer.parseInt(request.getParameter("reservationNum"));
 //			HttpSession session = request.getSession();
-//			String classFile = (String)session.getAttribute("classFile");
-//			String classSubject = (String)session.getAttribute("classSubject");
+//			int reservationNum = (int) session.getAttribute("reservationNum");
+//			session.setAttribute("reservationNum", reservationNum);
+//			System.out.println(reservationNum);
+			ReserveService reserveService = new ReserveService();
+			ReserveDTO reserveDTO = reserveService.getReserve(request);
+			request.setAttribute("reserveDTO", reserveDTO);
 			dispatcher = request.getRequestDispatcher("order/pay.jsp");
 			dispatcher.forward(request, response);
 		}

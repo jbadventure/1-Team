@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.itwillbs.domain.ClassBoardDTO;
 import com.itwillbs.domain.ReserveDTO;
 
 public class ReserveDAO {
@@ -25,13 +26,12 @@ public class ReserveDAO {
 			//1 2
 			con = new SQLConnection().getConnection();
 			// 3
-			String sql = "insert into reservation(classNum,reservationDate,reservationId,reservationAmount,payComplete) values(?,?,?,?,?)";
+			String sql = "insert into reservation(classNum, reservationDate, reservationId, reservationAmount) values(?,?,?,?)";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, reserveDTO.getClassNum());
 			pstmt.setString(2, reserveDTO.getReservationDate());
 			pstmt.setString(3, reserveDTO.getReservationId()); 
 			pstmt.setInt(4, reserveDTO.getReservationAmount());
-			pstmt.setString(5, reserveDTO.getPayComplete()); 			
 			// 4단계 sql구문 실행
 			pstmt.executeUpdate();
 		} catch (Exception e) {
@@ -61,7 +61,6 @@ public class ReserveDAO {
 				reserveDTO.setReservationDate(rs.getString("reservationDate"));
 				reserveDTO.setReservationId(rs.getString("reservationId"));
 				reserveDTO.setReservationAmount(rs.getInt("reservationAmount"));
-				reserveDTO.setPayComplete(rs.getString("payComplete"));
 			} 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -71,5 +70,61 @@ public class ReserveDAO {
 
 		return null;
 	}
-
+	
+	public ReserveDTO getReserve(int reservationNum) {
+		System.out.println("ReserveDAO getReserve()");
+		ReserveDTO reserveDTO = null;
+		try {
+			con = new SQLConnection().getConnection();
+			String sql = "select * from reservation where reservationNum=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, reservationNum);
+			rs =pstmt.executeQuery();
+			
+			if(rs.next()) {
+				reserveDTO = new ReserveDTO();
+				reserveDTO.setReservationNum(rs.getInt("reservationNum"));
+				reserveDTO.setClassNum(rs.getInt("classNum"));
+				reserveDTO.setReservationDate(rs.getString("reservationDate"));
+				reserveDTO.setReservationId(rs.getString("reservationId"));
+				reserveDTO.setReservationAmount(rs.getInt("reservationAmount"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			dbClose();
+		}
+		return reserveDTO;
+	} // getReserve
+	
+	public int getMaxNum() {
+		int reservationNum = 0;
+		try {
+			// 1단계 JDBC 프로그램 가져오기
+			// 2단계 디비 연결
+			con = new SQLConnection().getConnection();
+			
+			// 3단계 문자열 -> sql구문 변경
+			String sql = "select max(reservationNum) from reservation";
+			pstmt=con.prepareStatement(sql);
+			
+			// 4단계 sql구문 실행
+			rs = pstmt.executeQuery();
+			
+			// 5단계 : if행 접근 -> 데이터있으면 true
+			if(rs.next()) {
+				reservationNum = rs.getInt("max(reservationNum)");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			// 예외 상관없이 마무리 작업 => con, pstmt, rs 기억장소 해제
+			dbClose();
+		}
+		return reservationNum;
+	}// getMaxNum()
+	
+	
+	
 }

@@ -1,9 +1,13 @@
 package com.itwillbs.service;
 
+import java.sql.Timestamp;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import com.itwillbs.dao.ClassBoardDAO;
 import com.itwillbs.dao.ReserveDAO;
+import com.itwillbs.domain.ClassBoardDTO;
 import com.itwillbs.domain.ReserveDTO;
 
 public class ReserveService {
@@ -19,7 +23,6 @@ public class ReserveService {
 			String reservationDate = request.getParameter("reservationDate");
 			//String reservationId = request.getParameter("reservationId");
 			int reservationAmount = Integer.parseInt(request.getParameter("reservationAmount"));
-			String payCompelete = request.getParameter("payCompelete");
 			//DTO 객체생성
 			reserveDAO = new ReserveDAO();
 			ReserveDTO reserveDTO = new ReserveDTO();
@@ -29,7 +32,6 @@ public class ReserveService {
 			reserveDTO.setReservationDate(reservationDate);
 			reserveDTO.setReservationId(session.getAttribute("memberId").toString());
 			reserveDTO.setReservationAmount(reservationAmount);
-			reserveDTO.setPayComplete(payCompelete);
 			
 			reserveDAO.insertReserve(reserveDTO);
 			
@@ -51,6 +53,40 @@ public class ReserveService {
 			e.printStackTrace();
 		}
 		return reserveDTO;
+	}
+	
+	public ReserveDTO getReserve(HttpServletRequest request) {
+		System.out.println("ReserveService getReserve()");
+		ReserveDTO reserveDTO = null;
+		try {
+			// request 한글처리 
+			request.setCharacterEncoding("utf-8");
+//			HttpSession session = request.getSession();
+//			int reservationNum = (int) session.getAttribute("reservationNum");
+			
+			// request에 classNum 파라미터 값 가져오기
+			int reservationNum = Integer.parseInt(request.getParameter("reservationNum"));
+			System.out.println(reservationNum);
+			// BoardDAO 객체생성 
+			reserveDAO = new ReserveDAO();
+			// boardDTO = getBoard(classNum);
+			reserveDTO = reserveDAO.getReserve(reservationNum);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return reserveDTO;
+	} // getReserve
+
+	public int getMaxNum() {
+		int reservationNum = 0;
+		try {
+			reserveDAO = new ReserveDAO();
+			reservationNum = reserveDAO.getMaxNum();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return reservationNum;
 	}
 
 }

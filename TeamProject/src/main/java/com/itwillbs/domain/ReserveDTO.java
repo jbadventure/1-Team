@@ -1,7 +1,5 @@
 package com.itwillbs.domain;
 
-import java.sql.Timestamp;
-
 public class ReserveDTO {
 
 private int reservationNum;
@@ -9,7 +7,6 @@ private int classNum;
 private String reservationDate;
 private String reservationId;
 private int reservationAmount;
-private String payComplete;
 
 public int getReservationNum() {
 	return reservationNum;
@@ -23,7 +20,6 @@ public int getClassNum() {
 public void setClassNum(int classNum) {
 	this.classNum = classNum;
 }
-
 public String getReservationDate() {
 	return reservationDate;
 }
@@ -42,14 +38,10 @@ public int getReservationAmount() {
 public void setReservationAmount(int reservationAmount) {
 	this.reservationAmount = reservationAmount;
 }
-public String getPayComplete() {
-	return payComplete;
-}
-public void setPayComplete(String payComplete) {
-	this.payComplete = payComplete;
+
 }
 
 
 
 	
-}
+
