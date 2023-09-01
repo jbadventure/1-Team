@@ -33,16 +33,10 @@ public class PayController extends HttpServlet {
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("PayController doProcess()");
 		String sPath = request.getServletPath();
-		System.out.println("뽑은 가상주소"+sPath);
+		System.out.println("뽑은 가상주소 : " + sPath);
 		
 		if (sPath.equals("/pay.pa")) { // 결제페이지로 이동
-			System.out.println("뽑은 가상주소 비교  : /pay.pa");
-//			request.setCharacterEncoding("utf-8");
-//			int reservationNum = Integer.parseInt(request.getParameter("reservationNum"));
-//			HttpSession session = request.getSession();
-//			int reservationNum = (int) session.getAttribute("reservationNum");
-//			session.setAttribute("reservationNum", reservationNum);
-//			System.out.println(reservationNum);
+			System.out.println("뽑은 가상주소 비교 : /pay.pa");
 			ReserveService reserveService = new ReserveService();
 			ReserveDTO reserveDTO = reserveService.getReserve(request);
 			request.setAttribute("reserveDTO", reserveDTO);
@@ -51,11 +45,12 @@ public class PayController extends HttpServlet {
 		}
 		
 		if (sPath.equals("/payPro.pa")) { // 결제페이지로 이동
-			System.out.println("뽑은 가상주소 비교  : /payPro.pa");
+			System.out.println("뽑은 가상주소 비교 : /payPro.pa");
 			request.setCharacterEncoding("utf-8");
 			int reservationNum = Integer.parseInt(request.getParameter("reservationNum"));
-			HttpSession session = request.getSession();
-			session.setAttribute("reservationNum", reservationNum);
+			System.out.println(reservationNum);
+//			HttpSession session = request.getSession();
+//			session.setAttribute("reservationNum", reservationNum);
 			// payService 객체생성
 			payService = new PayService();
 			// 리턴할 형 insertPay(request) 메서드 호출

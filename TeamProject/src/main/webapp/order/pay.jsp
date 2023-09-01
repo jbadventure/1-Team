@@ -187,14 +187,15 @@ String memberId = (String)session.getAttribute("memberId");
 // String classFile = request.getParameter("classFile"); // 전달
 // String classSubject = request.getParameter("classSubject");
 // String classPrice = request.getParameter("classPrice");
-// int classPrice = Integer.parseInt(request.getParameter("classPrice"));
 // String reservationDate = request.getParameter("reservationDate");
 // String reservationAmount = request.getParameter("reservationAmount");
-// int reservationAmount = Integer.parseInt(request.getParameter("reservationAmount"));
-// int payPrice = classPrice*reservationAmount;
 ReserveDTO reserveDTO = (ReserveDTO)request.getAttribute("reserveDTO"); 
 String classFile = (String)session.getAttribute("classFile");
 String classSubject = (String)session.getAttribute("classSubject");
+int classPrice = (int)session.getAttribute("classPrice");
+// int reservationAmount = (int)session.getAttribute("reservationAmount");
+int payPrice = classPrice*reserveDTO.getReservationAmount();
+
 %>
  
 <form action="payPro.pa" method="post" id="myfr">
@@ -219,6 +220,7 @@ String classSubject = (String)session.getAttribute("classSubject");
 </table>
 </fieldset>
 <input type="hidden" name ="reservationNum"  id="reservationNum" value="<%=reserveDTO.getReservationNum() %>"><!-- reservationNum값 전달 -->
+<input type="hidden" name ="payPrice"  id="payPrice" value="<%=payPrice %>"><!-- reservationNum값 전달 -->
 <fieldset style="border:0">
 <legend>결제수단</legend>
 <input type="radio" name="payMethod" id="card" value="card">신용/체크카드<br>
@@ -226,7 +228,7 @@ String classSubject = (String)session.getAttribute("classSubject");
 <input type="radio" name="payMethod" id="deposit" value="deposit">무통장입금<br>
 </fieldset>
 
-<%-- <legend>총 결제금액 <%=payPrice%></legend> --%>
+<legend>총 결제금액 <%=payPrice%></legend>
 
 <!-- <input type="hidden" name ="payMethod" id="card" value="card"> -->
 <!-- <input type="hidden" name ="payMethod" id="kakaopay" value="kakaopay"> -->

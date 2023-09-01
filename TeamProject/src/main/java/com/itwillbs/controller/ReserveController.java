@@ -42,9 +42,11 @@ public class ReserveController extends HttpServlet{
 			request.setCharacterEncoding("utf-8");
 			String classFile = request.getParameter("classFile");
 			String classSubject = request.getParameter("classSubject");
+			int classPrice = Integer.parseInt(request.getParameter("classPrice"));
 			HttpSession session = request.getSession();
 			session.setAttribute("classFile", classFile);
 			session.setAttribute("classSubject", classSubject);
+			session.setAttribute("classPrice", classPrice);
 			System.out.println(classFile);
 			// BoardService 객체생성 
 			reserveService = new ReserveService();

@@ -20,7 +20,7 @@ public class PayDAO {
 	}
 
 	public void insertPay(PayDTO payDTO) {
-		System.out.println("PayDTO insertPay()");
+		System.out.println("PayDAO insertPay()");
 		try {
 			// 1단계 JDBC 프로그램 가져오기 
 			// 2단계 디비 연결

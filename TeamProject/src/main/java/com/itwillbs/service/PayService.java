@@ -23,6 +23,7 @@ public class PayService {
 			int reservationNum = Integer.parseInt(request.getParameter("reservationNum"));
 			int payPrice = Integer.parseInt(request.getParameter("payPrice"));
 			String payMethod = request.getParameter("payMethod");
+			System.out.println(reservationNum);
 			
 			// PayDAO 객체생성 
 			payDAO = new PayDAO();
