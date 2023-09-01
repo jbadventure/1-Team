@@ -4,20 +4,22 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link rel="stylesheet" href="shopcss.css">
+  <link href="css/newfile.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
 <meta charset="UTF-8">
-<title>member/memberInfo/infoGuest.jsp</title>
+<title>Insert title here</title>
 </head>
 <body>
-
+<!-- 헤더들어가는 곳 -->
+<jsp:include page="../../inc/top.jsp"></jsp:include>
+<!-- 헤더들어가는 곳 --> 
 <%
-// 세션에서 로그인 정보 가져오기
 MemberDTO memberDTO=(MemberDTO)request.getAttribute("memberDTO");
-// String memberNickname = (String) session.getAttribute("memberNickname");
-// String memberFile = (String) session.getAttribute("memberFile");
 %>
 
 
-<h1>게스트 마이페이지</h1>
+<h1>마이페이지</h1>
 닉네임 | <%= memberDTO.getMemberNickname() %> <br>
 
 프로필사진 | <%if(memberDTO.getMemberFile()== null){
@@ -33,5 +35,8 @@ MemberDTO memberDTO=(MemberDTO)request.getAttribute("memberDTO");
 <input type="button" value="결제내역" id="결제내역" onclick="location.href='payment.me'"><br>
 <input type="button" value="나의 게시판 활동내역" id="나의 게시판 활동내역"><br>
 
+<!-- 푸터들어가는 곳 -->
+<jsp:include page="../../inc/bottom.jsp"></jsp:include>
+<!-- 푸터들어가는 곳 -->
 </body>
 </html>

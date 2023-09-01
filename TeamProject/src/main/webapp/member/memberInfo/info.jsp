@@ -1,3 +1,4 @@
+<%@page import="com.itwillbs.domain.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -14,11 +15,23 @@
 <jsp:include page="../../inc/top.jsp"></jsp:include>
 <!-- 헤더들어가는 곳 --> 
 <%
-String memberNickname = (String) session.getAttribute("memberNickname");
+MemberDTO memberDTO=(MemberDTO)request.getAttribute("memberDTO");
+if(memberDTO.getMemberType().equals("guest")){
+	response.sendRedirect("infoGuest.me");
+}
 %>
-<p>닉네임 <%= memberNickname %></p>
 
-<img src="images/DefaultProfile.jpg" alt="기본프로필" width="300" height="250"><br>
+<h1>마이페이지</h1>
+닉네임 | <%= memberDTO.getMemberNickname() %> <br>
+
+프로필사진 | <%if(memberDTO.getMemberFile()== null){
+     %>
+                <img src="images/DefaultProfile.jpg" width="100" height="100px">
+     <%		}else{
+     %>           
+            	<img src="upload/<%=memberDTO.getMemberFile() %>" width="100" height="100px">
+     <%			 }
+     %><br>
 <input type="button" value="회원정보변경" id="회원정보변경" onclick="location.href='update.me'"><br>
 <input type="button" value="클래스관리" id="클래스관리" onclick="location.href='update.me'"><br>
 <input type="button" value="예약관리" id="예약관리" onclick="location.href='update.me'">

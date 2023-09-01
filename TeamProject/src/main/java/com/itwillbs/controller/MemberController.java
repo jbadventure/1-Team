@@ -302,25 +302,24 @@ public class MemberController extends HttpServlet {
 			}
 		} // PasswordResetPro
 		
-		if (sPath.equals("/info.me")) {
+		if(sPath.equals("/info.me")) {
+			System.out.println("뽑은 가상주소 비교 : /info.me");
 			HttpSession session = request.getSession();
-			
 			String memberId = (String)session.getAttribute("memberId");
 			String memberType = (String) session.getAttribute("memberType");
 			String memberFile=(String)session.getAttribute("memberFile");
+			
 			System.out.println(memberType);
 			System.out.println(memberId);
 			System.out.println(memberFile);
 			
 			memberService = new MemberService();
-			
-			if(memberType.equals("guest")){
-				 memberService.infoType(request);
-				 response.sendRedirect("infoGuest.me");
-			} else {
-			    response.sendRedirect("info.me");
-			}
-		}// info.me
+			MemberDTO memberDTO = memberService.getMember(memberId);
+			request.setAttribute("memberDTO", memberDTO);
+			dispatcher 
+		    = request.getRequestDispatcher("member/memberInfo/info.jsp");
+		dispatcher.forward(request, response);
+		} // infoGuest.me()
 		
 		if(sPath.equals("/infoGuest.me")) {
 			System.out.println("뽑은 가상주소 비교 : /infoGuest.me");
