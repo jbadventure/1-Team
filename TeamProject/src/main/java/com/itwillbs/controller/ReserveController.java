@@ -42,16 +42,21 @@ public class ReserveController extends HttpServlet{
 			request.setCharacterEncoding("utf-8");
 			String classFile = request.getParameter("classFile");
 			String classSubject = request.getParameter("classSubject");
+			int classPrice = Integer.parseInt(request.getParameter("classPrice"));
 			HttpSession session = request.getSession();
 			session.setAttribute("classFile", classFile);
 			session.setAttribute("classSubject", classSubject);
-			System.out.println(classSubject);
+			session.setAttribute("classPrice", classPrice);
+			System.out.println(classFile);
 			// BoardService 객체생성 
 			reserveService = new ReserveService();
 			// 리턴할 형 insertBoard(request) 메서드 호출
 			reserveService.insertReserve(request);
+			
+			int reservationNum = reserveService.getMaxNum();
+			
 			// pay.pa 주소변경되면서 이동 
-			response.sendRedirect("pay.pa");
+			response.sendRedirect("pay.pa?reservationNum="+reservationNum);
 		}
 		
 		if(sPath.equals("/orderInfo.re")){
