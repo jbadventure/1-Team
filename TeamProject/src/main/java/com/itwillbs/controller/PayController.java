@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.itwillbs.dao.ClassBoardDAO;
+import com.itwillbs.dao.PayDAO;
 import com.itwillbs.domain.ClassBoardDTO;
 import com.itwillbs.domain.PayDTO;
 import com.itwillbs.domain.ReserveDTO;
@@ -75,13 +76,18 @@ public class PayController extends HttpServlet {
 			ClassBoardDTO boardDTO = boardDAO.getBoard(reserveDTO.getClassNum());
 			
 			request.setAttribute("boardDTO", boardDTO);
+			
 			System.out.println(boardDTO);
-//		//	PayDTO payDTO = (PayDTO)request.getAttribute("payDTO");
+		//	PayDTO payDTO = (PayDTO)request.getAttribute("payDTO");
 //			PayService payService = new PayService();
 //			PayDTO payDTO = payService.getPay(request);
-//			request.setAttribute("payDTO", payDTO);
-
 			
+		    PayDAO payDAO = new PayDAO();
+		    PayDTO payDTO = payDAO.getPayRN(reserveDTO.getReservationNum());
+				    
+		    
+			request.setAttribute("payDTO", payDTO);
+
 			dispatcher = request.getRequestDispatcher("order/reservationInfo.jsp");
 			dispatcher.forward(request, response);
 			

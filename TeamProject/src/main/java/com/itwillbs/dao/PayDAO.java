@@ -68,4 +68,32 @@ public class PayDAO {
 		return payDTO;
 	} // getPay
 
+	public PayDTO getPayRN(int reservationNum) {
+		System.out.println("PayDAO getPay()");
+		PayDTO payDTO = null;
+		try {
+			con = new SQLConnection().getConnection();
+			String sql = "select * from pay where reservationNum=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, reservationNum);
+			rs =pstmt.executeQuery();
+			
+			if(rs.next()) {
+				payDTO = new PayDTO();
+				payDTO.setPayNum(rs.getInt("payNum"));
+				payDTO.setReservationNum(rs.getInt("reservationNum"));
+				payDTO.setPayPrice(rs.getInt("payPrice"));
+				payDTO.setPayMethod(rs.getString("payMethod"));
+				payDTO.setPayDate(rs.getTimestamp("payDate"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			dbClose();
+		}
+		return payDTO;
+	} // getPay
+// TODO Auto-generated method stub
+		
+
 }

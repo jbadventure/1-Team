@@ -15,7 +15,7 @@
 <%
 request.setCharacterEncoding("utf-8");
 ClassBoardDTO boardDTO = (ClassBoardDTO)request.getAttribute("boardDTO");
-//PayDTO payDTO = (PayDTO)request.getAttribute("payDTO");
+PayDTO payDTO = (PayDTO)request.getAttribute("payDTO");
 ReserveDTO reserveDTO = (ReserveDTO)request.getAttribute("reserveDTO");
 
 // String classSubject = request.getParameter("classSubject");
@@ -36,9 +36,9 @@ ReserveDTO reserveDTO = (ReserveDTO)request.getAttribute("reserveDTO");
 <tr><td>클래스제목 <%=boardDTO.getClassSubject() %></td></tr>
 <tr><td>예약날짜 <%=reserveDTO.getReservationDate() %></td></tr>
 <tr><td>예약인원 <%=reserveDTO.getReservationAmount() %></td></tr>
-<%-- <tr><td>총 결제금액 <%=payDTO.getPayPrice() %></td></tr> --%>
-<%-- <tr><td>결제일 <%=payDTO.getPayDate() %></td></tr> --%>
-<%-- <tr><td>결제방법 <%=payDTO.getPayMethod() %></td></tr> --%>
+<tr><td>총 결제금액 <%=payDTO.getPayPrice() %></td></tr>
+<tr><td>결제일 <%=payDTO.getPayDate() %></td></tr>
+<tr><td>결제방법 <%=payDTO.getPayMethod() %></td></tr>
 </table>
 <br>
 <button onclick = "location.href='main.me'">메인으로이동</button><br>
