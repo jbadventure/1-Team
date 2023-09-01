@@ -2,6 +2,7 @@ package com.itwillbs.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -40,6 +41,12 @@ public class MemberController extends HttpServlet {
 		System.out.println("뽑아온 가상주소 : " + sPath);
 
 		if (sPath.equals("/main.me")) {
+			HttpSession session = request.getSession();
+			String memberId = (String)session.getAttribute("memberId");
+			
+			memberService = new MemberService();
+			MemberDTO memberDTO = memberService.getMember(memberId);
+			request.setAttribute("memberDTO", memberDTO);
 			dispatcher = request.getRequestDispatcher("main/main.jsp");
 			dispatcher.forward(request, response);
 		} // main.me
@@ -350,6 +357,23 @@ public class MemberController extends HttpServlet {
 			memberService.updateMember(request);
 			response.sendRedirect("info.me");
 		}// updatePro.me
+		
+		if(sPath.equals("/memberList.me")) {
+			System.out.println("뽑은 가상주소 비교 : /memberList.me");
+			// MemberService 객체생성
+			memberService = new MemberService();
+	// List<MemberDTO> memberList  =  getMemberList();메서드호출
+	List<MemberDTO> memberList = memberService.getMemberList();
+			
+			// request에 "memberList", memberList를 담기
+			request.setAttribute("memberList", memberList);
+			
+			// member/list.jsp 주소변경 없이 이동
+			dispatcher 
+		    = request.getRequestDispatcher("member/memberList.jsp");
+		dispatcher.forward(request, response);
+		}//
+		
 		
 			}
 }

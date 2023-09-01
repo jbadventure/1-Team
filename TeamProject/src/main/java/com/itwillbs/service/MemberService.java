@@ -1,5 +1,7 @@
 package com.itwillbs.service;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import com.itwillbs.dao.MemberDAO;
@@ -316,5 +318,20 @@ public class MemberService {
 			e.printStackTrace();
 		}
 	}// updateMember()
+
+
+	public List<MemberDTO> getMemberList() {
+		System.out.println("MemberService getMemberList()");
+		List<MemberDTO> memberList=null; 
+		try {
+			// MemberDAO 객체생성
+			memberDAO = new MemberDAO();
+			// memberList = getMemberList 메서드 호출
+			memberList = memberDAO.getMemberList();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return memberList;
+	}
 
 }

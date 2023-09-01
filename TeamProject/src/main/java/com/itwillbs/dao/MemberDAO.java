@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -380,4 +382,39 @@ public class MemberDAO {
 			dbClose();
 		}
 	}//updateMember()
+
+	public List<MemberDTO> getMemberList() {
+		List<MemberDTO> memberList = null;
+		try {
+			//1,2 디비연결
+			con = new SQLConnection().getConnection();
+			//3sql 
+			String sql="select * from member";
+			pstmt = con.prepareStatement(sql);
+			//4실행 => 결과 저장
+			rs = pstmt.executeQuery();
+			//5결과 행접근=> MemberDTO 객체생성 => set저장(열접근)=> 배열한칸에 저장
+			memberList = new ArrayList<>();
+			while(rs.next()) {
+				MemberDTO memberDTO = new MemberDTO();
+				memberDTO.setMemberId(rs.getString("memberId"));
+				memberDTO.setMemberPassword(rs.getString("memberPassword"));
+				memberDTO.setMemberName(rs.getString("memberName"));
+				memberDTO.setMemberNickname(rs.getString("memberNickname"));
+				memberDTO.setMemberBirthday(rs.getString("memberBirthday"));
+				memberDTO.setMemberGender(rs.getString("memberGender"));
+				memberDTO.setMemberPhoneNum(rs.getString("memberPhoneNum"));
+				memberDTO.setMemberEmail(rs.getString("memberEmail"));
+				memberDTO.setMemberType(rs.getString("memberType"));
+				memberDTO.setBusinessNum(rs.getString("businessNum"));
+				//배열 한칸에 저장
+				memberList.add(memberDTO);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			dbClose();
+		}
+		return memberList;
+	}
 }

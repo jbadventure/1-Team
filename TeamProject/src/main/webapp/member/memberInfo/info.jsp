@@ -8,7 +8,7 @@
   <link href="css/newfile.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>memberInfo/info.jsp</title>
 </head>
 <body>
 <!-- 헤더들어가는 곳 -->
@@ -18,8 +18,6 @@
 MemberDTO memberDTO=(MemberDTO)request.getAttribute("memberDTO");
 if(memberDTO.getMemberType().equals("guest")){
 	response.sendRedirect("infoGuest.me");
-}else if(memberDTO.getMemberType().equals("3")){
-	response.sendRedirect("infoAdmin.me");
 }
 %>
 
