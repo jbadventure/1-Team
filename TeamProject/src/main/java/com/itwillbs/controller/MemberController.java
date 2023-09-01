@@ -152,6 +152,8 @@ public class MemberController extends HttpServlet {
 				HttpSession session = request.getSession();
 				session.setAttribute("memberId", memberDTO.getMemberId());
 				session.setAttribute("memberType", memberDTO.getMemberType());
+				session.setAttribute("memberNickname", memberDTO.getMemberNickname());
+				session.setAttribute("memberFile", memberDTO.getMemberFile());
 				// 주소 변경하면서 이동 -> 가상주소 main.me 이동
 				response.sendRedirect("main.me");
 			} else {
@@ -300,33 +302,33 @@ public class MemberController extends HttpServlet {
 			}
 		} // PasswordResetPro
 		
-		if (sPath.equals("/info.me")) {
+		if(sPath.equals("/info.me")) {
+			System.out.println("뽑은 가상주소 비교 : /info.me");
 			HttpSession session = request.getSession();
-			
 			String memberId = (String)session.getAttribute("memberId");
 			String memberType = (String) session.getAttribute("memberType");
 			String memberFile=(String)session.getAttribute("memberFile");
+			
 			System.out.println(memberType);
 			System.out.println(memberId);
 			System.out.println(memberFile);
 			
 			memberService = new MemberService();
-			
-			if(memberType.equals("guest")){
-				 memberService.infoType(request);
-				 response.sendRedirect("member/memberInfo/infoGuest.jsp");
-			} else {
-			    response.sendRedirect("member/memberInfo/info.jsp");
-			}
-		}// info.me
+			MemberDTO memberDTO = memberService.getMember(memberId);
+			request.setAttribute("memberDTO", memberDTO);
+			dispatcher 
+		    = request.getRequestDispatcher("member/memberInfo/info.jsp");
+		dispatcher.forward(request, response);
+		} // infoGuest.me()
 		
 		if(sPath.equals("/infoGuest.me")) {
 			System.out.println("뽑은 가상주소 비교 : /infoGuest.me");
 			HttpSession session = request.getSession();
-			String memberNickname=(String)session.getAttribute("memberNickname");
-			String memberFile=(String)session.getAttribute("memberFile");
-			System.out.println(memberNickname);
-			System.out.println(memberFile);
+			String memberId = (String)session.getAttribute("memberId");
+			
+			memberService = new MemberService();
+			MemberDTO memberDTO = memberService.getMember(memberId);
+			request.setAttribute("memberDTO", memberDTO);
 			dispatcher 
 		    = request.getRequestDispatcher("member/memberInfo/infoGuest.jsp");
 		dispatcher.forward(request, response);
@@ -334,20 +336,30 @@ public class MemberController extends HttpServlet {
 		
 		if(sPath.equals("/update.me")) {
 			System.out.println("뽑은 가상주소 비교 : /update.me");
+			
 			HttpSession session = request.getSession();
 			String memberId = (String)session.getAttribute("memberId");
-			String memberNickname = (String)session.getAttribute("memberNickname");
-			String memberName = (String)session.getAttribute("memberName");
-			String memberBirthday = (String)session.getAttribute("memberBirthday");
-			String memberGender = (String)session.getAttribute("memberGender");
-			String memberPhoneNumber = (String)session.getAttribute("memberPhoneNumber");
-			String memberEmail = (String)session.getAttribute("memberEmail");
 			
-//			memberService = new MemberService();
-//			request.setAttribute("memberDTO", memberDTO);
+			memberService = new MemberService();
+			MemberDTO memberDTO = memberService.getMember(memberId);
+			request.setAttribute("memberDTO", memberDTO);
 			dispatcher 
 		    = request.getRequestDispatcher("member/memberInfo/update.jsp");
 		dispatcher.forward(request, response);
 		}// update.me()
-	} 
+		
+		if(sPath.equals("/updatePro.me")) {
+			System.out.println("뽑은 가상주소 비교 : /updatePro.me");
+			request.setCharacterEncoding("utf-8");
+//			HttpSession session = request.getSession();
+//			String memberId = (String) session.getAttribute("memberId");
+			memberService = new MemberService();
+			memberService.updateMember(request);
+//			dispatcher 
+//		    = request.getRequestDispatcher("updatesuuccess.jsp  ");
+//		dispatcher.forward(request, response);
+			response.sendRedirect("main.me");
+		}// updatePro.me
+		
+			}
 }

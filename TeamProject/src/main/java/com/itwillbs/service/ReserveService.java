@@ -1,7 +1,5 @@
 package com.itwillbs.service;
 
-import java.sql.Timestamp;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -18,8 +16,8 @@ public class ReserveService {
 			request.setCharacterEncoding("utf-8");
 			// request id, pass,name 가져와서 -> 변수에 저장 
 			int classNum = Integer.parseInt(request.getParameter("classNum"));
-			Timestamp reservationDate = new Timestamp(System.currentTimeMillis());
-			String reservationId = request.getParameter("reservationId");
+			String reservationDate = request.getParameter("reservationDate");
+			//String reservationId = request.getParameter("reservationId");
 			int reservationAmount = Integer.parseInt(request.getParameter("reservationAmount"));
 			String payCompelete = request.getParameter("payCompelete");
 			//DTO 객체생성
@@ -39,5 +37,20 @@ public class ReserveService {
 			e.printStackTrace();
 		}
 	} //insertReserve
+
+	public ReserveDTO reservationComplete(HttpServletRequest request) {
+		System.out.println("ReserveService reservationComplete()");
+		ReserveDTO reserveDTO = null;
+		try {
+			// request 한글처리 
+			request.setCharacterEncoding("utf-8");
+			int reservationNum = Integer.parseInt(request.getParameter("reservationNum"));
+			reserveDAO = new ReserveDAO();
+		    reserveDTO = reserveDAO.reservationComplete(reservationNum);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return reserveDTO;
+	}
 
 }

@@ -28,7 +28,7 @@ public class ReserveDAO {
 			String sql = "insert into reservation(classNum,reservationDate,reservationId,reservationAmount,payComplete) values(?,?,?,?,?)";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, reserveDTO.getClassNum());
-			pstmt.setTimestamp(2, reserveDTO.getReservationDate());
+			pstmt.setString(2, reserveDTO.getReservationDate());
 			pstmt.setString(3, reserveDTO.getReservationId()); 
 			pstmt.setInt(4, reserveDTO.getReservationAmount());
 			pstmt.setString(5, reserveDTO.getPayComplete()); 			
@@ -40,5 +40,36 @@ public class ReserveDAO {
 			dbClose();
 		}
 	}// insertReserve
+
+	public ReserveDTO reservationComplete(int reservationNum) {
+		System.out.println("ReserveDAO reservationComplete");
+		ReserveDTO reserveDTO = null; 
+		try {
+			//1 2
+			con = new SQLConnection().getConnection();
+			// 3
+			String sql = "select r.reservationNum , r.reservationId, r.reservationDate, r.reservationAmount, c.classNum , p.payDate, p.payMethod from reservation r join class c on r.classNum = c.classNum join pay p on r.reservationNum = p.reservationNum where r.reservationNum=? ";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, reservationNum); 
+			//4 
+			rs =pstmt.executeQuery();
+			//5 
+			if(rs.next()) {
+				reserveDTO = new ReserveDTO();
+				reserveDTO.setReservationNum(rs.getInt("reservationNum"));
+				reserveDTO.setClassNum(rs.getInt("classNum"));
+				reserveDTO.setReservationDate(rs.getString("reservationDate"));
+				reserveDTO.setReservationId(rs.getString("reservationId"));
+				reserveDTO.setReservationAmount(rs.getInt("reservationAmount"));
+				reserveDTO.setPayComplete(rs.getString("payComplete"));
+			} 
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			dbClose();
+		}
+
+		return null;
+	}
 
 }

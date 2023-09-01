@@ -6,7 +6,7 @@ public class ReserveDTO {
 
 private int reservationNum;
 private int classNum;
-private Timestamp reservationDate;
+private String reservationDate;
 private String reservationId;
 private int reservationAmount;
 private String payComplete;
@@ -23,10 +23,11 @@ public int getClassNum() {
 public void setClassNum(int classNum) {
 	this.classNum = classNum;
 }
-public Timestamp getReservationDate() {
+
+public String getReservationDate() {
 	return reservationDate;
 }
-public void setReservationDate(Timestamp reservationDate) {
+public void setReservationDate(String reservationDate) {
 	this.reservationDate = reservationDate;
 }
 public String getReservationId() {

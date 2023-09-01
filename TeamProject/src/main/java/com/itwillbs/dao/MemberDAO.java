@@ -355,4 +355,25 @@ public class MemberDAO {
 		}
 	}// infoType()
 
+	public void updateMember(MemberDTO memberDTO) {
+		System.out.println("MemberDAO updateMember()");
+		try {
+			//1,2 디비연결
+			con = new SQLConnection().getConnection();
+			//3 sql update members set name = ? where id = ?
+			String sql = "update member set memberNickname=?, memberPhoneNum=?, memberEmail=? where memberId=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, memberDTO.getMemberNickname());
+			pstmt.setString(2, memberDTO.getMemberPhoneNum());
+			pstmt.setString(3, memberDTO.getMemberEmail());
+			pstmt.setString(4, memberDTO.getMemberId());
+			System.out.println(pstmt);
+			//4 실행
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			dbClose();
+		}
+	}//updateMember()
 }
