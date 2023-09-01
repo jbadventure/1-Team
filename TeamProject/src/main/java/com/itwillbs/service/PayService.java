@@ -42,5 +42,25 @@ public class PayService {
 			e.printStackTrace();
 		}
 	}// insertPay()
-
+	
+	public PayDTO getPay(HttpServletRequest request) {
+		System.out.println("PayService getPay()");
+		PayDTO payDTO = null;
+		try {
+			// request 한글처리 
+			request.setCharacterEncoding("utf-8");
+			// request에 classNum 파라미터 값 가져오기
+			int payNum = Integer.parseInt(request.getParameter("payNum"));
+			System.out.println(payNum);
+			// BoardDAO 객체생성 
+			payDAO = new PayDAO();
+			// boardDTO = getBoard(classNum);
+			payDTO = payDAO.getPay(payNum);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return payDTO;
+	} // getPay	
+	
 }

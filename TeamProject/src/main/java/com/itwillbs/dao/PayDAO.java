@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.itwillbs.domain.ClassBoardDTO;
 import com.itwillbs.domain.PayDTO;
 
 public class PayDAO {
@@ -40,5 +41,31 @@ public class PayDAO {
 			dbClose();
 		}
 	}// insertPay()
+
+	public PayDTO getPay(int payNum) {
+		System.out.println("PayDAO getPay()");
+		PayDTO payDTO = null;
+		try {
+			con = new SQLConnection().getConnection();
+			String sql = "select * from pay where payNum=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, payNum);
+			rs =pstmt.executeQuery();
+			
+			if(rs.next()) {
+				payDTO = new PayDTO();
+				payDTO.setPayNum(rs.getInt("payNum"));
+				payDTO.setReservationNum(rs.getInt("reservationNum"));
+				payDTO.setPayPrice(rs.getInt("payPrice"));
+				payDTO.setPayMethod(rs.getString("payMethod"));
+				payDTO.setPayDate(rs.getTimestamp("payDate"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			dbClose();
+		}
+		return payDTO;
+	} // getPay
 
 }
