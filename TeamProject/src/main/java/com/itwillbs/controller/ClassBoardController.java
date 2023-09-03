@@ -34,7 +34,7 @@ public class ClassBoardController extends HttpServlet {
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("ClassBoardController doProcess()");
 		String sPath = request.getServletPath();
-		System.out.println("뽑은 가상주소"+sPath);
+		System.out.println("뽑은 가상주소 : " + sPath);
 		
 		if (sPath.equals("/classList.cbo")) { // 메인에서 클래스테스트 누르면 클래스 리스트 보여줌 
 			// 한페이지에 출력될 게시물 수 pageSize
