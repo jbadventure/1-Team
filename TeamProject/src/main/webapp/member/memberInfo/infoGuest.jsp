@@ -31,7 +31,7 @@ MemberDTO memberDTO=(MemberDTO)request.getAttribute("memberDTO");
      <%			 }
      %><br>
 <input type="button" value="개인정보수정" id="개인정보수정" onclick="location.href='update.me'"><br>
-<input type="button" value="예약내역" id="예약내역" onclick="location.href='reserveInfo.me'"><br>
+<input type="button" value="예약내역" id="예약내역" onclick="location.href='myReserveList.re'"><br>
 <input type="button" value="나의 게시판 활동내역" id="나의 게시판 활동내역"><br>
 
 <!-- 푸터들어가는 곳 -->

@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.itwillbs.domain.ClassBoardDTO;
 import com.itwillbs.domain.ReserveDTO;
@@ -124,7 +126,36 @@ public class ReserveDAO {
 		}
 		return reservationNum;
 	}// getMaxNum()
-	
-	
-	
+
+	public List<ReserveDTO> gerReserveList(String reservationId) {
+		System.out.println("ReserveDAO gerReserveList()");
+		List<ReserveDTO> reserveList = null;
+		try {
+			// 1, 2
+			con = new SQLConnection().getConnection();
+			// 3단계 문자열 -> sql구문 변경
+			String sql = "select * from reservation where reservationId =? order by reservationNum desc";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, reservationId);
+			System.out.println(pstmt);
+			System.out.println(reservationId);
+			// 4단계 sql구문 실행
+			rs =pstmt.executeQuery();
+			reserveList= new ArrayList<>();
+			while(rs.next()) {
+				ReserveDTO reserveDTO = new ReserveDTO();
+				reserveDTO.setReservationNum(rs.getInt("reservationNum"));
+				reserveDTO.setClassNum(rs.getInt("classNum"));
+				reserveDTO.setReservationDate(rs.getString("reservationDate"));
+				reserveDTO.setReservationId(rs.getString("reservationId"));
+				reserveDTO.setReservationAmount(rs.getInt("reservationAmount"));
+				System.out.println(reserveList);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			dbClose();
+		}
+		return reserveList;
+	}
 }

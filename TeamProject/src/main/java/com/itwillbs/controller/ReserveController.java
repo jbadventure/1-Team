@@ -1,6 +1,7 @@
 package com.itwillbs.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -73,6 +74,22 @@ public class ReserveController extends HttpServlet{
 			= request.getRequestDispatcher("order/reservationInfo.jsp");
 			dispatcher.forward(request, response);
 		}// 
+		
+		if(sPath.equals("/myReserveList.re")) {
+			System.out.println("뽑은 가상주소 비교 : /myReserveList.re");
+			reserveService = new ReserveService();
+
+			HttpSession session = request.getSession();
+			String reservationId = (String)session.getAttribute("memberId");
+			
+			List<ReserveDTO> reserveList = reserveService.getReserveList(reservationId);
+			request.setAttribute("reserveList", reserveList);
+			System.out.println(reserveList);
+
+			dispatcher = request.getRequestDispatcher("/member/memberInfo/myReserveList.jsp");
+			dispatcher.forward(request, response);
+		}
+			
 
 		
 	}

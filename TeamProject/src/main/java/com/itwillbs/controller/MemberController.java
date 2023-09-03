@@ -374,6 +374,5 @@ public class MemberController extends HttpServlet {
 		dispatcher.forward(request, response);
 		}//
 		
-		
-			}
-}
+	}//doProcess
+}//class

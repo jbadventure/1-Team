@@ -1,6 +1,7 @@
 package com.itwillbs.service;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -88,5 +89,18 @@ public class ReserveService {
 		}
 		return reservationNum;
 	}
+
+	public List<ReserveDTO> getReserveList(String reservationId) {
+		System.out.println("ReserveService getReserveList()");
+		List<ReserveDTO> reserveList = null;
+		try {
+
+		 reserveDAO = new ReserveDAO();
+		 reserveList = reserveDAO.gerReserveList(reservationId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
+		return reserveList;
+	}//gerReserveList
 
 }
