@@ -127,7 +127,7 @@ public class ReserveDAO {
 		return reservationNum;
 	}// getMaxNum()
 
-	public List<ReserveDTO> gerReserveList(String reservationId) {
+	public List<ReserveDTO> getReserveList(String reservationId) {
 		System.out.println("ReserveDAO gerReserveList()");
 		List<ReserveDTO> reserveList = null;
 		try {
@@ -138,7 +138,7 @@ public class ReserveDAO {
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, reservationId);
 			System.out.println(pstmt);
-			System.out.println(reservationId);
+			System.out.println("where reservationId =?"+reservationId);
 			// 4단계 sql구문 실행
 			rs =pstmt.executeQuery();
 			reserveList= new ArrayList<>();
@@ -149,7 +149,8 @@ public class ReserveDAO {
 				reserveDTO.setReservationDate(rs.getString("reservationDate"));
 				reserveDTO.setReservationId(rs.getString("reservationId"));
 				reserveDTO.setReservationAmount(rs.getInt("reservationAmount"));
-				System.out.println(reserveList);
+				reserveList.add(reserveDTO);
+				System.out.println("select * from reservation"+reserveList);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

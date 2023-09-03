@@ -96,7 +96,7 @@ public class ReserveService {
 		try {
 
 		 reserveDAO = new ReserveDAO();
-		 reserveList = reserveDAO.gerReserveList(reservationId);
+		 reserveList = reserveDAO.getReserveList(reservationId);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 
