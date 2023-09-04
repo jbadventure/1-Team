@@ -16,7 +16,7 @@
 <%
 //로그인 하면 => 로그인한 정보를 세션 저장
 //세션에 로그인 정보 가져오기
-String memberId=(String)session.getAttribute("memberId");
+String memberId=(String)request.getAttribute("memberId");
 //세션에 로그인정보 있으면  id값 보여주기 
 //세션에 로그인 정보가 없으면 회원정보가 존재하지 않습니다
 if(memberId != null){

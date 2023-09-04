@@ -192,50 +192,21 @@ public class MemberController extends HttpServlet {
 
 		if (sPath.equals("/findId.me")) { // 아이디 찾기
 			// member/join/findPassword.jsp 주소변경없이 이동
+			
 			dispatcher = request.getRequestDispatcher("member/login/findId.jsp");
-			dispatcher.forward(request, response);
+		    dispatcher.forward(request, response);
 		}
 
 		if (sPath.equals("/findIdPro.me")) { // 아이디 찾기
-			System.out.println("뽑은 가상주소 비교 : /findId.me");
+			System.out.println("뽑은 가상주소 비교 : /findIdPro.me");
 			memberService = new MemberService();
-			MemberDTO memberDTO = memberService.userInfoCheck(request);
-
-			if (memberDTO != null) {
-				// 입력한회원정보 일치하면 세션값 저장 ->idReport.me로 이동
-				HttpSession session = request.getSession();
-				session.setAttribute("memberId", memberDTO.getMemberId());
-				response.sendRedirect("idReport.me");
-			} else {
-				// memberDTO == null 아이디 비밀번호 틀림=> member/msg.jsp
-				dispatcher = request.getRequestDispatcher("member/msg.jsp");
-				dispatcher.forward(request, response);
-			}
-		}//findIdPro 
-		
-		if (sPath.equals("/idReport.me")) { // 아이디 보여주기
-			// member/join/findPassword.jsp 주소변경없이 이동
+			String memberId = memberService.userInfoCheck(request);
+			System.out.println("컨트롤러 "+memberId);
+			request.setAttribute("memberId", memberId);
+			
 			dispatcher = request.getRequestDispatcher("member/login/idReport.jsp");
 			dispatcher.forward(request, response);
-		}
-		
-		if(sPath.equals("/idReportPro.me")) {  // 아이디 보여주기
-			System.out.println("뽑은 가상주소 비교 : /idReportPro.me");
-			HttpSession session = request.getSession();
-			// "memberId" 세션값 가져오기 => String memberId 변수 저장
-			String memberId = (String) session.getAttribute("memberId");
-			System.out.println(memberId); // memberId값 확인용
-			if (memberId != null) {
-				dispatcher = request.getRequestDispatcher("member/login/idReport.jsp");
-				dispatcher.forward(request, response);
-//				response.sendRedirect("login.me"); 
-				session.invalidate();
-			} else {
-				// 저장된 memberId값이 없으면 => 팝업창 띄운다.
-				dispatcher = request.getRequestDispatcher("member/msg.jsp");
-				dispatcher.forward(request, response);
-			}
-		} // idReportPro
+		}//findIdPro
 
 		if (sPath.equals("/findPassword.me")) { // 비밀번호 찾기
 			// member/join/findPassword.jsp 주소변경없이 이동

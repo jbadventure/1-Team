@@ -151,35 +151,34 @@ public class MemberDAO {
 		return memberDTO;
 	}// userCheck() 
 	
-	public MemberDTO userInfoCheck(MemberDTO memberDTO3) {
+	
+	public String userInfoCheck(String memberName, String memberEmail) {
 		System.out.println("MemberDAO userInfoCheck()");
-		MemberDTO memberDTO = null;
+		String memberId = null;
 		try {
-			System.out.println("DAO try");
 			//1단계 JDBC 프로그램 가져오기
 			//2단계 디비 연결
 			con = new SQLConnection().getConnection(); 
 			//3단계 sql문 
 			String sql = "select memberId from member where memberName = ? and memberEmail = ?";
 			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1, memberDTO3.getMemberName());
-			pstmt.setString(2, memberDTO3.getMemberEmail());
+			pstmt.setString(1, memberName);
+			pstmt.setString(2, memberEmail);
 			System.out.println(pstmt);
 			
 			//4단계 sql구문 실행한 결과를 ResultSet(변수rs)으로 저장하겠다
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				System.out.println("DAO if");
-				memberDTO = new MemberDTO();
-				memberDTO.setMemberId(rs.getString("MemberId"));
+				memberId = rs.getString("memberId");
+				System.out.println(memberId);
 		      }
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			dbClose();
 		}
-		return memberDTO;
+		return memberId;
 	}
 
 	public MemberDTO pwCheck(MemberDTO memberDTO2) {

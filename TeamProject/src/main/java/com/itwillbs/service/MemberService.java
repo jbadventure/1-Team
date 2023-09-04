@@ -154,22 +154,21 @@ public class MemberService {
 	}// userCheck() 
 	
 	
-	public MemberDTO userInfoCheck(HttpServletRequest request) {
+	public String userInfoCheck(HttpServletRequest request) {
 		System.out.println("MemberService userInfoCheck()");
-		MemberDTO memberDTO = null;
+		String memberId = null;
 		try {
+			memberDAO = new MemberDAO();
 			request.setCharacterEncoding("utf-8");
 			String memberName = request.getParameter("memberName");
 			String memberEmail = request.getParameter("memberEmail");
-			MemberDTO memberDTO3 = new MemberDTO();
-			memberDTO3.setMemberName(memberName);
-			memberDTO3.setMemberEmail(memberEmail);
-			memberDAO = new MemberDAO();
-			memberDTO=memberDAO.userInfoCheck(memberDTO3);
+			memberId = memberDAO.userInfoCheck(memberName,memberEmail);
+			request.setAttribute("memberId", memberId);
+			System.out.println(memberId);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return memberDTO;
+		return memberId;
 	}//userInfoCheck 
 
 
