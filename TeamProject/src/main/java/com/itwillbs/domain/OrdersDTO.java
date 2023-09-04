@@ -12,6 +12,7 @@ public class OrdersDTO {
 	private int totalPrice;
 	private String payDate;
 	private String payMethod;
+	private String classSubject;
 	
 	public int getOrdersNum() {
 		return ordersNum;
@@ -60,6 +61,12 @@ public class OrdersDTO {
 	}
 	public void setPayMethod(String payMethod) {
 		this.payMethod = payMethod;
+	}
+	public String getClassSubject() {
+		return classSubject;
+	}
+	public void setClassSubject(String classSubject) {
+		this.classSubject = classSubject;
 	}
 	
 	

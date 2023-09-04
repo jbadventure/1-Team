@@ -2,11 +2,14 @@ package com.itwillbs.service;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import com.itwillbs.dao.NoticeBoardDAO;
 import com.itwillbs.dao.OrdersDAO;
+import com.itwillbs.domain.NoticeBoardDTO;
 import com.itwillbs.domain.OrdersDTO;
 
 public class OrdersService {
@@ -52,7 +55,7 @@ public class OrdersService {
 			System.out.println(ordersNum);
 			// BoardDAO 객체생성 
 			ordersDAO = new OrdersDAO();
-			// boardDTO = getBoard(classNum);
+			// ordersDTO = getOrders(ordersNum);
 			ordersDTO = ordersDAO.getOrders(ordersNum);
 			
 		} catch (Exception e) {
@@ -97,6 +100,18 @@ public class OrdersService {
 			e.printStackTrace();
 		}
 	}// insertPay
+
+	public List<OrdersDTO> getOrdersList(String ordersId) {
+		List<OrdersDTO> ordersList = null;
+		try {
+			ordersDAO = new OrdersDAO();
+			ordersList = ordersDAO.getOrdersList(ordersId);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return ordersList;
+	} // getOrdersList
 
 
 		

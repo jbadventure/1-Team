@@ -191,7 +191,6 @@ String memberId = (String)session.getAttribute("memberId");
 // String reservationAmount = request.getParameter("reservationAmount");
 OrdersDTO ordersDTO = (OrdersDTO)request.getAttribute("ordersDTO"); 
 String classFile = (String)session.getAttribute("classFile");
-String classSubject = (String)session.getAttribute("classSubject");
 int classPrice = (int)session.getAttribute("classPrice");
 // int reservationAmount = (int)session.getAttribute("reservationAmount");
 // int payPrice = classPrice*reserveDTO.getReservationAmount();
@@ -214,7 +213,7 @@ int classPrice = (int)session.getAttribute("classPrice");
      <%			 }
      %>
 </td></tr> 
-<tr><td>클래스제목 <%=classSubject %></td></tr>
+<tr><td>클래스제목 <%=ordersDTO.getClassSubject() %></td></tr>
 <tr><td>예약날짜 <%=ordersDTO.getOrdersDate() %></td></tr>
 <tr><td>예약인원 <%=ordersDTO.getOrdersAmount() %></td></tr>
 
@@ -230,7 +229,7 @@ int classPrice = (int)session.getAttribute("classPrice");
 
 <legend>총 결제금액 <%=ordersDTO.getTotalPrice() %></legend>
 
-<input type="hidden" name ="classSubject"  id="classSubject" value="<%=classSubject %>"><!-- classSubject값 전달 -->
+<%-- <input type="hidden" name ="classSubject"  id="classSubject" value="<%=classSubject %>"><!-- classSubject값 전달 --> --%>
 <input type="button" value="결제하기" id="btn">
 </form>
 
@@ -264,7 +263,7 @@ $(document).ready(function() {
 	                참고하세요. 
 	                나중에 포스팅 해볼게요.
 	             */
-	            name: '<%=classSubject %>', //결제창에서 보여질 이름
+	            name: '<%=ordersDTO.getClassSubject() %>', //결제창에서 보여질 이름
 	            amount: <%=ordersDTO.getTotalPrice() %>, //가격 
 	            buyer_email: 'iamport@siot.do',
 	            buyer_name: '구매자이름',
@@ -318,7 +317,7 @@ $(document).ready(function() {
 	                참고하세요. 
 	                나중에 포스팅 해볼게요.
 	             */
-	            name: '<%=classSubject %>', //결제창에서 보여질 이름
+	            name: '<%=ordersDTO.getClassSubject() %>', //결제창에서 보여질 이름
 	            amount: <%=ordersDTO.getTotalPrice() %>, //가격 
 	            buyer_email: 'iamport@siot.do',
 	            buyer_name: '구매자이름',
@@ -372,7 +371,7 @@ $(document).ready(function() {
 	                참고하세요. 
 	                나중에 포스팅 해볼게요.
 	             */
-	            name: '<%=classSubject %>', //결제창에서 보여질 이름
+	            name: '<%=ordersDTO.getClassSubject() %>', //결제창에서 보여질 이름
 	            amount: <%=ordersDTO.getTotalPrice() %>, //가격 
 	            buyer_email: 'iamport@siot.do',
 	            buyer_name: '구매자이름',
