@@ -208,6 +208,7 @@ public class MemberController extends HttpServlet {
 			dispatcher.forward(request, response);
 		}//findIdPro
 
+
 		if (sPath.equals("/findPassword.me")) { // 비밀번호 찾기
 			// member/join/findPassword.jsp 주소변경없이 이동
 			dispatcher = request.getRequestDispatcher("member/login/findPassword.jsp");
