@@ -239,7 +239,7 @@ $(document).ready(function() {
 // alert("시작");	
 
 	$('#btn').click(function() {
-		alert($('input[name=payMethod]:checked').val());
+// 		alert($('input[name=payMethod]:checked').val());
 	
 	
 	    if($('input[name=payMethod]:checked').val() == "kakaopay") {

@@ -84,10 +84,12 @@ public class OrdersService {
 			System.out.println(payMethod);
 			//DTO 객체생성
 			ordersDAO = new OrdersDAO();
+			int ordersNum = ordersDAO.getMaxNum();
 			OrdersDTO ordersDTO = new OrdersDTO();
 			// set메서드 호출 파라미터값 저장
 			ordersDTO.setPayDate(payDate);
 			ordersDTO.setPayMethod(payMethod);
+			ordersDTO.setOrdersNum(ordersNum);
 			
 			ordersDAO.insertPay(ordersDTO);
 			

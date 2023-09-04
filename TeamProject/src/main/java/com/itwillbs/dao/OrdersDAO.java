@@ -100,28 +100,26 @@ public class OrdersDAO {
 
 	public void insertPay(OrdersDTO ordersDTO) {
 		System.out.println("OrdersDAO insertPay()");
+		System.out.println(ordersDTO.getPayDate());
+		System.out.println(ordersDTO.getPayMethod());
+		System.out.println(ordersDTO.getOrdersNum());
 		try {
-			// 1단계 JDBC 프로그램 가져오기 
-			// 2단계 디비 연결
 			con = new SQLConnection().getConnection();
-			System.out.println(ordersDTO.getPayDate());
-			System.out.println(getMaxNum());
-
-			// 3단계 문자열 -> sql구문 변경
 			String sql = "update orders set payDate=?, payMethod=? where ordersNum=?";
-			pstmt=con.prepareStatement(sql);
+			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, ordersDTO.getPayDate());
-			pstmt.setString(2, ordersDTO.getPayMethod()); 
-			pstmt.setInt(3, getMaxNum());
+			pstmt.setString(2, ordersDTO.getPayMethod());
+			pstmt.setInt(3, ordersDTO.getOrdersNum());
 			
-			// 4단계 sql구문 실행
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			dbClose();
 		}
-	}//insertPay()
+		
+	}// insertPay
+
 
 
 		

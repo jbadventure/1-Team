@@ -77,8 +77,8 @@ public class OrdersController extends HttpServlet {
 		if (sPath.equals("/reservationInfo.or")) { // 예약내역으로 이동
 			System.out.println("뽑은 가상주소 비교 : /reservationInfo.or");
 			// 주소변경없이 이동
-//			dispatcher = request.getRequestDispatcher("order/reservationInfo.jsp");
-//			dispatcher.forward(request, response);
+			dispatcher = request.getRequestDispatcher("order/reservationInfo.jsp");
+			dispatcher.forward(request, response);
 		}// reservationInfo.or
 		
 	}//doProcess
