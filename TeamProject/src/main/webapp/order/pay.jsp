@@ -230,6 +230,7 @@ int classPrice = (int)session.getAttribute("classPrice");
 
 <legend>총 결제금액 <%=ordersDTO.getTotalPrice() %></legend>
 
+<input type="hidden" name ="classSubject"  id="classSubject" value="<%=classSubject %>"><!-- classSubject값 전달 -->
 <input type="button" value="결제하기" id="btn">
 </form>
 
@@ -264,7 +265,7 @@ $(document).ready(function() {
 	                나중에 포스팅 해볼게요.
 	             */
 	            name: '<%=classSubject %>', //결제창에서 보여질 이름
-	            amount: 100, //가격 
+	            amount: <%=ordersDTO.getTotalPrice() %>, //가격 
 	            buyer_email: 'iamport@siot.do',
 	            buyer_name: '구매자이름',
 	            buyer_tel: '010-1234-5678',
@@ -318,7 +319,7 @@ $(document).ready(function() {
 	                나중에 포스팅 해볼게요.
 	             */
 	            name: '<%=classSubject %>', //결제창에서 보여질 이름
-	            amount: 100, //가격 
+	            amount: <%=ordersDTO.getTotalPrice() %>, //가격 
 	            buyer_email: 'iamport@siot.do',
 	            buyer_name: '구매자이름',
 	            buyer_tel: '010-1234-5678',
@@ -372,7 +373,7 @@ $(document).ready(function() {
 	                나중에 포스팅 해볼게요.
 	             */
 	            name: '<%=classSubject %>', //결제창에서 보여질 이름
-	            amount: 100, //가격 
+	            amount: <%=ordersDTO.getTotalPrice() %>, //가격 
 	            buyer_email: 'iamport@siot.do',
 	            buyer_name: '구매자이름',
 	            buyer_tel: '010-1234-5678',

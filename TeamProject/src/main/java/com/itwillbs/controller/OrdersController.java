@@ -66,16 +66,24 @@ public class OrdersController extends HttpServlet {
 		
 		if (sPath.equals("/payPro.or")) { // 결제누르면 결제정보 저장
 			System.out.println("뽑은 가상주소 비교 : /payPro.or");
+			request.setCharacterEncoding("utf-8");
+			String classSubject = request.getParameter("classSubject");
+			HttpSession session = request.getSession();
+			session.setAttribute("classSubject", classSubject);
 			// ordersService 객체생성 
 			ordersService = new OrdersService();
 			// 리턴할 형 insertBoard(request) 메서드 호출
 			ordersService.insertPay(request);
+			int ordersNum = ordersService.getMaxNum();
 			// pay.or 주소변경되면서 이동 
-			response.sendRedirect("reservationInfo.or");
+			response.sendRedirect("reservationInfo.or?ordersNum="+ordersNum);
 		}// payPro.or
 		
 		if (sPath.equals("/reservationInfo.or")) { // 예약내역으로 이동
 			System.out.println("뽑은 가상주소 비교 : /reservationInfo.or");
+			OrdersService ordersService = new OrdersService();
+			OrdersDTO ordersDTO = ordersService.getOrders(request);
+			request.setAttribute("ordersDTO", ordersDTO);
 			// 주소변경없이 이동
 			dispatcher = request.getRequestDispatcher("order/reservationInfo.jsp");
 			dispatcher.forward(request, response);
