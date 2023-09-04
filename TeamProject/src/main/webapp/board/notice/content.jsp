@@ -31,7 +31,7 @@
 		</div>
 		<div class="add-button">
 			<button onclick="window.location.href='noticeDelete.nbo?noticeNum=<%=boardDTO.getNoticeNum()%>'">공지 삭제</button>
-		</div>
+		</div> 
 	</div>
 </body>
 </html>
