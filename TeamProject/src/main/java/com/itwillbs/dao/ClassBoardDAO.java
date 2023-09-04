@@ -20,7 +20,7 @@ public class ClassBoardDAO {
 		if(rs != null) {try {rs.close();} catch (SQLException e) {	}}			
 		if(pstmt != null) {try {pstmt.close();} catch (SQLException e) {	}}
 		if(con != null) {try {con.close();} catch (SQLException e) {	}}
-	}
+	}// dbClose
 		
 	public List<ClassBoardDTO> getBoardList(PageDTO pageDTO) {
 		System.out.println("ClassBoardDAO getBoardList()");

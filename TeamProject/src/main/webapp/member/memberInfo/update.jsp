@@ -18,22 +18,16 @@
 <!-- 헤더들어가는 곳 --> 
 <h1>나의정보수정</h1>
 <% 
-MemberDTO memberDTO
-=(MemberDTO)request.getAttribute("memberDTO");
-// ㅇㅇ
-// String memberId = (String) session.getAttribute("memberId");
-// String memberNickname = (String) session.getAttribute("memberNickname");
-// String memberName = (String) session.getAttribute("memberName");
-// String memberBirthday = (String) session.getAttribute("memberBirthday");
-// String memberGender = (String) session.getAttribute("memberGender");
-// String memberPhoneNum = (String) session.getAttribute("memberPhoneNum");
-// String memberEmail = (String) session.getAttribute("memberEmail");
+MemberDTO memberDTO=(MemberDTO)request.getAttribute("memberDTO");
 %>
 <!-- form -->
-<form action = "updatePro.me" method="post" id="fr">
+<form action = "updatePro.me" method="post" id="fr" enctype="multipart/form-data">
 
+프로필 사진 : <input type="file" name="memberFile">
+<input type="hidden" name="oldfile" value="<%=memberDTO.getMemberFile()%>">
+<br>
 아이디 : <input type="text" name="memberId" value="<%=memberDTO.getMemberId() %>" readonly><br>
-비밀번호 : <input type="submit" value="비밀번호 재설정" id="rePass" onclick="location.href='PasswordReset.me'"><br>
+비밀번호 : <input type="submit" value="비밀번호 재설정" id="rePass"><br>
 닉네임 : <input type="text" name = "memberNickname" value="<%=memberDTO.getMemberNickname() %>" id="nick"> <input type="button" value="중복확인" name="ndup" id="ndup"><br>
 	   <div id="div1"></div>
 <div id="div1"></div>
@@ -45,11 +39,25 @@ MemberDTO memberDTO
 <div id="div2"></div>
 이메일 : <input type="text" name="memberEmail" value="<%=memberDTO.getMemberEmail() %>" id="email"><br>
 <div id= "div3"></div>
+지역 : <select name="memberLocation" id="address">
+    <option value="Seoul" <%= "Seoul".equals(memberDTO.getMemberLocation()) ? "selected" : "" %>>서울</option>
+    <option value="Busan" <%= "Busan".equals(memberDTO.getMemberLocation()) ? "selected" : "" %>>부산</option>
+	 </select><br>
+	 <div id="div4"></div>
+<%
+if (memberDTO.getMemberType().equals("host")) { %>
+사업자등록번호 : <input type="text" name="businessNum" value="<%=memberDTO.getBusinessNum() %>" id="bnum"><br>
+<% } %>
+<div id="div5"></div>
 <input type="button" name="update" value="수정하기" id="btn">
 </form>
 <!-- script -->
 <script type="text/javascript" src="script/jquery-3.7.0.js"></script>
 <script type="text/javascript">
+
+// document.getElementById("rePassButton").addEventListener("click", function() {
+//     location.href = "PasswordReset.me";
+    
 $(document).ready(function(){
 	// 버튼 클릭시
 	$('#btn').click(function(){
@@ -81,6 +89,23 @@ $(document).ready(function(){
 		}else{
 			$('#div3').empty();
 		}
+		// 지역
+		if($('#address').val() == ""){
+			$('#div4').html("지역을 선택해주세요").css("color","red");
+			$('#address').focus();
+			return;
+		}else{
+			$('#div4').empty();
+		}
+		// 사업자 번호
+		if($('#bnum').val()==""){
+			$('#div5').html("사업자등록번호를 입력해주세요").css("color","red");
+			$('#bnum').focus();
+			return;
+		}else{
+			$('#div5').empty();
+		}
+		alert("개인정보가 수정되었습니다.")
 		$('#fr').submit();
 	});// click
 });// ready

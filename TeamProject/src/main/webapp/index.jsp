@@ -7,7 +7,7 @@
 // response.sendRedirect("noticeList.nbo");
 // response.sendRedirect("login.me");
 // response.sendRedirect("insertGuest.me");
-//response.sendRedirect("insertHost.me");
+// response.sendRedirect("insertHost.me");
 
 
 

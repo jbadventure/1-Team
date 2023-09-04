@@ -8,7 +8,7 @@
   <link href="css/newfile.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>memberInfo/info.jsp</title>
 </head>
 <body>
 <!-- 헤더들어가는 곳 -->
@@ -33,7 +33,7 @@ if(memberDTO.getMemberType().equals("guest")){
      <%			 }
      %><br>
 <input type="button" value="회원정보변경" id="회원정보변경" onclick="location.href='update.me'"><br>
-<input type="button" value="클래스관리" id="클래스관리" onclick="location.href='update.me'"><br>
+<input type="button" value="클래스관리" id="클래스관리" onclick="location.href='classManagement.cbo'"><br>
 <input type="button" value="예약관리" id="예약관리" onclick="location.href='update.me'">
  
 <!-- 푸터들어가는 곳 -->

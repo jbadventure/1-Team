@@ -47,10 +47,16 @@
         							   		   	   </select><br>
         							   		   	   <div id="div9"></div>
 사업자등록번호 : <input type="text" name="bNum" id="bNum"><br>
-			<div id="div11"></div>
+			<div id="div11"></div>		
+지역 : <select name="address" id="address">
+	 <option value="">지역을 선택해주세요</option>
+	 <option value="Seoul">서울</option>
+	 <option value="Busan">부산</option>
+	 </select><br>
+	 <div id="div12"></div>
 
 <input type="checkbox" value="이용약관" id="agree">위 이용약관에 동의합니다. <a href="../join/agree.jsp">이용약관</a><br>
-<div id="div12"></div>
+<div id="div13"></div>
 <input type="hidden" value="host" name="memberType" id="memberType">
 <input type="button" value="회원가입" id="btn1">
 </form>
@@ -229,14 +235,24 @@ $(document).ready(function(){
 			return false;
 		} else{
 			$('#div11').empty();
+			$('#address').focus()
+		}
+		
+		//지역
+		if($('#address').val() == "" ){
+			$('#div12').html("지역을 선택해주세요").css("color","red"); 
+			$('#address').focus();
+			return false;
+		}else {
+			$('#div12').empty();
 		}
 		
 		// 이용약관
 		if($('#agree').prop('checked') == false ){
-		    $('#div12').html("이용약관에 동의해주세요").css("color","red"); 
+		    $('#div13').html("이용약관에 동의해주세요").css("color","red"); 
 			return
 		} else {
-		    $('#div12').empty();
+		    $('#div13').empty();
 		}
 		$('#fr').submit();
 	});

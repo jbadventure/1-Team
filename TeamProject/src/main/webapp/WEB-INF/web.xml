@@ -81,6 +81,17 @@
 	<servlet-class>com.itwillbs.controller.PayController</servlet-class>
 </servlet>
 
+
+  <servlet-mapping>
+	<servlet-name>OrdersController</servlet-name>
+	<url-pattern>*.or</url-pattern>
+</servlet-mapping>
+
+<servlet>
+	<servlet-name>OrdersController</servlet-name>
+	<servlet-class>com.itwillbs.controller.OrdersController</servlet-class>
+</servlet>
+
   <servlet-mapping>
 	<servlet-name>SearchLogController</servlet-name>
 	<url-pattern>*.se</url-pattern>
@@ -90,6 +101,5 @@
 	<servlet-name>SearchLogController</servlet-name>
 	<servlet-class>com.itwillbs.controller.SearchLogController</servlet-class>
 </servlet>
-
 
 </web-app>

@@ -1,9 +1,16 @@
 package com.itwillbs.service;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
+import com.itwillbs.dao.ClassBoardDAO;
 import com.itwillbs.dao.MemberDAO;
+import com.itwillbs.domain.ClassBoardDTO;
 import com.itwillbs.domain.MemberDTO;
+import com.itwillbs.domain.PageDTO;
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 public class MemberService {
 	MemberDAO memberDAO = null;
@@ -84,6 +91,7 @@ public class MemberService {
 				String emailop2 = request.getParameter("emailop2");
 				String bNum = request.getParameter("bNum");
 				String memberType = request.getParameter("memberType");
+				String address = request.getParameter("address");
 						
 				String phoneNum = phone1 + phone2 + phone3;
 				String email = emailop1 + '@' + emailop2;
@@ -100,6 +108,7 @@ public class MemberService {
 				memberDTO.setMemberEmail(email);
 				memberDTO.setBusinessNum(bNum);
 				memberDTO.setMemberType(memberType);
+				memberDTO.setMemberLocation(address);
 						
 				// MemberDAO 객체생성 후 insertMember() 메서드 정의 : MemberDTO 데이터(id,pass,name 등)가 저장된 주소값을 들고감
 				memberDAO = new MemberDAO();
@@ -275,21 +284,33 @@ public class MemberService {
 		System.out.println("MemberService updateMember()");
 		try {
 			request.setCharacterEncoding("utf-8");
-			String memberId = request.getParameter("memberId");
-			String memberNickname = request.getParameter("memberNickname");
-			String memberPhoneNum = request.getParameter("memberPhoneNum");
-			String memberEmail = request.getParameter("memberEmail");
-//			String memberId = (String)request.getSession().getAttribute("memberId");
-//			String memberNickname = (String)request.getSession().getAttribute("memberNickname");
-//			String memberPhoneNum = (String)request.getSession().getAttribute("memberPhoneNum");
-//			String memberEmail = (String)request.getSession().getAttribute("memberEmail");
+			
+			String uploadPath=request.getRealPath("/upload");
+			int maxSize=10*1024*1024;
+			MultipartRequest multi 
+			= new MultipartRequest(request, uploadPath,maxSize,"utf-8",
+					new DefaultFileRenamePolicy());
+			String memberId = multi.getParameter("memberId");
+			String memberFile = multi.getFilesystemName("memberFile");
+			String memberNickname = multi.getParameter("memberNickname");
+			String memberPhoneNum = multi.getParameter("memberPhoneNum");
+			String memberEmail = multi.getParameter("memberEmail");
+			String memberLocation = multi.getParameter("memberLocation");
+			String businessNum = multi.getParameter("businessNum");
+			if(memberFile == null) {
+			//기존 파일이름 가져오기
+			memberFile = multi.getParameter("oldfile");
+			}
 			// MemberDTO 객체생성 
 			MemberDTO memberDTO = new MemberDTO();
 			// set메서드 호출 파라미터값 저장
 			memberDTO.setMemberId(memberId);
+			memberDTO.setMemberFile(memberFile);
 			memberDTO.setMemberNickname(memberNickname);
 			memberDTO.setMemberPhoneNum(memberPhoneNum);
 			memberDTO.setMemberEmail(memberEmail);
+			memberDTO.setMemberLocation(memberLocation);
+			memberDTO.setBusinessNum(businessNum);
 			System.out.println(memberId);
 			System.out.println(memberEmail);
 			// MemberDAO 객체생성
@@ -301,4 +322,34 @@ public class MemberService {
 		}
 	}// updateMember()
 
+
+	public List<MemberDTO> getMemberList(PageDTO pageDTO) {
+		System.out.println("MemberService getMemberList()");
+		List<MemberDTO> memberList=null; 
+		try {
+			int startRow = (pageDTO.getCurrentPage()-1)*pageDTO.getPageSize()+1;
+			int endRow = startRow+pageDTO.getPageSize()-1;
+			pageDTO.setStartRow(startRow);
+			pageDTO.setEndRow(endRow);
+			// MemberDAO 객체생성
+			memberDAO = new MemberDAO();
+			// memberList = getMemberList 메서드 호출
+			memberList = memberDAO.getMemberList(pageDTO);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return memberList;
+	}// getMemberList
+	
+	public int getMemberCount() {
+		System.out.println("MemberService getMemberCount()");
+		int count=0; 
+		try { 
+			memberDAO = new MemberDAO();
+			count = memberDAO.getMemberCount();
+		} catch (Exception e) {
+			e.printStackTrace();
+			}
+		return count;
+	}//getMemberCount
 }

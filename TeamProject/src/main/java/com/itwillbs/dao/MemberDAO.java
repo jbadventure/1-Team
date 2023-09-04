@@ -4,12 +4,16 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import com.itwillbs.domain.ClassBoardDTO;
 import com.itwillbs.domain.MemberDTO;
+import com.itwillbs.domain.PageDTO;
 
 public class MemberDAO {
 	
@@ -62,7 +66,7 @@ public class MemberDAO {
 		try {
 			con=new SQLConnection().getConnection();
 
-			String sql = "insert into member(memberId,memberPassword,memberNickname,memberName,memberBirthday,memberGender,memberPhoneNum,memberEmail,BusinessNum,memberType) values(?,?,?,?,?,?,?,?,?,?)";
+			String sql = "insert into member(memberId,memberPassword,memberNickname,memberName,memberBirthday,memberGender,memberPhoneNum,memberEmail,memberLocation,businessNum,memberType) values(?,?,?,?,?,?,?,?,?,?,?)";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, memberDTO.getMemberId());
 			pstmt.setString(2, memberDTO.getMemberPassword()); 
@@ -72,8 +76,9 @@ public class MemberDAO {
 			pstmt.setString(6, memberDTO.getMemberGender());
 			pstmt.setString(7, memberDTO.getMemberPhoneNum());
 			pstmt.setString(8, memberDTO.getMemberEmail());
-			pstmt.setString(9, memberDTO.getBusinessNum());
-			pstmt.setString(10, memberDTO.getMemberType());
+			pstmt.setString(9, memberDTO.getMemberLocation());
+			pstmt.setString(10, memberDTO.getBusinessNum());
+			pstmt.setString(11, memberDTO.getMemberType());
 
 			// sql구문 실행결과를 ResultSet 내장객체에 저장
 			pstmt.executeUpdate();
@@ -361,12 +366,15 @@ public class MemberDAO {
 			//1,2 디비연결
 			con = new SQLConnection().getConnection();
 			//3 sql update members set name = ? where id = ?
-			String sql = "update member set memberNickname=?, memberPhoneNum=?, memberEmail=? where memberId=?";
+			String sql = "update member set memberFile=?, memberNickname=?, memberPhoneNum=?, memberEmail=?, memberLocation=?, businessNum=? where memberId=?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, memberDTO.getMemberNickname());
-			pstmt.setString(2, memberDTO.getMemberPhoneNum());
-			pstmt.setString(3, memberDTO.getMemberEmail());
-			pstmt.setString(4, memberDTO.getMemberId());
+			pstmt.setString(1, memberDTO.getMemberFile());
+			pstmt.setString(2, memberDTO.getMemberNickname());
+			pstmt.setString(3, memberDTO.getMemberPhoneNum());
+			pstmt.setString(4, memberDTO.getMemberEmail());
+			pstmt.setString(5, memberDTO.getMemberLocation());
+			pstmt.setString(6, memberDTO.getBusinessNum());
+			pstmt.setString(7, memberDTO.getMemberId());
 			System.out.println(pstmt);
 			//4 실행
 			pstmt.executeUpdate();
@@ -376,4 +384,65 @@ public class MemberDAO {
 			dbClose();
 		}
 	}//updateMember()
+
+	public List<MemberDTO> getMemberList(PageDTO pageDTO) {
+		List<MemberDTO> memberList = null;
+		try {
+			//1,2 디비연결
+			con = new SQLConnection().getConnection();
+			//3sql 
+			String sql = "select * from member order by memberNum desc limit ?, ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, pageDTO.getStartRow()-1); // 시작행 -1 
+			pstmt.setInt(2, pageDTO.getPageSize());//몇개	
+			//4실행 => 결과 저장
+			rs = pstmt.executeQuery();
+			//5결과 행접근=> MemberDTO 객체생성 => set저장(열접근)=> 배열한칸에 저장
+			memberList = new ArrayList<>();
+			while(rs.next()) {
+				MemberDTO memberDTO = new MemberDTO();
+				memberDTO.setMemberNum(rs.getInt("memberNum"));
+				memberDTO.setMemberId(rs.getString("memberId"));
+				memberDTO.setMemberPassword(rs.getString("memberPassword"));
+				memberDTO.setMemberName(rs.getString("memberName"));
+				memberDTO.setMemberNickname(rs.getString("memberNickname"));
+				memberDTO.setMemberBirthday(rs.getString("memberBirthday"));
+				memberDTO.setMemberGender(rs.getString("memberGender"));
+				memberDTO.setMemberPhoneNum(rs.getString("memberPhoneNum"));
+				memberDTO.setMemberEmail(rs.getString("memberEmail"));
+				memberDTO.setMemberType(rs.getString("memberType"));
+				memberDTO.setBusinessNum(rs.getString("businessNum"));
+				//배열 한칸에 저장
+				memberList.add(memberDTO);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			dbClose();
+		}
+		return memberList;
+	}
+	public int getMemberCount() {
+		System.out.println("MemberDAO getMemberCount()");
+		int count =0;
+		try {
+			// 1단계 2단계 
+			con = new SQLConnection().getConnection();
+			// 3단계 문자열 -> sql구문 변경
+			String sql = "select count(*) from member";
+			pstmt=con.prepareStatement(sql);
+			//4 실행 => 결과저장
+			rs =pstmt.executeQuery();
+		if(rs.next()) {
+			count = rs.getInt("count(*)");
+		}
+			// 실행  -> 결과 저장 
+			// 5결과 행접근 -> 열접근-> count 변수 저장 
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			dbClose();
+		}
+		return count;
+	}//getMemeberCount
 }
