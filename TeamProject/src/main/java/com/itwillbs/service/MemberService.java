@@ -161,7 +161,9 @@ public class MemberService {
 			memberDAO = new MemberDAO();
 			request.setCharacterEncoding("utf-8");
 			String memberName = request.getParameter("memberName");
-			String memberEmail = request.getParameter("memberEmail");
+			String emailop1 = request.getParameter("emailop1");
+			String emailop2 = request.getParameter("emailop2");
+			String memberEmail = emailop1+'@'+emailop2;
 			memberId = memberDAO.userInfoCheck(memberName,memberEmail);
 			request.setAttribute("memberId", memberId);
 			System.out.println(memberId);

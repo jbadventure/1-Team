@@ -16,18 +16,46 @@
 <h1>아이디찾기</h1>
 
 <!-- form -->
-<form action="findIdPro.me" method="post"  id="checkForm">
-<input type="text" placeholder="이름" name="memberName"><br>
-<input type="text" placeholder="이메일" name="memberEmail">
-<div id="div1"></div>
+<form action="findIdPro.me" method="post" name="checkForm" id ="checkForm">
+<input type="text" placeholder="이름" name="memberName" id ="memberName"><br>
+<input type="text" placeholder="이메일" name="emailop1" id="emailop1">@<select name="emailop2" id="emailop2">
+												   <option value="">이메일을 선택해주세요</option>
+												   <option value="naver.com">naver.com</option>
+												   <option value="gmail.com">gmail.com</option>
+        							   		   	   </select><br>
+<div id="div" style="color:red;"></div>
  
- <input type="submit" value="찾기" id="find">
+<button type ="button" onclick="checkForm_check();">찾기</button>
 </form>
 
 <!-- script -->
 <script type="text/javascript" src="../../script/jquery-3.7.0.js"></script>
 <script type="text/javascript">
 
+function checkForm_check() {
+	var memberName = document.getElementById("memberName");
+	var emailop1 = document.getElementById("emailop1");
+	var emailop2 = document.getElementById("emailop2");
+	
+	if(memberName.value ==""){
+		//alert("이름입력하세요");
+		document.getElementById("div").innerHTML = "이름 입력하세요";
+		return false; 
+	}
+	
+	if(emailop1.value ==""){
+		//alert("이메일입력하세요");
+		document.getElementById("div").innerHTML = "이메일 입력하세요";
+		return false; 
+	}
+	
+	if(emailop2.value ==""){
+		//alert("이메일선택하세요");
+		document.getElementById("div").innerHTML = "이메일 선택하세요";
+		return false; 
+	}
+	document.checkForm.submit();
+}
 
 
 </script>
