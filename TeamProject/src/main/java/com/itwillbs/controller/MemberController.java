@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.itwillbs.domain.MemberDTO;
+import com.itwillbs.domain.PageDTO;
 import com.itwillbs.service.MemberService;
 import com.itwillbs.service.NoticeBoardService;
 
@@ -357,22 +358,5 @@ public class MemberController extends HttpServlet {
 			memberService.updateMember(request);
 			response.sendRedirect("info.me");
 		}// updatePro.me
-		
-		if(sPath.equals("/memberList.me")) {
-			System.out.println("뽑은 가상주소 비교 : /memberList.me");
-			// MemberService 객체생성
-			memberService = new MemberService();
-	// List<MemberDTO> memberList  =  getMemberList();메서드호출
-	List<MemberDTO> memberList = memberService.getMemberList();
-			
-			// request에 "memberList", memberList를 담기
-			request.setAttribute("memberList", memberList);
-			
-			// member/list.jsp 주소변경 없이 이동
-			dispatcher 
-		    = request.getRequestDispatcher("member/memberList.jsp");
-		dispatcher.forward(request, response);
-		}//
-		
-	}//doProcess
-}//class
+	    }
+}

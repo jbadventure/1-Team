@@ -4,8 +4,11 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.itwillbs.dao.ClassBoardDAO;
 import com.itwillbs.dao.MemberDAO;
+import com.itwillbs.domain.ClassBoardDTO;
 import com.itwillbs.domain.MemberDTO;
+import com.itwillbs.domain.PageDTO;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -287,6 +290,7 @@ public class MemberService {
 			MultipartRequest multi 
 			= new MultipartRequest(request, uploadPath,maxSize,"utf-8",
 					new DefaultFileRenamePolicy());
+			int memberNum = Integer.parseInt(multi.getParameter("memberNum"));
 			String memberId = multi.getParameter("memberId");
 			String memberFile = multi.getFilesystemName("memberFile");
 			String memberNickname = multi.getParameter("memberNickname");
@@ -301,6 +305,7 @@ public class MemberService {
 			// MemberDTO 객체생성 
 			MemberDTO memberDTO = new MemberDTO();
 			// set메서드 호출 파라미터값 저장
+			memberDTO.setMemberNum(memberNum);
 			memberDTO.setMemberId(memberId);
 			memberDTO.setMemberFile(memberFile);
 			memberDTO.setMemberNickname(memberNickname);
@@ -320,18 +325,33 @@ public class MemberService {
 	}// updateMember()
 
 
-	public List<MemberDTO> getMemberList() {
+	public List<MemberDTO> getMemberList(PageDTO pageDTO) {
 		System.out.println("MemberService getMemberList()");
 		List<MemberDTO> memberList=null; 
 		try {
+			int startRow = (pageDTO.getCurrentPage()-1)*pageDTO.getPageSize()+1;
+			int endRow = startRow+pageDTO.getPageSize()-1;
+			pageDTO.setStartRow(startRow);
+			pageDTO.setEndRow(endRow);
 			// MemberDAO 객체생성
 			memberDAO = new MemberDAO();
 			// memberList = getMemberList 메서드 호출
-			memberList = memberDAO.getMemberList();
+			memberList = memberDAO.getMemberList(pageDTO);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return memberList;
-	}
-
+	}// getMemberList
+	
+	public int getMemberCount() {
+		System.out.println("MemberService getMemberCount()");
+		int count=0; 
+		try { 
+			memberDAO = new MemberDAO();
+			count = memberDAO.getMemberCount();
+		} catch (Exception e) {
+			e.printStackTrace();
+			}
+		return count;
+	}//getMemberCount
 }
