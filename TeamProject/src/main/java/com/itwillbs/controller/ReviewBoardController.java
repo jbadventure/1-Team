@@ -53,10 +53,9 @@ public class ReviewBoardController extends HttpServlet{
 		if(sPath.equals("/reviewList.rbo")) {
 			boardService = new ReviewBoardService();
 			List<ReviewBoardDTO> boardList = boardService.getBoardList();
-			System.out.println(boardList);
 			request.setAttribute("boardList", boardList);
-//			dispatcher = request.getRequestDispatcher("/board/review/list.jsp");
-			dispatcher = request.getRequestDispatcher("/board/class/content.jsp");
+			dispatcher = request.getRequestDispatcher("/board/review/list.jsp");
+//			dispatcher = request.getRequestDispatcher("/board/class/content.jsp");
 			dispatcher.forward(request, response);
 		} // list
 		

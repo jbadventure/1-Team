@@ -34,7 +34,7 @@ ReviewBoardDTO boardDTO = (ReviewBoardDTO)request.getAttribute("boardDTO");
            <label for ="date" name ="reviewIssueDate"> 작성일 : <%=boardDTO.getReviewIssueDate() %> </label>
            <input type="date" name="reviewIssueDate" required>
         </div>
-        <button type="submit">작성</button>
+        <button type="submit" onclick="window.location.href='/TeamProject/reviewList.rbo'">작성</button>
         </table>
      </form>  
 </div>

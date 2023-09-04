@@ -50,7 +50,7 @@ public class ReviewBoardDAO {
 		try {
 			con = new SQLConnection().getConnection();
 			// 3
-			String sql = "select * from notice order by reviewNum desc";
+			String sql = "select * from review where order by reviewNum desc ";
 			pstmt=con.prepareStatement(sql);
 			// 4
 			rs = pstmt.executeQuery();
@@ -63,7 +63,8 @@ public class ReviewBoardDAO {
 				boardDTO.setClassNum(rs.getInt("classNum"));
 				boardDTO.setReviewContent(rs.getString("reviewContent"));
 				boardDTO.setReviewFile(rs.getString("reviewFile"));
-				boardDTO.setReviewIssueDate(rs.getTimestamp("reviewIssueDate"));
+				
+				boardList.add(boardDTO);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

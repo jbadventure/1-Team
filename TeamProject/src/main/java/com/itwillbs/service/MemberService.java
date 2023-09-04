@@ -289,7 +289,6 @@ public class MemberService {
 			MultipartRequest multi 
 			= new MultipartRequest(request, uploadPath,maxSize,"utf-8",
 					new DefaultFileRenamePolicy());
-			int memberNum = Integer.parseInt(multi.getParameter("memberNum"));
 			String memberId = multi.getParameter("memberId");
 			String memberFile = multi.getFilesystemName("memberFile");
 			String memberNickname = multi.getParameter("memberNickname");
@@ -304,7 +303,6 @@ public class MemberService {
 			// MemberDTO 객체생성 
 			MemberDTO memberDTO = new MemberDTO();
 			// set메서드 호출 파라미터값 저장
-			memberDTO.setMemberNum(memberNum);
 			memberDTO.setMemberId(memberId);
 			memberDTO.setMemberFile(memberFile);
 			memberDTO.setMemberNickname(memberNickname);
