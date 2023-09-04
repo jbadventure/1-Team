@@ -17,6 +17,10 @@
 			value="<%=boardDTO.getQuestionNum()%>">
 		<table border="1">
 			<tr>
+				<td>분류</td>
+				<td><%=boardDTO.getQuestionCategory()%></td>
+			</tr>
+			<tr>
 				<td>제목</td>
 				<td><input type="text" name="questionQuestion"
 					value="<%=boardDTO.getQuestionQuestion()%>"></td>

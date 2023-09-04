@@ -11,9 +11,14 @@
 	<header>조회</header>
 	<div class="container">
 		<%
-QuestionBoardDTO boardDTO = (QuestionBoardDTO) request.getAttribute("boardDTO");
-%>
+		String memberId = (String) session.getAttribute("memberId");
+		QuestionBoardDTO boardDTO = (QuestionBoardDTO) request.getAttribute("boardDTO");
+		%>
 		<div class="question">
+			<tr>
+				<td>분류</td>
+				<td><%=boardDTO.getQuestionCategory()%></td>
+			</tr>
 			<tr>
 				<td>글번호</td>
 				<td><%=boardDTO.getQuestionNum()%></td>

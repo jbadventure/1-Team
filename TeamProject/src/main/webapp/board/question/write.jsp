@@ -8,7 +8,7 @@
 </head>
 <body>
 <%
-String id = (String)session.getAttribute("id");
+String memberId = (String)session.getAttribute("memberId");
 %>
 <header>
     <h1>질문 작성</h1>
@@ -16,6 +16,10 @@ String id = (String)session.getAttribute("id");
 <div class="container">
     <form action="questionWritePro.qbo" method="post">
     <table border = "1">
+       <div class="form-group">
+       <label for="category">분류</label>
+       <input type="text" id="category" name="questionCategory">
+       </div>
        <div class="form-group">
           <label for ="title">제목</label>
           <input type="text" id="title" name="questionQuestion" required>

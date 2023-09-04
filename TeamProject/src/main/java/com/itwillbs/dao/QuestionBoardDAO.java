@@ -77,7 +77,7 @@ public class QuestionBoardDAO {
 			// db연결
 			con = new SQLConnection().getConnection();
 			// sql 구문
-			String sql = "insert into question(questionQuestion, questionAnwser, questionNum, questionCategory) values(?,?,?,?)";
+			String sql = "insert into question(questionQuestion, questionAnswer, questionNum, questionCategory) values(?,?,?,?)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, boardDTO.getQuestionQuestion());
 			pstmt.setString(2, boardDTO.getQuestionAnswer());

@@ -23,6 +23,10 @@
 		<div class="question"
 			onclick="window.Location.href='questionContent.qbo?questionNum=<%=boardDTO.getQuestionNum()%>'">
 			<tr>
+				<td>분류</td>
+				<td><%=boardDTO.getQuestionCategory()%></td>
+			</tr>
+			<tr>
 				<td>질문번호</td>
 				<td><%=boardDTO.getQuestionNum()%></td>
 			</tr>
@@ -34,9 +38,7 @@
 }
 %>
 		<div class="add-button">
-			<button
-				onclick="location.href='questionWrite.qbo'">
-				질문 작성</button>
+			<button onclick="location.href='questionWrite.qbo'">질문 작성</button>
 		</div>
 
 	</div>
