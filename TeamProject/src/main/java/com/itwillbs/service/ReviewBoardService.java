@@ -30,6 +30,7 @@ public class ReviewBoardService {
 
 	public void insertBoard(HttpServletRequest request) {
 		try {
+			String uploadPath = request.getRealPath("/upload");
 			// request 한글처리 
 			request.setCharacterEncoding("utf-8");
 			// request 파라미터값 가져오기 

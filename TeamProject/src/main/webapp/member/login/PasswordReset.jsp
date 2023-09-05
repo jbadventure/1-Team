@@ -18,18 +18,20 @@
 // "memberId" 세션값 가져오기=> String memberId 변수 저장
 MemberDTO memberDTO = (MemberDTO)request.getAttribute("memberDTO");
 %>
-<h1>비밀번호 재설정</h1>
-<h4>비밀번호는 6자 이상이어야 합니다.</h4>
 
 <%
 if(memberDTO.getMemberId().equals("Value does not exist")){
 %>
-<p align="center" style = "font-size:20px">회원정보가 존재하지 않습니다 </p> 
 
-
+<p align="center" style = "font-size:20px">회원정보가 존재하지 않습니다  <br>
+<input type="button" value="이전 페이지로 이동 " onclick="javascript:history.back();">
+</p>
 <%
 } else {
 %>
+<h1>비밀번호 재설정</h1>
+<h4>비밀번호는 6자 이상이어야 합니다.</h4>
+
 <form action="PasswordResetPro.me" method="post">
 
 <%=memberDTO.getMemberId() %>님의 새 비밀번호를 설정해주세요.<br>
