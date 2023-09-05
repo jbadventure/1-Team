@@ -16,8 +16,7 @@
 <link rel = "stylesheet" href = "./css/list.css">
 <body>
 <%
-List<NoticeBoardDTO> boardList =(List<NoticeBoardDTO>)request.getAttribute("boardList");
-MemberDTO memberDTO=(MemberDTO)request.getAttribute("memberDTO");
+List<NoticeBoardDTO> boardList =(List<NoticeBoardDTO>)request.getAttribute("boardList");;
 String memberId = (String)session.getAttribute("memberId");
 %>
 <header>
@@ -38,7 +37,7 @@ for(int i=0; i<boardList.size(); i++){
 }
 %>
 <%
-if (memberDTO != null && "admin".equals(memberDTO.getMemberId())) { 
+if ("admin".equals(memberId)) {
 %>
     <div class="add-button">
             <button onclick="window.location.href='/TeamProject/noticeWrite.nbo'">공지 작성</button>
