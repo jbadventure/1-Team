@@ -4,7 +4,7 @@
               <div class="clearfix"></div>
         </div>
   
-  <body>
+  <body> 
     <footer>
             <div class="footer">
             <a href="http://faceboo.com">

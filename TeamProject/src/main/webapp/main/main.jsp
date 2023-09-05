@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
  
 <!DOCTYPE html>
-<html>
+<html> 
 <head>
 <title>palette</title>
     <meta name="format-detection" content="telephone=no">

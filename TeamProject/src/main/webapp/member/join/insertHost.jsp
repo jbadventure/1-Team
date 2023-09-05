@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 
-<!-- head -->
+<!-- head --> 
 <head>
   <link rel="stylesheet" href="shopcss.css">
   <link href="css/newfile.css" rel="stylesheet" type="text/css">

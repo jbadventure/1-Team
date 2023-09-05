@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-
+ 
 <!-- head -->
 <head>
   <link rel="stylesheet" href="shopcss.css">
