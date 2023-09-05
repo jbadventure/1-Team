@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+     
               <div class="clearfix"></div>
         </div>
   
+  <body> 
     <footer>
             <div class="footer">
             <a href="http://faceboo.com">
@@ -17,3 +18,4 @@
             </a>
         </div>
     </footer>
+    

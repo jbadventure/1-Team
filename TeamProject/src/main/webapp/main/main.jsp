@@ -3,9 +3,9 @@
 <%@page import="com.itwillbs.domain.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- 
+  
 <!DOCTYPE html>
-<html>
+<html> 
 <head>
 <title>palette</title>
     <meta name="format-detection" content="telephone=no">
@@ -57,7 +57,10 @@
 <!--         </div> -->
 <!--       </div> -->
     </div>
+    
+    
     <div class="page">
+    
       <!-- Page Header-->
       <header class="section page-header">
         <!-- RD Navbar-->
@@ -98,7 +101,7 @@
                 %>
                  <div class="menu-search">
                 	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/noticeList.nbo" style="font-size:18px">공지사항</a></div>
-                	<div class="rd-nav-item"><a class="rd-nav-link" href="#">자주 묻는 질문</a></div>
+                	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/questionList.qbo">자주 묻는 질문</a></div>
                 	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/classList.cbo">클래스테스트</a></div>
                 	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/pay.pa">결제테스트</a></div>
                 	<form action="listSearch.cbo" method="get">
@@ -160,6 +163,7 @@
           </nav>
         </div>
       </header>
+      
       <!-- Swiper-->
       <section class="section swiper-container swiper-slider swiper-slider-2 swiper-slider-3" data-loop="true" data-autoplay="5000" data-simulate-touch="false" data-slide-effect="fade">
         <div class="swiper-wrapper text-sm-left">
