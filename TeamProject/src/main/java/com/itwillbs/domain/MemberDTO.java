@@ -14,7 +14,6 @@ public class MemberDTO {
 	private String memberType; // 회원 타입(guest, host)
 	private String memberLocation; // 게스트 선호 지역
 	private String businessNum; // 사업자 번호
-	private String mailOrderNum; // 통신판매업 신고번호
 	private String memberFile; // 멤버 첨부파일(프로필사진)
 	
 	public int getMemberNum() {
@@ -88,12 +87,6 @@ public class MemberDTO {
 	}
 	public void setBusinessNum(String businessNum) {
 		this.businessNum = businessNum;
-	}
-	public String getMailOrderNum() {
-		return mailOrderNum;
-	}
-	public void setMailOrderNum(String mailOrderNum) {
-		this.mailOrderNum = mailOrderNum;
 	}
 	public String getMemberFile() {
 		return memberFile;

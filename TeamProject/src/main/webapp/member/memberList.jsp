@@ -20,7 +20,7 @@
 List<MemberDTO> memberList=(List<MemberDTO>)request.getAttribute("memberList");
 PageDTO pageDTO = (PageDTO)request.getAttribute("pageDTO");
 %>
-
+<!-- 게시판 -->
 <article>
 <h1>List Us</h1>
 <table id="memberList">
@@ -55,8 +55,10 @@ PageDTO pageDTO = (PageDTO)request.getAttribute("pageDTO");
 	 <%
  }
  %>
+</table>
  
-  <div id="page_control">
+<div class="clear"></div>
+<div id="page_control">
 <%
 // 시작페이지 1페이지 prev 없음 
 // 시작페이지 11,21,31, prev 보임 
@@ -82,13 +84,13 @@ if(pageDTO.getEndPage() < pageDTO.getPageCount()){
 	<%
 }
 %>
-
 </div>
-        
-    </div>
-</table>
+</article>        
+<div class="clear"></div>
+
 <!-- 푸터들어가는 곳 -->
 <jsp:include page="../inc/bottom.jsp"></jsp:include>
 <!-- 푸터들어가는 곳 -->
+</div>
 </body>
 </html>

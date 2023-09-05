@@ -324,23 +324,23 @@ public class MemberService {
 	}// updateMember()
 
 
-	public List<MemberDTO> getMemberList(PageDTO pageDTO) {
-		System.out.println("MemberService getMemberList()");
-		List<MemberDTO> memberList=null; 
-		try {
-			int startRow = (pageDTO.getCurrentPage()-1)*pageDTO.getPageSize()+1;
-			int endRow = startRow+pageDTO.getPageSize()-1;
-			pageDTO.setStartRow(startRow);
-			pageDTO.setEndRow(endRow);
-			// MemberDAO 객체생성
-			memberDAO = new MemberDAO();
-			// memberList = getMemberList 메서드 호출
-			memberList = memberDAO.getMemberList(pageDTO);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return memberList;
-	}// getMemberList
+//	public List<MemberDTO> getMemberList(PageDTO pageDTO) {
+//		System.out.println("MemberService getMemberList()");
+//		List<MemberDTO> memberList=null; 
+//		try {
+//			int startRow = (pageDTO.getCurrentPage()-1)*pageDTO.getPageSize()+1;
+//			int endRow = startRow+pageDTO.getPageSize()-1;
+//			pageDTO.setStartRow(startRow);
+//			pageDTO.setEndRow(endRow);
+//			// MemberDAO 객체생성
+//			memberDAO = new MemberDAO();
+//			// memberList = getMemberList 메서드 호출
+//			memberList = memberDAO.getMemberList(pageDTO);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		return memberList;
+//	}// getMemberList
 	
 	public int getMemberCount() {
 		System.out.println("MemberService getMemberCount()");
@@ -353,4 +353,24 @@ public class MemberService {
 			}
 		return count;
 	}//getMemberCount
+
+
+	public List<MemberDTO> getMemberList(String memberId, PageDTO pageDTO) {
+		System.out.println("MemberService getMemberList()");
+		List<MemberDTO> memberList = null;
+		try {
+			int startRow = (pageDTO.getCurrentPage()-1)*pageDTO.getPageSize()+1;
+			int endRow = startRow+pageDTO.getPageSize()-1;
+			pageDTO.setStartRow(startRow);
+			pageDTO.setEndRow(endRow);
+			
+			memberDAO = new MemberDAO();
+			memberList = memberDAO.getMemberList(memberId, pageDTO);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return memberList;
+	}// getMemberList
+
+
 }
