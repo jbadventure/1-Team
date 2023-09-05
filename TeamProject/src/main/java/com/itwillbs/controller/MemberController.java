@@ -215,38 +215,20 @@ public class MemberController extends HttpServlet {
 			// member/join/findPassword.jsp 주소변경없이 이동
 			dispatcher = request.getRequestDispatcher("member/login/findPassword.jsp");
 			dispatcher.forward(request, response);
-
 		} // findPassword
 
-		if (sPath.equals("/findPasswordPro.me")) { // 비밀번호 찾기
+		if (sPath.equals("/findPasswordPro.me")) { // 비밀번호 변경창 
 			System.out.println("뽑은 가상주소 비교 : /findPasswordPro.me");
-
 			// MemberService 객체생성
 			memberService = new MemberService();
-
-			// MemberDTO memberDTO = userCheck(request) 메서드 호출
+			/// pwCheck
 			MemberDTO memberDTO = memberService.pwCheck(request);
+				System.out.println("컨트롤러"+ memberDTO.getMemberId());
+				request.setAttribute("memberDTO", memberDTO);
 
-			if (memberDTO != null) {
-				// 아이디 이름 이메일 일치 -> 로그인(세션에 값 저장) -> PasswordReset.me 이동
-				System.out.println(memberDTO);
-				System.out.println("아이디 이름 이메일 일치");
-				// 세션 객체생성 => 세션 기억장소 안에 값 저장
-				HttpSession session = request.getSession();
-				session.setAttribute("memberId", memberDTO.getMemberId());
-				session.setAttribute("memberName", memberDTO.getMemberName());
-				session.setAttribute("memberEmail", memberDTO.getMemberEmail());
-				// 주소 변경하면서 이동 -> 가상주소 PasswordReset.me 이동
-				response.sendRedirect("PasswordReset.me");
-			} else {
-				// 아이디 이름 이메일 불일치 -> 아이디 이름 이메일 불일치 메세지, 뒤로이동
-				System.out.println(memberDTO);
-				System.out.println("아이디 이름 이메일 불일치");
-				// member/msg.jsp 주소변경없이 이동
-				dispatcher = request.getRequestDispatcher("member/msg.jsp");
-				dispatcher.forward(request, response);
-			}
-		} // findPasswordPro
+			dispatcher = request.getRequestDispatcher("member/login/PasswordReset.jsp");
+			dispatcher.forward(request, response);					
+     	} // findPasswordPro		
 
 		if (sPath.equals("/PasswordReset.me")) { // 비밀번호 재설정
 			// 수정하기 전에 디비 나의 정보 조회(세션값 memberId)

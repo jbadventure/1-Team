@@ -191,55 +191,32 @@ public class MemberDAO {
 			con = new SQLConnection().getConnection();
 			
 			//3단계 sql문
-			String sql = "select * from member where memberId=? and memberName=? and memberEmail=?";
+			String sql = "select memberId from member where memberId=? and memberName=? and memberEmail=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, memberDTO2.getMemberId());
 			pstmt.setString(2, memberDTO2.getMemberName());
 			pstmt.setString(3, memberDTO2.getMemberEmail());
 			System.out.println(pstmt);
 			
-			//4단계 sql구문 실행한 결과를 ResultSet(변수rs)으로 저장하겠다
 			rs = pstmt.executeQuery();
-			//5단계 : if 행 접근 -> 데이터 있으면 true -> 아이디 비밀번호 일치 출력
-//				     else			  없으면 false -> 아이디 비밀번호 틀림 출력
-//			System.out.println(rs.next());
-//			if(rs.next()) {
-//				System.out.println("DAO if문 들어옴-1");
-//				
-//			}
+
 			if(rs.next()){
-				System.out.println("DAO if문 들어옴-2");
-				// 열접근 각각의 컬럼값 => MemberDTO에 담아서 리턴
-				// MemberDTO 객체생성 => 기억장소 할당 => 각각의 컬럼값 저장
+				System.out.println("DAO if문");
 				memberDTO = new MemberDTO();
-				memberDTO.setMemberNum(rs.getInt("memberNum"));
 				memberDTO.setMemberId(rs.getString("memberId"));
-				memberDTO.setMemberPassword(rs.getString("memberPassword"));
-				memberDTO.setMemberName(rs.getString("memberName"));
-				memberDTO.setMemberNickname(rs.getString("memberNickname"));
-				memberDTO.setMemberGender(rs.getString("memberGender"));
-				memberDTO.setMemberBirthday(rs.getString("memberBirthday"));
-				memberDTO.setMemberPhoneNum(rs.getString("memberPhoneNum"));
-				memberDTO.setMemberEmail(rs.getString("memberEmail"));
-				memberDTO.setMemberType(rs.getString("memberType"));
-				memberDTO.setMemberLocation(rs.getString("memberLocation"));
-				memberDTO.setBusinessNum(rs.getString("businessNum"));
-				memberDTO.setMemberFile(rs.getString("memberFile"));
-			}else{
-				// false 아이디 비밀번호 틀림, 뒤로이동
-				// 열접근 못함 => memberDTO에 null을 담아서 리턴
-				memberDTO = null;
+				System.out.println(memberDTO);
+			} else {
+				memberDTO = new MemberDTO();
+				memberDTO.setMemberId("Value does not exist");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			// 예외 상관없이 마무리 작업 => con, pstmt, rs 기억장소 해제
 			dbClose();
 		}
-		// 아이디 비밀번호가 일치하면 MemberDTO 주소값 리턴;
-		// 아이디 비밀번호가 다르면 MemberDTO null값 리턴;
 		return memberDTO;
 	}// pwCheck()
+
 
 	public MemberDTO getMember(String memberId) {
 		System.out.println("MemberDAO getMember()");

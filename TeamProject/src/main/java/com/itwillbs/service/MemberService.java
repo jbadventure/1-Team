@@ -179,6 +179,7 @@ public class MemberService {
 		// MemberDTO memberDTO 변수 선언 => 초기값 null
 		MemberDTO memberDTO = null;
 		try {
+			memberDAO = new MemberDAO();
 			// request 한글처리
 			request.setCharacterEncoding("utf-8");
 			
@@ -186,21 +187,24 @@ public class MemberService {
 			//request에 저장된 memberId memberName memberEmail 가져와서 -> 변수에 저장
 			String memberId = request.getParameter("memberId");
 			String memberName = request.getParameter("memberName");
-			String memberEmail = request.getParameter("memberEmail");
+			String emailop1 = request.getParameter("emailop1");
+			String emailop2 = request.getParameter("emailop2");
+			String memberEmail = emailop1+'@'+emailop2;
+			System.out.println(memberId);
+			System.out.println(memberName);
+			System.out.println(memberEmail);
 			
-			// MemberDTO2 저장
 			MemberDTO memberDTO2 = new MemberDTO();
 			memberDTO2.setMemberId(memberId);
 			memberDTO2.setMemberName(memberName);
 			memberDTO2.setMemberEmail(memberEmail);
 			
-			// MemberDAO 객체생성
-			memberDAO = new MemberDAO();
-			// memberDTO = userCheck(memberDTO2) 메서드 호출
 			memberDTO = memberDAO.pwCheck(memberDTO2);
-			
+			// memberDTO = userCheck(memberDTO2) 메서드 호출
+			System.out.println(memberId);
 		} catch (Exception e) {
 			e.printStackTrace();
+
 		}
 		return memberDTO;
 	}// pwCheck
