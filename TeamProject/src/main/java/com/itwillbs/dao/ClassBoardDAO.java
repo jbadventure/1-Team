@@ -178,5 +178,66 @@ public class ClassBoardDAO {
 				dbClose();
 			}
 	}// deleteBoard
+
+	public List<ClassBoardDTO> getBoardListSearch(PageDTO pageDTO) {
+		System.out.println("BoardDAO getBoardListSearch()");
+		List<ClassBoardDTO> boardList = null;
+		try {
+			//1,2 디비연결
+			con= new SQLConnection().getConnection();
+			//3 sql  => mysql 제공 => limit 시작행-1, 몇개
+//			String sql="select * from board order by num desc";
+			String sql="select * from class where classSubject like ? order by classNum desc limit ?, ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, "%"+pageDTO.getSearch()+"%");
+			pstmt.setInt(2, pageDTO.getStartRow()-1);//시작행-1
+			pstmt.setInt(3, pageDTO.getPageSize());//몇개
+			//4 실행 => 결과 저장
+			rs = pstmt.executeQuery();
+			// boardList 객체생성
+			boardList = new ArrayList<>();
+			//5 결과 행접근 => BoardDTO객체생성 => set호출(열접근저장)
+			// => 배열 한칸에 저장
+			while(rs.next()) {
+				ClassBoardDTO classBoardDTO =new ClassBoardDTO();
+				classBoardDTO.setClassNum(rs.getInt("classNum"));
+				classBoardDTO.setHostId(rs.getString("hostId"));
+				classBoardDTO.setClassSubject(rs.getString("classSubject"));
+				classBoardDTO.setClassContent(rs.getString("classContent"));
+				classBoardDTO.setClassIssueDate(rs.getTimestamp("classIssueDate"));
+				// => 배열 한칸에 저장
+				boardList.add(classBoardDTO);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			dbClose();
+		}
+		return boardList;
+	}//getBoardListSearch()
+	
+	public int getBoardCountSearch(PageDTO pageDTO) {
+		int count = 0;
+		try {
+			//1,2 디비연결
+			con= new SQLConnection().getConnection();
+			//3 sql select count(*) from board
+//String sql = "select count(*) from board where subject like '%검색어%';";
+String sql = "select count(*) from class where classSubject like ?;";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, "%"+pageDTO.getSearch()+"%");
+			//4 실행 => 결과저장
+			rs = pstmt.executeQuery();
+			//5 결과 행접근 => 열접근 => count변수 저장
+			if(rs.next()) {
+				count = rs.getInt("count(*)");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			dbClose();
+		}
+		return count;
+	}//getBoardCountSearch()
 	
 }
