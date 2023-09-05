@@ -32,7 +32,7 @@ for(int i=0; i<boardList.size(); i++){
           후기작성자 : <%=boardDTO.getReviewId() %>
        </div>
     <div class = "reviewIssueDate">
-          작성일자 : <%=boardDTO.getReviewIssueDate() %>
+          작성일자 : <%=boardDTO.getReviewDate() %>
        </div>
     
  </div>
