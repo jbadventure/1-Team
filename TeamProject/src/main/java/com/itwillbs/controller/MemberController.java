@@ -2,6 +2,7 @@ package com.itwillbs.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -11,12 +12,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
 import com.itwillbs.domain.MemberDTO;
-import com.itwillbs.domain.OrdersDTO;
 import com.itwillbs.domain.PageDTO;
 import com.itwillbs.service.MemberService;
-import com.itwillbs.service.NoticeBoardService;
-import com.itwillbs.service.OrdersService;
 
 public class MemberController extends HttpServlet {
 	RequestDispatcher dispatcher = null;
@@ -383,6 +384,59 @@ public class MemberController extends HttpServlet {
 			dispatcher.forward(request, response);
 		}// memberList
 		
+		if(sPath.equals("/listjson.me")) { // admin 회원목록 - host/guest구분 ajax
+			System.out.println("주소 비교 : /listjson.me");
+			request.setCharacterEncoding("utf-8");
+			String memberType = request.getParameter("memberType");
+			HttpSession session = request.getSession();
+			session.setAttribute("memberType", memberType);
+			System.out.println(memberType);
+			
+			// MemberService 객체생성
+			memberService = new MemberService();
+			// List<MemberDTO> memberList = getMemberList(); 메서드 호출
+			List<MemberDTO> memberList = memberService.getAdminList(memberType);
+			
+			// memberList => json 변경해서 출력
+			// 자바 => json 변경하는 프로그램 설치(json-simple-1.1.1.jar)
+			// webapp - WEB-INF - lib - json-simple-1.1.1.jar
+			// List => JSONArray
+			// import org.json.simple.JSONArray;
+			JSONArray arr = new JSONArray();
+			// 날짜 => 원하는 형으로 문자열 변경
+			SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd");
+			for(int i = 0; i < memberList.size(); i++) {
+				MemberDTO memberDTO = memberList.get(i);
+				// MemberDTO => JSONObject
+				JSONObject object = new JSONObject();
+				object.put("memberNum", memberDTO.getMemberNum());
+				object.put("memberId", memberDTO.getMemberId());
+				object.put("memberPassword", memberDTO.getMemberPassword());
+				object.put("memberName", memberDTO.getMemberPassword());
+				object.put("memberNickname", memberDTO.getMemberNickname());
+				object.put("memberBirthday", memberDTO.getMemberBirthday());
+				object.put("memberGender", memberDTO.getMemberGender());
+				object.put("memberPhoneNum", memberDTO.getMemberPhoneNum());
+				object.put("memberEmail", memberDTO.getMemberEmail());
+				object.put("memberType", memberDTO.getMemberType());
+				object.put("businessNum", memberDTO.getBusinessNum());
+				// 배열 한 칸에 저장
+				arr.add(object);
+			}
+			// 이동하지 않고 결과를 웹에 출력 => 출력 결과를 가지고 되돌아감
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter printWriter = response.getWriter();
+			printWriter.println(arr);
+			printWriter.close();
+			// json 데이터 결과 확인
+			// http://localhost:8080/FunWeb/listjson.me
+			// MemberDTO => JSONObject
+			
+		}// listjson.me		
+		
+		
+		
+				
 		
 		
 		

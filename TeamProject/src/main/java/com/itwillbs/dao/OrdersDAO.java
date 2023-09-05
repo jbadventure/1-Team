@@ -148,6 +148,7 @@ public class OrdersDAO {
 				ordersDTO.setTotalPrice(rs.getInt("totalPrice"));
 				ordersDTO.setPayDate(rs.getString("payDate"));
 				ordersDTO.setPayMethod(rs.getString("payMethod"));
+				ordersDTO.setClassSubject(rs.getString("classSubject"));
 				ordersList.add(ordersDTO);
 				}
 		} catch (Exception e) {

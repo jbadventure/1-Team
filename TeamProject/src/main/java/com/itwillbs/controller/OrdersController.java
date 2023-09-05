@@ -107,6 +107,15 @@ public class OrdersController extends HttpServlet {
 			dispatcher.forward(request, response);
 		}// myReserveList.or
 		
+		if (sPath.equals("/guestReserve.or")) { // 예약내역으로 이동
+			System.out.println("뽑은 가상주소 비교 : /guestReserve.or");
+			OrdersService ordersService = new OrdersService();
+			OrdersDTO ordersDTO = ordersService.getOrders(request);
+			request.setAttribute("ordersDTO", ordersDTO);
+			// 주소변경없이 이동
+			dispatcher = request.getRequestDispatcher("member/memberInfo/guestReserve.jsp");
+			dispatcher.forward(request, response);
+		}// reservationInfo.or
 		
 		
 		

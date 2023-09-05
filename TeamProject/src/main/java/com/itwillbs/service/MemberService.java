@@ -4,9 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.itwillbs.dao.ClassBoardDAO;
 import com.itwillbs.dao.MemberDAO;
-import com.itwillbs.domain.ClassBoardDTO;
 import com.itwillbs.domain.MemberDTO;
 import com.itwillbs.domain.PageDTO;
 import com.oreilly.servlet.MultipartRequest;
@@ -326,25 +324,6 @@ public class MemberService {
 			e.printStackTrace();
 		}
 	}// updateMember()
-
-
-//	public List<MemberDTO> getMemberList(PageDTO pageDTO) {
-//		System.out.println("MemberService getMemberList()");
-//		List<MemberDTO> memberList=null; 
-//		try {
-//			int startRow = (pageDTO.getCurrentPage()-1)*pageDTO.getPageSize()+1;
-//			int endRow = startRow+pageDTO.getPageSize()-1;
-//			pageDTO.setStartRow(startRow);
-//			pageDTO.setEndRow(endRow);
-//			// MemberDAO 객체생성
-//			memberDAO = new MemberDAO();
-//			// memberList = getMemberList 메서드 호출
-//			memberList = memberDAO.getMemberList(pageDTO);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//		return memberList;
-//	}// getMemberList
 	
 	public int getMemberCount() {
 		System.out.println("MemberService getMemberCount()");
@@ -376,5 +355,16 @@ public class MemberService {
 		return memberList;
 	}// getMemberList
 
+	public List<MemberDTO> getAdminList(String memberType) {
+		System.out.println("MemberService getAdminList()");
+		List<MemberDTO> memberList = null;
+		try {
+			memberDAO = new MemberDAO();
+			memberList = memberDAO.getAdminList(memberType);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return memberList;
+	}// getAdminList
 
 }

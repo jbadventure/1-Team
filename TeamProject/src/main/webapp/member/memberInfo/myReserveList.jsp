@@ -23,8 +23,8 @@ List<OrdersDTO> ordersList = (List<OrdersDTO>)request.getAttribute("ordersList")
 for(int i=0; i<ordersList.size(); i++){
 	OrdersDTO ordersDTO = ordersList.get(i);
 	%>
-	<table id="class-content" onclick="window.location.href='reservationInfo.or?ordersNum=<%=ordersDTO.getOrdersNum() %>'">
-	<tr><td>예약번호 : <%=ordersDTO.getOrdersNum() %></td><td>| 예약날짜 : <%=ordersDTO.getOrdersDate() %></td><td>| 예약인원 : <%=ordersDTO.getOrdersAmount() %></td><td>| 상세정보확인(클릭)</td></tr>
+	<table id="class-content" onclick="window.location.href='guestReserve.or?ordersNum=<%=ordersDTO.getOrdersNum() %>'">
+	<tr><td>예약번호 : <%=ordersDTO.getOrdersNum() %></td><td>| 예약 클래스 : <%=ordersDTO.getClassSubject() %></td><td>| 예약날짜 : <%=ordersDTO.getOrdersDate() %></td><td>| 예약인원 : <%=ordersDTO.getOrdersAmount() %></td><td>| 상세정보확인(클릭)</td></tr>
 <%-- 	<tr><td>클래스제목 <%=boardDTO.getClassSubject() %></td></tr> --%>
 <%-- 	<tr><td>총 결제금액 <%=payDTO.getPayPrice() %></td></tr> --%>
 <%-- 	<tr><td>결제일 <%=payDTO.getPayDate() %></td></tr> --%>

@@ -11,9 +11,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import com.itwillbs.domain.ClassBoardDTO;
 import com.itwillbs.domain.MemberDTO;
-import com.itwillbs.domain.OrdersDTO;
 import com.itwillbs.domain.PageDTO;
 
 public class MemberDAO {
@@ -358,43 +356,6 @@ public class MemberDAO {
 		}
 	}//updateMember()
 
-//	public List<MemberDTO> getMemberList(PageDTO pageDTO) {
-//		List<MemberDTO> memberList = null;
-//		try {
-//			//1,2 디비연결
-//			con = new SQLConnection().getConnection();
-//			//3sql 
-//			String sql = "select * from member order by memberNum desc limit ?, ?";
-//			pstmt = con.prepareStatement(sql);
-//			pstmt.setInt(1, pageDTO.getStartRow()-1); // 시작행 -1 
-//			pstmt.setInt(2, pageDTO.getPageSize());//몇개	
-//			//4실행 => 결과 저장
-//			rs = pstmt.executeQuery();
-//			//5결과 행접근=> MemberDTO 객체생성 => set저장(열접근)=> 배열한칸에 저장
-//			memberList = new ArrayList<>();
-//			while(rs.next()) {
-//				MemberDTO memberDTO = new MemberDTO();
-//				memberDTO.setMemberNum(rs.getInt("memberNum"));
-//				memberDTO.setMemberId(rs.getString("memberId"));
-//				memberDTO.setMemberPassword(rs.getString("memberPassword"));
-//				memberDTO.setMemberName(rs.getString("memberName"));
-//				memberDTO.setMemberNickname(rs.getString("memberNickname"));
-//				memberDTO.setMemberBirthday(rs.getString("memberBirthday"));
-//				memberDTO.setMemberGender(rs.getString("memberGender"));
-//				memberDTO.setMemberPhoneNum(rs.getString("memberPhoneNum"));
-//				memberDTO.setMemberEmail(rs.getString("memberEmail"));
-//				memberDTO.setMemberType(rs.getString("memberType"));
-//				memberDTO.setBusinessNum(rs.getString("businessNum"));
-//				//배열 한칸에 저장
-//				memberList.add(memberDTO);
-//			}
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}finally {
-//			dbClose();
-//		}
-//		return memberList;
-//	}
 	
 	public int getMemberCount() {
 		System.out.println("MemberDAO getMemberCount()");
@@ -456,4 +417,52 @@ public class MemberDAO {
 		}
 		return memberList;
 	}// getMemberList
-}
+	
+	public List<MemberDTO> getAdminList(String memberType) {
+		System.out.println("MemberDAO getAdminList()");
+		List<MemberDTO> memberList = null;
+		try {
+			con = new SQLConnection().getConnection();
+			//3단계 문자열 -> sql구문 변경
+			String sql = "select * from member where memberType=? order by memberNum desc";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, memberType);
+			//4단계 sql구문 실행한 결과를 ResultSet(변수rs)으로 저장하겠다
+			rs = pstmt.executeQuery();
+			
+			//5단계 : while 행 접근 -> 데이터 있으면 true 
+			//      -> 아이디 비밀번호 이름 가입날짜 => MemberDTO에 저장 => 배열에 저장 
+			// 배열 객체생성 => 기억장소 할당
+			memberList = new ArrayList<>();
+			while(rs.next()){
+				// => MemberDTO에 객체를 생성 -> 기억장소 할당 
+				// -> 멤버변수에 rs열에서 가져온 값을 저장 
+				MemberDTO memberDTO = new MemberDTO();
+				memberDTO.setMemberNum(rs.getInt("memberNum"));
+				memberDTO.setMemberId(rs.getString("memberId"));
+				memberDTO.setMemberPassword(rs.getString("memberPassword"));
+				memberDTO.setMemberName(rs.getString("memberName"));
+				memberDTO.setMemberNickname(rs.getString("memberNickname"));
+				memberDTO.setMemberGender(rs.getString("memberGender"));
+				memberDTO.setMemberBirthday(rs.getString("memberBirthday"));
+				memberDTO.setMemberPhoneNum(rs.getString("memberPhoneNum"));
+				memberDTO.setMemberEmail(rs.getString("memberEmail"));
+				memberDTO.setMemberType(rs.getString("memberType"));
+				memberDTO.setMemberLocation(rs.getString("memberLocation"));
+				memberDTO.setBusinessNum(rs.getString("businessNum"));
+				memberDTO.setMemberFile(rs.getString("memberFile"));
+				// 한 사람의 주소를 배열 한칸에 저장
+				memberList.add(memberDTO);
+			}
+			System.out.println("배열 회원여러명 : " + memberList);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			// 예외 상관없이 마무리 작업 => con, pstmt, rs 기억장소 해제
+			dbClose();
+		}
+		return memberList;
+	}// getAdminList()
+	
+	
+}// class

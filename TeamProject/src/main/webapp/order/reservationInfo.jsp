@@ -1,5 +1,4 @@
 <%@page import="com.itwillbs.domain.OrdersDTO"%>
-<%@page import="com.itwillbs.domain.ClassBoardDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -14,16 +13,6 @@
 <%
 request.setCharacterEncoding("utf-8");
 OrdersDTO ordersDTO = (OrdersDTO)request.getAttribute("ordersDTO"); 
-
-// String classSubject = request.getParameter("classSubject");
-// int classPrice = Integer.parseInt(request.getParameter("classPrice"));
-// int reservationNum = Integer.parseInt(request.getParameter("reservationNum"));
-// String reservationId = request.getParameter("reservationId");
-// String reservationDate = request.getParameter("reservationDate");
-// int reservationAmount = Integer.parseInt(request.getParameter("reservationAmount"));
-// String payDate = request.getParameter("payDate");
-// String payMethod = request.getParameter("payMethod");
-// // int payPrice = classPrice*reservationAmount;
 %>
 
 <table id="class-content">
