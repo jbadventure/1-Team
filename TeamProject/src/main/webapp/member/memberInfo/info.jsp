@@ -34,7 +34,8 @@ if(memberDTO.getMemberType().equals("guest")){
      %><br>
 <input type="button" value="회원정보변경" id="회원정보변경" onclick="location.href='update.me'"><br>
 <input type="button" value="클래스관리" id="클래스관리" onclick="location.href='classManagement.cbo'"><br>
-<input type="button" value="예약관리" id="예약관리" onclick="location.href='update.me'">
+<input type="button" value="예약관리" id="예약관리" onclick="location.href='myReserveList.or'"><br>
+<input type="button" value="내가 쓴 리뷰" id="내가 쓴 리뷰" onclick="location.href='myReview.rbo'">
  
 <!-- 푸터들어가는 곳 -->
 <jsp:include page="../../inc/bottom.jsp"></jsp:include>

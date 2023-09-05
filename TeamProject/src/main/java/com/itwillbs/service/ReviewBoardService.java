@@ -17,6 +17,7 @@ public class ReviewBoardService {
 	ReviewBoardDAO boardDAO = null;
 
 	public List<ReviewBoardDTO> getBoardList() {
+		System.out.println("ReviewBoardService getBoardList()");
 		List<ReviewBoardDTO> boardList = null;
 		try {
 			boardDAO = new ReviewBoardDAO();
@@ -37,7 +38,7 @@ public class ReviewBoardService {
 			String reviewFile = request.getParameter("reviewFile");
 			int reviewNum = 0;
 			int classNum = 0;
-			Timestamp reviewIssueDate = new Timestamp(System.currentTimeMillis());
+			Timestamp reviewDate = new Timestamp(System.currentTimeMillis());
 			// BoardDAO 객체생성
 			boardDAO = new ReviewBoardDAO();
 			// DTO 객체생성
@@ -49,7 +50,7 @@ public class ReviewBoardService {
 			boardDTO.setReviewFile(reviewFile);
 			boardDTO.setReviewNum(reviewNum);
 			boardDTO.setClassNum(classNum);
-			boardDTO.setReviewIssueDate(reviewIssueDate);
+			boardDTO.setReviewDate(reviewDate);
 			// insertBoard(baordDTO) 메서드 호출
 			boardDAO.insertBoard(boardDTO);
 			

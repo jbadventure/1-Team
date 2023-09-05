@@ -26,14 +26,14 @@ public class ReviewBoardDAO {
 	public void insertBoard(ReviewBoardDTO boardDTO) {
 		try {
 			con = new SQLConnection().getConnection();
-			String sql = "insert into review(reviewNum, classNum, reviewId, reviewContent, reviewFile, reviewIssueDate) values (?,?,?,?,?,?)";
+			String sql = "insert into review(reviewNum, classNum, reviewId, reviewContent, reviewFile, reviewDate) values (?,?,?,?,?,?)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, boardDTO.getReviewNum());
 			pstmt.setInt(2, boardDTO.getClassNum());
 			pstmt.setString(3, boardDTO.getReviewId());
 			pstmt.setString(4, boardDTO.getReviewContent());
 			pstmt.setString(5, boardDTO.getReviewFile());
-			pstmt.setTimestamp(6, boardDTO.getReviewIssueDate());
+			pstmt.setTimestamp(6, boardDTO.getReviewDate());
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -46,11 +46,12 @@ public class ReviewBoardDAO {
 
 	
 	public List<ReviewBoardDTO> getBoardList() {
+		System.out.println("ReviewBoardDAO getBoardList()");
 		List<ReviewBoardDTO> boardList = null;
 		try {
 			con = new SQLConnection().getConnection();
 			// 3
-			String sql = "select * from review where order by reviewNum desc ";
+			String sql = "select * from review order by reviewNum desc ";
 			pstmt=con.prepareStatement(sql);
 			// 4
 			rs = pstmt.executeQuery();
@@ -63,6 +64,7 @@ public class ReviewBoardDAO {
 				boardDTO.setClassNum(rs.getInt("classNum"));
 				boardDTO.setReviewContent(rs.getString("reviewContent"));
 				boardDTO.setReviewFile(rs.getString("reviewFile"));
+				boardDTO.setReviewDate(rs.getTimestamp("reviewDate"));
 				
 				boardList.add(boardDTO);
 			}
@@ -92,7 +94,7 @@ public class ReviewBoardDAO {
 				boardDTO.setReviewNum(rs.getInt("reviewNum"));
 				boardDTO.setReviewContent(rs.getString("reviewContent"));
 				boardDTO.setReviewId(rs.getString("reviewID"));
-				boardDTO.setReviewIssueDate(rs.getTimestamp("reviewIssueDate"));
+				boardDTO.setReviewDate(rs.getTimestamp("reviewDate"));
 				// 첨부파일
 				boardDTO.setReviewFile(rs.getString("reviewFile"));
 			}

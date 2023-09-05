@@ -36,7 +36,8 @@ public class ReviewBoardController extends HttpServlet{
 		System.out.println("뽑은 가상주소 : " + sPath);
 		
 		if(sPath.equals("/reviewWrite.rbo")) {
-			dispatcher = request.getRequestDispatcher("/board/review/list.jsp");
+			System.out.println("뽑은 가상주소 비교 : /reviewWrite.rbo ");
+			dispatcher = request.getRequestDispatcher("board/review/write.jsp");
 			dispatcher.forward(request, response);
 		} // write
 		
@@ -105,6 +106,16 @@ public class ReviewBoardController extends HttpServlet{
 			// 주소 변경되면서 list.rbo 이동
 			response.sendRedirect("reviewList.rbo");
 		 } // delete
+		
+		if(sPath.equals("/myReview.rbo")) {
+			System.out.println("주소 : /myReview.rbo");
+			boardService = new ReviewBoardService();
+			List<ReviewBoardDTO> boardList = boardService.getBoardList();
+			request.setAttribute("boardList", boardList);
+			System.out.println(boardList);
+			dispatcher = request.getRequestDispatcher("member/memberInfo/myReview.jsp");
+			dispatcher.forward(request, response);
+		}
 		
 	} // process
 }
