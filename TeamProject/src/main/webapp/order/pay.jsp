@@ -1,4 +1,4 @@
-<%@page import="com.itwillbs.domain.ReserveDTO"%>
+<%@page import="com.itwillbs.domain.OrdersDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -189,17 +189,16 @@ String memberId = (String)session.getAttribute("memberId");
 // String classPrice = request.getParameter("classPrice");
 // String reservationDate = request.getParameter("reservationDate");
 // String reservationAmount = request.getParameter("reservationAmount");
-ReserveDTO reserveDTO = (ReserveDTO)request.getAttribute("reserveDTO"); 
+OrdersDTO ordersDTO = (OrdersDTO)request.getAttribute("ordersDTO"); 
 String classFile = (String)session.getAttribute("classFile");
-String classSubject = (String)session.getAttribute("classSubject");
 int classPrice = (int)session.getAttribute("classPrice");
 // int reservationAmount = (int)session.getAttribute("reservationAmount");
-int payPrice = classPrice*reserveDTO.getReservationAmount();
+// int payPrice = classPrice*reserveDTO.getReservationAmount();
 //int classNum = ()
 
 %>
  
-<form action="payPro.pa" method="post" id="myfr">
+<form action="payPro.or" method="post" id="myfr">
 <fieldset style="border:0">
 <legend>팔레트정보</legend>
 <table>
@@ -214,15 +213,12 @@ int payPrice = classPrice*reserveDTO.getReservationAmount();
      <%			 }
      %>
 </td></tr> 
-<tr><td>클래스제목 <%=classSubject %></td></tr>
-<tr><td>예약날짜 <%=reserveDTO.getReservationDate() %></td></tr>
-<tr><td>예약인원 <%=reserveDTO.getReservationAmount() %></td></tr>
+<tr><td>클래스제목 <%=ordersDTO.getClassSubject() %></td></tr>
+<tr><td>예약날짜 <%=ordersDTO.getOrdersDate() %></td></tr>
+<tr><td>예약인원 <%=ordersDTO.getOrdersAmount() %></td></tr>
 
 </table>
 </fieldset>
-
-<input type="hidden" name ="reservationNum"  id="reservationNum" value="<%=reserveDTO.getReservationNum() %>"><!-- reservationNum값 전달 -->
-<input type="hidden" name ="payPrice"  id="payPrice" value="<%=payPrice %>"><!-- reservationNum값 전달 -->
 
 <fieldset style="border:0">
 <legend>결제수단</legend>
@@ -231,18 +227,19 @@ int payPrice = classPrice*reserveDTO.getReservationAmount();
 <input type="radio" name="payMethod" id="deposit" value="deposit">무통장입금<br>
 </fieldset>
 
-<legend>총 결제금액 <%=payPrice%></legend>
+<legend>총 결제금액 <%=ordersDTO.getTotalPrice() %></legend>
 
+<%-- <input type="hidden" name ="classSubject"  id="classSubject" value="<%=classSubject %>"><!-- classSubject값 전달 --> --%>
 <input type="button" value="결제하기" id="btn">
 </form>
 
 <script type="text/javascript">
 
 $(document).ready(function() {
-alert("시작");	
+// alert("시작");	
 
 	$('#btn').click(function() {
-		alert($('input[name=payMethod]:checked').val());
+// 		alert($('input[name=payMethod]:checked').val());
 	
 	
 	    if($('input[name=payMethod]:checked').val() == "kakaopay") {
@@ -266,8 +263,8 @@ alert("시작");
 	                참고하세요. 
 	                나중에 포스팅 해볼게요.
 	             */
-	            name: '<%=classSubject %>', //결제창에서 보여질 이름
-	            amount: 100, //가격 
+	            name: '<%=ordersDTO.getClassSubject() %>', //결제창에서 보여질 이름
+	            amount: <%=ordersDTO.getTotalPrice() %>, //가격 
 	            buyer_email: 'iamport@siot.do',
 	            buyer_name: '구매자이름',
 	            buyer_tel: '010-1234-5678',
@@ -320,8 +317,8 @@ alert("시작");
 	                참고하세요. 
 	                나중에 포스팅 해볼게요.
 	             */
-	            name: '<%=classSubject %>', //결제창에서 보여질 이름
-	            amount: 100, //가격 
+	            name: '<%=ordersDTO.getClassSubject() %>', //결제창에서 보여질 이름
+	            amount: <%=ordersDTO.getTotalPrice() %>, //가격 
 	            buyer_email: 'iamport@siot.do',
 	            buyer_name: '구매자이름',
 	            buyer_tel: '010-1234-5678',
@@ -374,8 +371,8 @@ alert("시작");
 	                참고하세요. 
 	                나중에 포스팅 해볼게요.
 	             */
-	            name: '<%=classSubject %>', //결제창에서 보여질 이름
-	            amount: 100, //가격 
+	            name: '<%=ordersDTO.getClassSubject() %>', //결제창에서 보여질 이름
+	            amount: <%=ordersDTO.getTotalPrice() %>, //가격 
 	            buyer_email: 'iamport@siot.do',
 	            buyer_name: '구매자이름',
 	            buyer_tel: '010-1234-5678',

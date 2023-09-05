@@ -16,56 +16,46 @@
 <h1>아이디찾기</h1>
 
 <!-- form -->
-<form action="findIdPro.me" method="post"  id="checkForm">
-<input type="text" placeholder="이름" name="memberName"><br>
-<input type="text" placeholder="이메일" name="memberEmail">
-<div id="div1"></div>
+<form action="findIdPro.me" method="post" name="checkForm" id ="checkForm">
+<input type="text" placeholder="이름" name="memberName" id ="memberName"><br>
+<input type="text" placeholder="이메일" name="emailop1" id="emailop1">@<select name="emailop2" id="emailop2">
+												   <option value="">이메일을 선택해주세요</option>
+												   <option value="naver.com">naver.com</option>
+												   <option value="gmail.com">gmail.com</option>
+        							   		   	   </select><br>
+<div id="div" style="color:red;"></div>
  
- <input type="submit" value="찾기" id="find">
+<button type ="button" onclick="checkForm_check();">찾기</button>
 </form>
 
 <!-- script -->
 <script type="text/javascript" src="../../script/jquery-3.7.0.js"></script>
 <script type="text/javascript">
 
-// 이름 name
-// 이메일 email
-
-// $(document).ready(function(){
-// 	$('#checkForm').submit(function(){
-// 		// 이름
-// 		// 값이 없다면
-//  		if($('#name').val() ==""){
-// 			// 이름 밑 div 공간에 빨간글씨로 출력
-// 			$('#div1').html("아이디를 입력해주세요").css("color","red");
-// 			// 이름 포커스
-// 			$('#name').focus();
-// 			return false;
-// 		} else {
-// 			// div1 공간 내용 지우기
-// 			$('#div1').empty();
-// 			// 모든조건 충족했으므로 다음 포커스
-// 			$('#email').focus();
-// 		} 
-//  		if($('#email').val() ==""){
-// 			$('#div1').html("이메일을 입력해주세요").css("color","red"); 
-// 			$('#email').focus();
-// 			return false;
-// 		}else if($('#emailop').val() ==""){
-// 			$('#div1').html("이메일을 선택해주세요").css("color","red"); 
-// 			$('#emailop').focus();
-// 			return false;
-// 		}else if ($()){
-			
-// 			//	$('#div1').html("회원정보가 일치하지 않습니다").css("color","red"); 
-// 			//}
-// 		} else {
-			
-// 			// return;
-// 			}
-// 		}
-// 	});
-// }); 
+function checkForm_check() {
+	var memberName = document.getElementById("memberName");
+	var emailop1 = document.getElementById("emailop1");
+	var emailop2 = document.getElementById("emailop2");
+	
+	if(memberName.value ==""){
+		//alert("이름입력하세요");
+		document.getElementById("div").innerHTML = "이름 입력하세요";
+		return false; 
+	}
+	
+	if(emailop1.value ==""){
+		//alert("이메일입력하세요");
+		document.getElementById("div").innerHTML = "이메일 입력하세요";
+		return false; 
+	}
+	
+	if(emailop2.value ==""){
+		//alert("이메일선택하세요");
+		document.getElementById("div").innerHTML = "이메일 선택하세요";
+		return false; 
+	}
+	document.checkForm.submit();
+}
 
 
 </script>

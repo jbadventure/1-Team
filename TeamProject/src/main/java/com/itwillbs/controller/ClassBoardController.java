@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.itwillbs.domain.ClassBoardDTO;
 import com.itwillbs.domain.PageDTO;
+
 import com.itwillbs.service.ClassBoardService;
 
 public class ClassBoardController extends HttpServlet { 
@@ -34,7 +35,7 @@ public class ClassBoardController extends HttpServlet {
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("ClassBoardController doProcess()");
 		String sPath = request.getServletPath();
-		System.out.println("뽑은 가상주소"+sPath);
+		System.out.println("뽑은 가상주소 : " + sPath);
 		
 		if (sPath.equals("/classList.cbo")) { // 메인에서 클래스테스트 누르면 클래스 리스트 보여줌 
 			// 한페이지에 출력될 게시물 수 pageSize
@@ -60,7 +61,7 @@ public class ClassBoardController extends HttpServlet {
 			// 게시판 전체 글 개수 구하기 
 			int count = boardService.getBoardCount();
 			// 한화면에 출력될 페이지개수  pageBlock
-			int pageBlock = 10;
+			int pageBlock = 6;
 			// 시작하는 페이지번호 startPage
 			int startPage=(currentPage-1)/pageBlock*pageBlock+1;
 			// 끝나는페이지번호 endPage
@@ -144,8 +145,128 @@ public class ClassBoardController extends HttpServlet {
 			// 주소 변경되면서 list.bo 이동 
 			response.sendRedirect("classList.cbo");
 		} // classDelete 
-
 		
+		if(sPath.equals("/classManagement.cbo")) {
+			// 한페이지에 출력될 게시물 수 pageSize
+			int pageSize = 6;
+			//페이지 번호
+			String pageNum = request.getParameter("pageNum");
+				// 페이지 번호 없으면 1페이지 설정 
+				if(pageNum == null) {
+					pageNum = "1";
+				}
+				// 페이지 번호를 정수형으로 변겅
+				int currentPage = Integer.parseInt(pageNum);
+							
+				PageDTO pageDTO = new PageDTO();
+				pageDTO.setPageSize(pageSize);
+				pageDTO.setPageNum(pageNum);
+				pageDTO.setCurrentPage(currentPage);
+						
+				//ClassBoardService 객체생성 
+				boardService = new ClassBoardService();
+				List<ClassBoardDTO> boardList = boardService.getBoardList(pageDTO); 
+						
+				// 게시판 전체 글 개수 구하기 
+				int count = boardService.getBoardCount();
+				// 한화면에 출력될 페이지개수  pageBlock
+				int pageBlock = 10;
+				// 시작하는 페이지번호 startPage
+				int startPage=(currentPage-1)/pageBlock*pageBlock+1;
+				// 끝나는페이지번호 endPage
+				int endPage=startPage+pageBlock-1;
+				int pageCount = count/pageSize + (count%pageSize==0?0:1);
+						
+					if(endPage >pageCount) {
+						endPage = pageCount; 
+					}
+						
+					// pageDTO에 저장  
+					pageDTO.setCount(count);
+					pageDTO.setPageBlock(pageBlock);
+					pageDTO.setStartPage(startPage);
+					pageDTO.setEndPage(endPage);
+					pageDTO.setPageCount(pageCount);
+						
+					request.setAttribute("boardList", boardList);
+					request.setAttribute("pageDTO", pageDTO);
+						
+					System.out.println(boardList);
+					dispatcher = request.getRequestDispatcher("member/memberInfo/classManagement.jsp");
+					dispatcher.forward(request, response);
+		}
+		
+		if(sPath.equals("/listSearch.cbo")) {
+			System.out.println("뽑은 가상주소 비교 : /listSearch.cbo");
+			// request 한글처리
+			request.setCharacterEncoding("utf-8");
+			//request 검색어 뽑아오기
+			String search = request.getParameter("search");
+			
+			// 한페이지에서 보여지는 글개수 설정
+			int pageSize=6;
+			// 페이지번호 
+			String pageNum=request.getParameter("pageNum");
+			// 페이지번호가 없으면 1페이지 설정
+			if(pageNum == null) {
+				pageNum = "1";
+			}
+			// 페이지 번호를 => 정수형 변경
+			int currentPage = Integer.parseInt(pageNum);
+			
+			PageDTO pageDTO = new PageDTO();
+			pageDTO.setPageSize(pageSize);
+			pageDTO.setPageNum(pageNum);
+			pageDTO.setCurrentPage(currentPage);
+			//검색어 저장
+			pageDTO.setSearch(search);
+			
+			// BoardService 객체생성
+			boardService = new ClassBoardService();
+// List<BoardDTO> boardList = getBoardList(); 메서드 호출
+			List<ClassBoardDTO> boardList=boardService.getBoardListSearch(pageDTO);
+			
+			// 게시판 전체 글 개수 구하기 
+			int count = boardService.getBoardCountSearch(pageDTO);
+			// 한화면에 보여줄 페이지개수 설정
+			int pageBlock = 10;
+			// 시작하는 페이지번호
+			// currentPage  pageBlock  => startPage
+			//   1~10(0~9)      10     =>  (0~9)/10*10+1=>0*10+1=> 0+1=> 1 
+			//   11~20(10~19)   10     =>  (10~19)/10*10+1=>1*10+1=>10+1=>11
+			//   21~30(20~29)   10     =>  (20~29)/10*10+1=>2*10+1=>20+1=>21
+			int startPage=(currentPage-1)/pageBlock*pageBlock+1;
+			// 끝나는페이지번호
+			//  startPage   pageBlock => endPage
+			//     1            10    =>   10
+			//     11           10    =>   20
+			//     21           10    =>   30
+			int endPage=startPage+pageBlock-1;
+			// 계산한값 endPage 10 => 전체페이지 2
+			// 전체페이지 구하기
+			// 글개수 50  한화면에 보여줄글개수 10 => 페이지수 5 + 0
+			// 글개수 57  한화면에 보여줄글개수 10 => 페이지수 5 + 1
+			int pageCount = count / pageSize + (count % pageSize==0?0:1);
+			if(endPage > pageCount) {
+				endPage = pageCount;
+			}
+			
+			//pageDTO 저장
+			pageDTO.setCount(count);
+			pageDTO.setPageBlock(pageBlock);
+			pageDTO.setStartPage(startPage);
+			pageDTO.setEndPage(endPage);
+			pageDTO.setPageCount(pageCount);
+			
+			// request에 "boardList",boardList 저장
+			request.setAttribute("boardList", boardList);
+			request.setAttribute("pageDTO", pageDTO);
+			
+			// 주소변경없이 이동 center/noticeSearch.jsp
+			dispatcher 
+		    = request.getRequestDispatcher("board/class/list.jsp");
+		dispatcher.forward(request, response);
+		}
 		
 	} // doProcess
 }// class

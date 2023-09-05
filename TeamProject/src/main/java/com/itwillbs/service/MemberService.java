@@ -1,9 +1,14 @@
 package com.itwillbs.service;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
+import com.itwillbs.dao.ClassBoardDAO;
 import com.itwillbs.dao.MemberDAO;
+import com.itwillbs.domain.ClassBoardDTO;
 import com.itwillbs.domain.MemberDTO;
+import com.itwillbs.domain.PageDTO;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -149,22 +154,23 @@ public class MemberService {
 	}// userCheck() 
 	
 	
-	public MemberDTO userInfoCheck(HttpServletRequest request) {
+	public String userInfoCheck(HttpServletRequest request) {
 		System.out.println("MemberService userInfoCheck()");
-		MemberDTO memberDTO = null;
+		String memberId = null;
 		try {
+			memberDAO = new MemberDAO();
 			request.setCharacterEncoding("utf-8");
 			String memberName = request.getParameter("memberName");
-			String memberEmail = request.getParameter("memberEmail");
-			MemberDTO memberDTO3 = new MemberDTO();
-			memberDTO3.setMemberName(memberName);
-			memberDTO3.setMemberEmail(memberEmail);
-			memberDAO = new MemberDAO();
-			memberDTO=memberDAO.userInfoCheck(memberDTO3);
+			String emailop1 = request.getParameter("emailop1");
+			String emailop2 = request.getParameter("emailop2");
+			String memberEmail = emailop1+'@'+emailop2;
+			memberId = memberDAO.userInfoCheck(memberName,memberEmail);
+			request.setAttribute("memberId", memberId);
+			System.out.println(memberId);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return memberDTO;
+		return memberId;
 	}//userInfoCheck 
 
 
@@ -173,6 +179,7 @@ public class MemberService {
 		// MemberDTO memberDTO 변수 선언 => 초기값 null
 		MemberDTO memberDTO = null;
 		try {
+			memberDAO = new MemberDAO();
 			// request 한글처리
 			request.setCharacterEncoding("utf-8");
 			
@@ -180,21 +187,24 @@ public class MemberService {
 			//request에 저장된 memberId memberName memberEmail 가져와서 -> 변수에 저장
 			String memberId = request.getParameter("memberId");
 			String memberName = request.getParameter("memberName");
-			String memberEmail = request.getParameter("memberEmail");
+			String emailop1 = request.getParameter("emailop1");
+			String emailop2 = request.getParameter("emailop2");
+			String memberEmail = emailop1+'@'+emailop2;
+			System.out.println(memberId);
+			System.out.println(memberName);
+			System.out.println(memberEmail);
 			
-			// MemberDTO2 저장
 			MemberDTO memberDTO2 = new MemberDTO();
 			memberDTO2.setMemberId(memberId);
 			memberDTO2.setMemberName(memberName);
 			memberDTO2.setMemberEmail(memberEmail);
 			
-			// MemberDAO 객체생성
-			memberDAO = new MemberDAO();
-			// memberDTO = userCheck(memberDTO2) 메서드 호출
 			memberDTO = memberDAO.pwCheck(memberDTO2);
-			
+			// memberDTO = userCheck(memberDTO2) 메서드 호출
+			System.out.println(memberId);
 		} catch (Exception e) {
 			e.printStackTrace();
+
 		}
 		return memberDTO;
 	}// pwCheck
@@ -316,5 +326,55 @@ public class MemberService {
 			e.printStackTrace();
 		}
 	}// updateMember()
+
+
+//	public List<MemberDTO> getMemberList(PageDTO pageDTO) {
+//		System.out.println("MemberService getMemberList()");
+//		List<MemberDTO> memberList=null; 
+//		try {
+//			int startRow = (pageDTO.getCurrentPage()-1)*pageDTO.getPageSize()+1;
+//			int endRow = startRow+pageDTO.getPageSize()-1;
+//			pageDTO.setStartRow(startRow);
+//			pageDTO.setEndRow(endRow);
+//			// MemberDAO 객체생성
+//			memberDAO = new MemberDAO();
+//			// memberList = getMemberList 메서드 호출
+//			memberList = memberDAO.getMemberList(pageDTO);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		return memberList;
+//	}// getMemberList
+	
+	public int getMemberCount() {
+		System.out.println("MemberService getMemberCount()");
+		int count=0; 
+		try { 
+			memberDAO = new MemberDAO();
+			count = memberDAO.getMemberCount();
+		} catch (Exception e) {
+			e.printStackTrace();
+			}
+		return count;
+	}//getMemberCount
+
+
+	public List<MemberDTO> getMemberList(String memberId, PageDTO pageDTO) {
+		System.out.println("MemberService getMemberList()");
+		List<MemberDTO> memberList = null;
+		try {
+			int startRow = (pageDTO.getCurrentPage()-1)*pageDTO.getPageSize()+1;
+			int endRow = startRow+pageDTO.getPageSize()-1;
+			pageDTO.setStartRow(startRow);
+			pageDTO.setEndRow(endRow);
+			
+			memberDAO = new MemberDAO();
+			memberList = memberDAO.getMemberList(memberId, pageDTO);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return memberList;
+	}// getMemberList
+
 
 }
