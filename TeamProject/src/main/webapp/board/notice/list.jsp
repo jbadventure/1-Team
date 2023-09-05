@@ -1,3 +1,4 @@
+<%@page import="com.itwillbs.domain.MemberDTO"%>
 <%@page import="com.itwillbs.domain.NoticeBoardDTO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -16,6 +17,8 @@
 <body>
 <%
 List<NoticeBoardDTO> boardList =(List<NoticeBoardDTO>)request.getAttribute("boardList");
+MemberDTO memberDTO=(MemberDTO)request.getAttribute("memberDTO");
+String memberId = (String)session.getAttribute("memberId");
 %>
 <header>
     <h1>공지사항</h1>
@@ -31,14 +34,18 @@ for(int i=0; i<boardList.size(); i++){
         <p><%=boardDTO.getNoticeContent() %></p>
         <small>작성일: <%=boardDTO.getNoticeIssueDate() %></small>
     </div>
-	
-	<% 
-	
+<%	
 }
+%>
+<%
+if (memberDTO != null && "admin".equals(memberDTO.getMemberId())) { 
 %>
     <div class="add-button">
             <button onclick="window.location.href='/TeamProject/noticeWrite.nbo'">공지 작성</button>
         </div>
+<%
+}
+%>
 </div>
 
 </body>
