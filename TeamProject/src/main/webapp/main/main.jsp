@@ -110,7 +110,7 @@
                 <%
                 } else {
                 %>
-                <div class="menu-search">
+                <div class="menu-search"> 
                 	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/noticeList.nbo" style="font-size:18px">공지사항</a></div>
                 	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/questionList.qbo">자주 묻는 질문</a></div>
                 	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/classList.cbo">클래스테스트</a></div>

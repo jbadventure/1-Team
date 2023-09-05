@@ -205,6 +205,10 @@ public class ClassBoardDAO {
 				classBoardDTO.setClassSubject(rs.getString("classSubject"));
 				classBoardDTO.setClassContent(rs.getString("classContent"));
 				classBoardDTO.setClassIssueDate(rs.getTimestamp("classIssueDate"));
+				classBoardDTO.setClassFile(rs.getString("classFile"));
+				classBoardDTO.setClassPrice(rs.getInt("classPrice"));
+				classBoardDTO.setClassLocation(rs.getString("classLocation"));
+				classBoardDTO.setClassCategory(rs.getString("classCategory"));
 				// => 배열 한칸에 저장
 				boardList.add(classBoardDTO);
 			}
