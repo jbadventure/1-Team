@@ -50,7 +50,7 @@ public class ReviewBoardDAO {
 		try {
 			con = new SQLConnection().getConnection();
 			// 3
-			String sql = "select * from review where order by reviewNum desc ";
+			String sql = "select * from review order by reviewNum desc";
 			pstmt=con.prepareStatement(sql);
 			// 4
 			rs = pstmt.executeQuery();
@@ -68,6 +68,8 @@ public class ReviewBoardDAO {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			dbClose();
 		}
 		return boardList;
 	}

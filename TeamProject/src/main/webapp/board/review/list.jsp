@@ -11,6 +11,7 @@
 <body>
 <%
 List<ReviewBoardDTO> boardList = (List<ReviewBoardDTO>)request.getAttribute("boardList");
+String memberId = (String)session.getAttribute("memberId");
 %>
 <header>
     <h2>클래스 리뷰</h2>
