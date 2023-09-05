@@ -4,6 +4,7 @@
               <div class="clearfix"></div>
         </div>
   
+  <body>
     <footer>
             <div class="footer">
             <a href="http://faceboo.com">
@@ -17,3 +18,4 @@
             </a>
         </div>
     </footer>
+    
