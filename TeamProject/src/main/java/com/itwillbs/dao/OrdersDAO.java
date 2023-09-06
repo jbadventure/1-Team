@@ -4,7 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
+import com.itwillbs.domain.NoticeBoardDTO;
 import com.itwillbs.domain.OrdersDTO;
 
 public class OrdersDAO {
@@ -48,7 +53,8 @@ public class OrdersDAO {
 		OrdersDTO ordersDTO = null;
 		try {
 			con = new SQLConnection().getConnection();
-			String sql = "select * from orders where ordersNum=?";
+			//select * from orders where ordersNum=?
+			String sql = "select o.ordersNum, o.ordersId, o.classNum, o.ordersDate, o.ordersAmount, o.totalPrice, o.payDate, o.payMethod, c.classSubject from orders o join class c on o.classNum = c.classNum where ordersNum=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, ordersNum);
 			rs =pstmt.executeQuery();
@@ -63,6 +69,7 @@ public class OrdersDAO {
 				ordersDTO.setTotalPrice(rs.getInt("totalPrice"));
 				ordersDTO.setPayDate(rs.getString("payDate"));
 				ordersDTO.setPayMethod(rs.getString("payMethod"));
+				ordersDTO.setClassSubject(rs.getString("classSubject"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -121,6 +128,36 @@ public class OrdersDAO {
 		}
 		
 	}// insertPay
+
+	public List<OrdersDTO> getOrdersList(String ordersId) {
+		List<OrdersDTO> ordersList = null;
+		try {
+			con = new SQLConnection().getConnection();
+			String sql = "select o.ordersNum, o.ordersId, o.classNum, o.ordersDate, o.ordersAmount, o.totalPrice, o.payDate, o.payMethod, c.classSubject from orders o join class c on o.classNum = c.classNum where ordersId=? order by ordersNum desc";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, ordersId);
+			rs =pstmt.executeQuery();
+			ordersList = new ArrayList<>();
+			while(rs.next()) {
+				OrdersDTO ordersDTO = new OrdersDTO();
+				ordersDTO.setOrdersNum(rs.getInt("ordersNum"));
+				ordersDTO.setOrdersId(rs.getString("ordersId"));
+				ordersDTO.setClassNum(rs.getInt("classNum"));
+				ordersDTO.setOrdersDate(rs.getString("ordersDate"));
+				ordersDTO.setOrdersAmount(rs.getInt("ordersAmount"));
+				ordersDTO.setTotalPrice(rs.getInt("totalPrice"));
+				ordersDTO.setPayDate(rs.getString("payDate"));
+				ordersDTO.setPayMethod(rs.getString("payMethod"));
+				ordersDTO.setClassSubject(rs.getString("classSubject"));
+				ordersList.add(ordersDTO);
+				}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			dbClose();
+		}
+		return ordersList;
+	}// getOrdersList
 
 
 

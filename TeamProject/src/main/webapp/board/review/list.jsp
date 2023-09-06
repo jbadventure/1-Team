@@ -1,3 +1,4 @@
+<%@page import="com.itwillbs.domain.PageDTO"%>
 <%@page import="com.itwillbs.domain.ReviewBoardDTO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -12,6 +13,7 @@
 <%
 List<ReviewBoardDTO> boardList = (List<ReviewBoardDTO>)request.getAttribute("boardList");
 String memberId = (String)session.getAttribute("memberId");
+PageDTO pageDTO = (PageDTO)request.getAttribute("pageDTO");
 %>
 <header>
     <h2>클래스 리뷰</h2>
@@ -21,7 +23,7 @@ String memberId = (String)session.getAttribute("memberId");
 for(int i=0; i<boardList.size(); i++){
 	ReviewBoardDTO boardDTO = boardList.get(i);
     %>
-  <div class = "review" href="reviewContent.rbo?reviewNum<%=boardDTO.getReviewNum() %>">
+  <div class = "review" onclick="window.location.href='reviewContent.rbo?reviewNum<%=boardDTO.getReviewNum() %>'">
     
     <div class = "reviewNum">
           리뷰번호 : <%=boardDTO.getReviewNum() %>

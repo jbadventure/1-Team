@@ -34,7 +34,6 @@ public class ReviewBoardDAO {
 			pstmt.setString(3, boardDTO.getReviewId());
 			pstmt.setString(4, boardDTO.getReviewContent());
 			pstmt.setString(5, boardDTO.getReviewFile());
-			pstmt.setTimestamp(6, boardDTO.getReviewIssueDate());
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -75,7 +74,7 @@ public class ReviewBoardDAO {
 			dbClose();
 		}
 		return boardList;
-	} // getBoardList
+	}
 
 
 
@@ -97,7 +96,6 @@ public class ReviewBoardDAO {
 				boardDTO.setReviewNum(rs.getInt("reviewNum"));
 				boardDTO.setReviewContent(rs.getString("reviewContent"));
 				boardDTO.setReviewId(rs.getString("reviewID"));
-				boardDTO.setReviewIssueDate(rs.getTimestamp("reviewIssueDate"));
 				// 첨부파일
 				boardDTO.setReviewFile(rs.getString("reviewFile"));
 			}

@@ -37,7 +37,7 @@ public class ReviewBoardController extends HttpServlet{
 		System.out.println("뽑은 가상주소 : " + sPath);
 		
 		if(sPath.equals("/reviewWrite.rbo")) {
-			dispatcher = request.getRequestDispatcher("/board/review/write.jsp");
+			dispatcher = request.getRequestDispatcher("/board/review/list.jsp");
 			dispatcher.forward(request, response);
 		} // write
 		

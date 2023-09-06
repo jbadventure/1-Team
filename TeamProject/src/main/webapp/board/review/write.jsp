@@ -18,10 +18,6 @@ ReviewBoardDTO boardDTO = (ReviewBoardDTO)request.getAttribute("boardDTO");
 <div class="container">
     <form action="reviewWritePro.rbo" method="post" enctype="multipart/form-data">
     <table border = "1">
-       <div class="form-group">
-            <label for="classNum">클래스번호</label>
-            <input type="text" name="classNum" required>
-        </div>
       <div class="form-group">
             <label for="title">제목</label>
             <input type="text" name="reviewSubject" required>
@@ -32,7 +28,7 @@ ReviewBoardDTO boardDTO = (ReviewBoardDTO)request.getAttribute("boardDTO");
         </div>
         <div class="form-group">
            <label for="file">첨부파일</label>
-           
+           <input type="file" name="reviewFile">
         </div>
         <button type="submit">작성</button>
         </table>

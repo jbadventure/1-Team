@@ -1,9 +1,11 @@
+<%@page import="com.itwillbs.domain.ClassBoardDTO"%>
+<%@page import="java.util.List"%>
 <%@page import="com.itwillbs.domain.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- 
+  
 <!DOCTYPE html>
-<html>
+<html> 
 <head>
 <title>palette</title>
     <meta name="format-detection" content="telephone=no">
@@ -55,7 +57,10 @@
 <!--         </div> -->
 <!--       </div> -->
     </div>
+    
+    
     <div class="page">
+    
       <!-- Page Header-->
       <header class="section page-header">
         <!-- RD Navbar-->
@@ -72,6 +77,7 @@
                   <div class="rd-navbar-brand"><a class="brand" href="index.html"><img class="brand-logo-dark" src="images/logo-198x66.png" alt="" width="198" height="66"/></a></div>
                 </div>
                 <%
+                List<ClassBoardDTO> boardList =(List<ClassBoardDTO>)request.getAttribute("boardList");
                 MemberDTO memberDTO=(MemberDTO)request.getAttribute("memberDTO");
                 String memberId=(String)session.getAttribute("memberId");
                 if(memberId == null)  {
@@ -81,7 +87,12 @@
                 	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/orderInfo.re">예약정보테스트</a></div>
                 	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/classList.cbo">클래스테스트</a></div>
                 	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/pay.pa">결제테스트</a></div>
-                	<div class="rd-nav-item"><input type="search" placeholder="지금 생각나는 취미를 검색하세요." class="rd-nav-searchbar"></div>
+                	<div id="table_search">
+					<form action="listSearch.cbo" method="get">
+					<input type="text" name="search" class="search" placeholder="지금 생각나는 취미를 검색하세요!">
+					<input type="submit" value="검색" class="btn">
+					</form>
+					</div>
                 	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/ghselect.me">회원가입</a></div>
                 	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/login.me" >로그인</a></div>
                 </div>
@@ -90,22 +101,28 @@
                 %>
                  <div class="menu-search">
                 	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/noticeList.nbo" style="font-size:18px">공지사항</a></div>
-                	<div class="rd-nav-item"><a class="rd-nav-link" href="#">자주 묻는 질문</a></div>
+                	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/questionList.qbo">자주 묻는 질문</a></div>
                 	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/classList.cbo">클래스테스트</a></div>
                 	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/pay.pa">결제테스트</a></div>
-                	<div class="rd-nav-item"><input type="search" placeholder="지금 생각나는 취미를 검색하세요." class="rd-nav-searchbar"></div>
+                	<form action="listSearch.cbo" method="get">
+					<input type="text" name="search" class="search" placeholder="지금 생각나는 취미를 검색하세요!">
+					<input type="submit" value="검색" class="btn">
+					</form>
                 	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/logout.me" >로그아웃</a></div>
                 	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/memberList.me">회원목록</a></div>
                 <%
                 } else {
                 %>
-                <div class="menu-search">
+                <div class="menu-search"> 
                 	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/noticeList.nbo" style="font-size:18px">공지사항</a></div>
                 	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/questionList.qbo">자주 묻는 질문</a></div>
                 	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/reviewList.rbo">리뷰 테스트</a></div>
                 	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/classList.cbo">클래스테스트</a></div>
                 	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/pay.pa">결제테스트</a></div>
-                	<div class="rd-nav-item"><input type="search" placeholder="지금 생각나는 취미를 검색하세요." class="rd-nav-searchbar"></div>
+                	<form action="listSearch.cbo" method="get">
+					<input type="text" name="search" class="search" placeholder="지금 생각나는 취미를 검색하세요!">
+					<input type="submit" value="검색" class="btn">
+					</form>
                 	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/logout.me" >로그아웃</a></div>
                 	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/info.me">마이페이지</a></div>
                 </div>
@@ -147,6 +164,7 @@
           </nav>
         </div>
       </header>
+      
       <!-- Swiper-->
       <section class="section swiper-container swiper-slider swiper-slider-2 swiper-slider-3" data-loop="true" data-autoplay="5000" data-simulate-touch="false" data-slide-effect="fade">
         <div class="swiper-wrapper text-sm-left">

@@ -1,4 +1,4 @@
-package com.itwillbs.domain;
+ package com.itwillbs.domain;
 
 import java.sql.Timestamp;
 
@@ -6,7 +6,7 @@ public class ReviewBoardDTO {
 	private int classNum; // 해당 클래스 번호
 	private int reviewNum; // 후기 번호
 	private String reviewId; // 후기 작성자
-	private Timestamp reviewIssueDate; // 후기 작성일시
+	private Timestamp reviewDate; // 후기 작성일시
 	private String reviewContent; // 후기 내용
 	private String reviewFile; // 후기 대표 이미지 경로
 	
@@ -28,11 +28,11 @@ public class ReviewBoardDTO {
 	public void setReviewId(String reviewId) {
 		this.reviewId = reviewId;
 	}
-	public Timestamp getReviewIssueDate() {
-		return reviewIssueDate;
+	public Timestamp getReviewDate() {
+		return reviewDate;
 	}
-	public void setReviewIssueDate(Timestamp reviewIssueDate) {
-		this.reviewIssueDate = reviewIssueDate;
+	public void setReviewDate(Timestamp reviewDate) {
+		this.reviewDate = reviewDate;
 	}
 	public String getReviewContent() {
 		return reviewContent;

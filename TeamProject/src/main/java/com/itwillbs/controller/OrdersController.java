@@ -1,6 +1,7 @@
 package com.itwillbs.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -67,9 +68,10 @@ public class OrdersController extends HttpServlet {
 		if (sPath.equals("/payPro.or")) { // 결제누르면 결제정보 저장
 			System.out.println("뽑은 가상주소 비교 : /payPro.or");
 			request.setCharacterEncoding("utf-8");
-			String classSubject = request.getParameter("classSubject");
-			HttpSession session = request.getSession();
-			session.setAttribute("classSubject", classSubject);
+//			String classSubject = request.getParameter("classSubject");
+//			HttpSession session = request.getSession();
+//			session.setAttribute("classSubject", classSubject);
+			
 			// ordersService 객체생성 
 			ordersService = new OrdersService();
 			// 리턴할 형 insertBoard(request) 메서드 호출
@@ -88,6 +90,39 @@ public class OrdersController extends HttpServlet {
 			dispatcher = request.getRequestDispatcher("order/reservationInfo.jsp");
 			dispatcher.forward(request, response);
 		}// reservationInfo.or
+		
+		if (sPath.equals("/myReserveList.or")) { // 마이페이지 예약리스트로 이동
+			System.out.println("뽑은 가상주소 비교 : /myReserveList.or");
+			HttpSession session = request.getSession();
+			String ordersId = (String)session.getAttribute("memberId");
+			System.out.println(ordersId);
+			
+			OrdersService ordersService = new OrdersService();
+			List<OrdersDTO> ordersList = ordersService.getOrdersList(ordersId);
+			request.setAttribute("ordersList", ordersList);
+			System.out.println(ordersList);
+			
+			// 주소변경없이 이동
+			dispatcher = request.getRequestDispatcher("member/memberInfo/myReserveList.jsp");
+			dispatcher.forward(request, response);
+		}// myReserveList.or
+		
+		if (sPath.equals("/guestReserve.or")) { // 예약내역으로 이동
+			System.out.println("뽑은 가상주소 비교 : /guestReserve.or");
+			OrdersService ordersService = new OrdersService();
+			OrdersDTO ordersDTO = ordersService.getOrders(request);
+			request.setAttribute("ordersDTO", ordersDTO);
+			// 주소변경없이 이동
+			dispatcher = request.getRequestDispatcher("member/memberInfo/guestReserve.jsp");
+			dispatcher.forward(request, response);
+		}// reservationInfo.or
+		
+		
+		
+		
+		
+		
+		
 		
 	}//doProcess
 	

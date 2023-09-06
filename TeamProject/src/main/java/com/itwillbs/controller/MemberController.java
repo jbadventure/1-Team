@@ -2,6 +2,7 @@ package com.itwillbs.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -11,10 +12,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
 import com.itwillbs.domain.MemberDTO;
 import com.itwillbs.domain.PageDTO;
 import com.itwillbs.service.MemberService;
-import com.itwillbs.service.NoticeBoardService;
 
 public class MemberController extends HttpServlet {
 	RequestDispatcher dispatcher = null;
@@ -192,87 +195,41 @@ public class MemberController extends HttpServlet {
 
 		if (sPath.equals("/findId.me")) { // 아이디 찾기
 			// member/join/findPassword.jsp 주소변경없이 이동
+			
 			dispatcher = request.getRequestDispatcher("member/login/findId.jsp");
-			dispatcher.forward(request, response);
+		    dispatcher.forward(request, response);
 		}
 
 		if (sPath.equals("/findIdPro.me")) { // 아이디 찾기
-			System.out.println("뽑은 가상주소 비교 : /findId.me");
+			System.out.println("뽑은 가상주소 비교 : /findIdPro.me");
 			memberService = new MemberService();
-			MemberDTO memberDTO = memberService.userInfoCheck(request);
-
-			if (memberDTO != null) {
-				// 입력한회원정보 일치하면 세션값 저장 ->idReport.me로 이동
-				HttpSession session = request.getSession();
-				session.setAttribute("memberId", memberDTO.getMemberId());
-				response.sendRedirect("idReport.me");
-			} else {
-				// memberDTO == null 아이디 비밀번호 틀림=> member/msg.jsp
-				dispatcher = request.getRequestDispatcher("member/msg.jsp");
-				dispatcher.forward(request, response);
-			}
-		}//findIdPro 
-		
-		if (sPath.equals("/idReport.me")) { // 아이디 보여주기
-			// member/join/findPassword.jsp 주소변경없이 이동
+			String memberId = memberService.userInfoCheck(request);
+			System.out.println("컨트롤러 "+memberId);
+			request.setAttribute("memberId", memberId);
+			
 			dispatcher = request.getRequestDispatcher("member/login/idReport.jsp");
 			dispatcher.forward(request, response);
-		}
-		
-		if(sPath.equals("/idReportPro.me")) {  // 아이디 보여주기
-			System.out.println("뽑은 가상주소 비교 : /idReportPro.me");
-			HttpSession session = request.getSession();
-			// "memberId" 세션값 가져오기 => String memberId 변수 저장
-			String memberId = (String) session.getAttribute("memberId");
-			System.out.println(memberId); // memberId값 확인용
-			if (memberId != null) {
-				dispatcher = request.getRequestDispatcher("member/login/idReport.jsp");
-				dispatcher.forward(request, response);
-//				response.sendRedirect("login.me"); 
-				session.invalidate();
-			} else {
-				// 저장된 memberId값이 없으면 => 팝업창 띄운다.
-				dispatcher = request.getRequestDispatcher("member/msg.jsp");
-				dispatcher.forward(request, response);
-			}
-		} // idReportPro
+		}//findIdPro
+
 
 		if (sPath.equals("/findPassword.me")) { // 비밀번호 찾기
 			// member/join/findPassword.jsp 주소변경없이 이동
 			dispatcher = request.getRequestDispatcher("member/login/findPassword.jsp");
 			dispatcher.forward(request, response);
-
 		} // findPassword
 
-		if (sPath.equals("/findPasswordPro.me")) { // 비밀번호 찾기
+		if (sPath.equals("/findPasswordPro.me")) { // 비밀번호 변경창 
 			System.out.println("뽑은 가상주소 비교 : /findPasswordPro.me");
-
 			// MemberService 객체생성
 			memberService = new MemberService();
-
-			// MemberDTO memberDTO = userCheck(request) 메서드 호출
+			/// pwCheck
 			MemberDTO memberDTO = memberService.pwCheck(request);
+				System.out.println("컨트롤러"+ memberDTO.getMemberId());
+				request.setAttribute("memberDTO", memberDTO);
 
-			if (memberDTO != null) {
-				// 아이디 이름 이메일 일치 -> 로그인(세션에 값 저장) -> PasswordReset.me 이동
-				System.out.println(memberDTO);
-				System.out.println("아이디 이름 이메일 일치");
-				// 세션 객체생성 => 세션 기억장소 안에 값 저장
-				HttpSession session = request.getSession();
-				session.setAttribute("memberId", memberDTO.getMemberId());
-				session.setAttribute("memberName", memberDTO.getMemberName());
-				session.setAttribute("memberEmail", memberDTO.getMemberEmail());
-				// 주소 변경하면서 이동 -> 가상주소 PasswordReset.me 이동
-				response.sendRedirect("PasswordReset.me");
-			} else {
-				// 아이디 이름 이메일 불일치 -> 아이디 이름 이메일 불일치 메세지, 뒤로이동
-				System.out.println(memberDTO);
-				System.out.println("아이디 이름 이메일 불일치");
-				// member/msg.jsp 주소변경없이 이동
-				dispatcher = request.getRequestDispatcher("member/msg.jsp");
-				dispatcher.forward(request, response);
-			}
-		} // findPasswordPro
+			dispatcher = request.getRequestDispatcher("member/login/PasswordReset.jsp");
+			dispatcher.forward(request, response);					
+     	} // findPasswordPro		
 
 		if (sPath.equals("/PasswordReset.me")) { // 비밀번호 재설정
 			// 수정하기 전에 디비 나의 정보 조회(세션값 memberId)
@@ -320,8 +277,8 @@ public class MemberController extends HttpServlet {
 			request.setAttribute("memberDTO", memberDTO);
 			dispatcher 
 		    = request.getRequestDispatcher("member/memberInfo/info.jsp");
-		dispatcher.forward(request, response);
-} // infoGuest.me()
+			dispatcher.forward(request, response);
+		} // infoGuest.me()
 		
 		if(sPath.equals("/infoGuest.me")) {
 			System.out.println("뽑은 가상주소 비교 : /infoGuest.me");
@@ -333,7 +290,7 @@ public class MemberController extends HttpServlet {
 			request.setAttribute("memberDTO", memberDTO);
 			dispatcher 
 		    = request.getRequestDispatcher("member/memberInfo/infoGuest.jsp");
-		dispatcher.forward(request, response);
+			dispatcher.forward(request, response);
 		} // infoGuest.me()
 		
 		if(sPath.equals("/update.me")) {
@@ -347,7 +304,7 @@ public class MemberController extends HttpServlet {
 			request.setAttribute("memberDTO", memberDTO);
 			dispatcher 
 		    = request.getRequestDispatcher("member/memberInfo/update.jsp");
-		dispatcher.forward(request, response);
+			dispatcher.forward(request, response);
 		}// update.me()
 		
 		if(sPath.equals("/updatePro.me")) {
@@ -358,5 +315,130 @@ public class MemberController extends HttpServlet {
 			memberService.updateMember(request);
 			response.sendRedirect("info.me");
 		}// updatePro.me
-	    }
-}
+		
+		if(sPath.equals("/memberList.me")) { // admin 회원목록 리스트
+			System.out.println("뽑은 가상주소 비교 : /memberList.me");
+			HttpSession session = request.getSession();
+			String memberId = (String)session.getAttribute("memberId");
+			System.out.println(memberId);
+			
+			// 한 페이지에서 보여지는 글 개수 설정
+			int pageSize = 5;
+			// 페이지 번호
+			String pageNum = request.getParameter("pageNum");
+			// 페이지 번호가 없으면 => 1페이지로 가도록 설정
+			if(pageNum == null) {
+				pageNum = "1";
+			}
+			// 페이지 번호 -> 정수형으로 변경
+			int currentPage = Integer.parseInt(pageNum);
+			
+			PageDTO pageDTO = new PageDTO();
+			pageDTO.setPageSize(pageSize);
+			pageDTO.setPageNum(pageNum);
+			pageDTO.setCurrentPage(currentPage);
+			
+			// memberService 객체생성
+			memberService = new MemberService();
+			// List<MemberDTO> memberList = getMemberList(); 메서드 호출
+			List<MemberDTO> memberList = memberService.getMemberList(memberId, pageDTO);
+			
+			// 게시판 전체 글의 개수 구하기
+			int count = memberService.getMemberCount();
+			// 한 화면에 보여줄 페이지 개수 설정
+			int pageBlock = 5;
+			// 시작하는 페이지 번호
+			// currentPage  pageBlock  => startPage
+			//   1~10(0~9)      10     =>  (0~9)/10*10+1=>0*10+1=> 0+1=> 1 
+			//   11~20(10~19)   10     =>  (10~19)/10*10+1=>1*10+1=>10+1=>11
+			//   21~30(20~29)   10     =>  (20~29)/10*10+1=>2*10+1=>20+1=>21
+			int startPage = (currentPage-1)/pageBlock*pageBlock+1;
+			// 끝나는 페이지 번호
+			//  startPage   pageBlock => endPage
+			//     1            10    =>   10
+			//     11           10    =>   20
+			//     21           10    =>   30
+			int endPage = startPage+pageBlock-1;
+			// 계산한 값 endPage 10 => 실제페이지 2
+			// 전체페이지 구하기
+			// 글 개수 50  한 화면에 보여줄 글 개수 10 => 페이지 수 5 + 0
+			// 글 개수 57  한 화면에 보여줄 글 개수 10 => 페이지 수 5 + 1
+			int pageCount = count / pageSize + (count%pageSize==0?0:1);
+			if(endPage > pageCount) {
+				endPage = pageCount;
+			}
+			
+			// pageDTO 저장
+			pageDTO.setCount(count);
+			pageDTO.setPageBlock(pageBlock);
+			pageDTO.setStartPage(startPage);
+			pageDTO.setEndPage(endPage);
+			pageDTO.setPageCount(pageCount);
+			
+			request.setAttribute("memberList", memberList);
+			request.setAttribute("pageDTO", pageDTO);
+			System.out.println(memberList);
+			
+			// 주소변경없이 이동
+			dispatcher = request.getRequestDispatcher("member/memberList.jsp");
+			dispatcher.forward(request, response);
+		}// memberList
+		
+		if(sPath.equals("/listjson.me")) { // admin 회원목록 - host/guest구분 ajax
+			System.out.println("주소 비교 : /listjson.me");
+			request.setCharacterEncoding("utf-8");
+			String memberType = request.getParameter("memberType");
+			HttpSession session = request.getSession();
+			session.setAttribute("memberType", memberType);
+			System.out.println(memberType);
+			
+			// MemberService 객체생성
+			memberService = new MemberService();
+			// List<MemberDTO> memberList = getMemberList(); 메서드 호출
+			List<MemberDTO> memberList = memberService.getAdminList(memberType);
+			
+			// memberList => json 변경해서 출력
+			// 자바 => json 변경하는 프로그램 설치(json-simple-1.1.1.jar)
+			// webapp - WEB-INF - lib - json-simple-1.1.1.jar
+			// List => JSONArray
+			// import org.json.simple.JSONArray;
+			JSONArray arr = new JSONArray();
+			// 날짜 => 원하는 형으로 문자열 변경
+			SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd");
+			for(int i = 0; i < memberList.size(); i++) {
+				MemberDTO memberDTO = memberList.get(i);
+				// MemberDTO => JSONObject
+				JSONObject object = new JSONObject();
+				object.put("memberNum", memberDTO.getMemberNum());
+				object.put("memberId", memberDTO.getMemberId());
+				object.put("memberPassword", memberDTO.getMemberPassword());
+				object.put("memberName", memberDTO.getMemberPassword());
+				object.put("memberNickname", memberDTO.getMemberNickname());
+				object.put("memberBirthday", memberDTO.getMemberBirthday());
+				object.put("memberGender", memberDTO.getMemberGender());
+				object.put("memberPhoneNum", memberDTO.getMemberPhoneNum());
+				object.put("memberEmail", memberDTO.getMemberEmail());
+				object.put("memberType", memberDTO.getMemberType());
+				object.put("businessNum", memberDTO.getBusinessNum());
+				// 배열 한 칸에 저장
+				arr.add(object);
+			}
+			// 이동하지 않고 결과를 웹에 출력 => 출력 결과를 가지고 되돌아감
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter printWriter = response.getWriter();
+			printWriter.println(arr);
+			printWriter.close();
+			// json 데이터 결과 확인
+			// http://localhost:8080/FunWeb/listjson.me
+			// MemberDTO => JSONObject
+			
+		}// listjson.me		
+		
+		
+		
+				
+		
+		
+		
+	}// doProcess
+}// class

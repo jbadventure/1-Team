@@ -50,10 +50,8 @@ public class ReviewBoardService {
 			String reviewID = multi.getParameter("reviewID");
 			String reviewContent = multi.getParameter("reviewContent");
 			String reviewFile = multi.getFilesystemName("reviewFile");
-//			int reviewNum = Integer.parseInt(multi.getParameter("reviewNum"));
-//			int classNum = Integer.parseInt(multi.getParameter("classNum"));
-			int reviewNum = 0;
-			int classNum = 0;
+			int reviewNum = Integer.parseInt(multi.getParameter("reviewNum"));
+			int classNum = Integer.parseInt(multi.getParameter("classNum"));
 			
 			Timestamp reviewIssueDate = new Timestamp(System.currentTimeMillis());
 			// BoardDAO 객체생성
@@ -67,7 +65,6 @@ public class ReviewBoardService {
 			boardDTO.setReviewFile(reviewFile);
 			boardDTO.setReviewNum(reviewNum);
 			boardDTO.setClassNum(classNum);
-			boardDTO.setReviewIssueDate(reviewIssueDate);
 			// insertBoard(baordDTO) 메서드 호출
 			boardDAO.insertBoard(boardDTO);
 			

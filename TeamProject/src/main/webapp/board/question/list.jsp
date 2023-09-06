@@ -13,6 +13,7 @@
 <body>
 	<%
 	List<QuestionBoardDTO> boardList = (List<QuestionBoardDTO>) request.getAttribute("boardList");
+	String memberId = (String)session.getAttribute("memberId");
 	%>
 	<header>
 		<h1>자주 묻는 질문</h1>
@@ -40,11 +41,16 @@
 		<%
 }
 %>
+<%
+if ("admin".equals(memberId)) {
+%>
 		<div class="add-button">
 			<button onclick="location.href='questionWrite.qbo'">질문 작성</button>
 		</div>
 
 	</div>
-
+<%
+}
+%>
 </body>
 </html>
