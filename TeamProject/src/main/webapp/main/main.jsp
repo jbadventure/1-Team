@@ -83,45 +83,47 @@
                 if(memberId == null)  {
                 %> 
                 <div class="menu-search">
-                	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/noticeList.nbo" style="font-size:18px">공지사항</a></div>
-                	                	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/questionList.qbo">자주 묻는 질문</a></div>
-                	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/classList.cbo">클래스테스트</a></div>
+                	<div class="rd-nav-item-notice"><a class="rd-nav-link" href="/TeamProject/noticeList.nbo" style="font-size:18px">공지사항</a></div>
+                	<div class="rd-nav-item-QA"><a class="rd-nav-link" href="/TeamProject/questionList.qbo">Q&A</a></div>
+                	<div class="rd-nav-item-category"><a class="rd-nav-link" href="/TeamProject/classList.cbo">카테고리</a></div>
+<!--                 	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/pay.pa">결제테스트</a></div> -->
                 	<div id="table_search">
 					<form action="listSearch.cbo" method="get">
 					<input type="text" name="search" class="search" placeholder="지금 생각나는 취미를 검색하세요!">
 					<input type="submit" value="검색" class="btn">
 					</form>
 					</div>
-                	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/ghselect.me">회원가입</a></div>
-                	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/login.me" >로그인</a></div>
+                	<div class="rd-nav-item-join"><a class="rd-nav-link" href="/TeamProject/ghselect.me">회원가입</a></div>
+                	<div class="rd-nav-item-login"><a class="rd-nav-link" href="/TeamProject/login.me" >로그인</a></div>
                 </div>
                 <%
                 }else if(memberDTO.getMemberId().equals("admin")){
                 %>
                  <div class="menu-search">
-                	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/noticeList.nbo" style="font-size:18px">공지사항</a></div>
-                	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/questionList.qbo">자주 묻는 질문</a></div>
-                	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/classList.cbo">클래스테스트</a></div>
+                	<div class="rd-nav-item-notice"><a class="rd-nav-link" href="/TeamProject/noticeList.nbo" style="font-size:18px">공지사항</a></div>
+                	<div class="rd-nav-item-QA"><a class="rd-nav-link" href="/TeamProject/questionList.qbo">Q&A</a></div>
+                	<div class="rd-nav-item-category"><a class="rd-nav-link" href="/TeamProject/classList.cbo">카테고리</a></div>
+<!--                 	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/pay.pa">결제테스트</a></div> -->
                 	<form action="listSearch.cbo" method="get">
 					<input type="text" name="search" class="search" placeholder="지금 생각나는 취미를 검색하세요!">
 					<input type="submit" value="검색" class="btn">
 					</form>
-                	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/logout.me" >로그아웃</a></div>
-                	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/memberList.me">회원목록</a></div>
+                	<div class="rd-nav-item-logout"><a class="rd-nav-link" href="/TeamProject/logout.me" >로그아웃</a></div>
+                	<div class="rd-nav-item-info"><a class="rd-nav-link" href="/TeamProject/memberList.me">회원목록</a></div>
                 <%
                 } else {
                 %>
                 <div class="menu-search"> 
-                	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/noticeList.nbo" style="font-size:18px">공지사항</a></div>
-                	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/questionList.qbo">자주 묻는 질문</a></div>
-                	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/reviewList.rbo">리뷰 테스트</a></div>
-                	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/classList.cbo">클래스테스트</a></div>
+                	<div class="rd-nav-item-notice"><a class="rd-nav-link" href="/TeamProject/noticeList.nbo" style="font-size:18px">공지사항</a></div>
+                	<div class="rd-nav-item-QA"><a class="rd-nav-link" href="/TeamProject/questionList.qbo">Q&A</a></div>
+                	<div class="rd-nav-item-category"><a class="rd-nav-link" href="/TeamProject/classList.cbo">카테고리</a></div>
+<!--                 	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/pay.pa">결제테스트</a></div> -->
                 	<form action="listSearch.cbo" method="get">
 					<input type="text" name="search" class="search" placeholder="지금 생각나는 취미를 검색하세요!">
 					<input type="submit" value="검색" class="btn">
 					</form>
-                	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/logout.me" >로그아웃</a></div>
-                	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/info.me">마이페이지</a></div>
+                	<div class="rd-nav-item-logout"><a class="rd-nav-link" href="/TeamProject/logout.me" >로그아웃</a></div>
+                	<div class="rd-nav-item-info"><a class="rd-nav-link" href="/TeamProject/info.me">마이페이지</a></div>
                 </div>
                 <%
                 }

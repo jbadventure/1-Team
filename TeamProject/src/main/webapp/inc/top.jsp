@@ -21,15 +21,12 @@
  if(memberId == null){
  %>       
       <ul id="menu">
-            <li><a href="#"><b>Contact</b></a></li>
             <li><a href="login.me"><b>Login</b></a></li>
         </ul>
-    </div>
 <%
 }else{   
 %>
 	<ul id="menu">
-            <li><a href="#"><b>Contact</b></a></li>
             <li><a href="info.me"><b><%=memberId %>님</b></a></li>
              <li><a href="logout.me"><b>logout</b></a></li>
         </ul>

@@ -27,15 +27,12 @@ public class MemberService {
 				String name = request.getParameter("name");
 				String birth = request.getParameter("birth");
 				String gender = request.getParameter("gender");
-				String phone1 = request.getParameter("phone1");
-				String phone2 = request.getParameter("phone2");
-				String phone3 = request.getParameter("phone3");
+				String phone = request.getParameter("phone");
 				String emailop1 = request.getParameter("emailop1");
 				String emailop2 = request.getParameter("emailop2");
 				String address = request.getParameter("address");
 				String memberType = request.getParameter("memberType");
 				
-				String phoneNum = phone1+phone2+phone3;
 				String email = emailop1+'@'+emailop2;
 				
 				// MemberDTO 객체생성(기억장소 할당)
@@ -47,7 +44,7 @@ public class MemberService {
 				memberDTO.setMemberName(name);
 				memberDTO.setMemberBirthday(birth);
 				memberDTO.setMemberGender(gender);
-				memberDTO.setMemberPhoneNum(phoneNum);
+				memberDTO.setMemberPhoneNum(phone);
 				memberDTO.setMemberEmail(email);
 				memberDTO.setMemberLocation(address);
 				memberDTO.setMemberType(memberType);

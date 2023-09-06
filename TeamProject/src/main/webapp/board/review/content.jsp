@@ -32,7 +32,7 @@
           첨부파일 : <%=boardDTO.getReviewFile() %>
       </div>
       <div class="reviewIssueDate">
-          작성일자 : <%=boardDTO.getReviewDate() %>
+          작성일자 : <%=boardDTO.getReviewIssueDate() %>
       </div>
       
       </div>
