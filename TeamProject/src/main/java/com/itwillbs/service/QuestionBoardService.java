@@ -14,7 +14,7 @@ public class QuestionBoardService {
 	QuestionBoardDAO boardDAO = null;
 
 	public List<QuestionBoardDTO> getBoardList(PageDTO pageDTO) {
-		System.out.println("ReviewBoardService getBoardList()");
+		System.out.println("QuestionBoardService getBoardList()");
 		List<QuestionBoardDTO> boardList = null;
 		try {
 			// int startRow = 계산식; 

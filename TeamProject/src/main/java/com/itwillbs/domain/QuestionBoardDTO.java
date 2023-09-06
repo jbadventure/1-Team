@@ -7,6 +7,14 @@ public class QuestionBoardDTO {
 	private String questionAnswer; // 답변(내용)
 	private String questionCategory; // 질문 분류
 	
+	
+	
+	
+	@Override
+	public String toString() {
+		return "QuestionBoardDTO [questionNum=" + questionNum + ", questionQuestion=" + questionQuestion
+				+ ", questionAnswer=" + questionAnswer + ", questionCategory=" + questionCategory + "]";
+	}
 	public int getQuestionNum() {
 		return questionNum;
 	}

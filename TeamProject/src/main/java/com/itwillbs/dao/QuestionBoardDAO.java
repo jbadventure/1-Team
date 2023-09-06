@@ -44,6 +44,8 @@ public class QuestionBoardDAO {
 				boardDTO.setQuestionQuestion(rs.getString("questionQuestion"));
 				boardDTO.setQuestionAnswer(rs.getString("questionAnswer"));
 				boardDTO.setQuestionCategory(rs.getString("questionCategory"));
+				
+				boardList.add(boardDTO);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

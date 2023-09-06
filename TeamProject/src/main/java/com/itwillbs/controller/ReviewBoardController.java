@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.itwillbs.domain.PageDTO;
 import com.itwillbs.domain.ReviewBoardDTO;
 import com.itwillbs.service.ReviewBoardService;
 
@@ -36,7 +37,7 @@ public class ReviewBoardController extends HttpServlet{
 		System.out.println("뽑은 가상주소 : " + sPath);
 		
 		if(sPath.equals("/reviewWrite.rbo")) {
-			dispatcher = request.getRequestDispatcher("/board/review/list.jsp");
+			dispatcher = request.getRequestDispatcher("/board/review/write.jsp");
 			dispatcher.forward(request, response);
 		} // write
 		
@@ -51,9 +52,28 @@ public class ReviewBoardController extends HttpServlet{
 		} // writePro
 		
 		if(sPath.equals("/reviewList.rbo")) {
+			// 한페이지에 출력될 게시물 수
+			int pageSize = 8;
+			// 페이지 번호
+			String pageNum = request.getParameter("pageNum");
+			// 페이지 번호 없으면 1페이지 설정
+			if(pageNum == null) {
+				pageNum ="1";
+			}
+			// 페이지 번호를 정수형으로 변경
+			int currentPage = Integer.parseInt(pageNum);
+			PageDTO pageDTO = new PageDTO();
+			pageDTO.setPageSize(pageSize);
+			pageDTO.setPageNum(pageNum);
+			pageDTO.setCurrentPage(currentPage);
+			
+			// BoardService 객체생성
 			boardService = new ReviewBoardService();
-			List<ReviewBoardDTO> boardList = boardService.getBoardList();
+			List<ReviewBoardDTO> boardList = boardService.getBoardList(pageDTO);
 			request.setAttribute("boardList", boardList);
+			
+			System.out.println("boardList" + boardList);
+			// 주소 변경없이 페이지 이동
 			dispatcher = request.getRequestDispatcher("/board/review/list.jsp");
 //			dispatcher = request.getRequestDispatcher("/board/class/content.jsp");
 			dispatcher.forward(request, response);

@@ -8,19 +8,29 @@ import javax.servlet.http.HttpSession;
 
 import com.itwillbs.dao.ClassBoardDAO;
 import com.itwillbs.dao.ReviewBoardDAO;
-
+import com.itwillbs.domain.PageDTO;
 import com.itwillbs.domain.ReviewBoardDTO;
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 
 public class ReviewBoardService {
 	
 	ReviewBoardDAO boardDAO = null;
 
-	public List<ReviewBoardDTO> getBoardList() {
+	public List<ReviewBoardDTO> getBoardList(PageDTO pageDTO) {
 		List<ReviewBoardDTO> boardList = null;
 		try {
+			// int startRow
+			int startRow = (pageDTO.getCurrentPage()-1)*pageDTO.getPageSize()+1;
+			// int endROw 
+			int endRow = startRow+pageDTO.getPageSize()-1;
+			// pageDTO 저장
+			pageDTO.setStartRow(startRow);
+			pageDTO.setEndRow(endRow);
+			
 			boardDAO = new ReviewBoardDAO();
-			boardList = boardDAO.getBoardList();
+			boardList = boardDAO.getBoardList(pageDTO);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -31,12 +41,20 @@ public class ReviewBoardService {
 		try {
 			// request 한글처리 
 			request.setCharacterEncoding("utf-8");
-			// request 파라미터값 가져오기 
-			String reviewID = request.getParameter("reviewID");
-			String reviewContent = request.getParameter("reviewContent");
-			String reviewFile = request.getParameter("reviewFile");
+			// MultipartRequest 객체생성 사용
+			String uploadPath = request.getRealPath("/upload");
+			int maxSize = 10*1024*1024;
+			MultipartRequest multi
+			= new MultipartRequest(request, uploadPath, maxSize, "utf-8", new DefaultFileRenamePolicy());
+            // multi 파라미터 값 가져오기
+			String reviewID = multi.getParameter("reviewID");
+			String reviewContent = multi.getParameter("reviewContent");
+			String reviewFile = multi.getFilesystemName("reviewFile");
+//			int reviewNum = Integer.parseInt(multi.getParameter("reviewNum"));
+//			int classNum = Integer.parseInt(multi.getParameter("classNum"));
 			int reviewNum = 0;
 			int classNum = 0;
+			
 			Timestamp reviewIssueDate = new Timestamp(System.currentTimeMillis());
 			// BoardDAO 객체생성
 			boardDAO = new ReviewBoardDAO();
@@ -119,7 +137,7 @@ public class ReviewBoardService {
 			e.printStackTrace();
 		}
 		
-	}
+	} // deleteBoard
 
 	
 

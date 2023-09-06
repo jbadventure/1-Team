@@ -1,3 +1,4 @@
+
 <%@page import="com.itwillbs.domain.QuestionBoardDTO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -8,6 +9,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<link rel="stylesheet" href="./css/questionlist.css">
 <body>
 	<%
 	List<QuestionBoardDTO> boardList = (List<QuestionBoardDTO>) request.getAttribute("boardList");
@@ -25,6 +27,7 @@
 			<tr>
 				<td>분류</td>
 				<td><%=boardDTO.getQuestionCategory()%></td>
+				<td>전체</td>
 			</tr>
 			<tr>
 				<td>질문번호</td>

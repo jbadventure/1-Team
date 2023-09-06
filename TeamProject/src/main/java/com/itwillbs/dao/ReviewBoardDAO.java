@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.itwillbs.domain.PageDTO;
 import com.itwillbs.domain.ReviewBoardDTO;
 
 public class ReviewBoardDAO {
@@ -45,13 +46,15 @@ public class ReviewBoardDAO {
 	} // insertBoard
 
 	
-	public List<ReviewBoardDTO> getBoardList() {
+	public List<ReviewBoardDTO> getBoardList(PageDTO pageDTO) {
 		List<ReviewBoardDTO> boardList = null;
 		try {
 			con = new SQLConnection().getConnection();
 			// 3
-			String sql = "select * from review order by reviewNum desc";
+			String sql = "select * from review order by reviewNum desc limit ?,?";
 			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, pageDTO.getStartRow()-1);
+			pstmt.setInt(2, pageDTO.getPageSize());
 			// 4
 			rs = pstmt.executeQuery();
 			boardList = new ArrayList<>();
@@ -72,7 +75,7 @@ public class ReviewBoardDAO {
 			dbClose();
 		}
 		return boardList;
-	}
+	} // getBoardList
 
 
 
