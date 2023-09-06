@@ -126,5 +126,30 @@ public class ReviewBoardController extends HttpServlet{
 			response.sendRedirect("reviewList.rbo");
 		 } // delete
 		
+		if(sPath.equals("/myReview.rbo")) {
+			System.out.println("주소 : /myReview.rbo");
+			int pageSize = 8;
+			// 페이지 번호
+			String pageNum = request.getParameter("pageNum");
+			// 페이지 번호 없으면 1페이지 설정
+			if(pageNum == null) {
+				pageNum ="1";
+			}
+			// 페이지 번호를 정수형으로 변경
+			int currentPage = Integer.parseInt(pageNum);
+			PageDTO pageDTO = new PageDTO();
+			pageDTO.setPageSize(pageSize);
+			pageDTO.setPageNum(pageNum);
+			pageDTO.setCurrentPage(currentPage);
+			
+			// BoardService 객체생성
+			boardService = new ReviewBoardService();
+			List<ReviewBoardDTO> boardList = boardService.getBoardList(pageDTO);
+			request.setAttribute("boardList", boardList);
+			System.out.println(boardList);
+			dispatcher = request.getRequestDispatcher("member/memberInfo/myReview.jsp");
+			dispatcher.forward(request, response);
+		}
+		
 	} // process
 }
