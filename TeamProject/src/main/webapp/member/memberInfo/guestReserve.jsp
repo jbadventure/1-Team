@@ -25,7 +25,7 @@ OrdersDTO ordersDTO = (OrdersDTO)request.getAttribute("ordersDTO");
 <tr><td>결제방법 <%=ordersDTO.getPayMethod() %></td></tr>
 </table>
 <br>
-<button onclick = "location.href='myReserveList.or'"> 나의예약리스트보기버튼 <br> 
+<button onclick = "location.href='myReserveList.or'">나의예약리스트보기버튼</button><br> 
 
 </body>
 </html>

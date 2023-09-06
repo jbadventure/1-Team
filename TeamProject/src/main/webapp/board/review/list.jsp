@@ -44,7 +44,7 @@ for(int i=0; i<boardList.size(); i++){
 }
 %>
 		<%
-if(id != null) {
+if(memberDTO.memberId != null) {
 %>
 		<div class="add-button">
 			<button onclick="window.location.href='/TeamProject/reviewWrite.rbo'">
@@ -52,7 +52,9 @@ if(id != null) {
 		</div>
 
 	</div>
-
+		<% 
+}
+%>
 
 </body>
 </html>

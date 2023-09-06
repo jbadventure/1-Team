@@ -142,11 +142,17 @@
 지역 : <select name="address" id="address">
 	 <option value="">지역을 선택해주세요</option>
 	 <option value="Seoul">서울</option>
+	 <option value="Gyeonggi">경기도</option>
+	 <option value="Gangwon">강원도</option>
+	 <option value="Chungcheong">충청도</option>
+	 <option value="Jeolla">전라도</option>
+	 <option value="Gyeongsang">경상도</option>
 	 <option value="Busan">부산</option>
+	 <option value="Jeju">제주도</option>
 	 </select><br>
 	 <div id="div10"></div>
 
-<input type="checkbox" value="이용약관" id="agree">위 이용약관에 동의합니다. <a href="../join/agree.jsp">이용약관</a><br>
+<input type="checkbox" value="이용약관" id="agree">위 이용약관에 동의합니다. <a href="member/join/agree.jsp">이용약관</a><br>
 <div id="div12"></div>
 <input type="hidden" value="guest" name="memberType" id="memberType">
 <input type="button" value="회원가입" id="btn1">
@@ -176,7 +182,6 @@
 $(document).ready(function(){
 	// '회원가입' 버튼 클릭 시
 	$('#btn1').click(function(){
-		alert('#click');
 		// 아이디
 		// 값이 없다면
 		if($('#id').val() == ""){
@@ -336,14 +341,13 @@ $(document).ready(function(){
 			return
 		} else {
 		    $('#div12').empty();
-		}
+		}        
 		$('#frInsertGuest').submit();
 	});
 });
 
 	//아이디 중복확인
 	$('#idup').click(function(){
-		alert("클릭");
 			$.ajax({
 				url:'idCheck.me',
 				// 파라미터이름 : val() 값
@@ -357,7 +361,6 @@ $(document).ready(function(){
 	});
 
 	$('#ndup').click(function(){
-	alert("클릭");
 		$.ajax({
 			url:'nickCheck.me',
 			// 파라미터이름 : val() 값
