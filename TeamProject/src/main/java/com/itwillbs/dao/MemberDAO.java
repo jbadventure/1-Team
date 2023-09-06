@@ -381,43 +381,6 @@ public class MemberDAO {
 		return count;
 	}//getMemeberCount
 
-	public List<MemberDTO> getMemberList(String memberId, PageDTO pageDTO) {
-		System.out.println("MemberDAO getMemberList()");
-		List<MemberDTO> memberList = null;
-		try {
-			con = new SQLConnection().getConnection();
-			String sql = "select * from member order by memberNum desc limit ?, ?";
-			pstmt=con.prepareStatement(sql);
-			pstmt.setInt(1, pageDTO.getStartRow()-1); // 시작행 -1 
-			pstmt.setInt(2, pageDTO.getPageSize());//몇개	
-			rs =pstmt.executeQuery();
-			
-			memberList = new ArrayList<>();
-			while(rs.next()) {
-				MemberDTO memberDTO = new MemberDTO();
-				memberDTO.setMemberNum(rs.getInt("memberNum"));
-				memberDTO.setMemberId(rs.getString("memberId"));
-				memberDTO.setMemberPassword(rs.getString("memberPassword"));
-				memberDTO.setMemberName(rs.getString("memberName"));
-				memberDTO.setMemberNickname(rs.getString("memberNickname"));
-				memberDTO.setMemberGender(rs.getString("memberGender"));
-				memberDTO.setMemberBirthday(rs.getString("memberBirthday"));
-				memberDTO.setMemberPhoneNum(rs.getString("memberPhoneNum"));
-				memberDTO.setMemberEmail(rs.getString("memberEmail"));
-				memberDTO.setMemberType(rs.getString("memberType"));
-				memberDTO.setMemberLocation(rs.getString("memberLocation"));
-				memberDTO.setBusinessNum(rs.getString("businessNum"));
-				memberDTO.setMemberFile(rs.getString("memberFile"));
-				memberList.add(memberDTO);
-				}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			dbClose();
-		}
-		return memberList;
-	}// getMemberList
-	
 	public List<MemberDTO> getAdminList(String memberType) {
 		System.out.println("MemberDAO getAdminList()");
 		List<MemberDTO> memberList = null;
