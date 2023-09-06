@@ -27,7 +27,7 @@ MemberDTO memberDTO=(MemberDTO)request.getAttribute("memberDTO");
 <input type="hidden" name="oldfile" value="<%=memberDTO.getMemberFile()%>">
 <br>
 아이디 : <input type="text" name="memberId" value="<%=memberDTO.getMemberId() %>" readonly><br>
-비밀번호 : <input type="submit" value="비밀번호 재설정" id="rePass"><br>
+비밀번호 : <input type="button" value="비밀번호 재설정" onclick="location.href='findPassword.me'"><br>
 닉네임 : <input type="text" name = "memberNickname" value="<%=memberDTO.getMemberNickname() %>" id="nick"> <input type="button" value="중복확인" name="ndup" id="ndup"><br>
 	   <div id="div1"></div>
 <div id="div1"></div>

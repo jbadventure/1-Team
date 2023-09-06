@@ -244,16 +244,20 @@ public class MemberController extends HttpServlet {
 //
 //		} // PasswordReset
 
-		if (sPath.equals("/PasswordReset.me")) { // 비밀번호 재설정
+		if (sPath.equals("/PasswordReset.me")) { // 비밀번호 재설정완료
 			System.out.println("뽑은 가상주소 비교 : /PasswordReset.me");
 			String memberId = (String)request.getParameter("memberId");
 			System.out.println(memberId); // memberId값 확인용
+			
+			HttpSession session = request.getSession();
+			session.invalidate();
+			
 			// MemberService 객체생성
 			memberService = new MemberService();
 				memberService.updatePwMember(request);
-				// 팝업창 띄운 후 => 로그인페이지로 이동
+
 				dispatcher = request.getRequestDispatcher("member/login/passReport.jsp");
-				dispatcher.forward(request, response);
+				dispatcher.forward(request, response);	
 //				response.sendRedirect("login.me");
 		} // PasswordResetPro
 		

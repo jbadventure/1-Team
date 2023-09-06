@@ -59,6 +59,12 @@ function checkForm_check() {
 		return false; 
 	}
 	
+	if(pass1.value.length<6){
+		//alert("이름입력하세요");
+		document.getElementById("div").innerHTML = "비밀번호는 6자 이상이어야 합니다";
+		return false; 
+	}
+	
 	if(pass2.value ==""){
 		//alert("이름입력하세요");
 		document.getElementById("div").innerHTML = "비밀번호 확인 입력하세요";

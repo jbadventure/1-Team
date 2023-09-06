@@ -84,9 +84,8 @@
                 %> 
                 <div class="menu-search">
                 	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/noticeList.nbo" style="font-size:18px">공지사항</a></div>
-                	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/orderInfo.re">예약정보테스트</a></div>
+                	                	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/questionList.qbo">자주 묻는 질문</a></div>
                 	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/classList.cbo">클래스테스트</a></div>
-                	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/pay.pa">결제테스트</a></div>
                 	<div id="table_search">
 					<form action="listSearch.cbo" method="get">
 					<input type="text" name="search" class="search" placeholder="지금 생각나는 취미를 검색하세요!">
@@ -103,7 +102,6 @@
                 	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/noticeList.nbo" style="font-size:18px">공지사항</a></div>
                 	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/questionList.qbo">자주 묻는 질문</a></div>
                 	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/classList.cbo">클래스테스트</a></div>
-                	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/pay.pa">결제테스트</a></div>
                 	<form action="listSearch.cbo" method="get">
 					<input type="text" name="search" class="search" placeholder="지금 생각나는 취미를 검색하세요!">
 					<input type="submit" value="검색" class="btn">
@@ -118,7 +116,6 @@
                 	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/questionList.qbo">자주 묻는 질문</a></div>
                 	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/reviewList.rbo">리뷰 테스트</a></div>
                 	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/classList.cbo">클래스테스트</a></div>
-                	<div class="rd-nav-item"><a class="rd-nav-link" href="/TeamProject/pay.pa">결제테스트</a></div>
                 	<form action="listSearch.cbo" method="get">
 					<input type="text" name="search" class="search" placeholder="지금 생각나는 취미를 검색하세요!">
 					<input type="submit" value="검색" class="btn">
