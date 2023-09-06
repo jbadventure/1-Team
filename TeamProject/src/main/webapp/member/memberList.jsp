@@ -62,7 +62,7 @@ List<MemberDTO> memberList=(List<MemberDTO>)request.getAttribute("memberList");
 <input type="button" class="btn2" onClick="self_introduction(memberType2.value)" value="guest">
 
 <table id="memberList" class="memberList">
-<tr><th class="memberNum">번호</th>
+<!-- <tr><th class="memberNum">번호</th>
 	<th class="memberId">아이디</th>
     <th class="memberPassword">비밀번호</th>
     <th class="memberName">이름</th>
@@ -72,7 +72,7 @@ List<MemberDTO> memberList=(List<MemberDTO>)request.getAttribute("memberList");
     <th class="memberPhoneNum">전화번호</th>
     <th class="memberEmail">이메일</th>
     <th class="memberType">회원유형</th>
-    <th class="businessNum">사업자번호</th></tr>
+    <th class="businessNum">사업자번호</th></tr> -->
 </table>
 </article>        
  
@@ -153,7 +153,7 @@ if(pageDTO.getEndPage() < pageDTO.getPageCount()){
 		$('.btn2').click(function(){
 // 			alert("클릭2");
 	$('.memberList').html("");
-	$('.memberList').append("<tr><th>번호</th><th>아이디</th><th>비밀번호</th><th>이름</th><th>닉네임</th><th>생년월일</th><th>성별</th><th>전화번호</th><th>이메일</th><th>회원유형</th><th>사업자번호</th></tr>");
+	$('.memberList').append("<tr><th>번호</th><th>아이디</th><th>비밀번호</th><th>이름</th><th>닉네임</th><th>생년월일</th><th>성별</th><th>전화번호</th><th>이메일</th><th>회원유형</th></tr>");
 			$.ajax({
 				url:'listjson.me',
 				// 파라미터없으면 생략
@@ -168,7 +168,7 @@ if(pageDTO.getEndPage() < pageDTO.getPageCount()){
 						// class="memberList" 뒷부분에 추가하면서 출력
 						$('.memberList').append("<tr><td>"+item.memberNum+"</td><td>"+item.memberId+"</td><td>"+item.memberPassword+"</td><td>"+
 								item.memberName+"</td><td>"+item.memberNickname+"</td><td>"+item.memberBirthday+"</td><td>"+item.memberGender+"</td><td>"+
-								item.memberPhoneNum+"</td><td>"+item.memberEmail+"</td><td>"+item.memberType+"</td><td>"+item.businessNum+"</td></tr>");
+								item.memberPhoneNum+"</td><td>"+item.memberEmail+"</td><td>"+item.memberType+"</td></tr>");
 					});
 				}// memberType2
 			});//ajax()
