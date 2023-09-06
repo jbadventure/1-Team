@@ -13,8 +13,8 @@
       </header>
       <div class="container">
          <%
-         ReviewBoardDTO boardDTO = (ReviewBoardDTO) request.getAttribute("boardDTO");
          String memberId = (String)session.getAttribute("memberId");
+         ReviewBoardDTO boardDTO = (ReviewBoardDTO) request.getAttribute("boardDTO");
          %>
       <div class="reviewNum">
           후기번호 : <%=boardDTO.getReviewNum() %>
@@ -37,7 +37,7 @@
       
       </div>
       
-// 로그인, 글쓴이 일치하면 => 글수정, 글삭제 보이기
+<!--  로그인, 글쓴이 일치하면 => 글수정, 글삭제 보이기 -->
 <% 
 if(memberId != null){
 	if(memberId.equals(boardDTO.getReviewId())){

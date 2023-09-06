@@ -24,7 +24,7 @@ for(int i=0; i<boardList.size(); i++){
 	ReviewBoardDTO boardDTO = boardList.get(i);
     %>
 		<div class="review"
-			onclick="window.location.href='reviewContent.rbo?reviewNum<%=boardDTO.getReviewNum() %>'">
+			onclick="window.location.href='reviewContent.rbo?reviewNum=<%=boardDTO.getReviewNum() %>'">
 
 			<div class="reviewNum">
 				리뷰번호 :
@@ -38,13 +38,24 @@ for(int i=0; i<boardList.size(); i++){
 				후기작성자 :
 				<%=boardDTO.getReviewId() %>
 			</div>
+			<div class="reviewIssueDate">
+          		작성일자 : <%=boardDTO.getReviewDate() %>
+     		</div>
+			<div class="reviewContent">
+				후기 내용 :
+				<%=boardDTO.getReviewContent()%>
+			</div>
+			<div class="reviewFile">
+				첨부파일 :
+				<%=boardDTO.getReviewFile()%>
+			</div><br>
 
 		</div>
-		<% 
-}
-%>
 		<%
-if(memberDTO.memberId != null) {
+		}
+		%>
+		<%
+if(memberId != null) {
 %>
 		<div class="add-button">
 			<button onclick="window.location.href='/TeamProject/reviewWrite.rbo'">
@@ -52,6 +63,7 @@ if(memberDTO.memberId != null) {
 		</div>
 
 	</div>
+
 		<% 
 }
 %>

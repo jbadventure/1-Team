@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.itwillbs.domain.ClassBoardDTO;
 import com.itwillbs.domain.PageDTO;
-
+import com.itwillbs.domain.ReviewBoardDTO;
 import com.itwillbs.service.ClassBoardService;
 
 public class ClassBoardController extends HttpServlet { 
@@ -109,7 +109,9 @@ public class ClassBoardController extends HttpServlet {
 			// BoardService 객체생성
 			boardService = new ClassBoardService();
 			ClassBoardDTO boardDTO = boardService.getBoard(request);
+			List<ReviewBoardDTO> reviewboardList = boardService.getReviewBoardList(request);
 			request.setAttribute("boardDTO", boardDTO);
+			request.setAttribute("reviewboardList", reviewboardList);
 			dispatcher = request.getRequestDispatcher("board/class/content.jsp");
 			dispatcher.forward(request, response);
 		}// classContent

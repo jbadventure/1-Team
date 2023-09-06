@@ -6,8 +6,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import com.itwillbs.dao.ClassBoardDAO;
+import com.itwillbs.dao.ReviewBoardDAO;
 import com.itwillbs.domain.ClassBoardDTO;
 import com.itwillbs.domain.PageDTO;
+import com.itwillbs.domain.ReviewBoardDTO;
 import com.mysql.cj.Session;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -18,7 +20,7 @@ public class ClassBoardService {
 
 	public List<ClassBoardDTO> getBoardList(PageDTO pageDTO) {
 		System.out.println("ClassBoardService getBoardList()");
-		List<ClassBoardDTO>boardList = null;
+		List<ClassBoardDTO> boardList = null;
 		try {
 			// int startRow = 계산식; 
 			int startRow = (pageDTO.getCurrentPage()-1)*pageDTO.getPageSize()+1;
@@ -207,6 +209,24 @@ public class ClassBoardService {
 		}
 		return count;
 	}//getBoardCount
+
+	public List<ReviewBoardDTO> getReviewBoardList(HttpServletRequest request) {
+		System.out.println("ReviewBoardService getReviewBoardList()");
+		List<ReviewBoardDTO> boardList = null;
+		try {
+			// request 한글처리 
+			request.setCharacterEncoding("utf-8");
+			// request에 classNum 파라미터 값 가져오기
+			int classNum = Integer.parseInt(request.getParameter("classNum"));
+			System.out.println(classNum);
+			
+			boardDAO = new ClassBoardDAO();
+			boardList = boardDAO.getReviewBoardList(classNum);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return boardList;
+	} // getReviewBoardList
 	
 
 }// 클래스

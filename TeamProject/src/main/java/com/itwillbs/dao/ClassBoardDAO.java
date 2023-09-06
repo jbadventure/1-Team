@@ -9,6 +9,7 @@ import java.util.List;
 
 import com.itwillbs.domain.ClassBoardDTO;
 import com.itwillbs.domain.PageDTO;
+import com.itwillbs.domain.ReviewBoardDTO;
 
 public class ClassBoardDAO {
 
@@ -243,5 +244,37 @@ String sql = "select count(*) from class where classSubject like ?;";
 		}
 		return count;
 	}//getBoardCountSearch()
+
+	public List<ReviewBoardDTO> getReviewBoardList(int classNum) {
+		System.out.println("ReviewBoardDAO getReviewBoardList()");
+		List<ReviewBoardDTO> boardList = null;
+		try {
+			con = new SQLConnection().getConnection();
+			// 3
+			String sql = "select * from review where classNum=? order by reviewNum desc";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, classNum);  
+			// 4
+			rs = pstmt.executeQuery();
+			boardList = new ArrayList<>();
+			// 5
+			while(rs.next()) {
+				ReviewBoardDTO boardDTO = new ReviewBoardDTO();
+				boardDTO.setReviewNum(rs.getInt("reviewNum"));
+				boardDTO.setClassNum(rs.getInt("classNum"));
+				boardDTO.setReviewId(rs.getString("reviewID"));
+				boardDTO.setReviewIssueDate(rs.getTimestamp("reviewIssueDate"));
+				boardDTO.setReviewContent(rs.getString("reviewContent"));
+				boardDTO.setReviewFile(rs.getString("reviewFile"));
+				
+				boardList.add(boardDTO);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			dbClose();
+		}
+		return boardList;
+	}// getReviewBoardList
 	
 }

@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.itwillbs.domain.PageDTO;
 import com.itwillbs.domain.ReviewBoardDTO;
@@ -37,61 +38,68 @@ public class ReviewBoardController extends HttpServlet{
 		System.out.println("뽑은 가상주소 : " + sPath);
 		
 		if(sPath.equals("/reviewWrite.rbo")) {
-			dispatcher = request.getRequestDispatcher("/board/review/list.jsp");
+			System.out.println("뽑은 가상주소 비교 : /reviewWrite.rbo");
+			boardService = new ReviewBoardService();
+			ReviewBoardDTO reviewboardDTO = boardService.getBoard(request);
+			request.setAttribute("reviewboardDTO", reviewboardDTO);
+			dispatcher = request.getRequestDispatcher("board/review/write.jsp");
 			dispatcher.forward(request, response);
 		} // write
 		
 		if(sPath.equals("/reviewWritePro.rbo")) {
+			System.out.println("뽑은 가상주소 비교 : /reviewWritePro.rbo");
 			request.setCharacterEncoding("utf-8");
+			int classNum = Integer.parseInt(request.getParameter("classNum"));
+			System.out.println(classNum);
 			// boardService 객체 생성
 			boardService = new ReviewBoardService();
 			// 리턴할 형 insertBoard(request) 메서드 호출
 			boardService.insertBoard(request);
 			// reviewList.rbo 주소변경되면서 이동
-			response.sendRedirect("reviewList.rbo");
+			response.sendRedirect("classContent.cbo?classNum="+classNum);
 		} // writePro
 		
-		if(sPath.equals("/reviewList.rbo")) {
-			// 한페이지에 출력될 게시물 수
-			int pageSize = 8;
-			// 페이지 번호
-			String pageNum = request.getParameter("pageNum");
-			// 페이지 번호 없으면 1페이지 설정
-			if(pageNum == null) {
-				pageNum ="1";
-			}
-			// 페이지 번호를 정수형으로 변경
-			int currentPage = Integer.parseInt(pageNum);
-			PageDTO pageDTO = new PageDTO();
-			pageDTO.setPageSize(pageSize);
-			pageDTO.setPageNum(pageNum);
-			pageDTO.setCurrentPage(currentPage);
-			
-			// BoardService 객체생성
-			boardService = new ReviewBoardService();
-			List<ReviewBoardDTO> boardList = boardService.getBoardList(pageDTO);
-			request.setAttribute("boardList", boardList);
-			
-			System.out.println("boardList" + boardList);
-			// 주소 변경없이 페이지 이동
-			dispatcher = request.getRequestDispatcher("/board/review/list.jsp");
-//			dispatcher = request.getRequestDispatcher("/board/class/content.jsp");
-			dispatcher.forward(request, response);
-		} // list
-		
-		if(sPath.equals("/reviewContent.rbo")) {
-			System.out.println("주소 : /reviewContent.rbo");
-			// BoardService 객체 생성
-			boardService = new ReviewBoardService();
-			// BoardDTO boardDTO = getBoard(request) 메서드 호출
-			ReviewBoardDTO boardDTO = boardService.getBoard(request);
-			// request에 boardDTO 담기
-			request.setAttribute("boardDTO", boardDTO);
-			// content.jsp 주소변경 없이 이동
-			dispatcher = request.getRequestDispatcher("/board/review/content.jsp");
-			dispatcher.forward(request, response);
-			
-		} // reviewContent
+//		if(sPath.equals("/reviewList.rbo")) {
+//			System.out.println("뽑은 가상주소 비교 : /reviewList.rbo");
+//			// 한페이지에 출력될 게시물 수
+//			int pageSize = 8;
+//			// 페이지 번호
+//			String pageNum = request.getParameter("pageNum");
+//			// 페이지 번호 없으면 1페이지 설정
+//			if(pageNum == null) {
+//				pageNum ="1";
+//			}
+//			// 페이지 번호를 정수형으로 변경
+//			int currentPage = Integer.parseInt(pageNum);
+//			PageDTO pageDTO = new PageDTO();
+//			pageDTO.setPageSize(pageSize);
+//			pageDTO.setPageNum(pageNum);
+//			pageDTO.setCurrentPage(currentPage);
+//			
+//			// BoardService 객체생성
+//			boardService = new ReviewBoardService();
+//			List<ReviewBoardDTO> boardList = boardService.getBoardList(pageDTO);
+//			request.setAttribute("boardList", boardList);
+//			
+//			System.out.println("boardList" + boardList);
+//			// 주소 변경없이 페이지 이동
+//			dispatcher = request.getRequestDispatcher("board/review/list.jsp");
+//			dispatcher.forward(request, response);
+//		} // list
+//		
+//		if(sPath.equals("/reviewContent.rbo")) {
+//			System.out.println("뽑은 가상주소 비교 : /reviewContent.rbo");
+//			// BoardService 객체 생성
+//			boardService = new ReviewBoardService();
+//			// BoardDTO boardDTO = getBoard(request) 메서드 호출
+//			ReviewBoardDTO boardDTO = boardService.getBoard(request);
+//			// request에 boardDTO 담기
+//			request.setAttribute("boardDTO", boardDTO);
+//			// content.jsp 주소변경 없이 이동
+//			dispatcher = request.getRequestDispatcher("/board/review/content.jsp");
+//			dispatcher.forward(request, response);
+//			
+//		} // reviewContent
 		
 		if(sPath.equals("/reviewUpdate.rbo")) {
 			System.out.println("주소 : /reviewUpdate.rbo");

@@ -19,6 +19,7 @@ public class ReviewBoardService {
 	ReviewBoardDAO boardDAO = null;
 
 	public List<ReviewBoardDTO> getBoardList(PageDTO pageDTO) {
+		System.out.println("ReviewBoardService getBoardList()");
 		List<ReviewBoardDTO> boardList = null;
 		try {
 			// int startRow
@@ -38,6 +39,7 @@ public class ReviewBoardService {
 	} // getBoardList
 
 	public void insertBoard(HttpServletRequest request) {
+		System.out.println("ReviewBoardService insertBoard()");
 		try {
 			// request 한글처리 
 			request.setCharacterEncoding("utf-8");
@@ -47,24 +49,25 @@ public class ReviewBoardService {
 			MultipartRequest multi
 			= new MultipartRequest(request, uploadPath, maxSize, "utf-8", new DefaultFileRenamePolicy());
             // multi 파라미터 값 가져오기
-			String reviewID = multi.getParameter("reviewID");
+//			int reviewNum = Integer.parseInt(multi.getParameter("reviewNum"));
+			int classNum = Integer.parseInt(multi.getParameter("classNum"));
+//			String reviewID = multi.getParameter("reviewID");
 			String reviewContent = multi.getParameter("reviewContent");
 			String reviewFile = multi.getFilesystemName("reviewFile");
-			int reviewNum = Integer.parseInt(multi.getParameter("reviewNum"));
-			int classNum = Integer.parseInt(multi.getParameter("classNum"));
+			System.out.println(classNum);
 			
-			Timestamp reviewIssueDate = new Timestamp(System.currentTimeMillis());
 			// BoardDAO 객체생성
 			boardDAO = new ReviewBoardDAO();
 			// DTO 객체생성
 			ReviewBoardDTO boardDTO = new ReviewBoardDTO();
 			HttpSession session = request.getSession();
 			// set 메서드 값 저장
-			boardDTO.setReviewId(reviewID);
+//			int classNum = Integer.parseInt(request.getParameter("classNum"));
+//			boardDTO.setReviewNum(reviewNum);
+			boardDTO.setClassNum(classNum);
+			boardDTO.setReviewId(session.getAttribute("memberId").toString());
 			boardDTO.setReviewContent(reviewContent);
 			boardDTO.setReviewFile(reviewFile);
-			boardDTO.setReviewNum(reviewNum);
-			boardDTO.setClassNum(classNum);
 			// insertBoard(baordDTO) 메서드 호출
 			boardDAO.insertBoard(boardDTO);
 			
@@ -74,16 +77,18 @@ public class ReviewBoardService {
 	}// insertBoard
 
 	public ReviewBoardDTO getBoard(HttpServletRequest request) {
+		System.out.println("ReviewBoardService getBoard()");
 		ReviewBoardDTO boardDTO = null;
 		try {
 			// request 한글처리
 			request.setCharacterEncoding("utf-8");
 			// request 파라미터 가져오기 => int reviewNum 저장
-			int reviewNum = Integer.parseInt(request.getParameter("reviewNum"));
+			int classNum = Integer.parseInt(request.getParameter("classNum"));
+			System.out.println(classNum);
 			// BoardDAO 객체생성
 			boardDAO = new ReviewBoardDAO();
 			// boardDTO = getBoard(num) 메서드 호출
-			boardDTO = boardDAO.getBoard(reviewNum);
+			boardDTO = boardDAO.getBoard(classNum);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

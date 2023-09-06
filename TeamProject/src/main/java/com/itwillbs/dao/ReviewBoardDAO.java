@@ -25,15 +25,15 @@ public class ReviewBoardDAO {
 	
 
 	public void insertBoard(ReviewBoardDTO boardDTO) {
+		System.out.println("ReviewBoardDAO insertBoard()");
 		try {
 			con = new SQLConnection().getConnection();
-			String sql = "insert into review(reviewNum, classNum, reviewId, reviewContent, reviewFile, reviewIssueDate) values (?,?,?,?,?,?)";
+			String sql = "insert into review(classNum, reviewId, reviewContent, reviewFile) values (?,?,?,?)";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, boardDTO.getReviewNum());
-			pstmt.setInt(2, boardDTO.getClassNum());
-			pstmt.setString(3, boardDTO.getReviewId());
-			pstmt.setString(4, boardDTO.getReviewContent());
-			pstmt.setString(5, boardDTO.getReviewFile());
+			pstmt.setInt(1, boardDTO.getClassNum());
+			pstmt.setString(2, boardDTO.getReviewId());
+			pstmt.setString(3, boardDTO.getReviewContent());
+			pstmt.setString(4, boardDTO.getReviewFile());
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -46,6 +46,7 @@ public class ReviewBoardDAO {
 
 	
 	public List<ReviewBoardDTO> getBoardList(PageDTO pageDTO) {
+		System.out.println("ReviewBoardDAO getBoardList()");
 		List<ReviewBoardDTO> boardList = null;
 		try {
 			con = new SQLConnection().getConnection();
@@ -78,24 +79,25 @@ public class ReviewBoardDAO {
 
 
 
-	public ReviewBoardDTO getBoard(int reviewNum) {
-		System.out.println("ReviewBoardDTO getBoard");
+	public ReviewBoardDTO getBoard(int classNum) {
+		System.out.println("ReviewBoardDAO getBoard");
 		ReviewBoardDTO boardDTO = null;
 		try {
 			con = new SQLConnection().getConnection();
 			// sql 구문
-			String sql = "select * from review where reviewNum=?";
+			String sql = "select * from review where classNum=?";
 			pstmt=con.prepareStatement(sql);
-			pstmt.setInt(1, reviewNum);
+			pstmt.setInt(1, classNum);
 			// 실행
 			rs = pstmt.executeQuery();
 			// 결과 행접근 => boardDTO 객체생성 => set메서드 호출 => 열접근 데이터 저장
 			if(rs.next()) {
 				boardDTO = new ReviewBoardDTO();
-				boardDTO.setClassNum(rs.getInt("classNum"));
 				boardDTO.setReviewNum(rs.getInt("reviewNum"));
-				boardDTO.setReviewContent(rs.getString("reviewContent"));
+				boardDTO.setClassNum(rs.getInt("classNum"));
 				boardDTO.setReviewId(rs.getString("reviewID"));
+				boardDTO.setReviewIssueDate(rs.getTimestamp("reviewIssueDate"));
+				boardDTO.setReviewContent(rs.getString("reviewContent"));
 				// 첨부파일
 				boardDTO.setReviewFile(rs.getString("reviewFile"));
 			}

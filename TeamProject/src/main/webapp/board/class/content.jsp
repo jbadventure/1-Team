@@ -1,3 +1,4 @@
+<%@page import="com.itwillbs.domain.ReviewBoardDTO"%>
 <%@page import="com.itwillbs.domain.PageDTO"%>
 <%@page import="com.itwillbs.domain.ClassBoardDTO"%>
 <%@page import="java.util.List"%>
@@ -27,7 +28,7 @@
 String memberId = (String)session.getAttribute("memberId");
 String memberType = (String)session.getAttribute("memberType");
 ClassBoardDTO boardDTO = (ClassBoardDTO)request.getAttribute("boardDTO");
-
+List<ReviewBoardDTO> reviewboardList = (List<ReviewBoardDTO>)request.getAttribute("reviewboardList");
 %>       
 
  <div class="container"> 
@@ -127,11 +128,69 @@ if(memberId != null){
 <input type="button" value="클래스 목록으로 돌아가기" class="btn" onclick = "location.href='classList.cbo'">
 </div>
   </div>  
+  
+  
   <div id="tab-2" class="tab-content"><!--탭2내용-->
   클래스 정보
   </div> 
+    
+    
     <div id="tab-3" class="tab-content"><!--탭3내용-->
-  클래스 리뷰 
+	클래스 리뷰
+			<%
+if(memberId != null) {
+%>
+		<div class="add-button">
+			<button onclick="window.location.href='/TeamProject/reviewWrite.rbo?classNum=<%=boardDTO.getClassNum()%>'">
+			리뷰 작성</button>
+		</div>
+
+	</div>
+
+		<% 
+}
+%>
+
+
+	<div class="container">
+		<%
+for(int i=0; i<reviewboardList.size(); i++){
+	ReviewBoardDTO reviewboardDTO = reviewboardList.get(i);
+    %>
+		<div class="review"
+			onclick="window.location.href='reviewContent.rbo?reviewNum=<%=reviewboardDTO.getReviewNum() %>'">
+
+			<div class="reviewNum">
+				리뷰번호 :
+				<%=reviewboardDTO.getReviewNum() %>
+			</div>
+			<div class="classNum">
+				클래스번호 :
+				<%=reviewboardDTO.getClassNum() %>
+			</div>
+			<div class="reviewID">
+				후기작성자 :
+				<%=reviewboardDTO.getReviewId() %>
+			</div>
+			<div class="reviewIssueDate">
+          		작성일자 : <%=reviewboardDTO.getReviewIssueDate() %>
+     		</div>
+			<div class="reviewContent">
+				후기 내용 :
+				<%=reviewboardDTO.getReviewContent()%>
+			</div>
+			<div class="reviewFile">
+				첨부파일 :
+				<%=reviewboardDTO.getReviewFile()%>
+			</div><br>
+
+		</div>
+		<%
+		}
+		%>
+
+
+  
    </div>
 </div>
 </div>
