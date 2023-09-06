@@ -25,7 +25,7 @@
 <button type ="button" onclick="checkForm_check();">로그인</button><br>
 <input type="button" value="회원가입" onclick ="location.href='ghselect.me'">
 <input type="button" value="아이디찾기" onclick ="location.href='findId.me'">
-<input type="button" value="비밀번호찾기" onclick ="location.href='findPassword.me'">
+<input type="button" value="비밀번호 재설정" onclick ="location.href='findPassword.me'">
 </form>
 
 <script type="text/javascript">

@@ -250,19 +250,11 @@ public class MemberController extends HttpServlet {
 			System.out.println(memberId); // memberId값 확인용
 			// MemberService 객체생성
 			memberService = new MemberService();
-			if (memberId != null) {
-				// 저장된 memberId값이 있으면 => updatePwMember(request) 메서드 호출
-				// sql => update member set memberPassword = ? where memberId = ?
 				memberService.updatePwMember(request);
 				// 팝업창 띄운 후 => 로그인페이지로 이동
-				dispatcher = request.getRequestDispatcher("member/loginsuccess.jsp");
+				dispatcher = request.getRequestDispatcher("member/login/passReport.jsp");
 				dispatcher.forward(request, response);
 //				response.sendRedirect("login.me");
-			} else {
-				// 저장된 memberId값이 없으면 => 팝업창 띄운다.
-				dispatcher = request.getRequestDispatcher("member/msg.jsp");
-				dispatcher.forward(request, response);
-			}
 		} // PasswordResetPro
 		
 		if(sPath.equals("/info.me")) {
