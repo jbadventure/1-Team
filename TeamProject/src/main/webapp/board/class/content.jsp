@@ -34,6 +34,7 @@ ClassBoardDTO boardDTO = (ClassBoardDTO)request.getAttribute("boardDTO");
   <ul class="tabs"><!--탭메뉴-->
     <li class="tab-link current" data-tab="tab-1">클래스 내용</li>
     <li class="tab-link" data-tab="tab-2">클래스 정보</li>
+        <li class="tab-link" data-tab="tab-3">클래스 리뷰</li>
 <!--     <li class="tab-link" data-tab="tab-3" onclick="window.location.href='/TeamProject/reviewList.rbo'" >클래스 리뷰</li> -->
   </ul>
  
@@ -129,6 +130,9 @@ if(memberId != null){
   <div id="tab-2" class="tab-content"><!--탭2내용-->
   클래스 정보
   </div> 
+    <div id="tab-3" class="tab-content"><!--탭3내용-->
+  클래스 리뷰 
+   </div>
 </div>
 </div>
 

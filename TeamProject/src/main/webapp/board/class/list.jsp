@@ -27,9 +27,16 @@ String memberId = (String)session.getAttribute("memberId");
 
     <div class="products">
         <h3>클래스 목록</h3>
-
-        <div class="product-list">
         
+ <div class="shop__buttonContainer">
+            <button class="shop__basicBtn">기본 정렬</button>
+            <button class="shop__AbcBtn">가나다순</button>
+            <button class="shop__lowPriceBtn">낮은 가격순</button>
+            <button class="shop__highPriceBtn">높은 가격순</button>
+        </div>
+        
+
+        <div class="product-list">        
         <%
 for(int i=0; i<boardList.size(); i++){
 	ClassBoardDTO boardDTO = boardList.get(i);
@@ -90,9 +97,13 @@ if(pageDTO.getEndPage() < pageDTO.getPageCount()){
 }
 %>
 
-</div>
-        
+</div> 
     </div>
+    
+<script type="text/javascript"></script>
+<script src ="js/shop__buttonContainer.js"></script>
+
+    
     <!-- 푸터들어가는 곳 -->
 <jsp:include page="../../inc/bottom.jsp"></jsp:include>
 <!-- 푸터들어가는 곳 -->
