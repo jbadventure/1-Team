@@ -25,6 +25,7 @@
         
  <%
 String memberId = (String)session.getAttribute("memberId");
+String memberType = (String)session.getAttribute("memberType");
 ClassBoardDTO boardDTO = (ClassBoardDTO)request.getAttribute("boardDTO");
 
 %>       
@@ -33,7 +34,7 @@ ClassBoardDTO boardDTO = (ClassBoardDTO)request.getAttribute("boardDTO");
   <ul class="tabs"><!--탭메뉴-->
     <li class="tab-link current" data-tab="tab-1">클래스 내용</li>
     <li class="tab-link" data-tab="tab-2">클래스 정보</li>
-    <li class="tab-link" data-tab="tab-3" onclick="window.location.href='/TeamProject/reviewList.rbo'" >클래스 리뷰</li>
+<!--     <li class="tab-link" data-tab="tab-3" onclick="window.location.href='/TeamProject/reviewList.rbo'" >클래스 리뷰</li> -->
   </ul>
  
   <div id="tab-1" class="tab-content current"><!--탭1내용-->
@@ -71,7 +72,7 @@ if(memberId != null){
   		<input type="button" value="클래스 삭제" class="btn" 
        					onclick="location.href='classDelete.cbo?classNum=<%=boardDTO.getClassNum()%>'">
 		<%
-	}else{
+	}else if(memberType.equals("guest")){
 		%>
 			<div id="btnWrap"><button id="popupBtn">예약하기</button></div>
                  <!-- 모달->입력값 전송 -->
@@ -128,9 +129,6 @@ if(memberId != null){
   <div id="tab-2" class="tab-content"><!--탭2내용-->
   클래스 정보
   </div> 
-  <div id="tab-3" class="tab-content"><!--탭3내용-->
-  클래스 리뷰 
-   </div>
 </div>
 </div>
 
