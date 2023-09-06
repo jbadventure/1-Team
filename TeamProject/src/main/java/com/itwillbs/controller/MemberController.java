@@ -312,67 +312,6 @@ public class MemberController extends HttpServlet {
 		
 		if(sPath.equals("/memberList.me")) { // admin 회원목록 리스트
 			System.out.println("뽑은 가상주소 비교 : /memberList.me");
-			HttpSession session = request.getSession();
-			String memberId = (String)session.getAttribute("memberId");
-			System.out.println(memberId);
-			
-			// 한 페이지에서 보여지는 글 개수 설정
-			int pageSize = 5;
-			// 페이지 번호
-			String pageNum = request.getParameter("pageNum");
-			// 페이지 번호가 없으면 => 1페이지로 가도록 설정
-			if(pageNum == null) {
-				pageNum = "1";
-			}
-			// 페이지 번호 -> 정수형으로 변경
-			int currentPage = Integer.parseInt(pageNum);
-			
-			PageDTO pageDTO = new PageDTO();
-			pageDTO.setPageSize(pageSize);
-			pageDTO.setPageNum(pageNum);
-			pageDTO.setCurrentPage(currentPage);
-			
-			// memberService 객체생성
-			memberService = new MemberService();
-			// List<MemberDTO> memberList = getMemberList(); 메서드 호출
-			List<MemberDTO> memberList = memberService.getMemberList(memberId, pageDTO);
-			
-			// 게시판 전체 글의 개수 구하기
-			int count = memberService.getMemberCount();
-			// 한 화면에 보여줄 페이지 개수 설정
-			int pageBlock = 5;
-			// 시작하는 페이지 번호
-			// currentPage  pageBlock  => startPage
-			//   1~10(0~9)      10     =>  (0~9)/10*10+1=>0*10+1=> 0+1=> 1 
-			//   11~20(10~19)   10     =>  (10~19)/10*10+1=>1*10+1=>10+1=>11
-			//   21~30(20~29)   10     =>  (20~29)/10*10+1=>2*10+1=>20+1=>21
-			int startPage = (currentPage-1)/pageBlock*pageBlock+1;
-			// 끝나는 페이지 번호
-			//  startPage   pageBlock => endPage
-			//     1            10    =>   10
-			//     11           10    =>   20
-			//     21           10    =>   30
-			int endPage = startPage+pageBlock-1;
-			// 계산한 값 endPage 10 => 실제페이지 2
-			// 전체페이지 구하기
-			// 글 개수 50  한 화면에 보여줄 글 개수 10 => 페이지 수 5 + 0
-			// 글 개수 57  한 화면에 보여줄 글 개수 10 => 페이지 수 5 + 1
-			int pageCount = count / pageSize + (count%pageSize==0?0:1);
-			if(endPage > pageCount) {
-				endPage = pageCount;
-			}
-			
-			// pageDTO 저장
-			pageDTO.setCount(count);
-			pageDTO.setPageBlock(pageBlock);
-			pageDTO.setStartPage(startPage);
-			pageDTO.setEndPage(endPage);
-			pageDTO.setPageCount(pageCount);
-			
-			request.setAttribute("memberList", memberList);
-			request.setAttribute("pageDTO", pageDTO);
-			System.out.println(memberList);
-			
 			// 주소변경없이 이동
 			dispatcher = request.getRequestDispatcher("member/memberList.jsp");
 			dispatcher.forward(request, response);
@@ -383,7 +322,9 @@ public class MemberController extends HttpServlet {
 			request.setCharacterEncoding("utf-8");
 			String memberType = request.getParameter("memberType");
 			HttpSession session = request.getSession();
+//			String memberId = (String)session.getAttribute("memberId");
 			session.setAttribute("memberType", memberType);
+//			System.out.println(memberId);
 			System.out.println(memberType);
 			
 			// MemberService 객체생성
