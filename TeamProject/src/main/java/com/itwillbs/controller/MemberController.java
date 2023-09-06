@@ -211,7 +211,6 @@ public class MemberController extends HttpServlet {
 			dispatcher.forward(request, response);
 		}//findIdPro
 
-
 		if (sPath.equals("/findPassword.me")) { // 비밀번호 찾기
 			// member/join/findPassword.jsp 주소변경없이 이동
 			dispatcher = request.getRequestDispatcher("member/login/findPassword.jsp");
@@ -231,40 +230,31 @@ public class MemberController extends HttpServlet {
 			dispatcher.forward(request, response);					
      	} // findPasswordPro		
 
+//		if (sPath.equals("/PasswordReset.me")) { // 비밀번호 재설정
+//			System.out.println("PasswordReset");
+//			// 수정하기 전에 디비 나의 정보 조회(세션값 memberId)
+//			// 세션 객체생성
+//			HttpSession session = request.getSession();
+//			// "memberId" 세션값 가져오기 => String memberId 변수 저장
+//			String memberId = (String) session.getAttribute("memberId");
+//			System.out.println(memberId); // memberId값 확인용
+//			// member/join/PasswordReset.jsp 주소변경없이 이동
+//			dispatcher = request.getRequestDispatcher("member/login/PasswordReset.jsp");
+//			dispatcher.forward(request, response);
+//
+//		} // PasswordReset
+
 		if (sPath.equals("/PasswordReset.me")) { // 비밀번호 재설정
-			// 수정하기 전에 디비 나의 정보 조회(세션값 memberId)
-			// 세션 객체생성
-			HttpSession session = request.getSession();
-			// "memberId" 세션값 가져오기 => String memberId 변수 저장
-			String memberId = (String) session.getAttribute("memberId");
-			System.out.println(memberId); // memberId값 확인용
-			// member/join/PasswordReset.jsp 주소변경없이 이동
-			dispatcher = request.getRequestDispatcher("member/login/PasswordReset.jsp");
-			dispatcher.forward(request, response);
-
-		} // PasswordReset
-
-		if (sPath.equals("/PasswordResetPro.me")) { // 비밀번호 재설정
-			System.out.println("뽑은 가상주소 비교 : /PasswordResetPro.me");
-			HttpSession session = request.getSession();
-			// "memberId" 세션값 가져오기 => String memberId 변수 저장
-			String memberId = (String) session.getAttribute("memberId");
+			System.out.println("뽑은 가상주소 비교 : /PasswordReset.me");
+			String memberId = (String)request.getParameter("memberId");
 			System.out.println(memberId); // memberId값 확인용
 			// MemberService 객체생성
 			memberService = new MemberService();
-			if (memberId != null) {
-				// 저장된 memberId값이 있으면 => updatePwMember(request) 메서드 호출
-				// sql => update member set memberPassword = ? where memberId = ?
 				memberService.updatePwMember(request);
 				// 팝업창 띄운 후 => 로그인페이지로 이동
-				dispatcher = request.getRequestDispatcher("member/loginsuccess.jsp");
+				dispatcher = request.getRequestDispatcher("member/login/passReport.jsp");
 				dispatcher.forward(request, response);
 //				response.sendRedirect("login.me");
-			} else {
-				// 저장된 memberId값이 없으면 => 팝업창 띄운다.
-				dispatcher = request.getRequestDispatcher("member/msg.jsp");
-				dispatcher.forward(request, response);
-			}
 		} // PasswordResetPro
 		
 		if(sPath.equals("/info.me")) {

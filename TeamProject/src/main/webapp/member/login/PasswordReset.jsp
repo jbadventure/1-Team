@@ -32,18 +32,48 @@ if(memberDTO.getMemberId().equals("Value does not exist")){
 <h1>비밀번호 재설정</h1>
 <h4>비밀번호는 6자 이상이어야 합니다.</h4>
 
-<form action="PasswordResetPro.me" method="post">
+<form action="PasswordReset.me" method="post" name="checkForm" id ="checkForm">
 
 <%=memberDTO.getMemberId() %>님의 새 비밀번호를 설정해주세요.<br>
-<input type="password" placeholder="새 비밀번호" name="memberPassword"><br>
-<input type="password" placeholder="새 비밀번호 확인" ><br>
+<input type="hidden" name="memberId" value="<%=memberDTO.getMemberId() %>"/>
+<input type="password" placeholder="새 비밀번호" name="memberPassword" id ="pass1"><br>
+<input type="password" placeholder="새 비밀번호 확인" id="pass2"><br>
 
-<input type="submit" value="변경하기">
+<div id="div" style="color:red;"></div>
+
+<button type ="button" onclick="checkForm_check();">변경하기</button>
 </form>
 
 <%
 }
 %>
+
+<script type="text/javascript">
+function checkForm_check() {
+	var pass1 = document.getElementById("pass1");
+	var pass2 = document.getElementById("pass2");
+	
+	if(pass1.value ==""){
+		//alert("이름입력하세요");
+		document.getElementById("div").innerHTML = "비밀번호 입력하세요";
+		return false; 
+	}
+	
+	if(pass2.value ==""){
+		//alert("이름입력하세요");
+		document.getElementById("div").innerHTML = "비밀번호 확인 입력하세요";
+		return false; 
+	}
+	
+	if(pass1.value!=pass2.value){
+		//alert("이름입력하세요");
+		document.getElementById("div").innerHTML = "비밀번호와 비밀번호확인이 일치하지 않습니다";
+		return false; 
+	}
+	document.checkForm.submit();
+}	
+</script>
+
 
 <!-- 푸터들어가는 곳 -->
 <jsp:include page="../../inc/bottom.jsp"></jsp:include>
