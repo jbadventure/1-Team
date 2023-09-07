@@ -21,15 +21,14 @@
 <jsp:include page="../../inc/top.jsp"></jsp:include>
 <!-- 헤더들어가는 곳 --> 
 
-    <div class="products">
-        <h3>클래스 제목</h3> 
-        
+    <div class="products">      
  <%
 String memberId = (String)session.getAttribute("memberId");
 String memberType = (String)session.getAttribute("memberType");
 ClassBoardDTO boardDTO = (ClassBoardDTO)request.getAttribute("boardDTO");
 List<ReviewBoardDTO> reviewboardList = (List<ReviewBoardDTO>)request.getAttribute("reviewboardList");
 %>       
+<h3><%=boardDTO.getClassSubject() %></h3>
 
  <div class="container"> 
   <ul class="tabs"><!--탭메뉴-->
@@ -43,15 +42,10 @@ List<ReviewBoardDTO> reviewboardList = (List<ReviewBoardDTO>)request.getAttribut
 <div class="product-content">
            
 <table id="class-content">
-<tr><td>글번호</td><td><%=boardDTO.getClassNum() %></td></tr>
-<tr><td>제목</td><td><%=boardDTO.getClassSubject() %></td></tr>
-<tr><td>글쓴이</td><td><%=boardDTO.getHostId() %></td></tr>
-<tr><td>글쓴날짜</td><td><%=boardDTO.getClassIssueDate() %></td></tr>
 <tr><td>지역</td><td><%=boardDTO.getClassLocation() %></td></tr>
 <tr><td>카테고리</td><td><%=boardDTO.getClassCategory() %></td></tr>    
-<tr><td>내용</td><td><%=boardDTO.getClassContent() %></td></tr>    
 <tr><td>가격</td><td><%=boardDTO.getClassPrice() %></td></tr>    
-<tr><td>이미지파일</td><td>
+<tr><td>
     <%      
       		if(boardDTO.getClassFile() == null){
      %>
@@ -61,7 +55,8 @@ List<ReviewBoardDTO> reviewboardList = (List<ReviewBoardDTO>)request.getAttribut
             	<img src="upload/<%=boardDTO.getClassFile() %>" width="320" height="212">
      <%			 }
      %>
-</td></tr>
+</td></tr><!--클래스이미지-->
+<tr><td><%=boardDTO.getClassContent() %></td></tr> <!--클래스내용-->
 </table>
 <%
 // 로그인 필수
@@ -107,7 +102,6 @@ if(memberId != null){
   }
  %>
 </form>
-	
 <%
 } else {
 %>
@@ -124,35 +118,31 @@ if(memberId != null){
 }
 %>
 
-
 <input type="button" value="클래스 목록으로 돌아가기" class="btn" onclick = "location.href='classList.cbo'">
 </div>
   </div>  
-  
-  
+    
   <div id="tab-2" class="tab-content"><!--탭2내용-->
   클래스 정보
+  <table id="class-content">
+  <tr><td>글번호</td><td><%=boardDTO.getClassNum() %></td></tr>
+  <tr><td>글쓴날짜</td><td><%=boardDTO.getClassIssueDate() %></td></tr>
+  <tr><td>글쓴이</td><td><%=boardDTO.getHostId() %></td></tr>
+  </table>
   </div> 
-    
-    
+       
     <div id="tab-3" class="tab-content"><!--탭3내용-->
 	클래스 리뷰
-			<%
+<%
 if(memberId != null) {
 %>
 		<div class="add-button">
-			<button onclick="window.location.href='/TeamProject/reviewWrite.rbo?classNum=<%=boardDTO.getClassNum()%>'">
-			리뷰 작성</button>
+			<button onclick="window.location.href='/TeamProject/reviewWrite.rbo?classNum=<%=boardDTO.getClassNum()%>'">리뷰 작성</button>
 		</div>
-
-	</div>
-
-		<% 
+<% 
 }
-%>
-
-
-	<div class="container">
+%>		
+			<div class="container">
 		<%
 for(int i=0; i<reviewboardList.size(); i++){
 	ReviewBoardDTO reviewboardDTO = reviewboardList.get(i);
@@ -182,18 +172,25 @@ for(int i=0; i<reviewboardList.size(); i++){
 			<div class="reviewFile">
 				첨부파일 :
 				<%=reviewboardDTO.getReviewFile()%>
-			</div><br>
-
-		</div>
-		<%
-		}
-		%>
-
-
+			</div>
+			
+ <%      
+if(reviewboardDTO.getReviewFile() != null){
+ %>
+      <img src="upload/<%=reviewboardDTO.getReviewFile() %>" width="320" height="212">
+<%
+}
+%>
+</div><br>
+<%
+}
+%>
   
    </div>
+	</div>
+
 </div>
-</div>
+</div> <!--  products -->
 
 <script type="text/javascript"  src="script/jquery-3.7.0.js"></script>
 <script src ="js/modal.js"> </script>
