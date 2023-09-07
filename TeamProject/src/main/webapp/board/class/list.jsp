@@ -86,8 +86,7 @@ for(int i = pageDTO.getStartPage(); i<=pageDTO.getEndPage(); i++){
 	<a href = "classList.cbo?pageNum=<%=i %>"><%=i %></a>
 	<%
 }	
-	%>
-	
+	%>	
 <%
 //끝페이지번호  전체페이지수 비교 => 전체페이지수 크면 => Next보임
 if(pageDTO.getEndPage() < pageDTO.getPageCount()){
