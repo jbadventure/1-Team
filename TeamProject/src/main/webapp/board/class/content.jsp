@@ -134,7 +134,7 @@ if(memberId != null){
 <%
 if(memberId != null) {  
 %>
-		<div class="add-button">
+		<div class="review-add-button">
 			<button onclick="window.location.href='/TeamProject/reviewWrite.rbo?classNum=<%=boardDTO.getClassNum()%>'">리뷰 작성</button>
 		</div>
 <% 
@@ -164,7 +164,10 @@ if(reviewboardDTO.getReviewFile() != null){
 </div><br>
 			<div class="reviewContent"><!--후기내용-->
 				<%=reviewboardDTO.getReviewContent()%>
-			</div><br>
+			</div>
+			<div class="review-delete-button">
+			<input type="button" value="삭제" class="btn" onclick="location.href='reviewDelete.rbo?classNum=<%=reviewboardDTO.getClassNum()%>&reviewNum=<%=reviewboardDTO.getReviewNum()%>'"><br>
+			</div>
 			-----------------------------------------------------------------
 	</div>
 <%

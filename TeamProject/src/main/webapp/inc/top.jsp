@@ -35,7 +35,7 @@
 %>
 
  
-<div class="rd-navbar-brand"><a class="brand" href="index.html"><img class="brand-logo-dark" src="images/logo-198x66.png" alt="" width="198" height="66"/></a></div>
+<div class="rd-navbar-brand"><a class="brand" href="index.jsp"><img class="brand-logo-dark" src="images/logo-198x66.png" alt="" width="198" height="66"/></a></div>
 <ul>
 	<li><a href="noticeList.nbo">공지사항</a></li>
 	<li><a href="noticeList.nbo">자주묻는질문</a></li>

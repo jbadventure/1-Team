@@ -4,10 +4,17 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link rel="stylesheet" href="shopcss.css">
+  <link href="css/newfile.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
+<!-- 헤더들어가는 곳 -->
+<jsp:include page="../../inc/top.jsp"></jsp:include>
+<!-- 헤더들어가는 곳 --> 
+
 <h3>예약상세정보</h3>
 <%
 request.setCharacterEncoding("utf-8");
@@ -15,7 +22,7 @@ OrdersDTO ordersDTO = (OrdersDTO)request.getAttribute("ordersDTO");
 %>
 
 <table id="class-content">
-<tr><td><h4> <%=ordersDTO.getOrdersId() %>님의 예약정보를 확인하세요 </h4></td></tr>
+<tr><td><h5> <%=ordersDTO.getOrdersId() %>님의 예약정보를 확인하세요 </h5></td></tr>
 <tr><td>결제번호 <%=ordersDTO.getOrdersNum() %></td></tr>
 <tr><td>클래스제목 <%=ordersDTO.getClassSubject() %></td></tr>
 <tr><td>예약날짜 <%=ordersDTO.getOrdersDate() %></td></tr>
@@ -27,5 +34,8 @@ OrdersDTO ordersDTO = (OrdersDTO)request.getAttribute("ordersDTO");
 <br>
 <button onclick = "location.href='myReserveList.or'">나의예약리스트보기버튼</button><br> 
 
+<!-- 푸터들어가는 곳 -->
+<jsp:include page="../../inc/bottom.jsp"></jsp:include>
+<!-- 푸터들어가는 곳 -->
 </body>
 </html>

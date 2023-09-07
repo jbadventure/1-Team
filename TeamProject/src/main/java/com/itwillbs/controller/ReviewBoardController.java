@@ -10,8 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.itwillbs.domain.ClassBoardDTO;
 import com.itwillbs.domain.PageDTO;
 import com.itwillbs.domain.ReviewBoardDTO;
+import com.itwillbs.service.ClassBoardService;
 import com.itwillbs.service.ReviewBoardService;
 
 public class ReviewBoardController extends HttpServlet{
@@ -21,27 +23,29 @@ public class ReviewBoardController extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("MemberController doGet()");
+		System.out.println("ReviewBoardController doGet()");
 		doProcess(request, response);
 	}//doGet()
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("MemberController doPost()");
+		System.out.println("ReviewBoardController doPost()");
 		doProcess(request, response);
 	}//doPost()
 	
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		System.out.println("MemberController doProcess()");
+		System.out.println("ReviewBoardController doProcess()");
 		String sPath = request.getServletPath();
 		System.out.println("뽑은 가상주소 : " + sPath);
 		
 		if(sPath.equals("/reviewWrite.rbo")) {
 			System.out.println("뽑은 가상주소 비교 : /reviewWrite.rbo");
-			boardService = new ReviewBoardService();
-			ReviewBoardDTO reviewboardDTO = boardService.getBoard(request);
-			request.setAttribute("reviewboardDTO", reviewboardDTO);
+			
+			ClassBoardService boardService = new ClassBoardService();
+			ClassBoardDTO boardDTO = boardService.getBoard(request);
+			request.setAttribute("boardDTO", boardDTO);
+			
 			dispatcher = request.getRequestDispatcher("board/review/write.jsp");
 			dispatcher.forward(request, response);
 		} // write
@@ -58,6 +62,20 @@ public class ReviewBoardController extends HttpServlet{
 			// reviewList.rbo 주소변경되면서 이동
 			response.sendRedirect("classContent.cbo?classNum="+classNum);
 		} // writePro
+		
+		if(sPath.equals("/reviewDelete.rbo")) {
+			System.out.println("뽑은 가상주소 비교 : /reviewDelete.rbo");
+			// BoardService 객체생성
+			boardService = new ReviewBoardService();
+			
+			boardService.deleteBoard(request);
+			
+			request.setCharacterEncoding("utf-8");
+			int classNum = Integer.parseInt(request.getParameter("classNum"));
+			System.out.println(classNum);
+			// 주소 변경되면서 list.rbo 이동
+			response.sendRedirect("classContent.cbo?classNum="+classNum);
+		 } // delete
 		
 //		if(sPath.equals("/reviewList.rbo")) {
 //			System.out.println("뽑은 가상주소 비교 : /reviewList.rbo");
@@ -124,15 +142,6 @@ public class ReviewBoardController extends HttpServlet{
 			// 글목록 list.bo 주소 변경 되면서 이동
 			response.sendRedirect("reviewList.rbo");
 		} // updatePro
-		
-		if(sPath.equals("/reviewDelete.rbo")) {
-			// BoardService 객체생성
-			boardService = new ReviewBoardService();
-			// deleteBoard(request) 메서드 호출
-			boardService.deleteBoard(request);
-			// 주소 변경되면서 list.rbo 이동
-			response.sendRedirect("reviewList.rbo");
-		 } // delete
 		
 		if(sPath.equals("/myReview.rbo")) {
 			System.out.println("주소 : /myReview.rbo");

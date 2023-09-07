@@ -1,22 +1,29 @@
-<%@page import="com.itwillbs.domain.ReviewBoardDTO"%>
+<%@page import="com.itwillbs.domain.ClassBoardDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
+  <link rel="stylesheet" href="shopcss.css">
+  <link href="css/newfile.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>리뷰 작성</title>
 </head>
 <body>
+<!-- 헤더들어가는 곳 -->
+<jsp:include page="../../inc/top.jsp"></jsp:include>
+<!-- 헤더들어가는 곳 --> 
+
 	<%
 	String memberId = (String) session.getAttribute("memberId");
-	ReviewBoardDTO reviewboardDTO = (ReviewBoardDTO) request.getAttribute("reviewboardDTO");
+	ClassBoardDTO boardDTO = (ClassBoardDTO) request.getAttribute("boardDTO");
 	%>
 	<header>
 		<h1>리뷰 작성</h1>
 	</header>
 	<div class="container">
-		<form action="reviewWritePro.rbo?classNum=<%=reviewboardDTO.getClassNum() %>" method="post" enctype="multipart/form-data">
+		<form action="reviewWritePro.rbo?classNum=<%=boardDTO.getClassNum() %>" method="post" enctype="multipart/form-data">
 			<table id="review" border="1">
 				<div class="form-group">
 <!-- 					<label for="content">내용</label> -->
@@ -29,6 +36,10 @@
 			</table>
 		</form>
 	</div>
-
+	
+	
+<!-- 푸터들어가는 곳 -->
+<jsp:include page="../../inc/bottom.jsp"></jsp:include>
+<!-- 푸터들어가는 곳 -->
 </body>
 </html>

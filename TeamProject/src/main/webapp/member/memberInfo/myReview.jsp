@@ -6,17 +6,24 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link rel="stylesheet" href="shopcss.css">
+  <link href="css/newfile.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>myReview.jsp</title>
 </head>
 <body>
+<!-- 헤더들어가는 곳 -->
+<jsp:include page="../../inc/top.jsp"></jsp:include>
+<!-- 헤더들어가는 곳 --> 
+
 	<%
 List<ReviewBoardDTO> boardList = (List<ReviewBoardDTO>)request.getAttribute("boardList");
 String memberId = (String)session.getAttribute("memberId");
 PageDTO pageDTO = (PageDTO)request.getAttribute("pageDTO");
 %>
 	<header>
-		<h2>클래스 리뷰</h2>
+		<h3>클래스 리뷰</h3>
 	</header>
 	<div class="container">
 		<%
@@ -24,21 +31,18 @@ for(int i=0; i<boardList.size(); i++){
 	ReviewBoardDTO boardDTO = boardList.get(i);
 	if (boardDTO.getReviewId().equals(memberId)) {
     %>
-		<div class="review"
-			onclick="window.location.href='reviewContent.rbo?reviewNum<%=boardDTO.getReviewNum() %>'">
+		<%-- <div class="review"
+			onclick="window.location.href='reviewContent.rbo?reviewNum=<%=boardDTO.getReviewNum() %>'"> --%>
 
-			<div class="reviewNum">
-				리뷰번호 :
-				<%=boardDTO.getReviewNum() %>
-			</div>
-			<div class="classNum">
-				클래스번호 :
-				<%=boardDTO.getClassNum() %>
-			</div>
-			<div class="reviewID">
-				후기작성자 :
-				<%=boardDTO.getReviewId() %>
-			</div>
+		<div class="reviewNum">
+			리뷰번호 : <%=boardDTO.getReviewNum() %>
+		</div>
+		<div class="classNum">
+			클래스번호 : <%=boardDTO.getClassNum() %>
+		</div>
+		<div class="reviewContent">
+			후기내용 : <%=boardDTO.getReviewContent() %>
+		</div><br>
 
 		</div>
 		<% 
@@ -58,6 +62,8 @@ if(memberId != null) {
 }
 %>
      
-
+<!-- 푸터들어가는 곳 -->
+<jsp:include page="../../inc/bottom.jsp"></jsp:include>
+<!-- 푸터들어가는 곳 -->
 </body>
 </html> 
