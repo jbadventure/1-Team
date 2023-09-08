@@ -14,7 +14,7 @@ ul{
 }
 /* id="container" 밖여백 위아래 0px 왼쪽오른쪽 가운데 auto
    배경색 흰색 , 너비 1200px*/
-.container{
+.TopContainer{
 	margin: 0px auto;  background-color: white; width: 1200px;
 }   
 /*   header   너비 100%, 높이 100px, 배경색 #045  */

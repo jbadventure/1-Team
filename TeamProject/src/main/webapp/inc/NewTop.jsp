@@ -4,7 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<div class="container">
+<div class="TopContainer">
 <header>
 
 <%
@@ -13,7 +13,7 @@ MemberDTO memberDTO=(MemberDTO)request.getAttribute("memberDTO");
 String memberId = (String)session.getAttribute("memberId");
 %>
 		<div id="logo">
-			<a href="test8.html"><h1>로고</h1></a>
+			<a href="main.me"><h1>로고</h1></a>
 		</div>
 		<nav>
 <% // 상단바 로그인세션에 따라 다르게보이게  
