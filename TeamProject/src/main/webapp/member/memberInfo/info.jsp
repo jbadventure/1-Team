@@ -41,10 +41,9 @@ if(memberDTO.getMemberType().equals("guest")){
 </section>
 <br><br>
 <section id="button">
-<input type="button" value="회원정보변경" id="update" onclick="location.href='update.me'"><br>
+<input type="button" value="개인정보수정" id="update" onclick="location.href='update.me'"><br>
 <input type="button" value="클래스관리" id="classManagement" onclick="location.href='classManagement.cbo'"><br>
 <input type="button" value="예약관리" id="myReserve" onclick="location.href='myReserveList.or'"><br>
-<input type="button" value="내가 쓴 리뷰" id="myReview" onclick="location.href='myReview.rbo'"><br>
 <input type="button" value="계정삭제" id="delete" onclick="location.href='delete.me'">
  </section>
  </main>
