@@ -23,7 +23,7 @@ h1 {
     font-size: 24px;
     font-weight: bold;
 }
-.question {
+.notice {
     width: auto;
     height: auto;
     transition: opacity 200ms ease-in-out 0s;
@@ -83,4 +83,12 @@ li {
 }
 div {
     display: block;
+}
+.date {
+    -webkit-box-flex: 0;
+    flex: 0 0 auto;
+    margin-left: 10px;
+    color: rgb(155, 155, 155);
+    font-size: 12px;
+    font-weight: normal;
 }

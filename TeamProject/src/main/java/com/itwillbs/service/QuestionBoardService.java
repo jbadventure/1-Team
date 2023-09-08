@@ -39,7 +39,7 @@ public class QuestionBoardService {
 		try {
 			boardDAO = new QuestionBoardDAO();
 			// count = getBoardCount() 호출
-			count = boardDAO.getBoarCount();
+			count = boardDAO.getBoardCount();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

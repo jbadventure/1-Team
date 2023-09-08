@@ -53,7 +53,7 @@ public class QuestionBoardDAO {
 		return boardList;
 	} // getBoardList
 
-	public int getBoarCount() {
+	public int getBoardCount() {
 		System.out.println("QuestionBoardDAO getBoardCount");
 		int count=0;
 		try {
