@@ -7,7 +7,8 @@
 <html>
 <head>
   <link rel="stylesheet" href="shopcss.css">
-  <link href="css/newfile.css" rel="stylesheet" type="text/css">
+  <link href="css/NewTop.css" rel="stylesheet" type="text/css">
+  <link href="css/product.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
   <title>Shop</title> 
   </style>
@@ -17,7 +18,7 @@
 </head>
 <body>
 <!-- 헤더들어가는 곳 -->
-<jsp:include page="../../inc/top.jsp"></jsp:include>
+<jsp:include page="../../inc/NewTop.jsp"></jsp:include>
 <!-- 헤더들어가는 곳 --> 
 <%
 List<ClassBoardDTO> boardList =(List<ClassBoardDTO>)request.getAttribute("boardList");
@@ -27,13 +28,6 @@ String memberId = (String)session.getAttribute("memberId");
 
     <div class="products">
         <h3>클래스 목록</h3>
-        
- <div class="shop__buttonContainer">
-            <button class="shop__basicBtn">기본 정렬</button>
-            <button class="shop__AbcBtn">가나다순</button>
-            <button class="shop__lowPriceBtn">낮은 가격순</button>
-            <button class="shop__highPriceBtn">높은 가격순</button>
-        </div>
         
 
         <div class="product-list">        

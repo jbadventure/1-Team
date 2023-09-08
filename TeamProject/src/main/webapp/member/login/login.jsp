@@ -4,15 +4,15 @@
 <html>
 <head>
   <link rel="stylesheet" href="shopcss.css">
-  <link href="css/newfile.css" rel="stylesheet" type="text/css">
+  <link href="css/NewTop.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>member/login.jsp</title>
 </head>
 <body>
 <!-- 헤더들어가는 곳 -->
-<jsp:include page="../../inc/top.jsp"></jsp:include>
-<!-- 헤더들어가는 곳 -->
+<jsp:include page="../../inc/NewTop.jsp"></jsp:include>
+<!-- 헤더들어가는 곳 --> 
 <h1>로그인</h1>
 
 <form action="loginPro.me" method="post" name="checkForm" id ="checkForm">

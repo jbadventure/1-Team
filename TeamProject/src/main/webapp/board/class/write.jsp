@@ -3,10 +3,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link href="css/NewTop.css" rel="stylesheet" type="text/css">
 <meta charset="UTF-8">
 <title>Class 등록</title>
 </head>
 <body>
+<!-- 헤더들어가는 곳 -->
+<jsp:include page="../../inc/NewTop.jsp"></jsp:include>
+<!-- 헤더들어가는 곳 --> 
 <%
 String memberId = (String)session.getAttribute("memberId");
 %>
