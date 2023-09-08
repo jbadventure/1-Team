@@ -1,0 +1,31 @@
+@charset "UTF-8";
+
+main{
+	width: 30%; margin: 0 auto;
+}
+
+main h1{
+	font-size: 1.5em; line-height: 15px; width: 30%; margin: 0 auto; 
+}
+/* main section{ */
+/* 	margin-top: 60px; */
+/* } */
+
+img{
+	 float:left; margin-right: 50px; border-radius: 20px;
+}
+
+#nick{
+	line-height: 24px; color: #222; 
+}
+
+#nick2{
+	line-height: 24px; color: #222; font-weight : bold;
+}
+/* id{ */
+/* 	padding : 20px; margin:5px; border-radius: 20px; */
+/* } */
+
+#button{
+	width: 30%; margin: 0 auto;
+}

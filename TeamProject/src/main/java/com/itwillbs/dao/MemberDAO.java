@@ -426,6 +426,23 @@ public class MemberDAO {
 		}
 		return memberList;
 	}// getAdminList()
+
+	public void deleteMember(MemberDTO memberDTO) {
+		try {
+			//1,2 디비연결
+			con = new SQLConnection().getConnection();
+			//3 sql delete
+			String sql = "delete from members where id = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, memberDTO.getMemberId());
+			//4 실행
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			dbClose();
+		}
+	}//deleteMember()
 	
 	
 }// class

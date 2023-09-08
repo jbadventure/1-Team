@@ -30,9 +30,10 @@ MemberDTO memberDTO=(MemberDTO)request.getAttribute("memberDTO");
             	<img src="upload/<%=memberDTO.getMemberFile() %>" width="100" height="100px">
      <%			 }
      %><br>
-<input type="button" value="개인정보수정" id="개인정보수정" onclick="location.href='update.me'"><br>
-<input type="button" value="예약내역" id="예약내역" onclick="location.href='myReserveList.or'"><br>
-<input type="button" value="내가 쓴 리뷰" id="내가 쓴 리뷰" onclick="location.href='myReview.rbo'">
+<input type="button" value="개인정보수정" id="update" onclick="location.href='update.me'"><br>
+<input type="button" value="예약내역" id="myReserve" onclick="location.href='myReserveList.or'"><br>
+<input type="button" value="내가 쓴 리뷰" id="myReview" onclick="location.href='myReview.rbo'"><br>
+<input type="button" value="계정삭제" id="delete" onclick="location.href='delete.me'">
 
 <!-- 푸터들어가는 곳 -->
 <jsp:include page="../../inc/bottom.jsp"></jsp:include>

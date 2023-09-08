@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="shopcss.css">
   <link href="css/newfile.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/info.css">
 <meta charset="UTF-8">
 <title>memberInfo/info.jsp</title>
 </head>
@@ -20,23 +21,31 @@ if(memberDTO.getMemberType().equals("guest")){
 	response.sendRedirect("infoGuest.me");
 }
 %>
-
-<h1>마이페이지</h1>
-닉네임 | <%= memberDTO.getMemberNickname() %> <br>
-
-프로필사진 | <%if(memberDTO.getMemberFile()== null){
+<main>
+<section id="info">
+<h1>마이페이지</h1> 
+<div id="info">
+<%if(memberDTO.getMemberFile()== null){
      %>
                 <img src="images/DefaultProfile.jpg" width="100" height="100px">
      <%		}else{
      %>           
             	<img src="upload/<%=memberDTO.getMemberFile() %>" width="100" height="100px">
      <%			 }
-     %><br>
-<input type="button" value="회원정보변경" id="회원정보변경" onclick="location.href='update.me'"><br>
-<input type="button" value="클래스관리" id="클래스관리" onclick="location.href='classManagement.cbo'"><br>
-<input type="button" value="예약관리" id="예약관리" onclick="location.href='myReserveList.or'"><br>
-<input type="button" value="내가 쓴 리뷰" id="내가 쓴 리뷰" onclick="location.href='myReview.rbo'">
- 
+%>
+<p id="nick">
+닉네임 </p> 
+<p id="nick2"><%= memberDTO.getMemberNickname() %></p>
+</div>
+</section>
+<br><br>
+<section id="button">
+<input type="button" value="회원정보변경" id="update" onclick="location.href='update.me'"><br>
+<input type="button" value="클래스관리" id="classManagement" onclick="location.href='classManagement.cbo'"><br>
+<input type="button" value="예약관리" id="myReserve" onclick="location.href='myReserveList.or'"><br>
+<input type="button" value="계정삭제" id="delete" onclick="location.href='delete.me'">
+ </section>
+ </main>
 <!-- 푸터들어가는 곳 -->
 <jsp:include page="../../inc/bottom.jsp"></jsp:include>
 <!-- 푸터들어가는 곳 -->
