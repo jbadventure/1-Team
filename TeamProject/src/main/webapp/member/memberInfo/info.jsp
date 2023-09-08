@@ -8,12 +8,14 @@
   <link href="css/newfile.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
   <link rel="stylesheet" href="css/info.css">
+  <link href="css/NewTop.css" rel="stylesheet" type="text/css">
+  <link href="css/NewBottom.css" rel="stylesheet" type="text/css">
 <meta charset="UTF-8">
 <title>memberInfo/info.jsp</title>
 </head>
 <body>
 <!-- 헤더들어가는 곳 -->
-<jsp:include page="../../inc/top.jsp"></jsp:include>
+<jsp:include page="../../inc/NewTop.jsp"></jsp:include>
 <!-- 헤더들어가는 곳 --> 
 <%
 MemberDTO memberDTO=(MemberDTO)request.getAttribute("memberDTO");
@@ -22,9 +24,8 @@ if(memberDTO.getMemberType().equals("guest")){
 }
 %>
 <main>
-<section id="info">
-<h1>마이페이지</h1> 
-<div id="info">
+<section id="info1">
+<div id="info2">
 <%if(memberDTO.getMemberFile()== null){
      %>
                 <img src="images/DefaultProfile.jpg" width="100" height="100px">
@@ -43,6 +44,7 @@ if(memberDTO.getMemberType().equals("guest")){
 <input type="button" value="회원정보변경" id="update" onclick="location.href='update.me'"><br>
 <input type="button" value="클래스관리" id="classManagement" onclick="location.href='classManagement.cbo'"><br>
 <input type="button" value="예약관리" id="myReserve" onclick="location.href='myReserveList.or'"><br>
+<input type="button" value="내가 쓴 리뷰" id="myReview" onclick="location.href='myReview.rbo'"><br>
 <input type="button" value="계정삭제" id="delete" onclick="location.href='delete.me'">
  </section>
  </main>

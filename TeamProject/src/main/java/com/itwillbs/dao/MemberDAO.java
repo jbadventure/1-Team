@@ -432,7 +432,7 @@ public class MemberDAO {
 			//1,2 디비연결
 			con = new SQLConnection().getConnection();
 			//3 sql delete
-			String sql = "delete from members where id = ?";
+			String sql = "delete from member where memberId = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, memberDTO.getMemberId());
 			//4 실행
