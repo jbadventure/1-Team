@@ -11,12 +11,14 @@
 <link rel="stylesheet" href="./css/content.css">
 <body>
 	<header>
-		<h1>공지사항 상세조회</h1>
+		
 	</header>
 	<div class="container">
 		<%
 		NoticeBoardDTO boardDTO = (NoticeBoardDTO) request.getAttribute("boardDTO");
+		String memberId = (String) session.getAttribute("memberId");
 		%>
+		<h1>공지사항 상세조회</h1>
 		<div class="notice">
 			<tr>
 				<td>글번호</td>
@@ -26,12 +28,20 @@
 			<p><%=boardDTO.getNoticeContent()%></p>
 			<small>작성일: <%=boardDTO.getNoticeIssueDate()%></small>
 		</div>
+		
+		<%
+		if ("admin".equals(memberId)) {
+		%>
 		<div class="add-button">
 			<button onclick="window.location.href='noticeUpdate.nbo?noticeNum=<%=boardDTO.getNoticeNum()%>'">공지 수정</button>
 		</div>
 		<div class="add-button">
 			<button onclick="window.location.href='noticeDelete.nbo?noticeNum=<%=boardDTO.getNoticeNum()%>'">공지 삭제</button>
 		</div> 
+		<%
+}
+%>
+		
 	</div>
 </body>
 </html>

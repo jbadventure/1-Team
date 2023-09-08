@@ -6,7 +6,9 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import com.itwillbs.dao.NoticeBoardDAO;
+import com.itwillbs.dao.QuestionBoardDAO;
 import com.itwillbs.domain.NoticeBoardDTO;
+import com.itwillbs.domain.PageDTO;
 
 public class NoticeBoardService {
 	
@@ -37,11 +39,18 @@ public class NoticeBoardService {
 		
 	} // insertBoard
 
-	public List<NoticeBoardDTO> getBoardList() {
+	public List<NoticeBoardDTO> getBoardList(PageDTO pageDTO) {
 		List<NoticeBoardDTO> boardList = null;
 		try {
+			// int startRow = 계산식; 
+			int startRow = (pageDTO.getCurrentPage()-1)*pageDTO.getPageSize()+1;
+			// int endRow = 계산식;      
+			int endRow = startRow+pageDTO.getPageSize()-1;
+			//pageDTO 저장 <- startRow, endRow
+			pageDTO.setStartRow(startRow);
+			pageDTO.setEndRow(endRow);
 			boardDAO = new NoticeBoardDAO();
-			boardList = boardDAO.getBoardList();
+			boardList = boardDAO.getBoardList(pageDTO);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -108,6 +117,19 @@ public class NoticeBoardService {
 			e.printStackTrace();
 		}
 		
+	}
+
+	public int getBoardCount() {
+		System.out.println("NoticeBoardService getBoardCount()");
+		int count=0;
+		try {
+			boardDAO = new NoticeBoardDAO();
+			// count = getBoardCount() 호출
+			count = boardDAO.getBoardCount();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return count;
 	}
 
 

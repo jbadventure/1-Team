@@ -12,6 +12,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import com.itwillbs.domain.NoticeBoardDTO;
+import com.itwillbs.domain.PageDTO;
 
 public class NoticeBoardDAO {
 	
@@ -62,7 +63,7 @@ public class NoticeBoardDAO {
 		}
 		return noticeNum;
 	}
-	public List<NoticeBoardDTO> getBoardList() {
+	public List<NoticeBoardDTO> getBoardList(PageDTO pageDTO) {
 		List<NoticeBoardDTO> boardList = null;
 		try {
 			con = new SQLConnection().getConnection();
@@ -158,7 +159,26 @@ public class NoticeBoardDAO {
 		}
 		
 	}
-	
+	public int getBoardCount() {
+		System.out.println("NoticeBoardDAO getBoardCount");
+		int count=0;
+		try {
+			// db 연결
+			con = new SQLConnection().getConnection();
+			// sql 구문
+			String sql = "select count(*) from notice";
+			pstmt=con.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				count = rs.getInt("count(*)");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			dbClose();
+		}
+		return count;
+	} //getBoardCount
 
 
 
