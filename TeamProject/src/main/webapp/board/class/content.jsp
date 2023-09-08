@@ -8,7 +8,7 @@
 <html>
 <head>
  <link rel="stylesheet" href="shopcss.css">
-  <link href="css/newfile.css" rel="stylesheet" type="text/css">
+  <link href="css/NewTop.css" rel="stylesheet" type="text/css">
   <link href="css/tabs.css" rel="stylesheet" type="text/css">
    <link href="css/modal.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
@@ -18,8 +18,9 @@
 
 <body>
 <!-- 헤더들어가는 곳 -->
-<jsp:include page="../../inc/top.jsp"></jsp:include>
+<jsp:include page="../../inc/NewTop.jsp"></jsp:include>
 <!-- 헤더들어가는 곳 --> 
+
 
     <div class="products">      
  <%
@@ -27,24 +28,9 @@ String memberId = (String)session.getAttribute("memberId");
 String memberType = (String)session.getAttribute("memberType");
 ClassBoardDTO boardDTO = (ClassBoardDTO)request.getAttribute("boardDTO");
 List<ReviewBoardDTO> reviewboardList = (List<ReviewBoardDTO>)request.getAttribute("reviewboardList");
-%>       
-<h3><%=boardDTO.getClassSubject() %></h3><!--클래스 제목 -->
+%>    
 
- <div class="container"> 
-  <ul class="tabs"><!--탭메뉴-->
-    <li class="tab-link current" data-tab="tab-1">클래스 내용</li>
-    <li class="tab-link" data-tab="tab-2">클래스 정보</li>
-        <li class="tab-link" data-tab="tab-3">클래스 리뷰</li>
-<!--     <li class="tab-link" data-tab="tab-3" onclick="window.location.href='/TeamProject/reviewList.rbo'" >클래스 리뷰</li> -->
-  </ul>
- 
-  <div id="tab-1" class="tab-content current"><!--탭1내용-->
-<div class="product-content">
-           
-<table id="class-content">
-<tr><td>지역</td><td><%=boardDTO.getClassLocation() %></td></tr>
-<tr><td>카테고리</td><td><%=boardDTO.getClassCategory() %></td></tr>    
-<tr><td>가격</td><td><%=boardDTO.getClassPrice() %> 원</td></tr>    
+<table id="class-content" align="center" margin="50px" auto;>
 <tr><td>
    <%      
       		if(boardDTO.getClassFile() == null){
@@ -56,8 +42,23 @@ List<ReviewBoardDTO> reviewboardList = (List<ReviewBoardDTO>)request.getAttribut
     <%			 }
     %>
 </td></tr><!--클래스이미지-->
-<tr><td><%=boardDTO.getClassContent() %></td></tr> <!--클래스내용-->
-</table>
+<tr><td><%=boardDTO.getClassSubject() %></td></tr><!--클래스 제목 -->
+<tr><td><%=boardDTO.getClassPrice() %> 원</td></tr> <!--클래스가격-->   
+<tr><td><%=boardDTO.getClassLocation() %></td></tr>
+<tr><td><%=boardDTO.getClassCategory() %></td></tr>    
+</table>   
+
+ <div class="container"> 
+  <ul class="tabs"><!--탭메뉴-->
+    <li class="tab-link current" data-tab="tab-1">클래스 내용</li>
+    <li class="tab-link" data-tab="tab-2">클래스 정보</li>
+        <li class="tab-link" data-tab="tab-3">클래스 리뷰</li>
+<!--     <li class="tab-link" data-tab="tab-3" onclick="window.location.href='/TeamProject/reviewList.rbo'" >클래스 리뷰</li> -->
+  </ul>
+ 
+  <div id="tab-1" class="tab-content current"><!--탭1내용-->
+<div class="product-content">
+<%=boardDTO.getClassContent() %> <!--클래스내용-->
 <%
 // 로그인 필수
 // 로그인, 글쓴이 일치하면 => 글수정, 글삭제 보이기

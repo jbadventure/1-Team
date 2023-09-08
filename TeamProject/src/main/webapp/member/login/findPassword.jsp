@@ -4,14 +4,14 @@
 <html>
 <head>
   <link rel="stylesheet" href="shopcss.css">
-  <link href="css/newfile.css" rel="stylesheet" type="text/css">
+   <link href="css/NewTop.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 <!-- 헤더들어가는 곳 -->
-<jsp:include page="../../inc/top.jsp"></jsp:include>
+<jsp:include page="../../inc/NewTop.jsp"></jsp:include>
 <!-- 헤더들어가는 곳 --> 
 <h1>비밀번호 재설정</h1>
 <h4>비밀번호는 가입시 사용한 아이디, 이름, 이메일을 통해 재설정 하실 수 있습니다.</h4>

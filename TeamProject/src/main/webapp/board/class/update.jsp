@@ -4,10 +4,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link href="css/NewTop.css" rel="stylesheet" type="text/css">
 <meta charset="UTF-8">
 <title>Class 수정</title>
 </head>
 <body>
+<!-- 헤더들어가는 곳 -->
+<jsp:include page="../../inc/NewTop.jsp"></jsp:include>
+<!-- 헤더들어가는 곳 --> 
+
 <%
 ClassBoardDTO boardDTO = (ClassBoardDTO)request.getAttribute("boardDTO");
 %>
@@ -56,6 +61,8 @@ ClassBoardDTO boardDTO = (ClassBoardDTO)request.getAttribute("boardDTO");
 			<input type="submit" value="글쓰기" class="btn">
 		</div>
 	</form>
-
+<!-- 푸터들어가는 곳 -->
+<jsp:include page="../../inc/bottom.jsp"></jsp:include>
+<!-- 푸터들어가는 곳 -->
 </body>
 </html>

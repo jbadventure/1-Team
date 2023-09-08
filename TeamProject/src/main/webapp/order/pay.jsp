@@ -14,10 +14,9 @@
 </head>
 <body>
 <!-- 헤더들어가는 곳 -->
-<jsp:include page="../inc/top.jsp"></jsp:include>
+<jsp:include page="../inc/NewTop.jsp"></jsp:include>
 <!-- 헤더들어가는 곳 --> 
 
-<h3>결제</h3> 
  <%
 String memberId = (String)session.getAttribute("memberId");
 // request.setCharacterEncoding("utf-8");

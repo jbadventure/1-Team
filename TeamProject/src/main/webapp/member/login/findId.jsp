@@ -4,15 +4,18 @@
 <html>
 <head>
   <link rel="stylesheet" href="shopcss.css">
-  <link href="css/newfile.css" rel="stylesheet" type="text/css">
+  <link href="css/NewTop.css" rel="stylesheet" type="text/css">
+  <link href="css/NewBottom.css" rel="stylesheet" type="text/css">
+  <link href="css/body.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 <!-- 헤더들어가는 곳 -->
-<jsp:include page="../../inc/top.jsp"></jsp:include>
+<jsp:include page="../../inc/NewTop.jsp"></jsp:include>
 <!-- 헤더들어가는 곳 --> 
+<div id ="bodycontainer">
 <h1>아이디찾기</h1>
 
 <!-- form -->
@@ -27,7 +30,7 @@
  
 <button type ="button" onclick="checkForm_check();">찾기</button>
 </form>
-
+</div>
 <!-- script -->
 <script type="text/javascript" src="../../script/jquery-3.7.0.js"></script>
 <script type="text/javascript">

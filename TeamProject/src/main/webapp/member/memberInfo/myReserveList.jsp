@@ -13,7 +13,7 @@
 </head>
 <body>
 <!-- 헤더들어가는 곳 -->
-<jsp:include page="../../inc/top.jsp"></jsp:include>
+<jsp:include page="../../inc/NewTop.jsp"></jsp:include>
 <!-- 헤더들어가는 곳 --> 
 <%
 List<OrdersDTO> ordersList = (List<OrdersDTO>)request.getAttribute("ordersList");
