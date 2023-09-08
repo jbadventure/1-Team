@@ -441,7 +441,7 @@ public class MemberDAO {
 			e.printStackTrace();
 		}finally {
 			dbClose();
-		}
+		} 
 	}//deleteMember()
 	
 	
