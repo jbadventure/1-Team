@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+
+#gildong{
+  padding-top: 20px;
+  padding-bottom: 20px;
+    margin: auto;
+}
+
+#bottomContent{
+  font-size: 15px;
+
+  text-align: center;
+}
+
+footer{
+  width: 100%;
+  height: 200px;
+  position: relative;
+  display: flex;
+  transform : translateY(0%);
+  background-color: gray;  
+}
