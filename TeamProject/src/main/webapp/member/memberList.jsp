@@ -120,7 +120,7 @@ if(pageDTO.getEndPage() < pageDTO.getPageCount()){
         
 <script type="text/javascript">
 	$(document).ready(function(){
-// 		class="btn"버튼을 클릭했을 때
+// 		class="btn"버튼을 클릭했을 때 
 		$('.btn1').click(function(){
 // 			alert("클릭1");
 	$('.memberList').html("");

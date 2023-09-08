@@ -346,4 +346,27 @@ public class MemberService {
 		return memberList;
 	}// getAdminList
 
+
+	public void deleteMember(HttpServletRequest request) {
+		System.out.println("MemberService deleteMember()");
+		try {
+			// request 한글처리
+			request.setCharacterEncoding("utf-8");
+			// request 파라미터 가져오기(id,pass)
+			String memberId = request.getParameter("memberId");
+			String memberPassword = request.getParameter("memberPassword");
+			// MemberDTO 객체생성 
+			MemberDTO memberDTO = new MemberDTO();
+			// set메서드 호출 파라미터값 저장
+			memberDTO.setMemberId(memberId);
+			memberDTO.setMemberPassword(memberPassword);
+			// MemberDAO 객체생성
+			memberDAO = new MemberDAO();
+			// deleteMember(memberDTO) 메서드 호출
+			memberDAO.deleteMember(memberDTO);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}//deleteMember()
+
 }

@@ -367,13 +367,38 @@ public class MemberController extends HttpServlet {
 			// http://localhost:8080/FunWeb/listjson.me
 			// MemberDTO => JSONObject
 			
-		}// listjson.me		
+		}// listjson.me
 		
+		if(sPath.equals("/delete.me")) {
+			System.out.println("뽑은 가상주소 비교 : /delete.me");
+			dispatcher 
+		    = request.getRequestDispatcher("member/memberInfo/delete.jsp");
+		dispatcher.forward(request, response);
+		}// delete.me
 		
-		
-				
-		
-		
-		
+		if(sPath.equals("/deletePro.me")) {
+			System.out.println("뽑은 가상주소 비교 : /deletePro.me");
+//			HttpSession session = request.getSession();
+//			String memberId = (String) session.getAttribute("memberId");
+			memberService = new MemberService();
+			MemberDTO memberDTO = memberService.userCheck(request);
+			
+			if(memberDTO != null) {
+				// memberDTO != null 아이디 비밀번호 일치=> 
+				// 삭제  리턴할형없음  deleteMember(request) 메서드 호출
+				memberService.deleteMember(request);
+				// => 세션값 초기화
+				HttpSession session = request.getSession();
+				session.invalidate();
+				// =>main.me 이동
+				response.sendRedirect("main.me");
+			}else {
+				// memberDTO == null 아이디 비밀번호 틀림=> member/msg.jsp
+				dispatcher 
+			    = request.getRequestDispatcher("member/msg.jsp");
+			dispatcher.forward(request, response);
+			}//
+			
+		}// deletePro.me	
 	}// doProcess
 }// class
