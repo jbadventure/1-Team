@@ -5,14 +5,15 @@
 <html>
 <head>
   <link rel="stylesheet" href="shopcss.css">
-  <link href="css/newfile.css" rel="stylesheet" type="text/css">
+  <link href="css/NewTop.css" rel="stylesheet" type="text/css">
+  <link href="css/NewBottom.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 <!-- 헤더들어가는 곳 -->
-<jsp:include page="../inc/top.jsp"></jsp:include>
+<jsp:include page="../inc/NewTop.jsp"></jsp:include>
 <!-- 헤더들어가는 곳 --> 
 
 <h3>예약완료되었습니다!</h3>
@@ -35,7 +36,7 @@ OrdersDTO ordersDTO = (OrdersDTO)request.getAttribute("ordersDTO");
 </table>
 <br>
 <button onclick = "location.href='main.me'">메인으로이동</button><br>
-클래스목록으로돌아가기 <br>
+<button onclick = "location.href='classList.cbo'">클래스목록으로돌아가기</button><br>
 
 <!-- 푸터들어가는 곳 -->
 <jsp:include page="../inc/bottom.jsp"></jsp:include>

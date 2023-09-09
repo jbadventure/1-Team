@@ -7,7 +7,9 @@
 <html>
 <head>
   <link rel="stylesheet" href="shopcss.css">
-  <link href="css/newfile.css" rel="stylesheet" type="text/css">
+  <link href="css/NewTop.css" rel="stylesheet" type="text/css">
+  <link href="css/NewBottom.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="css/infoGuest.css">
   <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>myReview.jsp</title>
@@ -22,9 +24,8 @@ List<ReviewBoardDTO> boardList = (List<ReviewBoardDTO>)request.getAttribute("boa
 String memberId = (String)session.getAttribute("memberId");
 PageDTO pageDTO = (PageDTO)request.getAttribute("pageDTO");
 %>
-	<header>
 		<h3>클래스 리뷰</h3>
-	</header>
+
 	<div class="container">
 		<%
 for(int i=0; i<boardList.size(); i++){
@@ -49,7 +50,7 @@ for(int i=0; i<boardList.size(); i++){
 	}
 }
 %>
-		<%
+<%-- 		<%
 if(memberId != null) {
 %>
 		<div class="add-button">
@@ -60,7 +61,7 @@ if(memberId != null) {
 	</div>
 <%
 }
-%>
+%> --%>
      
 <!-- 푸터들어가는 곳 -->
 <jsp:include page="../../inc/bottom.jsp"></jsp:include>

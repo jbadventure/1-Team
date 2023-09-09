@@ -61,7 +61,7 @@ public class ClassBoardController extends HttpServlet {
 			// 게시판 전체 글 개수 구하기 
 			int count = boardService.getBoardCount();
 			// 한화면에 출력될 페이지개수  pageBlock
-			int pageBlock = 6;
+			int pageBlock = 5;
 			// 시작하는 페이지번호 startPage
 			int startPage=(currentPage-1)/pageBlock*pageBlock+1;
 			// 끝나는페이지번호 endPage

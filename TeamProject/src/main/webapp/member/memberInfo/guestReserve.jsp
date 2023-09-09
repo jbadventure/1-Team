@@ -5,14 +5,16 @@
 <html>
 <head>
   <link rel="stylesheet" href="shopcss.css">
-  <link href="css/newfile.css" rel="stylesheet" type="text/css">
+  <link href="css/NewTop.css" rel="stylesheet" type="text/css">
+  <link href="css/NewBottom.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="css/infoGuest.css">
   <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 <!-- 헤더들어가는 곳 -->
-<jsp:include page="../../inc/top.jsp"></jsp:include>
+<jsp:include page="../../inc/NewTop.jsp"></jsp:include>
 <!-- 헤더들어가는 곳 --> 
 
 <h3>예약상세정보</h3>

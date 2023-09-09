@@ -7,10 +7,11 @@
 <!DOCTYPE html>
 <html>
 <head>
- <link rel="stylesheet" href="shopcss.css">
+  <link rel="stylesheet" href="shopcss.css">
   <link href="css/NewTop.css" rel="stylesheet" type="text/css">
+  <link href="css/NewBottom.css" rel="stylesheet" type="text/css">
   <link href="css/tabs.css" rel="stylesheet" type="text/css">
-   <link href="css/modal.css" rel="stylesheet" type="text/css">
+  <link href="css/modal.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
 <meta charset="UTF-8">
  <title>Shop</title> 
