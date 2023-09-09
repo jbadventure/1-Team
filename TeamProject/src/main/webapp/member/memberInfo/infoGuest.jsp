@@ -16,6 +16,10 @@
 <!-- 헤더들어가는 곳 -->
 <jsp:include page="../../inc/NewTop.jsp"></jsp:include>
 <!-- 헤더들어가는 곳 --> 
+
+<div id = bodycontainer>
+<div id = bodycontent>
+
 <%
 MemberDTO memberDTO=(MemberDTO)request.getAttribute("memberDTO");
 %>
@@ -42,7 +46,10 @@ MemberDTO memberDTO=(MemberDTO)request.getAttribute("memberDTO");
 <input type="button" value="나의리뷰" id="myReview" onclick="location.href='myReview.rbo'"><br>
 <input type="button" value="계정삭제" id="delete" onclick="location.href='delete.me'">
  </section>
- </main>
+ </main> 
+ 
+ </div>
+ </div>
 <!-- 푸터들어가는 곳 -->
 <jsp:include page="../../inc/bottom.jsp"></jsp:include>
 <!-- 푸터들어가는 곳 -->

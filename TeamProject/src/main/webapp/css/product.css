@@ -1,6 +1,13 @@
 @charset "UTF-8";
 
+.products{
+	width: 1200px;
+	margin: 0 auto;
+	margin-bottom: 20px;
+}
+
 .product-list{
+	height: 650px;
     width: 735px;
     margin-left: auto;
     margin-right: auto;
@@ -16,7 +23,7 @@
 .product{
     display: block;
     width: 225px;
-    height: 265px;
+    height: 295px;
     text-align: center;
     text-decoration:none;
     color: black;
@@ -25,10 +32,47 @@
     margin-right: 10px;
     margin-bottom: 30px;
 }
+.product img{
+	object-fit: cover;
+	width: 225px;
+	height: 225px;
+}
 
 .product-name{
     margin-top: 20px;
     margin-bottom: 4px;
+}
+
+#table_search{
+    text-align: center;
+}
+
+#page_control{
+	font-size: 15px;
+	margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#classbo_search{
+	width: 300px;
+	height:40px; 
+	border-radius: 10px;	
+}
+
+input::placeholder{
+	text-align: center;
+}
+
+.classbo_btn{
+	padding: 5px;
+	margin: 5px;
+	color: black;
+	font-weight:bold;
+	font-size: 15px;
+	background-color: sliver;
+	border-color: sliver;
+	border-radius: 10px;
 }
 
 .clearfix{

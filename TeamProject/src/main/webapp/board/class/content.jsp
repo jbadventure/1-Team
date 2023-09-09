@@ -22,6 +22,7 @@
 <!-- 헤더들어가는 곳 -->
 <jsp:include page="../../inc/NewTop.jsp"></jsp:include>
 <!-- 헤더들어가는 곳 --> 
+
 <div id = bodycontainer>
 <div id = bodycontent>
 

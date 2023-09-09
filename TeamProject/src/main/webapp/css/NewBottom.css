@@ -4,12 +4,12 @@
 #gildong{
   padding-top: 20px;
   padding-bottom: 20px;
-    margin: auto;
+  margin: auto;
 }
 
 #bottomContent{
   font-size: 15px;
-
+  color: silver;
   text-align: center;
 }
 
