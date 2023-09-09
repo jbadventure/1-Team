@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="shopcss.css">
   <link href="css/NewTop.css" rel="stylesheet" type="text/css">
   <link href="css/NewBottom.css" rel="stylesheet" type="text/css">
+  <link href="css/body.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>결제하기</title>
@@ -17,7 +18,8 @@
 <!-- 헤더들어가는 곳 -->
 <jsp:include page="../inc/NewTop.jsp"></jsp:include>
 <!-- 헤더들어가는 곳 --> 
-
+<div id = bodycontainer>
+<div id = bodycontent>
  <%
 String memberId = (String)session.getAttribute("memberId");
 // request.setCharacterEncoding("utf-8");
@@ -40,15 +42,11 @@ int classPrice = (int)session.getAttribute("classPrice");
 <legend>팔레트정보</legend>
 <table>
 <tr><td>
-    <%      
-      		if(classFile == null){
-     %>
+    <% if(classFile == null){ %>
                 <img src="images/logo-198x66.png" width="107" height="71">
-     <%		}else{
-     %>           
+    <% }else{ %>           
             	<img src="upload/<%=classFile %>" width="107" height="71">
-     <%			 }
-     %>
+    <% } %>
 </td></tr> 
 <tr><td>클래스제목 <%=ordersDTO.getClassSubject() %></td></tr>
 <tr><td>예약날짜 <%=ordersDTO.getOrdersDate() %></td></tr>
@@ -245,7 +243,8 @@ $(document).ready(function() {
 		});
     });
 </script>
-
+</div>
+</div>
 <!-- 푸터들어가는 곳 -->
 <jsp:include page="../inc/bottom.jsp"></jsp:include>
 <!-- 푸터들어가는 곳 -->

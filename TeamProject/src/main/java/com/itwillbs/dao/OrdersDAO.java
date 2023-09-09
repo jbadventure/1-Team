@@ -70,6 +70,7 @@ public class OrdersDAO {
 				ordersDTO.setPayDate(rs.getString("payDate"));
 				ordersDTO.setPayMethod(rs.getString("payMethod"));
 				ordersDTO.setClassSubject(rs.getString("classSubject"));
+				ordersDTO.setClassFile(rs.getString("classFile"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

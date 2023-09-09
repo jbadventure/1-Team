@@ -13,6 +13,7 @@ public class OrdersDTO {
 	private String payDate;
 	private String payMethod;
 	private String classSubject;
+	private String classFile; // 클래스 첨부파일
 	
 	public int getOrdersNum() {
 		return ordersNum;
@@ -67,6 +68,12 @@ public class OrdersDTO {
 	}
 	public void setClassSubject(String classSubject) {
 		this.classSubject = classSubject;
+	}
+	public String getClassFile() {
+		return classFile;
+	}
+	public void setClassFile(String classFile) {
+		this.classFile = classFile;
 	}
 	
 	
