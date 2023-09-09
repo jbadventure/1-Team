@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="shopcss.css">
   <link href="css/NewTop.css" rel="stylesheet" type="text/css">
   <link href="css/NewBottom.css" rel="stylesheet" type="text/css">
+  <link href="css/body.css" rel="stylesheet" type="text/css">
   <link href="css/tabs.css" rel="stylesheet" type="text/css">
   <link href="css/modal.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
@@ -21,7 +22,8 @@
 <!-- 헤더들어가는 곳 -->
 <jsp:include page="../../inc/NewTop.jsp"></jsp:include>
 <!-- 헤더들어가는 곳 --> 
-
+<div id = bodycontainer>
+<div id = bodycontent>
 
     <div class="products">      
  <%
@@ -138,7 +140,7 @@ if(memberId != null) {
 %>
 		<div class="review-add-button">
 			<button onclick="window.location.href='/TeamProject/reviewWrite.rbo?classNum=<%=boardDTO.getClassNum()%>'">리뷰 작성</button>
-		</div>
+		</div><br>
 <% 
 }
 %>		
@@ -182,6 +184,8 @@ if(reviewboardDTO.getReviewFile() != null){
 </div>
 </div> <!--  products -->
 
+</div>
+</div>
 <script type="text/javascript"  src="script/jquery-3.7.0.js"></script>
 <script src ="js/modal.js"> </script>
 <script src ="js/tabs.js"></script>

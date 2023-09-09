@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="shopcss.css">
   <link href="css/NewTop.css" rel="stylesheet" type="text/css">
   <link href="css/NewBottom.css" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="css/infoGuest.css">
+    <link href="css/body.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>my reservation</title>
@@ -17,6 +17,8 @@
 <!-- 헤더들어가는 곳 -->
 <jsp:include page="../../inc/NewTop.jsp"></jsp:include>
 <!-- 헤더들어가는 곳 --> 
+<div id = bodycontainer>
+<div id = bodycontent>
 <%
 List<OrdersDTO> ordersList = (List<OrdersDTO>)request.getAttribute("ordersList");
 %>
@@ -34,7 +36,9 @@ for(int i=0; i<ordersList.size(); i++){
 	</table>
 <%
 }
-%>	
+%>
+</div>
+</div>
 <!-- 푸터들어가는 곳 -->
 <jsp:include page="../../inc/bottom.jsp"></jsp:include>
 <!-- 푸터들어가는 곳 -->
