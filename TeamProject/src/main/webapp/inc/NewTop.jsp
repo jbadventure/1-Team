@@ -15,7 +15,7 @@ String memberId = (String)session.getAttribute("memberId");
 		<div id="logo">
 			<a href="main.me"><h1><img src="images/logo-198x66.png"></h1></a>
 		</div>
-		<nav>
+		<nav> 
 <% // 상단바 로그인세션에 따라 다르게보이게  
 if(memberId == null){ %>				
 			<ul id="topMenu">
