@@ -1,0 +1,48 @@
+@charset "UTF-8";
+
+#frUpdate {
+    margin: 50px auto; /* form 요소의 위아래에 10픽셀의 여백을 주고, 좌우는 자동으로 정렬합니다 */
+}
+#updateBox {
+	text-align: left;
+/*     margin-top: 50px; 박스의 위쪽에 50픽셀의 여백을 줍니다 */
+    width: 520px;
+    margin-left: 780px;
+    line-height: 20px;
+    
+}
+
+/* #fr{ */
+/* 	width: 30%; margin:auto; margin-top : 70px; margin-bottom : 70px;  */
+/* 	 line-height: 20px; */
+/* } */
+/* p{ */
+/* 	margin-left: 110px; line-height: 30px; font-size: 12pt; font-weight:bolder; */
+/* 	color:gray; */
+/* } */
+/* #btn{ */
+/* 	border-radius: 10px; margin-left:190px; border:none; width:80px; height:40px; */
+/* 	margin-top: 30px; */
+/* } */
+/* input[type="text"] { */
+/*         width:250px; height: 30px; font-size: 12pt;  */
+/*     } */
+/* #file { */
+/*   display: none; 원래의 파일 선택 버튼을 감춥니다. */
+/* } */
+/* #filebtn{ */
+/*   background-color: pink; border-style:solid; border-width:1px; */
+/*   border-color:black; color:black; border-radius: 5px; */
+/*   font-weight:bold; font-size: 12pt;  */
+/*   width:110px; height:30px; */
+/*   cursor: pointer; */
+/*   border-style:solid; */
+/* } */
+
+/* #id{ */
+/* 	border: none; */
+/* } */
+/* #pass{ */
+/* 	border-radius: 5px; width:110px; height:30px; background-color:pink; */
+/* 	border-width: 1px; font-weight:bold; */
+/* } */

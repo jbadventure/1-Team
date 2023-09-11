@@ -5,52 +5,64 @@
 <html>
 <!-- head -->
 <head>
-  <link rel="stylesheet" href="shopcss.css">
-  <link href="css/NewTop.css" rel="stylesheet" type="text/css">
+<link href="css/NewTop.css" rel="stylesheet" type="text/css">
   <link href="css/NewBottom.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
-<meta charset="UTF-8">
+	<link rel="stylesheet" href="css/update.css">
 <title>member/memberInfo/update.jsp</title>
-</head>
+	<meta charset="UTF-8">
+
 <!-- body -->
 <body>
 <!-- 헤더들어가는 곳 -->
 <jsp:include page="../../inc/NewTop.jsp"></jsp:include>
 <!-- 헤더들어가는 곳 --> 
-<h1>나의정보수정</h1>
 <% 
 MemberDTO memberDTO=(MemberDTO)request.getAttribute("memberDTO");
 %>
 <!-- form -->
-<form action = "updatePro.me" method="post" id="fr" enctype="multipart/form-data">
-
-프로필 사진 : <input type="file" name="memberFile">
-<input type="hidden" name="oldfile" value="<%=memberDTO.getMemberFile()%>">
+<form action = "updatePro.me" method="post" id="frUpdate" enctype="multipart/form-data">
+<div id="updateBox">
+<p>프로필 사진<br>
+<label for="file" id="filebtn">파일 선택</label>
+<input type="file" name="memberFile" id="file">
+<input type="hidden" name="oldfile" id="oldfile" value="<%=memberDTO.getMemberFile()%>"></p>
 <br>
-아이디 : <input type="text" name="memberId" value="<%=memberDTO.getMemberId() %>" readonly><br>
-비밀번호 : <input type="button" value="비밀번호 재설정" onclick="location.href='findPassword.me'"><br>
-닉네임 : <input type="text" name = "memberNickname" value="<%=memberDTO.getMemberNickname() %>" id="nick"> <input type="button" value="중복확인" name="ndup" id="ndup"><br>
-	   <div id="div1"></div>
+<p>아이디<br>
+<input type="text" name="memberId" id="id" value="<%=memberDTO.getMemberId() %>" readonly></p><br>
+<p>비밀번호<br>
+<input type="button" value="비밀번호 재설정" id="pass" onclick="location.href='findPassword.me'"></p><br>
+<p>닉네임<br>
+<input type="text" name = "memberNickname" value="<%=memberDTO.getMemberNickname() %>" id="nick">
+<input type="button" value="중복확인" name="ndup" id="ndup"></p><br>
 <div id="div1"></div>
-이름 : <input type="text" name="memberName" value="<%=memberDTO.getMemberName() %>" readonly><br>
-생년월일 : <input type="text" name="memberBirthday" value="<%=memberDTO.getMemberBirthday() %>" readonly><br>
-성별 : <input type="text" name="memberGender" value="<%=memberDTO.getMemberGender()%>" readonly><br>
-전화번호 :<input type="text" name="memberPhoneNum" value="<%=memberDTO.getMemberPhoneNum() %>" 
-			maxlength="11" size="20" placeholder="'-'빼고 숫자만 입력해주세요" id="phone" ><br>
+<p>이름<br>
+<input type="text" name="memberName" id="name" value="<%=memberDTO.getMemberName() %>" readonly></p><br>
+<p>생년월일<br>
+<input type="text" name="memberBirthday" id="birth" value="<%=memberDTO.getMemberBirthday() %>" readonly></p><br>
+<p>성별<br>
+<input type="text" name="memberGender" id="gender" value="<%=memberDTO.getMemberGender()%>" readonly></p><br>
+<p>전화번호<br>
+<input type="text" name="memberPhoneNum" value="<%=memberDTO.getMemberPhoneNum() %>" 
+maxlength="11" size="20" placeholder="'-'빼고 숫자만 입력해주세요" id="phone"></p><br>
 <div id="div2"></div>
-이메일 : <input type="text" name="memberEmail" value="<%=memberDTO.getMemberEmail() %>" id="email"><br>
+<p>이메일<br>
+<input type="text" name="memberEmail" value="<%=memberDTO.getMemberEmail() %>" id="email"></p><br>
 <div id= "div3"></div>
-지역 : <select name="memberLocation" id="address">
-    <option value="Seoul" <%= "Seoul".equals(memberDTO.getMemberLocation()) ? "selected" : "" %>>서울</option>
-    <option value="Busan" <%= "Busan".equals(memberDTO.getMemberLocation()) ? "selected" : "" %>>부산</option>
-	 </select><br>
-	 <div id="div4"></div>
+<p>지역<br>
+<select name="memberLocation" id="address">
+<option value="Seoul" <%= "Seoul".equals(memberDTO.getMemberLocation()) ? "selected" : "" %>>서울</option>
+<option value="Busan" <%= "Busan".equals(memberDTO.getMemberLocation()) ? "selected" : "" %>>부산</option>
+</select></p><br>
+<div id="div4"></div>
 <%
 if (memberDTO.getMemberType().equals("host")) { %>
-사업자등록번호 : <input type="text" name="businessNum" value="<%=memberDTO.getBusinessNum() %>" id="bnum"><br>
+<p>사업자등록번호<br>
+<input type="text" name="businessNum" value="<%=memberDTO.getBusinessNum() %>" id="bnum"></p><br>
 <% } %>
 <div id="div5"></div>
 <input type="button" name="update" value="수정하기" id="btn">
+</div>
 </form>
 <!-- script -->
 <script type="text/javascript" src="script/jquery-3.7.0.js"></script>
