@@ -5,13 +5,14 @@
 <html>
 <!-- head -->
 <head>
-<link href="css/NewTop.css" rel="stylesheet" type="text/css">
+ <link rel="stylesheet" href="shopcss.css">
+  <link href="css/NewTop.css" rel="stylesheet" type="text/css">
   <link href="css/NewBottom.css" rel="stylesheet" type="text/css">
+  <link href="css/loginbody.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
-	<link rel="stylesheet" href="css/update.css">
+<meta charset="UTF-8">
 <title>member/memberInfo/update.jsp</title>
-	<meta charset="UTF-8">
-
+</head>
 <!-- body -->
 <body>
 <!-- 헤더들어가는 곳 -->
@@ -24,14 +25,14 @@ MemberDTO memberDTO=(MemberDTO)request.getAttribute("memberDTO");
 <form action = "updatePro.me" method="post" id="frUpdate" enctype="multipart/form-data">
 <div id="updateBox">
 <p>프로필 사진<br>
-<label for="file" id="filebtn"></label>
-<input type="file" name="memberFile" id="file">
+<p><input type="button" value="사진첨부" id="filebtn"></p>
+<input type="file" name="memberFile" id="file" style="display: none;">
 <input type="hidden" name="oldfile" id="oldfile" value="<%=memberDTO.getMemberFile()%>"></p>
 <br>
 <p>아이디<br>
 <input type="text" name="memberId" id="id" size="30" value="<%=memberDTO.getMemberId() %>" readonly></p><br>
 <p>비밀번호<br>
-<input type="button" value="비밀번호 재설정" id="pass"  onclick="location.href='findPassword.me'"></p><br>
+<input type="button" value="재설정" id="pass"  onclick="location.href='findPassword.me'"></p><br>
 <p>닉네임<br>
 <input type="text" name = "memberNickname" size="20" value="<%=memberDTO.getMemberNickname() %>" id="nick">
 <input type="button" value="중복확인" name="ndup"  id="ndup"></p><br>
@@ -119,7 +120,7 @@ $(document).ready(function(){
 			$('#div5').empty();
 		}
 		alert("개인정보가 수정되었습니다.")
-		$('#fr').submit();
+		$('#frUpdate').submit();
 	});// click
 });// ready
 
@@ -133,6 +134,14 @@ $(document).ready(function(){
 				}
 			});
 	});
+	
+	$(function() {
+		$('#filebtn').click(function(e) {
+			e.preventDefault();
+			$('#file').click();
+		});
+	});
+	
 </script>
 <!-- 푸터들어가는 곳 -->
 <jsp:include page="../../inc/bottom.jsp"></jsp:include>
