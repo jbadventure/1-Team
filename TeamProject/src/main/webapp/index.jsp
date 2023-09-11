@@ -3,12 +3,13 @@
    
 <%
 
- response.sendRedirect("main.me");
+//  response.sendRedirect("main.me");
 // response.sendRedirect("noticeList.nbo");
 // response.sendRedirect("login.me");
 // response.sendRedirect("insertGuest.me");
 // response.sendRedirect("insertHost.me");
 //  response.sendRedirect("update.me");
-
+response.sendRedirect("findId.me");
+// response.sendRedirect("findPassword.me");
 
 %>

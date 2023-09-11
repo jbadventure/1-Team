@@ -4,7 +4,9 @@
 <html>
 <head>
   <link rel="stylesheet" href="shopcss.css">
-   <link href="css/NewTop.css" rel="stylesheet" type="text/css">
+  <link href="css/NewTop.css" rel="stylesheet" type="text/css">
+  <link href="css/NewBottom.css" rel="stylesheet" type="text/css">
+  <link href="css/find.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -13,10 +15,11 @@
 <!-- 헤더들어가는 곳 -->
 <jsp:include page="../../inc/NewTop.jsp"></jsp:include>
 <!-- 헤더들어가는 곳 --> 
-<h1>비밀번호 재설정</h1>
+<div id ="bodycontainer">
+<h1 id="head">비밀번호 재설정</h1>
 <h4>비밀번호는 가입시 사용한 아이디, 이름, 이메일을 통해 재설정 하실 수 있습니다.</h4>
 
-<form action="findPasswordPro.me" method="post" name="checkForm" id ="checkForm">
+<form action="findPasswordPro.me" method="post" name="checkForm" id ="checkFormPass">
 <input type="text" placeholder="아이디" name="memberId" id ="memberId"><br>
 <input type="text" placeholder="이름" name="memberName"  id ="memberName"><br>
 <input type="text" placeholder="이메일" name="emailop1" id="emailop1">@<select name="emailop2" id="emailop2">
@@ -26,8 +29,9 @@
         							   		   	   </select><br>
 <div id="div" style="color:red;"></div>
 
-<button type ="button" onclick="checkForm_check();">비밀번호재설정</button>
+<button type ="button" onclick="checkForm_check();" id="btn">비밀번호재설정</button>
 </form>
+</div>
 
 <script type="text/javascript">
 

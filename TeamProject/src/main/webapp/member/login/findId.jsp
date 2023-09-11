@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="shopcss.css">
   <link href="css/NewTop.css" rel="stylesheet" type="text/css">
   <link href="css/NewBottom.css" rel="stylesheet" type="text/css">
-  <link href="css/body.css" rel="stylesheet" type="text/css">
+  <link href="css/find.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -19,7 +19,7 @@
 <h1>아이디찾기</h1>
 
 <!-- form -->
-<form action="findIdPro.me" method="post" name="checkForm" id ="checkForm">
+<form action="findIdPro.me" method="post" name="checkForm" id ="checkFormId">
 <input type="text" placeholder="이름" name="memberName" id ="memberName"><br>
 <input type="text" placeholder="이메일" name="emailop1" id="emailop1">@<select name="emailop2" id="emailop2">
 												   <option value="">이메일을 선택해주세요</option>
@@ -28,7 +28,7 @@
         							   		   	   </select><br>
 <div id="div" style="color:red;"></div>
  
-<button type ="button" onclick="checkForm_check();">찾기</button>
+<button type ="button" id="btn" onclick="checkForm_check();">찾기</button>
 </form>
 </div>
 <!-- script -->
