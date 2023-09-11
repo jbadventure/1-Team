@@ -8,7 +8,7 @@
  <link rel="stylesheet" href="shopcss.css">
   <link href="css/NewTop.css" rel="stylesheet" type="text/css">
   <link href="css/NewBottom.css" rel="stylesheet" type="text/css">
-  <link href="css/loginbody.css" rel="stylesheet" type="text/css">
+  <link href="css/update.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>member/memberInfo/update.jsp</title>
