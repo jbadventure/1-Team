@@ -6,7 +6,17 @@
 	height: auto;
 }
 
-.content_image{
+#default_image{
+ object-fit:	scale-down;
+ border-radius: 10px;
+ width: 400px;
+ height: 300px;
+ margin-top: 40px;
+ margin-left: 400px;
+ margin-bottom: 40px;
+}
+
+#content_image{
  object-fit: cover;	
  border-radius: 10px;
  width: 400px;
@@ -29,11 +39,12 @@
 	margin-left: 100px;
 	margin-right: 450px;
 	margin-bottom: 20px;
-	line-height: 160%;
+	line-height: 150%;
 }
 
 .Tabcontainer{
-	width: 1200px;
+	width: 1200px; 
+	min-height: 200px;
 	margin: 0 auto;
 }
 
@@ -64,15 +75,23 @@ ul.tabs li.current{
   display: inherit;
 }
 
-/* .review{ */
-/* display: block; */
-/* height: auto; */
-/* border-radius: 10px; */
-/* background-color: pink; */
-/* padding: 10px 10px 10px 10px; */
-/* margin-bottom: 10px; */
-/* } */
 
 .review-delete-button{
 	float: right;
+}
+
+#return{
+	margin: 0 auto;
+	margin-bottom: 30px;
+}
+
+#return_btn{
+	margin: 0 auto;
+	display: block;
+	text-align: center;
+	border-radius: 10px;
+	border: none;
+	width: 200px;
+	height: 40px;
+	padding: 10px 5px;
 }

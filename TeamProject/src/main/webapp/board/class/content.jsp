@@ -33,11 +33,12 @@ List<ReviewBoardDTO> reviewboardList = (List<ReviewBoardDTO>)request.getAttribut
 %>    
 
 <% if(boardDTO.getClassFile() == null){  %>
- <img src="images/logo-198x66.png" class="content_image"> <!-- 디폴트이미지 -->
+ <img src="images/logo-198x66.png" id="default_image"> <!-- 디폴트이미지 -->
    <% 	}else{  %>           
- <img src="upload/<%=boardDTO.getClassFile() %>" class="content_image"><!--업로드이미지-->
+ <img src="upload/<%=boardDTO.getClassFile() %>" id="content_image"><!--업로드이미지-->
     <% }  %>
 <div id="class-content" >
+<br>
 <table>
 <tr><td id = "subject"><%=boardDTO.getClassSubject() %></td></tr><!--클래스 제목 -->
 <tr><td><%=boardDTO.getClassLocation() %></td></tr>
@@ -82,7 +83,7 @@ if(memberId != null){
                <div id="modalWrap">
                  <div id="modalBody">  
                   <div class="Modalcontainer" align="center">  
-                  <br><br><h5>로그인 정보가 없습니다</h5><br><br><br><br><br><br>
+                  <br><h5>로그인 정보가 없습니다</h5><br><br><br><br><br><br>
                   <button onclick = "location.href='login.me'">로그인 페이지로 이동</button>
                                <span id="closeBtn">창닫기</span>
              </div></div></div>
@@ -110,7 +111,7 @@ if(memberId != null){
        					onclick="location.href='classDelete.cbo?classNum=<%=boardDTO.getClassNum()%>'">
 	 <% }%>
 <%} %>
-<input type="button" value="클래스 목록으로 돌아가기" class="btn" onclick = "location.href='classList.cbo'">
+
 </div>
   </div>  
     
@@ -153,7 +154,9 @@ for(int i=0; i<reviewboardList.size(); i++){
 	
 </div>
 </div> <!--  Tabcontainer -->
-
+<div id="return">
+<input type="button" value="클래스 목록으로 돌아가기" id="return_btn" onclick = "location.href='classList.cbo'">
+</div>
 
 <!-- 푸터들어가는 곳 -->
 <jsp:include page="../../inc/bottom.jsp"></jsp:include>

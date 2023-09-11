@@ -48,7 +48,6 @@ for(int i=0; i<boardList.size(); i++){
 <% } %>
  </div> 
  
- 
  <% if(memberId != null){ %>
     <% if(memberType.equals("host")){ %>
   <input type="button" value="클래스 등록" class="classbo_btn" 
@@ -74,7 +73,7 @@ if(pageDTO.getStartPage() > pageDTO.getPageBlock()){	%>
    <%}%>
 <%
 for(int i = pageDTO.getStartPage(); i<=pageDTO.getEndPage(); i++){	%>
-	<a href = "classList.cbo?pageNum=<%=i %>"><%=i %></a>
+	<a href = "classList.cbo?pageNum=<%=i %>"><%=i %> </a>
 	<% } %>	
 <%
 //끝페이지번호  전체페이지수 비교 => 전체페이지수 크면 => Next보임
