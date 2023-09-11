@@ -30,7 +30,7 @@ if(memberId == null){ %>
 					</a></li>
 				<li><a href="/TeamProject/ghselect.me">회원가입</a></li>
 				<li><a href="/TeamProject/login.me" >로그인</a></li>
-			</ul>
+			</ul> 
 <%-- <% } else if(memberDTO.getMemberId().equals("admin")){ %>			 --%>
 <!-- 			<ul id="topMenu"> -->
 <!-- 				<li><a href="/TeamProject/noticeList.nbo" >공지사항</a></li> -->

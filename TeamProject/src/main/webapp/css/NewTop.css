@@ -3,7 +3,7 @@
 /*  전체영역  밖여백 0, 안여백 0, box-sizing : border-box */
 *{
 	margin: 0px; padding: 0px; box-sizing: border-box;
-}
+} 
 /* a 밑줄 없앰 */
 a{
 	text-decoration: none;
