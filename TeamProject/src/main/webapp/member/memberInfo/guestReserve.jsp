@@ -20,11 +20,13 @@
 <div id = bodycontainer>
 <div id = bodycontent>
 
-<h3>예약상세정보</h3>
 <%
 request.setCharacterEncoding("utf-8");
 OrdersDTO ordersDTO = (OrdersDTO)request.getAttribute("ordersDTO"); 
 %>
+
+<h2>예약상세정보</h2>
+
 
 <table id="class-content">
 <tr><td><h5> <%=ordersDTO.getOrdersId() %>님의 예약정보를 확인하세요 </h5></td></tr>

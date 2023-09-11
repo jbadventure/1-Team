@@ -17,6 +17,7 @@
 <!-- 헤더들어가는 곳 -->
 <jsp:include page="../inc/NewTop.jsp"></jsp:include>
 <!-- 헤더들어가는 곳 --> 
+
 <div id = bodycontainer>
 <div id = content_frame>
 
@@ -29,7 +30,7 @@ OrdersDTO ordersDTO = (OrdersDTO)request.getAttribute("ordersDTO");
 
 
 <h2>예약완료되었습니다!</h2>
-<h4> 예약정보를 확인하세요 </h4>
+<h4> 예약정보를 확인하세요 </h4><br><br>
 
     <% if(ordersDTO.getClassFile() == null){ %>
                 <img src="images/logo-198x66.png" class="content_image" width="107" height="71">
@@ -54,7 +55,9 @@ OrdersDTO ordersDTO = (OrdersDTO)request.getAttribute("ordersDTO");
 <div id="class-content-l" >
 </div>
 <div id="class-content-p" >
-<legend>총 결제금액 <%=ordersDTO.getTotalPrice() %></legend>
+<table>
+<tr><td> 총 결제금액 <%=ordersDTO.getTotalPrice() %></td></tr>
+</table>
 </div><br>
 
 <input type="button" onclick="location.href='myReserveList.or'" value="예약내역" id="btn">
