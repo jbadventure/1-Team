@@ -23,7 +23,7 @@
 <jsp:include page="../../inc/NewTop.jsp"></jsp:include>
 <!-- 헤더들어가는 곳 --> 
 
-<div id = bodycontainer>
+
 <div id = content_frame>
  <%
 String memberId = (String)session.getAttribute("memberId");
@@ -39,11 +39,12 @@ List<ReviewBoardDTO> reviewboardList = (List<ReviewBoardDTO>)request.getAttribut
     <% }  %>
 <div id="class-content" >
 <table>
-<tr><td><%=boardDTO.getClassSubject() %></td></tr><!--클래스 제목 -->
+<tr><td id = "subject"><%=boardDTO.getClassSubject() %></td></tr><!--클래스 제목 -->
 <tr><td><%=boardDTO.getClassLocation() %></td></tr>
 <tr><td><%=boardDTO.getClassCategory() %></td></tr>    
 <tr><td><%=boardDTO.getClassPrice() %> 원</td></tr> <!--클래스가격-->   
 </table> 
+<br>
 <%
 // 로그인 필수
 // 로그인, 글쓴이 일치하면 => 글수정, 글삭제 보이기
@@ -55,7 +56,7 @@ if(memberId != null){
                <div id="modalWrap">
                  <div id="modalBody">  
                   <div class="Modalcontainer">  
-                   <h4>예약 희망하는 날짜와 인원을 선택하세요 </h4>
+                   <h5>예약 희망하는 날짜와 인원을 선택하세요 </h5>
       	            <div><%=boardDTO.getClassSubject() %></div><br>
       				<input type="hidden" name ="ordersId"  id="ordersId" value="<%=memberId %>">
       				<input type="hidden" name ="classNum"  id="classNum" value="<%=boardDTO.getClassNum() %>">
@@ -81,12 +82,13 @@ if(memberId != null){
                <div id="modalWrap">
                  <div id="modalBody">  
                   <div class="Modalcontainer" align="center">  
-                  <h5>로그인 정보가 없습니다</h5>
+                  <br><br><h5>로그인 정보가 없습니다</h5><br><br><br><br><br><br>
                   <button onclick = "location.href='login.me'">로그인 페이지로 이동</button>
                                <span id="closeBtn">창닫기</span>
              </div></div></div>
 <%}%>
 </div>  
+</div>
 
  <div class="Tabcontainer"> 
   <ul class="tabs"><!--탭메뉴-->
@@ -152,15 +154,11 @@ for(int i=0; i<reviewboardList.size(); i++){
 </div>
 </div> <!--  Tabcontainer -->
 
-</div>
-</div>
 
-
-<footer>
 <!-- 푸터들어가는 곳 -->
 <jsp:include page="../../inc/bottom.jsp"></jsp:include>
 <!-- 푸터들어가는 곳 -->
-</footer>
+
 
 <script type="text/javascript"  src="script/jquery-3.7.0.js"></script>
 <script src ="js/modal.js"> </script>

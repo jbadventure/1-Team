@@ -2,17 +2,15 @@
 
 <!--모달창 css-->
 
-* {
-  padding:0;
-  margin:0;
-  box-sizing: border-box;
-}
 #btnWrap {
   width: 500px;
   margin: 30px auto;
 }
 #popupBtn {
-  width: 150px;
+  font-size:15px;	
+  border-radius: 10px;	
+  border: none;
+  width: 110px;
   height: 50px;
   padding: 10px 5px;
 }
@@ -29,8 +27,8 @@
   display: none;
 }
 #modalBody {
-  width: 500px;
-  height: 300px;
+  width: 400px;
+  height: 350px;
   padding: 30px 30px;
   margin: 0 auto;
   border: 1px solid #777;

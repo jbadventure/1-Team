@@ -53,20 +53,16 @@ for(int i=0; i<boardList.size(); i++){
     <% if(memberType.equals("host")){ %>
   <input type="button" value="클래스 등록" class="classbo_btn" 
        					onclick="location.href='classWrite.cbo'">
-  <input type="button" value="클래스 수정" class="classbo_btn" 
-       					onclick="location.href='classUpdate.cbo'">
-  <input type="button" value="클래스 삭제" class="classbo_btn" 
-       					onclick="location.href='classDelete.cbo'">
      <% } %>
  <% } %>
  </div>
  
-<div id="table_search">
-<form action="listSearch.cbo" method="get">
-<input type="text" name="search" id="classbo_search" placeholder="지금 생각나는 취미를 검색하세요!">
-<input type="submit" value="검색" class="classbo_btn">
-	</form>
-</div>
+<!-- <div id="table_search"> -->
+<!-- <form action="listSearch.cbo" method="get"> -->
+<!-- <input type="text" name="search" id="classbo_search" placeholder="지금 생각나는 취미를 검색하세요!"> -->
+<!-- <input type="submit" value="검색" class="classbo_btn"> -->
+<!-- 	</form> -->
+<!-- </div> -->
 
  
  <div id="page_control">
