@@ -20,7 +20,7 @@
 <div id = bodycontainer>
 <div id = bodycontent>
 
-<h1>로그인</h1>
+<h1 id="loghead">로그인</h1>
 <form action="loginPro.me" method="post" name="checkForm" id ="checkForm">
 
 <input type="text" placeholder="아이디" name="memberId" id ="memberId"><br>
@@ -28,10 +28,11 @@
 
 <div id="div" style="color:red;"></div>
 
-<button type ="button" onclick="checkForm_check();">로그인</button><br>
-<input type="button" value="회원가입" onclick ="location.href='ghselect.me'">
-<input type="button" value="아이디찾기" onclick ="location.href='findId.me'">
-<input type="button" value="비밀번호 재설정" onclick ="location.href='findPassword.me'">
+<button type ="button" id="login" onclick="checkForm_check();">로그인</button><br>
+<a href="ghselect.me">회원가입</a> | <a href="findId.me">아이디 찾기</a> | <a href="findPassword.me">비밀번호 찾기</a>
+<!-- <input type="button" id="join" value="회원가입" onclick ="location.href='ghselect.me'"> -->
+<!-- <input type="button" id="searchid" value="아이디찾기" onclick ="location.href='findId.me'"> -->
+<!-- <input type="button" id="searcpass" value="비밀번호 재설정" onclick ="location.href='findPassword.me'"> -->
 </form>
 </div>
 </div>

@@ -1,17 +1,58 @@
 @charset "UTF-8";
 
 #bodycontainer{
-	margin: 0px auto;  background-color: white; 
+	margin: 0px auto; 
+	background-color: white; 
 /* 	width: 1200px; */
-	height: auto;
+	height: 440px;
 	min-height: 100%;	
 /* 	margin-bottom: 200px; */
-    padding-bottom: 200px;
+    padding-bottom: 100px;
 }   
-
 #bodycontent{
 	text-align: center;
 	margin-top: 100px;
 /* 	min-height: 300px; */
 }
-
+#loghead{
+	height: 100px;
+    margin: 0 auto;
+    line-height: 80px;
+}
+#checkForm{
+	width: 520px;
+	margin: 0px auto;
+}
+#memberId{
+	width: 50%;
+	height: 37px;
+	padding :1px 6px;
+	border-radius: 4px;
+	font-size: 16px;
+	margin-bottom: 5px;
+}
+#memberPassword{
+	width: 50%;
+	height: 37px;
+	padding :1px 6px;
+	border-radius: 4px;
+	font-size: 16px;
+	margin-bottom: 20px;
+}
+#login{
+	margin-bottom:5px;
+	width:50%;
+    padding :1px 6px;
+    height: 37px;
+    border: 1px solid black;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+}
+a{
+	font-size: 9pt;
+	color: #222
+}
+a:hover{
+	text-decoration:underline;
+}
