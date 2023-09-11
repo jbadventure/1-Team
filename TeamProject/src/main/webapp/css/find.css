@@ -26,8 +26,6 @@
 #head2{
 	text-align: center;
 }
-
-
 #checkFormId{
 	width: 520px;
 	margin-left:770px;
@@ -38,7 +36,11 @@
 	margin-left:770px;
 	margin-top: 50px;
 }
-
+#checkFormPass2{
+	width: 520px;
+	margin-left:770px;
+	margin-top: 20px;
+}
 #memberId{
 	width: 70%;
 	height: 37px;
@@ -84,4 +86,38 @@
     border-radius: 4px;
     font-size: 16px;
     font-weight: bold;
+}
+/* PasswordReset.jsp */
+#memId{
+	width:520px;
+	line-height: 30px;
+	font-weight: bolder;
+	height: 300px;
+	min-height: 100%;
+	margin: 80px auto;	
+/*     padding-bottom: 80px; */
+/* 	margin-top: 120px; */
+}
+#memId2{
+	font-weight: bold;
+	margin-left: 20px;
+}
+#btn1{
+	width:40%;
+	margin-top:30px;
+    padding :1px 6px;
+    height: 37px;
+    border-style:none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+}
+input[type="password"] {
+	width: 70%;
+	height: 37px;
+	padding :1px 6px;
+	border: 1px solid black;
+	border-radius: 4px;
+	font-size: 11pt;
+	margin-bottom: 5px;
 }

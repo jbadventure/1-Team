@@ -6,6 +6,8 @@
 <head>
   <link rel="stylesheet" href="shopcss.css">
   <link href="css/NewTop.css" rel="stylesheet" type="text/css">
+  <link href="css/NewBottom.css" rel="stylesheet" type="text/css">
+  <link href="css/find.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -23,27 +25,27 @@ MemberDTO memberDTO = (MemberDTO)request.getAttribute("memberDTO");
 if(memberDTO.getMemberId().equals("Value does not exist")){
 %>
 
-<p align="center" style = "font-size:20px">회원정보가 존재하지 않습니다  <br>
-<input type="button" value="이전 페이지로 이동 " onclick="javascript:history.back();">
+<p align="center" style = "font-size:20px" id="memId">회원정보가 존재하지 않습니다. <br>
+<input type="button" value="이전 페이지로 이동 " id="btn1" onclick="javascript:history.back();">
 </p>
 <%
 } else {
 %>
-<h1>비밀번호 재설정</h1>
-<h4>비밀번호는 6자 이상이어야 합니다.</h4>
+<div id ="bodycontainer">
+<h1 id="head">비밀번호 재설정</h1>
 
-<form action="PasswordReset.me" method="post" name="checkForm" id ="checkForm">
+<form action="PasswordReset.me" method="post" name="checkForm" id ="checkFormPass2">
 
-<%=memberDTO.getMemberId() %>님의 새 비밀번호를 설정해주세요.<br>
+<p id="memId2"><%=memberDTO.getMemberId() %>님의 새 비밀번호를 설정해주세요. </p><br>
 <input type="hidden" name="memberId" value="<%=memberDTO.getMemberId() %>"/>
 <input type="password" placeholder="새 비밀번호" name="memberPassword" id ="pass1"><br>
 <input type="password" placeholder="새 비밀번호 확인" id="pass2"><br>
 
 <div id="div" style="color:red;"></div>
 
-<button type ="button" onclick="checkForm_check();">변경하기</button>
+<button type ="button" id="btn" onclick="checkForm_check();">변경하기</button>
 </form>
-
+</div>
 <%
 }
 %>
