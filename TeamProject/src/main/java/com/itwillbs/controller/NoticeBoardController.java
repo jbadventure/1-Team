@@ -42,7 +42,7 @@ public class NoticeBoardController extends HttpServlet {
 
 		if (sPath.equals("/noticeList.nbo")) {
 			// 한페이지에 출력될 게시물 수 pageSize
-			int pageSize = 10;
+			int pageSize = 8;
 			// 페이지 번호
 			String pageNum = request.getParameter("pageNum");
 			// 페이지 번호 없으면 1페이지 설정
@@ -64,7 +64,7 @@ public class NoticeBoardController extends HttpServlet {
 			// 게시판 전체 글 개수 구하기
 			int count = boardService.getBoardCount();
 			// 한화면에 출력될 페이지개수 pageBlock
-			int pageBlock = 10;
+			int pageBlock = 5;
 			// 시작하는 페이지번호 startPage
 			int startPage = (currentPage - 1) / pageBlock * pageBlock + 1;
 			// 끝나는페이지번호 endPage
