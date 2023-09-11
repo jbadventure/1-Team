@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>member/memberInfo/update.jsp</title>
-</head>
+</head> 
 <!-- body -->
 <body>
 <!-- 헤더들어가는 곳 -->
