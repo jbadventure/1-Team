@@ -1,17 +1,28 @@
 @charset "UTF-8";
 
 #frUpdate {
-    margin: 50px auto; /* form 요소의 위아래에 10픽셀의 여백을 주고, 좌우는 자동으로 정렬합니다 */
+    margin: 50px auto;
 }
 #updateBox {
 	text-align: left;
-/*     margin-top: 50px; 박스의 위쪽에 50픽셀의 여백을 줍니다 */
-    width: 520px;
+/*     width: 520px; */
     margin-left: 780px;
-    line-height: 20px;
-    
+    line-height: 10px;
 }
-
+input[type="text"] {
+/*          padding:1px 2px; font-size: 12pt;  */
+ width: 100%; /* 부모 요소에 맞게 가로 너비 100% 설정 */
+  padding: 10px; /* 내부 여백 설정 */
+  border: 1px solid #ccc; /* 테두리 스타일 및 색상 설정 */
+  border-radius: 4px; /* 테두리 모서리를 둥글게 설정 */
+  font-size: 16px; /* 폰트 크기 설정 */
+             } 
+p {
+	line-height: 20px;
+}
+#ndup{
+	padding: 1px 6px;
+}
 /* #fr{ */
 /* 	width: 30%; margin:auto; margin-top : 70px; margin-bottom : 70px;  */
 /* 	 line-height: 20px; */

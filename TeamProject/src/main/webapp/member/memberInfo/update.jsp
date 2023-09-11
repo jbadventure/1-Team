@@ -24,30 +24,30 @@ MemberDTO memberDTO=(MemberDTO)request.getAttribute("memberDTO");
 <form action = "updatePro.me" method="post" id="frUpdate" enctype="multipart/form-data">
 <div id="updateBox">
 <p>프로필 사진<br>
-<label for="file" id="filebtn">파일 선택</label>
+<label for="file" id="filebtn"></label>
 <input type="file" name="memberFile" id="file">
 <input type="hidden" name="oldfile" id="oldfile" value="<%=memberDTO.getMemberFile()%>"></p>
 <br>
 <p>아이디<br>
-<input type="text" name="memberId" id="id" value="<%=memberDTO.getMemberId() %>" readonly></p><br>
+<input type="text" name="memberId" id="id" size="30" value="<%=memberDTO.getMemberId() %>" readonly></p><br>
 <p>비밀번호<br>
-<input type="button" value="비밀번호 재설정" id="pass" onclick="location.href='findPassword.me'"></p><br>
+<input type="button" value="비밀번호 재설정" id="pass"  onclick="location.href='findPassword.me'"></p><br>
 <p>닉네임<br>
-<input type="text" name = "memberNickname" value="<%=memberDTO.getMemberNickname() %>" id="nick">
-<input type="button" value="중복확인" name="ndup" id="ndup"></p><br>
+<input type="text" name = "memberNickname" size="20" value="<%=memberDTO.getMemberNickname() %>" id="nick">
+<input type="button" value="중복확인" name="ndup"  id="ndup"></p><br>
 <div id="div1"></div>
 <p>이름<br>
-<input type="text" name="memberName" id="name" value="<%=memberDTO.getMemberName() %>" readonly></p><br>
+<input type="text" name="memberName" id="name" size="30" value="<%=memberDTO.getMemberName() %>" readonly></p><br>
 <p>생년월일<br>
-<input type="text" name="memberBirthday" id="birth" value="<%=memberDTO.getMemberBirthday() %>" readonly></p><br>
+<input type="text" name="memberBirthday" id="birth" size="30" value="<%=memberDTO.getMemberBirthday() %>" readonly></p><br>
 <p>성별<br>
-<input type="text" name="memberGender" id="gender" value="<%=memberDTO.getMemberGender()%>" readonly></p><br>
+<input type="text" name="memberGender" id="gender" size="30" value="<%=memberDTO.getMemberGender()%>" readonly></p><br>
 <p>전화번호<br>
-<input type="text" name="memberPhoneNum" value="<%=memberDTO.getMemberPhoneNum() %>" 
+<input type="text" name="memberPhoneNum" size="30" value="<%=memberDTO.getMemberPhoneNum() %>" 
 maxlength="11" size="20" placeholder="'-'빼고 숫자만 입력해주세요" id="phone"></p><br>
 <div id="div2"></div>
 <p>이메일<br>
-<input type="text" name="memberEmail" value="<%=memberDTO.getMemberEmail() %>" id="email"></p><br>
+<input type="text" name="memberEmail" size="30" value="<%=memberDTO.getMemberEmail() %>" id="email"></p><br>
 <div id= "div3"></div>
 <p>지역<br>
 <select name="memberLocation" id="address">
@@ -58,7 +58,7 @@ maxlength="11" size="20" placeholder="'-'빼고 숫자만 입력해주세요" id
 <%
 if (memberDTO.getMemberType().equals("host")) { %>
 <p>사업자등록번호<br>
-<input type="text" name="businessNum" value="<%=memberDTO.getBusinessNum() %>" id="bnum"></p><br>
+<input type="text" name="businessNum" size="30" value="<%=memberDTO.getBusinessNum() %>" id="bnum"></p><br>
 <% } %>
 <div id="div5"></div>
 <input type="button" name="update" value="수정하기" id="btn">
