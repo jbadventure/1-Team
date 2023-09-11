@@ -8,6 +8,7 @@
   <link href="css/NewTop.css" rel="stylesheet" type="text/css">
   <link href="css/NewBottom.css" rel="stylesheet" type="text/css">
   <link href="css/body.css" rel="stylesheet" type="text/css">
+  <link href="css/pay.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>결제하기</title>
@@ -19,7 +20,7 @@
 <jsp:include page="../inc/NewTop.jsp"></jsp:include>
 <!-- 헤더들어가는 곳 --> 
 <div id = bodycontainer>
-<div id = bodycontent>
+<div id = content_frame>
  <%
 String memberId = (String)session.getAttribute("memberId");
 // request.setCharacterEncoding("utf-8");
@@ -38,33 +39,46 @@ int classPrice = (int)session.getAttribute("classPrice");
 %>
  
 <form action="payPro.or" method="post" id="myfr">
-<fieldset style="border:0">
-<legend>팔레트정보</legend>
-<table>
-<tr><td>
+
+<div id="class-content-p" >
+<h2>팔레트정보</h2>
+</div>
+<div id="class-content-l" >
+</div>
+<!-- <tr><td> -->
     <% if(classFile == null){ %>
-                <img src="images/logo-198x66.png" width="107" height="71">
+                <img src="images/logo-198x66.png" class="content_image" width="123" height="81">
     <% }else{ %>           
-            	<img src="upload/<%=classFile %>" width="107" height="71">
+            	<img src="upload/<%=classFile %>" class="content_image" width="123" height="81">
     <% } %>
-</td></tr> 
-<tr><td>클래스제목 <%=ordersDTO.getClassSubject() %></td></tr>
+<!-- </td></tr>  -->
+<div id="class-content" >
+<table>
+<tr><td id="subject"><%=ordersDTO.getClassSubject() %><br></td></tr>
 <tr><td>예약날짜 <%=ordersDTO.getOrdersDate() %></td></tr>
 <tr><td>예약인원 <%=ordersDTO.getOrdersAmount() %></td></tr>
 
 </table>
-</fieldset>
-
-<fieldset style="border:0">
-<legend>결제수단</legend>
+</div>
+<div id="class-content-l" >
+</div>
+<div id="class-content-p" >
+<legend>결제수단</legend><br>
 <input type="radio" name="payMethod" id="card" value="card">신용/체크카드<br>
 <input type="radio" name="payMethod" id="kakaopay" value="kakaopay" checked>카카오페이<br>
 <input type="radio" name="payMethod" id="deposit" value="deposit">무통장입금<br>
-</fieldset>
+</div>
 
+<div id="class-content-l" >
+</div>
+
+<div id="class-content-p" >
 <legend>총 결제금액 <%=ordersDTO.getTotalPrice() %></legend>
 
 <%-- <input type="hidden" name ="classSubject"  id="classSubject" value="<%=classSubject %>"><!-- classSubject값 전달 --> --%>
+</div>
+<div id="class-content-l" >
+</div>
 <input type="button" value="결제하기" id="btn">
 </form>
 
@@ -114,16 +128,16 @@ $(document).ready(function() {
 	        }, function (rsp) {
 	            console.log(rsp);
 	            if (rsp.success) {
-	                var msg = '결제가 완료되었습니다.';
-	                msg += '고유ID : ' + rsp.imp_uid;
-	                msg += '상점 거래ID : ' + rsp.merchant_uid;
-	                msg += '결제 금액 : ' + rsp.paid_amount;
-	                msg += '카드 승인번호 : ' + rsp.apply_num;
-		            alert(msg);
+// 	                var msg = '결제가 완료되었습니다.';
+// 	                msg += '고유ID : ' + rsp.imp_uid;
+// 	                msg += '상점 거래ID : ' + rsp.merchant_uid;
+// 	                msg += '결제 금액 : ' + rsp.paid_amount;
+// 	                msg += '카드 승인번호 : ' + rsp.apply_num;
+// 		            alert(msg);
 					$('#myfr').submit();
 	            } else {
 	                var msg = '결제에 실패하였습니다.';
-	                msg += '에러내용 : ' + rsp.error_msg;
+// 	                msg += '에러내용 : ' + rsp.error_msg;
 		            alert(msg);
 	                return;
 	            }
@@ -168,16 +182,16 @@ $(document).ready(function() {
 	        }, function (rsp) {
 	            console.log(rsp);
 	            if (rsp.success) {
-	                var msg = '결제가 완료되었습니다.';
-	                msg += '고유ID : ' + rsp.imp_uid;
-	                msg += '상점 거래ID : ' + rsp.merchant_uid;
-	                msg += '결제 금액 : ' + rsp.paid_amount;
-	                msg += '카드 승인번호 : ' + rsp.apply_num;
-		            alert(msg);
+// 	                var msg = '결제가 완료되었습니다.';
+// 	                msg += '고유ID : ' + rsp.imp_uid;
+// 	                msg += '상점 거래ID : ' + rsp.merchant_uid;
+// 	                msg += '결제 금액 : ' + rsp.paid_amount;
+// 	                msg += '카드 승인번호 : ' + rsp.apply_num;
+// 		            alert(msg);
 					$('#myfr').submit();
 	            } else {
 	                var msg = '결제에 실패하였습니다.';
-	                msg += '에러내용 : ' + rsp.error_msg;
+// 	                msg += '에러내용 : ' + rsp.error_msg;
 		            alert(msg);
 	                return;
 	            }
@@ -222,16 +236,16 @@ $(document).ready(function() {
 	        }, function (rsp) {
 	            console.log(rsp);
 	            if (rsp.success) {
-	                var msg = '결제가 완료되었습니다.';
-	                msg += '고유ID : ' + rsp.imp_uid;
-	                msg += '상점 거래ID : ' + rsp.merchant_uid;
-	                msg += '결제 금액 : ' + rsp.paid_amount;
-	                msg += '카드 승인번호 : ' + rsp.apply_num;
-		            alert(msg);
+// 	                var msg = '결제가 완료되었습니다.';
+// 	                msg += '고유ID : ' + rsp.imp_uid;
+// 	                msg += '상점 거래ID : ' + rsp.merchant_uid;
+// 	                msg += '결제 금액 : ' + rsp.paid_amount;
+// 	                msg += '카드 승인번호 : ' + rsp.apply_num;
+// 		            alert(msg);
 					$('#myfr').submit();
 	            } else {
 	                var msg = '결제에 실패하였습니다.';
-	                msg += '에러내용 : ' + rsp.error_msg;
+// 	                msg += '에러내용 : ' + rsp.error_msg;
 		            alert(msg);
 	                return;
 	            }

@@ -54,7 +54,7 @@ public class OrdersDAO {
 		try {
 			con = new SQLConnection().getConnection();
 			//select * from orders where ordersNum=?
-			String sql = "select o.ordersNum, o.ordersId, o.classNum, o.ordersDate, o.ordersAmount, o.totalPrice, o.payDate, o.payMethod, c.classSubject from orders o join class c on o.classNum = c.classNum where ordersNum=?";
+			String sql = "select o.ordersNum, o.ordersId, o.classNum, o.ordersDate, o.ordersAmount, o.totalPrice, o.payDate, o.payMethod, c.classSubject, c.classFile from orders o join class c on o.classNum = c.classNum where ordersNum=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, ordersNum);
 			rs =pstmt.executeQuery();
@@ -134,7 +134,7 @@ public class OrdersDAO {
 		List<OrdersDTO> ordersList = null;
 		try {
 			con = new SQLConnection().getConnection();
-			String sql = "select o.ordersNum, o.ordersId, o.classNum, o.ordersDate, o.ordersAmount, o.totalPrice, o.payDate, o.payMethod, c.classSubject from orders o join class c on o.classNum = c.classNum where ordersId=? order by ordersNum desc";
+			String sql = "select o.ordersNum, o.ordersId, o.classNum, o.ordersDate, o.ordersAmount, o.totalPrice, o.payDate, o.payMethod, c.classSubject, c.classFile from orders o join class c on o.classNum = c.classNum where ordersId=? order by ordersNum desc";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, ordersId);
 			rs =pstmt.executeQuery();
@@ -150,6 +150,7 @@ public class OrdersDAO {
 				ordersDTO.setPayDate(rs.getString("payDate"));
 				ordersDTO.setPayMethod(rs.getString("payMethod"));
 				ordersDTO.setClassSubject(rs.getString("classSubject"));
+				ordersDTO.setClassFile(rs.getString("classFile"));
 				ordersList.add(ordersDTO);
 				}
 		} catch (Exception e) {

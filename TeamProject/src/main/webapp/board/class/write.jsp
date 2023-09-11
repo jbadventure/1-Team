@@ -3,18 +3,22 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link rel="stylesheet" href="shopcss.css">
   <link href="css/NewTop.css" rel="stylesheet" type="text/css">
-<meta charset="UTF-8">
+  <link href="css/NewBottom.css" rel="stylesheet" type="text/css">
+  <link href="css/classWrite.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
+  <meta charset="UTF-8">
 <title>Class 등록</title>
 </head>
 <body>
 <!-- 헤더들어가는 곳 -->
 <jsp:include page="../../inc/NewTop.jsp"></jsp:include>
-<!-- 헤더들어가는 곳 --> 
+<!-- 헤더들어가는 곳 -->
 <%
 String memberId = (String)session.getAttribute("memberId");
 %>
-	<h1>Class 등록</h1>
+	<h1 id="classwrite">Class 등록</h1>
 	
 	<form action="classWritePro.cbo" method="post" enctype="multipart/form-data">
 		<table id="notice">
@@ -53,9 +57,12 @@ String memberId = (String)session.getAttribute("memberId");
 			<td><input type="file" name="classFile"></td></tr>
 		</table>
 		<div id="table_search">
-			<input type="submit" value="글쓰기" class="btn">
+			<input type="submit" value="글쓰기" class="classwritebtn">
 		</div>
 	</form>
-
+	
+<!-- 푸터들어가는 곳 -->
+<jsp:include page="../../inc/bottom.jsp"></jsp:include>
+<!-- 푸터들어가는 곳 -->
 </body>
 </html>
