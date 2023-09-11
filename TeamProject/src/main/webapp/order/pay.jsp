@@ -73,7 +73,7 @@ int classPrice = (int)session.getAttribute("classPrice");
 </div>
 
 <div id="class-content-p" >
-<legend>총 결제금액 <%=ordersDTO.getTotalPrice() %></legend>
+<legend>총 결제금액 <%=ordersDTO.getTotalPrice() %>원</legend>
 
 <%-- <input type="hidden" name ="classSubject"  id="classSubject" value="<%=classSubject %>"><!-- classSubject값 전달 --> --%>
 </div>

@@ -29,7 +29,7 @@ OrdersDTO ordersDTO = (OrdersDTO)request.getAttribute("ordersDTO");
 
 
 
-<h2>예약완료되었습니다!</h2>
+<br><h2>예약완료되었습니다!</h2>
 <h4> 예약정보를 확인하세요 </h4><br><br>
 
     <% if(ordersDTO.getClassFile() == null){ %>
@@ -40,6 +40,7 @@ OrdersDTO ordersDTO = (OrdersDTO)request.getAttribute("ordersDTO");
 <div id="class-content" >
 <table>
 <tr><td id="subject"><%=ordersDTO.getClassSubject() %></td></tr>
+<tr><td></td></tr>
 <tr><td>예약날짜 <%=ordersDTO.getOrdersDate() %></td></tr>
 <tr><td>예약인원 <%=ordersDTO.getOrdersAmount() %></td></tr>
 </table>
