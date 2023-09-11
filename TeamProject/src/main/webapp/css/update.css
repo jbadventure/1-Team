@@ -21,7 +21,6 @@ input[type="button"]{
   width:81px;
   padding :1px 6px;
   height: 37px;
-  padding: 1px 6px; /* 내부 여백 설정 */
   border: 1px solid #ccc; /* 테두리 스타일 및 색상 설정 */
   border-radius: 4px; /* 테두리 모서리를 둥글게 설정 */
   font-size: 16px; /* 폰트 크기 설정 */
@@ -31,4 +30,17 @@ input[type="button"]{
 }
 p { 
 	line-height: 20px;
+}
+
+#address{
+  width:81px;
+  padding :1px 6px;
+  height: 37px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+#btn{
+	margin-top: 30px;
+	margin-left: 230px;
 }
