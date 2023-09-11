@@ -16,7 +16,7 @@
 <jsp:include page="../../inc/NewTop.jsp"></jsp:include>
 <!-- 헤더들어가는 곳 --> 
 <div id ="bodycontainer">
-<h1>아이디찾기</h1>
+<h1 id="headId">아이디찾기</h1>
 
 <!-- form -->
 <form action="findIdPro.me" method="post" name="checkForm" id ="checkFormId">

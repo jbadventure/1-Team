@@ -17,7 +17,7 @@
 <!-- 헤더들어가는 곳 --> 
 <div id ="bodycontainer">
 <h1 id="head">비밀번호 재설정</h1>
-<h4>비밀번호는 가입시 사용한 아이디, 이름, 이메일을 통해 재설정 하실 수 있습니다.</h4>
+<h4 id="head2">비밀번호는 가입시 사용한 아이디, 이름, 이메일을 통해 재설정 하실 수 있습니다.</h4>
 
 <form action="findPasswordPro.me" method="post" name="checkForm" id ="checkFormPass">
 <input type="text" placeholder="아이디" name="memberId" id ="memberId"><br>

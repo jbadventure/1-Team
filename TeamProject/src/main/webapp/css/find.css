@@ -9,14 +9,21 @@
 	margin-top: 100px;
 }
 
-h1{
+#headId{
+	height: 100px;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 80px;
+}
+
+#head{
 	height: 80px;
     margin: 0 auto;
     line-height: 20px;
     text-align: center;
 }
 
-h4{
+#head2{
 	text-align: center;
 }
 
@@ -36,6 +43,7 @@ h4{
 	width: 70%;
 	height: 37px;
 	padding :1px 6px;
+	border: 1px solid black;
 	border-radius: 4px;
 	font-size: 11pt;
 	margin-bottom: 5px;
@@ -44,6 +52,7 @@ h4{
 	width: 70%;
 	height: 37px;
 	padding :1px 6px;
+	border: 1px solid black;
 	border-radius: 4px;
 	font-size: 11pt;
 	margin-bottom: 5px;
@@ -52,24 +61,26 @@ h4{
 	width: 33%;
 	height: 37px;
 	padding :1px 6px;
+	border: 1px solid black;
 	border-radius: 4px;
 	font-size: 11pt;
-	margin-bottom: 5px;
+	margin-bottom: 20px;
 }
 #emailop2{
 	width: 34%;
 	height: 37px;
 	padding :1px 6px;
+	border: 1px solid black;
 	border-radius: 4px;
 	font-size: 10pt;
-	margin-bottom: 5px;
+	margin-bottom: 20px;
 }
 #btn{
 	margin-bottom:5px;
 	width:70%;
     padding :1px 6px;
     height: 37px;
-    border: 1px solid black;
+    border-style:none;
     border-radius: 4px;
     font-size: 16px;
     font-weight: bold;
