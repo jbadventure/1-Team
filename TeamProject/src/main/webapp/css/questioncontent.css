@@ -1,40 +1,53 @@
 @charset "UTF-8";
- body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        header {
-            background-color: #35424a;
-            color: white;
-            padding: 10px;
-            text-align: center;
-        }
-        .container {
-            max-width: 800px;
-            margin: auto;
-            padding: 20px;
-        }
-        .question {
-            border: 1px solid #ccc;
-            background-color: white;
-            margin-bottom: 10px;
-            padding: 10px;
-            border-radius: 5px;
-        }
-        .question h2 {
-            margin-top: 0;
-        }
-         .add-button {
-            text-align: center;
-            margin-top: 20px;
-        }
-        .add-button button {
-            background-color: #35424a;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
+.container {
+	float: right;
+    width: 820px;
+}
+
+body, div, input, ul, li, dl, dt, dd, form, fieldset, label, strong, span, button, a, p {
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+.c1{
+	height: 30px;
+    border-bottom: 2px solid #159efd;
+    color: #159efd;
+    position: relative;
+    margin-bottom: 20px;
+    padding-bottom: 3px;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -2px;
+}
+.question{
+	    margin-bottom: 40px;
+	    border-color: #d5e2f2;
+}
+table {
+    border: 0;
+}
+table {
+    table-layout: fixed;
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+    border-top: 2px solid #e1e1e1;
+    color: #1d1d1d;
+}
+table tr td {
+    position: relative;
+    box-sizing: border-box;
+    padding: 7px 0 7px 10px;
+    border-bottom: 1px solid #e1e1e1;
+    text-align: left;
+}
+td {
+    display: table-cell;
+    vertical-align: inherit;
+}
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}

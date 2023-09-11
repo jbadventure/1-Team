@@ -1,5 +1,5 @@
 @charset "UTF-8";
-.container {
+.container11 {
     display: flex;
     flex-flow: column;
     align-content: flex-start;
@@ -17,13 +17,13 @@
     background-repeat: no-repeat;
     box-sizing: inherit;
 }
-h1 {
+.h33 {
 	margin: 30px 0px 20px;
     line-height: 24px;
     font-size: 24px;
     font-weight: bold;
 }
-.notice {
+.notice11 {
     width: auto;
     height: auto;
     transition: opacity 200ms ease-in-out 0s;
@@ -32,12 +32,10 @@ h1 {
     min-width: 0px;
     min-height: 1px;
 }
-.a1 {
+.a11 {
     margin: 0px;
     padding: 0px;
     list-style: none;
-}
-ul {
     display: block;
     list-style-type: disc;
     margin-block-start: 1em;
@@ -46,7 +44,8 @@ ul {
     margin-inline-end: 0px;
     padding-inline-start: 40px;
 }
-li {
+
+.b11 {
     display: list-item;
     text-align: -webkit-match-parent;
 }
@@ -84,7 +83,7 @@ li {
 div {
     display: block;
 }
-.date {
+.date11 {
     -webkit-box-flex: 0;
     flex: 0 0 auto;
     margin-left: 10px;

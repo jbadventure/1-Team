@@ -2,17 +2,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
+<!-- head -->
 <head>
+  <link rel="stylesheet" href="shopcss.css">
+  <link href="css/NewTop.css" rel="stylesheet" type="text/css">
+  <link href="css/NewBottom.css" rel="stylesheet" type="text/css">
+  <link href="css/loginbody.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>content</title>
+<title>member/login.jsp</title>
 </head>
-<link rel="stylesheet" href="./css/content.css">
 <body>
-	<header>
-		
-	</header>
+<!-- 헤더들어가는 곳 -->
+<jsp:include page="../../inc/NewTop.jsp"></jsp:include>
+<!-- 헤더들어가는 곳 --> 
+
 	<div class="container">
 		<%
 		NoticeBoardDTO boardDTO = (NoticeBoardDTO) request.getAttribute("boardDTO");
@@ -43,5 +48,7 @@
 %>
 		
 	</div>
+<jsp:include page="../../inc/bottom.jsp"></jsp:include>
+<!-- 푸터들어가는 곳 -->
 </body>
 </html>

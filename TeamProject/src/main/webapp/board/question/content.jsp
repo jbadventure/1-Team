@@ -3,19 +3,29 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+<!-- head -->
 <head>
+  <link rel="stylesheet" href="shopcss.css">
+  <link href="css/NewTop.css" rel="stylesheet" type="text/css">
+  <link href="css/NewBottom.css" rel="stylesheet" type="text/css">
+  <link href="css/loginbody.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
 <meta charset="UTF-8">
-<title>content</title>
+<title>member/login.jsp</title>
 </head>
 <body>
-	<header></header>
+<!-- 헤더들어가는 곳 -->
+<jsp:include page="../../inc/NewTop.jsp"></jsp:include>
+<!-- 헤더들어가는 곳 --> 
 	<div class="container">
 		<%
-		String memberId = (String) session.getAttribute("memberId");
 		QuestionBoardDTO boardDTO = (QuestionBoardDTO) request.getAttribute("boardDTO");
+		String memberId = (String) session.getAttribute("memberId");
 		%>
-		<h1>자주 묻는 질문 조회</h1>
-		<div class="question">
+		<div class ="c1">
+		자주 묻는 질문 조회
+		</div>
+		<table class="question">
 			<tr>
 				<td>분류</td>
 				<td><%=boardDTO.getQuestionCategory()%></td>
@@ -26,7 +36,7 @@
 			</tr>
 			<h2><%=boardDTO.getQuestionQuestion()%></h2>
 			<p><%=boardDTO.getQuestionAnswer()%></p>
-		</div>
+		</table>
 		<%
 		if ("admin".equals(memberId)) {
 		%>
@@ -40,5 +50,7 @@
 }
 %>
 	</div>
+<jsp:include page="../../inc/bottom.jsp"></jsp:include>
+<!-- 푸터들어가는 곳 -->
 </body>
 </html>
