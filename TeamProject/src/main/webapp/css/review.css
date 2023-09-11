@@ -1,0 +1,46 @@
+@charset "UTF-8";
+ 
+#reviewwrite {
+    width: auto;
+    margin: 60px 0px 30px 0px;
+    box-sizing: border-box;
+    display: flex; /* flexbox를 사용하겠다고 선언 */
+    justify-content: center; /* 수평 방향으로 가운데 정렬 */
+    align-items: center; /* 수직 방향으로 가운데 정렬 */
+}
+
+.form-group1 {
+  width: auto;
+  margin: 0px 0px 7px 0px;
+  display: flex; /* 부모 요소에 flex를 적용합니다. */
+  align-items: center; /* 수직 가운데 정렬을 위해 align-items를 center로 설정합니다. */
+  justify-content: center; /* 수평 가운데 정렬을 위해 justify-content를 center로 설정합니다. */
+}
+
+textarea {
+  width: 600px; /* textarea의 넓이를 800px로 설정합니다. */
+  height: 300px; /* textarea의 높이를 300px로 설정합니다. */
+}
+
+label {
+  margin-right: 20px; /* label과 input 사이의 간격을 20px로 설정합니다. */
+}
+
+.form-group2 {
+  width: 600px; /* 넓이를 600px로 설정합니다. */
+  display: flex; /* 부모 요소에 flex를 적용합니다. */
+  align-items: center; /* 수직 가운데 정렬을 위해 align-items를 center로 설정합니다. */
+  justify-content: flex-start; /* 수평 왼쪽 정렬을 위해 justify-content를 flex-start로 설정합니다. */
+  margin: auto;
+  padding-bottom: 7px;
+
+}
+.reviewwritebtn {
+  width: 600px;
+  height: 30px;
+  display: flex; /* 부모 요소에 flex를 적용합니다. */
+  align-items: center; /* 수직 가운데 정렬을 위해 align-items를 center로 설정합니다. */
+  justify-content: center; /* 수평 가운데 정렬을 위해 justify-content를 center로 설정합니다. */
+  margin: auto;
+  margin-bottom: 90px;
+}
