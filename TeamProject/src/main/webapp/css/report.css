@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+p{
+	text-align: center;
+	line-height: 30px;
+	font-weight: bolder;
+	margin-bottom: 80px;
+	height: 400px;
+	min-height: 100%;	
+    padding-bottom: 80px;
+	margin-top: 120px;
+}
+
+input[type="button"]{
+  margin-bottom:5px;
+  margin-top : 30px;
+  width:150px;
+  padding :1px 6px;
+  height: 37px;
+  border: 1px solid #ccc; /* 테두리 스타일 및 색상 설정 */
+  border-radius: 4px; /* 테두리 모서리를 둥글게 설정 */
+  font-size: 16px; /* 폰트 크기 설정 */
+}
