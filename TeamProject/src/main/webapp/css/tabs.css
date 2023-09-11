@@ -2,9 +2,8 @@
 <!--탭css-->
 
 #content_frame{
-	margin: 0px auto;
-    padding-top: 20px;
-	width: 1000px;
+	width: 1200px;
+	height: auto;
 }
 
 .content_image{
@@ -12,18 +11,30 @@
  border-radius: 10px;
  width: 400px;
  height: 300px;
- margin-top: 20px;
- margin-left: 100px;
- margin-bottom: 20px;
+ margin-top: 40px;
+ margin-left: 400px;
+ margin-bottom: 40px;
 }
-
+#subject{
+	font-size: 25px;
+}
 #class-content{
 	width: 500px;
 	height: auto;
 	float: right;
-	font-size: 25px;
-	margin-top: 30px;
+	font-size: 1.1em;
+ 	color: gray;
+ 	font-weight: 600;
+	margin-top: 50px;
 	margin-left: 100px;
+	margin-right: 450px;
+	margin-bottom: 20px;
+	line-height: 160%;
+}
+
+.Tabcontainer{
+	width: 1200px;
+	margin: 0 auto;
 }
 
 ul.tabs {
@@ -53,14 +64,14 @@ ul.tabs li.current{
   display: inherit;
 }
 
-.review{
-display: block;
-height: auto;
-border-radius: 10px;
-background-color: pink;
-padding: 10px 10px 10px 10px;
-margin-bottom: 10px;
-}
+/* .review{ */
+/* display: block; */
+/* height: auto; */
+/* border-radius: 10px; */
+/* background-color: pink; */
+/* padding: 10px 10px 10px 10px; */
+/* margin-bottom: 10px; */
+/* } */
 
 .review-delete-button{
 	float: right;
