@@ -3,6 +3,7 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
     <!DOCTYPE html>
 <head>
   <title>palette</title> 
@@ -26,14 +27,14 @@ String memberType = (String)session.getAttribute("memberType");
 %>
     <div class="products">
         <h3>클래스 목록</h3>
-        <div class="product-list">        
+        <div class="product-list">            
         <%
 for(int i=0; i<boardList.size(); i++){
 	ClassBoardDTO boardDTO = boardList.get(i);
 	%>
              <a href="classContent.cbo?classNum=<%=boardDTO.getClassNum() %>" class="product">
      <%  	if(boardDTO.getClassFile() == null){   %>
-                <img src="images/cat-space.gif" >
+                <img src="images/logo_board.png" >
      <%	}else{   %>           
             	<img src="upload/<%=boardDTO.getClassFile() %>" >
      <%	 }   %>
@@ -41,12 +42,13 @@ for(int i=0; i<boardList.size(); i++){
                 	<%=boardDTO.getClassSubject() %>
                 </div>
                 <div class="product-price">
-                	<%=boardDTO.getClassPrice() %>원
+                   <%=boardDTO.getClassPrice() %>원 
                 </div>
             </a>          
 <% } %>
-
  </div> 
+ 
+ 
  <% if(memberId != null){ %>
     <% if(memberType.equals("host")){ %>
   <input type="button" value="클래스 등록" class="classbo_btn" 
@@ -71,21 +73,16 @@ for(int i=0; i<boardList.size(); i++){
 <%
 // 시작페이지 1페이지 prev 없음 
 // 시작페이지 11,21,31, prev 보임 
-if(pageDTO.getStartPage() > pageDTO.getPageBlock()){
-	%>
+if(pageDTO.getStartPage() > pageDTO.getPageBlock()){	%>
 	<a href = "classList.cbo?pageNum=<%=pageDTO.getStartPage()-pageDTO.getPageBlock() %>">Prev</a>
-	<%
-}	
-%>
+   <%}%>
 <%
-for(int i = pageDTO.getStartPage(); i<=pageDTO.getEndPage(); i++){
-	%>
+for(int i = pageDTO.getStartPage(); i<=pageDTO.getEndPage(); i++){	%>
 	<a href = "classList.cbo?pageNum=<%=i %>"><%=i %></a>
 	<% } %>	
 <%
 //끝페이지번호  전체페이지수 비교 => 전체페이지수 크면 => Next보임
-if(pageDTO.getEndPage() < pageDTO.getPageCount()){
-	%>
+if(pageDTO.getEndPage() < pageDTO.getPageCount()){	%>
 	<a href="classList.cbo?pageNum=<%=pageDTO.getStartPage()+pageDTO.getPageBlock()%>">Next</a>
 	<% } %>
 </div> 

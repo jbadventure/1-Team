@@ -1,8 +1,33 @@
 @charset "UTF-8";
 <!--탭css-->
 
+#content_frame{
+	margin: 0px auto;
+    padding-top: 20px;
+	width: 1000px;
+}
+
+.content_image{
+ object-fit: cover;	
+ border-radius: 10px;
+ width: 400px;
+ height: 300px;
+ margin-top: 20px;
+ margin-left: 100px;
+ margin-bottom: 20px;
+}
+
+#class-content{
+	width: 500px;
+	height: auto;
+	float: right;
+	font-size: 25px;
+	margin-top: 30px;
+	margin-left: 100px;
+}
 
 ul.tabs {
+  width: 1000px;
   margin: 0px;
   padding: 0px;
   list-style: none;
@@ -26,4 +51,17 @@ ul.tabs li.current{
 }
 .tab-content.current{
   display: inherit;
+}
+
+.review{
+display: block;
+height: auto;
+border-radius: 10px;
+background-color: pink;
+padding: 10px 10px 10px 10px;
+margin-bottom: 10px;
+}
+
+.review-delete-button{
+	float: right;
 }

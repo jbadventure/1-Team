@@ -36,6 +36,7 @@
 	object-fit: cover;
 	width: 225px;
 	height: 225px;
+	border-radius: 10px;
 }
 
 .product-name{
