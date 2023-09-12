@@ -6,6 +6,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style type="text/css">
+
+</style>
   <link rel="stylesheet" href="shopcss.css">
   <link href="css/NewTop.css" rel="stylesheet" type="text/css">
   <link href="css/NewBottom.css" rel="stylesheet" type="text/css">
@@ -46,8 +49,11 @@ for(int i=0; i<boardList.size(); i++){
 			후기내용 : <%=boardDTO.getReviewContent() %>
 		</div>
 		<div class="reviewFile">
-		    첨부파일
+		    <% if(boardDTO.getReviewFile() != null){ %>
 		    <img src="upload/<%=boardDTO.getReviewFile() %>">
+		    <% } else { %>
+		    <img src="images/logo-198x66.png" id="default_image">
+		    <% } %>    
 		</div>
 		<br>
 

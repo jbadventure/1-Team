@@ -3,9 +3,9 @@
    
 <%
 
-//  response.sendRedirect("main.me");
+  response.sendRedirect("main.me");
 // response.sendRedirect("noticeList.nbo");
-response.sendRedirect("classWrite.cbo");
+//response.sendRedirect("classWrite.cbo");
 // response.sendRedirect("insertGuest.me");
 // response.sendRedirect("insertHost.me");
 //  response.sendRedirect("update.me");

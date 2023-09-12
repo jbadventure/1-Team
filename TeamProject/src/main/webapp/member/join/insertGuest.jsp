@@ -147,7 +147,7 @@
 <div id="div7"></div>
 
 <!-- 전화번호 -->
-<input type="text" placeholder="전화번호는 숫자만 입력해주세요" name="memberPhoneNum" id="phone" maxlength="11" size="30"><br>
+<input type="text" placeholder="전화번호는 숫자만 입력해주세요" name="phone" id="phone" maxlength="11" size="30"><br>
 <div id="div8"></div>
 
 <!-- 이메일 -->

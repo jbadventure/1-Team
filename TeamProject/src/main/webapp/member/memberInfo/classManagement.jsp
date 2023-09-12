@@ -11,8 +11,9 @@
   <link href="css/NewBottom.css" rel="stylesheet" type="text/css">
 <!--   <link href="css/body.css" rel="stylesheet" type="text/css"> -->
   <link href="css/product.css" rel="stylesheet" type="text/css">
+  <link rel="icon" href="images/favicon.ico?v=2" type="image/x-icon">
   <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
-  <title>Shop</title> 
+  <title>palette</title> 
   </style>
   <meta charset="utf-8">
   <link rel="stylesheet" href="shopcss.css">
@@ -31,7 +32,7 @@ String memberId = (String)session.getAttribute("memberId");
 %>
 
     <div class="products">
-        <h3>클래스 목록</h3>
+        <h3>나의 클래스 관리</h3>
 
         <div class="product-list">
         
@@ -44,13 +45,10 @@ for(int i=0; i<boardList.size(); i++){
              <a href="classContent.cbo?classNum=<%=boardDTO.getClassNum() %>" class="product">
      <%      
       		if(boardDTO.getClassFile() == null){
-     %>
-                <img src="images/cat-space.gif" width="225" height="225px">
-     <%		}else{
-     %>           
-            	<img src="upload/<%=boardDTO.getClassFile() %>" width="225" height="225px">
-     <%			 }
-     %>
+     %>     <img src="images/logo_board.png" >
+    <%	}else{ %>           
+            	<img src="upload/<%=boardDTO.getClassFile() %>">
+     <%	 }  %>
                 <div class="product-name">
                 	제목 : <%=boardDTO.getClassSubject() %>
                 </div>
@@ -63,7 +61,7 @@ for(int i=0; i<boardList.size(); i++){
 }
 %>
 </div>
-   <input type="button" value="클래스 등록" class="btn" 
+   <input type="button" value="클래스 등록" class="classbo_btn" 
        					onclick="location.href='classWrite.cbo'">
        					
  <div id="page_control">
