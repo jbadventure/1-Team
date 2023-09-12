@@ -66,14 +66,11 @@ input::placeholder{
 }
 
 .classbo_btn{
-	padding: 5px;
-	margin: 5px;
-	color: black;
-	font-weight:bold;
 	font-size: 15px;
-	background-color: sliver;
-	border-color: sliver;
 	border-radius: 10px;
+	border: none;
+	width: 100px;
+	height: 40px;
 }
 
 .clearfix{

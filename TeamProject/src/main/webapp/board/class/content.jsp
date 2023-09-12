@@ -72,7 +72,7 @@ if(memberId != null){
                                                           <option value="4">4명</option>
                                                           <option value="5">5명</option>
                                                      </select><br><br>
-                  <input type="submit" value="결제하기" class="btn">
+                  <input type="submit" value="결제하기" id="reservebtn">
              <span id="closeBtn">창닫기</span>
              </div></div></div>
   <%	  }  %>
@@ -101,19 +101,21 @@ if(memberId != null){
   <div id="tab-1" class="tab-content current"><!--탭1내용-->
 <div class="product-content">
 <%=boardDTO.getClassContent() %> <!--클래스소개-->
+<br>
+<div id="class_regist">
 <%
 // 호스트 로그인, 글쓴이 일치하면 => 글수정, 글삭제 보이기
 if(memberId != null){
 	if(memberId.equals(boardDTO.getHostId())){ %>    
-		<input type="button" value="클래스 수정" class="btn" 
+		<input type="button" value="클래스 수정" class="class_regist_btn" 
        					onclick="location.href='classUpdate.cbo?classNum=<%=boardDTO.getClassNum()%>'">
-  		<input type="button" value="클래스 삭제" class="btn" 
+  		<input type="button" value="클래스 삭제" class="class_regist_btn" 
        					onclick="location.href='classDelete.cbo?classNum=<%=boardDTO.getClassNum()%>'">
 	 <% }%>
 <%} %>
-
 </div>
-  </div>  
+	</div>
+  	</div>  
     
   <div id="tab-2" class="tab-content"><!--탭2내용-->
   <table>
@@ -124,12 +126,13 @@ if(memberId != null){
   </div> 
        
     <div id="tab-3" class="tab-content"><!--탭3내용-->
-<%if(memberId != null) {  %>
+<%if(memberId != null) {  
+	 if(memberType.equals("guest")){	%>	
 		<div class="review-add-button">
-			<button onclick="window.location.href='/TeamProject/reviewWrite.rbo?classNum=<%=boardDTO.getClassNum()%>'">리뷰 작성</button>
+			<button class="reviewDbtn" onclick="window.location.href='/TeamProject/reviewWrite.rbo?classNum=<%=boardDTO.getClassNum()%>'">리뷰 작성</button>
 		</div><br>
-<% } %>		
-
+<% } 	
+}%>	
 		<%
 for(int i=0; i<reviewboardList.size(); i++){
 	ReviewBoardDTO reviewboardDTO = reviewboardList.get(i);
@@ -139,13 +142,13 @@ for(int i=0; i<reviewboardList.size(); i++){
 			<div id="reviewIssueDate"> 작성일 : <%=reviewboardDTO.getReviewIssueDate() %></div>
 			<div id="reviewFile"><!--후기첨부파일-->
  <%   if(reviewboardDTO.getReviewFile() != null){  %>
-      <img src="upload/<%=reviewboardDTO.getReviewFile() %>" width="320" height="212">
+      <img src="upload/<%=reviewboardDTO.getReviewFile() %>" width="320" height="212"  style=" object-fit:	scale-down;">
 <% } %> </div><br>
 			<div class="reviewContent"><%=reviewboardDTO.getReviewContent()%></div>
 <% if(memberId != null){
 	if(memberId.equals(reviewboardDTO.getReviewId())){ %>    	
 			<div class="review-delete-button">
-			<input type="button" value="후기 삭제" class="btn" onclick="location.href='reviewDelete.rbo?classNum=<%=reviewboardDTO.getClassNum()%>&reviewNum=<%=reviewboardDTO.getReviewNum()%>'">
+			<input type="button" value="후기 삭제" class="reviewDbtn" onclick="location.href='reviewDelete.rbo?classNum=<%=reviewboardDTO.getClassNum()%>&reviewNum=<%=reviewboardDTO.getReviewNum()%>'">
 			</div>
 			<% } %>
 		<% } %>	
