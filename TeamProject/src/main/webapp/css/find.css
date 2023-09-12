@@ -36,11 +36,6 @@
 	margin-left:770px;
 	margin-top: 50px;
 }
-#checkFormPass2{
-	width: 520px;
-	margin-left:770px;
-	margin-top: 20px;
-}
 #memberId{
 	width: 70%;
 	height: 37px;
@@ -95,12 +90,18 @@
 	height: 300px;
 	min-height: 100%;
 	margin: 80px auto;	
-/*     padding-bottom: 80px; */
-/* 	margin-top: 120px; */
 }
 #memId2{
 	font-weight: bold;
 	margin-left: 20px;
+}
+#checkFormPass2{
+	width: 520px;
+	margin-left:770px;
+	margin-top: 20px;
+}
+#pass2{
+	margin-bottom: 20px;
 }
 #btn1{
 	width:40%;
