@@ -58,6 +58,43 @@ public class ClassBoardDAO {
 		}
 		return boardList;
 	}// getBoardList
+	
+	public List<ClassBoardDTO> getBoardList(PageDTO pageDTO, String classCategory) {
+		System.out.println("ClassBoardDAO getBoardList()");
+		List<ClassBoardDTO> boardList = null;
+		try { 
+			// 1 2
+			con = new SQLConnection().getConnection();
+			String sql = "select * from class where classCategory=? order by classNum desc limit ?, ?";
+			// 3
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, classCategory);
+			pstmt.setInt(2, pageDTO.getStartRow()-1); // 시작행 -1 
+			pstmt.setInt(3, pageDTO.getPageSize());//몇개	
+			//4
+			rs =pstmt.executeQuery();
+			boardList = new ArrayList<>();
+			//5 
+			while(rs.next()) {
+				ClassBoardDTO boardDTO = new ClassBoardDTO();
+				boardDTO.setClassNum(rs.getInt("classNum"));
+				boardDTO.setClassSubject(rs.getString("classSubject"));
+				boardDTO.setHostId(rs.getString("hostId"));
+				boardDTO.setClassIssueDate(rs.getTimestamp("classIssuedate"));
+				boardDTO.setClassLocation(rs.getString("classLocation"));
+				boardDTO.setClassCategory(rs.getString("classCategory"));
+				boardDTO.setClassContent(rs.getString("classContent"));
+				boardDTO.setClassPrice(rs.getInt("classPrice"));
+				boardDTO.setClassFile(rs.getString("classFile"));
+				boardList.add(boardDTO);
+				}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			dbClose();
+		}
+		return boardList;
+	}// getBoardList
 
 	public int getBoardCount() {
 		System.out.println("ClassBoardDAO getBoardCount()");
@@ -68,6 +105,31 @@ public class ClassBoardDAO {
 			// 3단계 문자열 -> sql구문 변경			// 3 select count(*) from board	
 			String sql = "select count(*) from class;";
 			pstmt=con.prepareStatement(sql);
+			//4 실행 => 결과저장
+			rs =pstmt.executeQuery();
+		if(rs.next()) {
+			count = rs.getInt("count(*)");
+		}
+			// 실행  -> 결과 저장 
+			// 5결과 행접근 -> 열접근-> count 변수 저장 
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			dbClose();
+		}
+		return count;
+	}//getBoardCount
+	
+	public int getBoardCount(String classCategory) {
+		System.out.println("ClassBoardDAO getBoardCount()");
+		int count =0;
+		try {
+			// 1단계 2단계 
+			con = new SQLConnection().getConnection();
+			// 3단계 문자열 -> sql구문 변경			// 3 select count(*) from board	
+			String sql = "select count(*) from class where classCategory=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, classCategory);
 			//4 실행 => 결과저장
 			rs =pstmt.executeQuery();
 		if(rs.next()) {

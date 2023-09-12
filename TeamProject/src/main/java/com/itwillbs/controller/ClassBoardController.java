@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.itwillbs.domain.ClassBoardDTO;
 import com.itwillbs.domain.PageDTO;
@@ -269,6 +270,67 @@ public class ClassBoardController extends HttpServlet {
 		    = request.getRequestDispatcher("board/class/list.jsp");
 		dispatcher.forward(request, response);
 		}
+		
+		if (sPath.equals("/classListCategory.cbo")) { // 메인에서 클래스테스트 누르면 클래스 리스트 보여줌 
+			System.out.println("뽑은 가상주소 비교 : /classListCategory.cbo");
+			// 메인페이지 카테고리 창에서 받아옴
+			String classCategory = request.getParameter("classCategory");
+			HttpSession session = request.getSession();
+			session.setAttribute("classCategory", classCategory);
+			System.out.println(classCategory);
+			// 한페이지에 출력될 게시물 수 pageSize
+			int pageSize = 6;
+			//페이지 번호
+			String pageNum = request.getParameter("pageNum");
+			// 페이지 번호 없으면 1페이지 설정 
+			if(pageNum == null) {
+				pageNum = "1";
+			}
+			// 페이지 번호를 정수형으로 변겅
+			 int currentPage = Integer.parseInt(pageNum);
+				
+			 PageDTO pageDTO = new PageDTO();
+			 pageDTO.setPageSize(pageSize);
+			 pageDTO.setPageNum(pageNum);
+			 pageDTO.setCurrentPage(currentPage);
+			
+			//ClassBoardService 객체생성 
+			boardService = new ClassBoardService();
+			List<ClassBoardDTO> boardList = boardService.getBoardList(pageDTO, classCategory); 
+			
+			// 게시판 전체 글 개수 구하기 
+			System.out.println(classCategory);
+			int count = boardService.getBoardCount(classCategory);
+			// 한화면에 출력될 페이지개수  pageBlock
+			int pageBlock = 5;
+			// 시작하는 페이지번호 startPage
+			int startPage=(currentPage-1)/pageBlock*pageBlock+1;
+			// 끝나는페이지번호 endPage
+			int endPage=startPage+pageBlock-1;
+			int pageCount = count/pageSize + (count%pageSize==0?0:1);
+			
+			if(endPage >pageCount) {
+				endPage = pageCount; 
+			}
+			
+			// pageDTO에 저장  
+			pageDTO.setCount(count);
+			pageDTO.setPageBlock(pageBlock);
+			pageDTO.setStartPage(startPage);
+			pageDTO.setEndPage(endPage);
+			pageDTO.setPageCount(pageCount);
+			
+//			request.setAttribute("classCategory", classCategory);
+			request.setAttribute("boardList", boardList);
+			request.setAttribute("pageDTO", pageDTO);
+			
+			System.out.println(boardList);
+			dispatcher = request.getRequestDispatcher("board/class/listcategory.jsp");
+			dispatcher.forward(request, response);
+			} // list 
+		
+		
+		
 		
 	} // doProcess
 }// class

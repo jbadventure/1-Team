@@ -226,7 +226,7 @@
                   </div>
                   <div class="services-terri-caption">
 <!--                   <span class="services-terri-icon linearicons-leaf"></span> -->
-                    <h5 class="services-terri-title"><a href="#">요리</a></h5>
+                    <h5 class="services-terri-title"><a href="/TeamProject/classListCategory.cbo?classCategory=요리">요리</a></h5>
                   </div>
                 </article>
               </div>
@@ -239,7 +239,7 @@
                   </div>
                   <div class="services-terri-caption">
 <!--                   <span class="services-terri-icon linearicons-pizza"></span> -->
-                    <h5 class="services-terri-title"><a href="#">수공예</a></h5>
+                    <h5 class="services-terri-title"><a href="/TeamProject/classListCategory.cbo?classCategory=수공예">수공예</a></h5>
 <!--                   </div> -->
                 </article>
               </div>
@@ -252,7 +252,7 @@
                   </div>
                   <div class="services-terri-caption">
 <!--                   <span class="services-terri-icon linearicons-hamburger"></span> -->
-                    <h5 class="services-terri-title"><a href="#">액티비티</a></h5>
+                    <h5 class="services-terri-title"><a href="/TeamProject/classListCategory.cbo?classCategory=액티비티">액티비티</a></h5>
                   </div>
                 </article>
               </div>
