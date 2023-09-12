@@ -62,7 +62,7 @@ public class MemberController extends HttpServlet {
 			dispatcher = request.getRequestDispatcher("member/join/insertGuest.jsp");
 			dispatcher.forward(request, response);
 		} // insert.me
-
+		
 		if (sPath.equals("/insertProGuest.me")) {
 			System.out.println("뽑은 가상주소 비교 : /insertProGuest.me");
 			// MemberService 객체생성
@@ -72,7 +72,13 @@ public class MemberController extends HttpServlet {
 			// 로그인 이동 => 주소변경하면서 이동
 			response.sendRedirect("main.me");
 		}
- 
+		
+		// 이용약관
+		if(sPath.equals("/agree.me")) {
+			dispatcher = request.getRequestDispatcher("member/join/agree.jsp");
+			dispatcher.forward(request, response);
+		}// agree.me
+		
 		// 호스트 회원가입
 		if (sPath.equals("/insertHost.me")) {
 			// forward 방식 : 주소가 변경되지 않으면서 request, response 정보를 들고 이동

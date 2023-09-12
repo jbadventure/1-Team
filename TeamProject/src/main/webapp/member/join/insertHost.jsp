@@ -116,45 +116,67 @@
 <!-- form -->
 <form action="insertProHost.me" method="post" id="frInsertHost">
 <div id="InsertHostBox">
-아이디 : <input type="text" name="id" id="id"> <input type="button" value="중복확인" name="idup" id="idup"><br>
-	   <div id="div1"></div>
-비밀번호 : <input type="password" name="pass" id="pass"><br>
-		<div id="div2"></div>
-비밀번호 확인 : <input type="password" name="pass2" id="pass2"><br>
-		   <div id="div3"></div>
-닉네임 : <input type="text" name="nick" id="nick"> <input type="button" value="중복확인" name="ndup" id="ndup"><br>
-	   <div id="div4"></div>
-이름 : <input type="text" name="name" id="name"> <br>
-	  <div id="div5"></div>
-생년월일 : <input type="date" name="birth" id="birth"><br>
-		<div id="div6"></div>
-성별 : <input type="radio" name="gender" value="남" id="gender1">남
-      <input type="radio" name="gender" value="여" id="gender2">여<br>
-      <div id="div7"></div>
-전화번호 : <input type="text" name="phone1" id="phone1" maxlength="3" size="3">-<input type="text" name="phone2" id="phone2" maxlength="4" size="4">-<input type="text" name="phone3" id="phone3" maxlength="4" size="4"><br>
-	    <div id="div8"></div>
-이메일 : <input type="text" name="emailop1" id="emailop1">@<select name="emailop2" id="emailop2">
-												   <option value="">이메일을 선택해주세요</option>
-												   <option value="naver.com">naver.com</option>
-												   <option value="gmail.com">gmail.com</option>
-        							   		   	   </select><br>
-        							   		   	   <div id="div9"></div>
-사업자등록번호 : <input type="text" name="bNum" id="bNum"><br>
-			<div id="div11"></div>		
-지역 : <select name="address" id="address">
-	 <option value="">지역을 선택해주세요</option>
-	 <option value="Seoul">서울</option>
-	 <option value="Gyeonggi">경기도</option>
-	 <option value="Gangwon">강원도</option>
-	 <option value="Chungcheong">충청도</option>
-	 <option value="Jeolla">전라도</option>
-	 <option value="Gyeongsang">경상도</option>
-	 <option value="Busan">부산</option>
-	 <option value="Jeju">제주도</option>
-	 </select><br>
-	 <div id="div12"></div>
+<!-- 아이디 -->
+<input type="text" placeholder="아이디" name="id" id="id" size="19"> <input type="button" value="중복확인" name="idup" id="idup"><br>
+<div id="div1"></div>
 
-<input type="checkbox" value="이용약관" id="agree">위 이용약관에 동의합니다. <a href="member/join/agree.jsp">이용약관</a><br>
+<!-- 비밀번호 -->
+<input type="password" placeholder="비밀번호" name="pass" id="pass" size="30"><br>
+<div id="div2"></div>
+
+<!-- 비밀번호 확인 -->
+<input type="password" placeholder="비밀번호 확인" name="pass2" id="pass2" size="30"><br>
+<div id="div3"></div>
+
+<!-- 닉네임 -->
+<input type="text" placeholder="닉네임" name="nick" id="nick" size="19"> <input type="button" value="중복확인" name="ndup" id="ndup"><br>
+<div id="div4"></div>
+
+<!-- 이름 -->
+<input type="text" placeholder="이름" name="name" id="name" size="30"> <br>
+<div id="div5"></div>
+
+<!-- 생년월일 -->
+<input type="date" name="birth" id="birth" style="width:252px;"><br>
+<div id="div6"></div>
+
+<!-- 성별 -->
+<input type="radio" name="gender" value="남" id="gender1" style="height:15px; width:15px; border-radius:0px;">남
+<input type="radio" name="gender" value="여" id="gender2" style="height:15px; width:15px; border-radius:0px;">여<br>
+<div id="div7"></div>
+
+<!-- 전화번호 -->
+<input type="text" placeholder="전화번호는 숫자만 입력해주세요" name="memberPhoneNum" id="phone" maxlength="11" size="30"><br>
+<div id="div8"></div>
+
+<!-- 이메일 -->
+<input type="text" placeholder="이메일" name="emailop1" id="emailop1" size="30"><br>
+<select name="emailop2" id="emailop2">
+<option value="">이메일을 선택해주세요</option>
+<option value="naver.com">@naver.com</option>
+<option value="gmail.com">@gmail.com</option>
+</select><br>
+<div id="div9"></div>
+
+<!-- 사업자등록번호 -->
+<input type="text" placeholder="사업자등록번호" name="bNum" id="bNum"><br>
+<div id="div11"></div>		
+
+<!-- 지역 -->
+<select name="address" id="address">
+<option value="">지역을 선택해주세요</option>
+<option value="Seoul">서울</option>
+<option value="Gyeonggi">경기도</option>
+<option value="Gangwon">강원도</option> 
+<option value="Chungcheong">충청도</option>
+<option value="Jeolla">전라도</option>
+<option value="Gyeongsang">경상도</option>
+<option value="Busan">부산</option>
+<option value="Jeju">제주도</option>
+</select><br>
+<div id="div12"></div>
+
+<input type="checkbox" value="이용약관" id="agree">위 이용약관에 동의합니다. <a href="agree.me">이용약관</a><br>
 <div id="div13"></div>
 <input type="hidden" value="host" name="memberType" id="memberType">
 <input type="button" value="회원가입" id="btn1">
