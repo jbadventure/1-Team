@@ -47,9 +47,9 @@ int classPrice = (int)session.getAttribute("classPrice");
 </div>
 <!-- <tr><td> -->
     <% if(ordersDTO.getClassFile() == null){ %>
-                <img src="images/logo-198x66.png" class="content_image" width="123" height="81">
+                <img src="images/logo-198x66.png" class="content_image" style=" object-fit:	scale-down;">
     <% }else{ %>           
-            	<img src="upload/<%=ordersDTO.getClassFile() %>" class="content_image" width="123" height="81">
+            	<img src="upload/<%=ordersDTO.getClassFile() %>" class="content_image">
     <% } %>
 <!-- </td></tr>  -->
 <div id="class-content" >
