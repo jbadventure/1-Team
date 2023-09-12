@@ -7,7 +7,10 @@
 <html>
 <head>
   <link rel="stylesheet" href="shopcss.css">
-  <link href="css/newfile.css" rel="stylesheet" type="text/css">
+  <link href="css/NewTop.css" rel="stylesheet" type="text/css">
+  <link href="css/NewBottom.css" rel="stylesheet" type="text/css">
+<!--   <link href="css/body.css" rel="stylesheet" type="text/css"> -->
+  <link href="css/product.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
   <title>Shop</title> 
   </style>
@@ -19,6 +22,8 @@
 <!-- 헤더들어가는 곳 -->
 <jsp:include page="../../inc/NewTop.jsp"></jsp:include>
 <!-- 헤더들어가는 곳 --> 
+<div id = bodycontainer>
+<div id = content_frame>
 <%
 List<ClassBoardDTO> boardList =(List<ClassBoardDTO>)request.getAttribute("boardList");
 PageDTO pageDTO = (PageDTO)request.getAttribute("pageDTO");
@@ -89,9 +94,10 @@ if(pageDTO.getEndPage() < pageDTO.getPageCount()){
 %>
 
 </div>
-        
-    </div>
-    <!-- 푸터들어가는 곳 -->
+</div>
+</div>
+</div>
+<!-- 푸터들어가는 곳 -->
 <jsp:include page="../../inc/bottom.jsp"></jsp:include>
 <!-- 푸터들어가는 곳 -->
 </body>
