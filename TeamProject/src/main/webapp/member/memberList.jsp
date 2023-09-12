@@ -7,7 +7,9 @@
 <html>
 <head>
   <link rel="stylesheet" href="shopcss.css">
-  <link href="css/newfile.css" rel="stylesheet" type="text/css">
+  <link href="css/NewTop.css" rel="stylesheet" type="text/css">
+  <link href="css/NewBottom.css" rel="stylesheet" type="text/css">
+  <link href="css/body.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>member/memberList.jsp</title>
@@ -16,6 +18,8 @@
 <!-- 헤더들어가는 곳 -->
 <jsp:include page="../inc/NewTop.jsp"></jsp:include>
 <!-- 헤더들어가는 곳 --> 
+<div id = bodycontainer>
+<div id = content_frame>
 <%
 List<MemberDTO> memberList=(List<MemberDTO>)request.getAttribute("memberList");
 %>
@@ -107,6 +111,8 @@ if(pageDTO.getEndPage() < pageDTO.getPageCount()){
 %>
 </div>
 <div class="clear"></div> --%>
+</div>
+</div>
 
 
 <!-- 푸터들어가는 곳 -->
