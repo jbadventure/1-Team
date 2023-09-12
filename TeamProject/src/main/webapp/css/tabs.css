@@ -76,6 +76,18 @@ ul.tabs li.current{
   display: inherit;
 }
 
+#class_regist{
+	margin-top:50px;
+	float: left;
+}
+
+.class_regist_btn{
+	font-size: 15px;
+	border-radius: 10px;
+	border: none;
+	width: 100px;
+	height: 40px;
+}
 
 .review-delete-button{
 	float: right;

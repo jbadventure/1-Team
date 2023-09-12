@@ -101,19 +101,21 @@ if(memberId != null){
   <div id="tab-1" class="tab-content current"><!--탭1내용-->
 <div class="product-content">
 <%=boardDTO.getClassContent() %> <!--클래스소개-->
+<br>
+<div id="class_regist">
 <%
 // 호스트 로그인, 글쓴이 일치하면 => 글수정, 글삭제 보이기
 if(memberId != null){
 	if(memberId.equals(boardDTO.getHostId())){ %>    
-		<input type="button" value="클래스 수정" class="btn" 
+		<input type="button" value="클래스 수정" class="class_regist_btn" 
        					onclick="location.href='classUpdate.cbo?classNum=<%=boardDTO.getClassNum()%>'">
-  		<input type="button" value="클래스 삭제" class="btn" 
+  		<input type="button" value="클래스 삭제" class="class_regist_btn" 
        					onclick="location.href='classDelete.cbo?classNum=<%=boardDTO.getClassNum()%>'">
 	 <% }%>
 <%} %>
-
 </div>
-  </div>  
+	</div>
+  	</div>  
     
   <div id="tab-2" class="tab-content"><!--탭2내용-->
   <table>
