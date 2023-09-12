@@ -5,16 +5,18 @@
 }
 
 main{
-	 width: 30%; margin: auto; margin-top:50px; margin-bottom: 50px;
+	 width: 30%; margin-top: 80px; margin-bottom:80px; margin-left: 660px;
 	 
 }
 
 img{
 	 float:left; margin-right: 50px; border-radius: 20px;
 }
-
+section{
+	margin-left: 100px;
+}
 #info2{
-	margin-left:110px; margin-bottom:30px;
+	margin-left: 110px; margin-bottom:30px;
 }
 
 #nick{
@@ -26,7 +28,7 @@ img{
 }
 
 #button{
-	width: 20%; margin-left:140px;
+	width: 20%; margin-left:200px;
 }
 
 #update{
