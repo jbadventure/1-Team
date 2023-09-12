@@ -67,7 +67,7 @@ public class NoticeBoardDAO {
 		List<NoticeBoardDTO> boardList = null;
 		try {
 			con = new SQLConnection().getConnection();
-			String sql = "select * from notice order by noticeNum desc";
+			String sql = "select * from notice order by noticeNum asc";
 			pstmt=con.prepareStatement(sql);
 			rs =pstmt.executeQuery();
 			boardList = new ArrayList<>();

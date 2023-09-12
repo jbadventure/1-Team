@@ -39,7 +39,7 @@ public class QuestionBoardController extends HttpServlet{
 		
 		if(sPath.equals("/questionList.qbo")){
 			// 한페이지에 출력될 게시물 수 pageSize
-			int pageSize = 10;
+			int pageSize = 9;
 			// 페이지 번호
 			String pageNum = request.getParameter("pageNum");
 			// 페이지 번호 없으면 1페이지 설정
@@ -132,6 +132,8 @@ public class QuestionBoardController extends HttpServlet{
 			boardService = new QuestionBoardService();
 			// deleteBoard(request) 호출
 			boardService.deleteBoard(request);
+			String questionNum = request.getParameter("questionNum");
+			System.out.println(questionNum + "QuestionBoardController sex");
 			// 주소 변경되면서 이동
 			response.sendRedirect("questionList.qbo");
 		}

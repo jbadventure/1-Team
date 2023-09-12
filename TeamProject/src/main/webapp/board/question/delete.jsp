@@ -17,7 +17,7 @@ String dbUrl="jdbc:mysql://itwillbs.com/c1d2304t1";
 String dbUser="c1d2304t1";
 String dbPass="1234";
 Connection con=DriverManager.getConnection(dbUrl, dbUser, dbPass);
-String sql = "delete from notice where questionNum=?";
+String sql = "delete from question where questionNum=?";
 PreparedStatement pstmt = con.prepareStatement(sql);
 pstmt.setInt(1, questionNum);
 pstmt.executeUpdate();
