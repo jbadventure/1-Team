@@ -31,7 +31,7 @@ OrdersDTO ordersDTO = (OrdersDTO)request.getAttribute("ordersDTO");
     <% if(ordersDTO.getClassFile() == null){ %>
                 <img src="images/logo-198x66.png" onclick="window.location.href='classContent.cbo?classNum=<%=ordersDTO.getClassNum() %>'" class="content_image" width="107" height="71" style=" object-fit:	scale-down;">
     <% }else{ %>           
-            	<img src="upload/<%=ordersDTO.getClassFile() %>" class="content_image" width="107" height="71">
+            	<img src="upload/<%=ordersDTO.getClassFile() %>" onclick="window.location.href='classContent.cbo?classNum=<%=ordersDTO.getClassNum() %>'" class="content_image" width="107" height="71">
     <% } %>
 <div id="class-content" >
 <table>
