@@ -34,6 +34,14 @@
   border: 1px solid #777;
   background-color: #fff;
 }
+
+#reservebtn{
+  border: none;
+  width: 90px;
+  height: 30px;
+  border-radius: 10px;
+}
+
 #closeBtn {
   float:right;
   font-weight: bold;

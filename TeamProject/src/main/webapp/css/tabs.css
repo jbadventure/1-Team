@@ -46,6 +46,7 @@
 	width: 1200px; 
 	min-height: 200px;
 	margin: 0 auto;
+	margin-bottom: 30px;
 }
 
 ul.tabs {
@@ -80,12 +81,21 @@ ul.tabs li.current{
 	float: right;
 }
 
+.reviewDbtn{
+	font-size: 15px;
+	border-radius: 10px;
+	border: none;
+	width: 100px;
+	height: 40px;
+}
+
 #return{
 	margin: 0 auto;
 	margin-bottom: 30px;
 }
 
 #return_btn{
+	font-size: 15px;	
 	margin: 0 auto;
 	display: block;
 	text-align: center;
@@ -93,5 +103,4 @@ ul.tabs li.current{
 	border: none;
 	width: 200px;
 	height: 40px;
-	padding: 10px 5px;
 }

@@ -64,7 +64,7 @@ for(int i=0; i<boardList.size(); i++){
 <!-- </div> -->
 
  
- <div id="page_control">
+ <div id="page_control" style="font-size: 15px;">
 <%
 // 시작페이지 1페이지 prev 없음 
 // 시작페이지 11,21,31, prev 보임 

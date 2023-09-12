@@ -45,7 +45,7 @@ for(int i=0; i<boardList.size(); i++){
 				후기 내용 :
 				<%=boardDTO.getReviewContent()%>
 			</div>
-			<div class="reviewFile">
+			<div class="reviewFile" >
 				첨부파일 :
 				<%=boardDTO.getReviewFile()%>
 			</div><br>
