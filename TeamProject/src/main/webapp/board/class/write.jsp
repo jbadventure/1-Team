@@ -54,7 +54,7 @@ String memberId = (String)session.getAttribute("memberId");
 				<td><textarea rows="20" cols="40" class="classContent" name="classContent"></textarea></td>
 			</tr>
 			<tr><td>대표 이미지</td>
-			<td><input type="file" class="file" name="classFile"></td></tr>
+			<td><input type="file" name="classFile"></td></tr>
 		</table>
 		<div id="table_search">
 			<input type="submit" value="글쓰기" class="classwritebtn">

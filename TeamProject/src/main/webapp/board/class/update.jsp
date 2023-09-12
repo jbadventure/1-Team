@@ -4,9 +4,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link rel="stylesheet" href="shopcss.css">
   <link href="css/NewTop.css" rel="stylesheet" type="text/css">
+  <link href="css/NewBottom.css" rel="stylesheet" type="text/css">
+  <link href="css/classUpdate.css?ver=1.1" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
 <meta charset="UTF-8">
-<title>Class 수정</title>
+<title>CLASS 수정</title>
 </head>
 <body>
 <!-- 헤더들어가는 곳 -->
@@ -22,26 +26,26 @@ ClassBoardDTO boardDTO = (ClassBoardDTO)request.getAttribute("boardDTO");
 		<input type="hidden" name="classNum" value="<%=boardDTO.getClassNum() %>" readonly>
 		<table id="notice">
 			<tr>
-				<td>Class 제목</td>
-				<td><input type="text" name="classSubject" value="<%=boardDTO.getClassSubject() %>"></td>
+				<td>제목</td>
+				<td><input type="text" name="classSubject" id="box" value="<%=boardDTO.getClassSubject() %>"></td>
 			</tr>
 			<tr>
-				<td>Class 가격</td>
-				<td><input type="text" name="classPrice" value="<%=boardDTO.getClassPrice() %>"></td>
+				<td>가격</td>
+				<td><input type="text" name="classPrice" id="box" value="<%=boardDTO.getClassPrice() %>"></td>
 			</tr>
 			<tr>
-				<td>Class 카테고리</td>
+				<td>카테고리</td>
 				<td>
-				<select style="width: 200px;" name="classCategory" value="<%=boardDTO.getClassCategory()%>" class="form-control" required="required">
+				<select style="width: 390px;" name="classCategory" value="<%=boardDTO.getClassCategory()%>" class="form-control" required="required">
 				<option value="야외/체험" selected="selected">야외/체험</option>
 				<option value="만들기">만들기</option>
 				<option value="강의">강의</option>
 				</select></td>
 			</tr>
 			<tr>
-				<td>Class 지역</td>
+				<td>지역</td>
 				<td>
-				<select style="width: 200px;" name="classLocation" value="<%=boardDTO.getClassLocation() %>" class="form-control" required="required">
+				<select style="width: 390px;" name="classLocation" value="<%=boardDTO.getClassLocation() %>" class="form-control" required="required">
 				<option value="서울" selected="selected">서울</option>
 				<option value="경기">경기</option>
 				<option value="부산">부산</option>
@@ -49,8 +53,8 @@ ClassBoardDTO boardDTO = (ClassBoardDTO)request.getAttribute("boardDTO");
 				</select></td>
 			</tr>
 			<tr>
-				<td>Class 소개</td>
-				<td><textarea rows="10" cols="20" name="classContent"><%=boardDTO.getClassContent() %></textarea></td>
+				<td>소개</td>
+				<td><textarea rows="20" cols="40" class="classContent" name="classContent"><%=boardDTO.getClassContent() %></textarea></td>
 			</tr>
 			<tr><td>대표 이미지</td>
 			<td><input type="file" name="classFile">
@@ -58,7 +62,7 @@ ClassBoardDTO boardDTO = (ClassBoardDTO)request.getAttribute("boardDTO");
 			    <%=boardDTO.getClassFile()%></td></tr>
 		</table>
 		<div id="table_search">
-			<input type="submit" value="글쓰기" class="btn">
+			<input type="submit" value="글쓰기" class="classwritebtn">
 		</div>
 	</form>
 <!-- 푸터들어가는 곳 -->
