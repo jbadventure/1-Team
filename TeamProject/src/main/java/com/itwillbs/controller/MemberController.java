@@ -70,7 +70,7 @@ public class MemberController extends HttpServlet {
 			// insertGuest() 메서드 호출
 			memberService.insertGuest(request);
 			// 로그인 이동 => 주소변경하면서 이동
-			response.sendRedirect("main.me");
+			response.sendRedirect("login.me");
 		}
 		
 		// 이용약관
@@ -90,7 +90,7 @@ public class MemberController extends HttpServlet {
 			System.out.println("주소 비교 : /insertProHost.me");
 			memberService = new MemberService();
 			memberService.insertHost(request);
-			response.sendRedirect("main.me");
+			response.sendRedirect("login.me");
 		}
 		
 			//아이디 중복체크
