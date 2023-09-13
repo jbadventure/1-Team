@@ -27,10 +27,15 @@ String memberType = (String)session.getAttribute("memberType");
 %>
     <div class="products">
         <h3>OUR CLASS</h3>
-        <div class="product-list">            
-        <%
-for(int i=0; i<boardList.size(); i++){
-	ClassBoardDTO boardDTO = boardList.get(i);
+        <div class="product-list"> 
+<%
+if(boardList.isEmpty()){ 
+%>
+<div class="no-results"><h1>일치하는 정보가 없습니다.</h1></div>         
+    <%
+}else{
+        for(int i=0; i<boardList.size(); i++){
+		ClassBoardDTO boardDTO = boardList.get(i);
 	%>
              <a href="classContent.cbo?classNum=<%=boardDTO.getClassNum() %>" class="product">
      <%  	if(boardDTO.getClassFile() == null){   %>
@@ -44,7 +49,8 @@ for(int i=0; i<boardList.size(); i++){
                 <div class="product-price">
                    <%=boardDTO.getClassPrice() %>원 
                 </div>
-            </a>          
+            </a>
+     <% } %>          
 <% } %>
  </div> 
  
