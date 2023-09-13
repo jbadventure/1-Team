@@ -8,9 +8,10 @@
   <link href="css/NewTop.css" rel="stylesheet" type="text/css">
   <link href="css/NewBottom.css" rel="stylesheet" type="text/css">
   <link href="css/report.css" rel="stylesheet" type="text/css">
+    <link rel="icon" href="images/favicon.ico?v=2" type="image/x-icon">
   <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
 <meta charset="UTF-8">
-<title>idCheck</title>
+<title>palette</title>
 </head>
 <body>
 <!-- 헤더들어가는 곳 -->

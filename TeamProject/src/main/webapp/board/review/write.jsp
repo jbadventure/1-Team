@@ -8,10 +8,11 @@
   <link href="css/NewTop.css" rel="stylesheet" type="text/css">
   <link href="css/NewBottom.css" rel="stylesheet" type="text/css">
   <link href="css/reviewWrite.css" rel="stylesheet" type="text/css">
+    <link rel="icon" href="images/favicon.ico?v=2" type="image/x-icon">
 <!--   <link href="css/newfile.css" rel="stylesheet" type="text/css"> -->
   <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
 <meta charset="UTF-8">
-<title>리뷰 작성</title>
+<title>palette</title>
 </head>
 <body>
 <!-- 헤더들어가는 곳 -->

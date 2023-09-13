@@ -138,11 +138,11 @@ for(int i=0; i<reviewboardList.size(); i++){
 	ReviewBoardDTO reviewboardDTO = reviewboardList.get(i);
     %>
 		<div class="review">
-			<div id="reviewID"><%=reviewboardDTO.getReviewId() %>님의 후기</div>
-			<div id="reviewIssueDate"><%=reviewboardDTO.getReviewIssueDate() %></div>
+			<div id="reviewID" class="reviewData"><%=reviewboardDTO.getReviewId() %>님의 후기</div><br>
+			<div id="reviewIssueDate" class="reviewData"><%=reviewboardDTO.getReviewIssueDate() %></div><br>
 			<div id="reviewFile"><!--후기첨부파일-->
  <%   if(reviewboardDTO.getReviewFile() != null){  %>
-      <img src="upload/<%=reviewboardDTO.getReviewFile() %>" width="320" height="212"  style=" object-fit:	scale-down;">
+      <img src="upload/<%=reviewboardDTO.getReviewFile() %>" width="320" height="212"  style=" object-fit:	scale-down; border-radius:10px;">
 <% } %> </div><br>
 			<div class="reviewContent"><%=reviewboardDTO.getReviewContent()%></div>
 <% if(memberId != null){
@@ -161,6 +161,7 @@ for(int i=0; i<reviewboardList.size(); i++){
 </div> <!--  Tabcontainer -->
 <div id="return">
 <input type="button" value="클래스 목록으로 돌아가기" id="return_btn" onclick = "location.href='classList.cbo'">
+</div>
 </div>
 </div>
 <!-- 푸터들어가는 곳 -->
