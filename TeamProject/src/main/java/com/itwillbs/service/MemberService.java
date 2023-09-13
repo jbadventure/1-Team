@@ -79,16 +79,13 @@ public class MemberService {
 				String name = request.getParameter("name");
 				String birth = request.getParameter("birth");
 				String gender = request.getParameter("gender");
-				String phone1 = request.getParameter("phone1");
-				String phone2 = request.getParameter("phone2");
-				String phone3 = request.getParameter("phone3");
+				String phone = request.getParameter("phone");
 				String emailop1 = request.getParameter("emailop1");
 				String emailop2 = request.getParameter("emailop2");
 				String bNum = request.getParameter("bNum");
 				String memberType = request.getParameter("memberType");
 				String address = request.getParameter("address");
 						
-				String phoneNum = phone1 + phone2 + phone3;
 				String email = emailop1 + '@' + emailop2;
 						
 				// id, pass, name 등을 MemberDTO 파일(바구니)에 저장 : MemberDTO 객체생성 후 set메서드로 값 저장
@@ -99,7 +96,7 @@ public class MemberService {
 				memberDTO.setMemberName(name);
 				memberDTO.setMemberBirthday(birth);
 				memberDTO.setMemberGender(gender);
-				memberDTO.setMemberPhoneNum(phoneNum);
+				memberDTO.setMemberPhoneNum(phone);
 				memberDTO.setMemberEmail(email);
 				memberDTO.setBusinessNum(bNum);
 				memberDTO.setMemberType(memberType);

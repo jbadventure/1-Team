@@ -146,7 +146,7 @@
 <div id="div7"></div>
 
 <!-- 전화번호 -->
-<input type="text" placeholder="전화번호는 숫자만 입력해주세요" name="memberPhoneNum" id="phone" maxlength="11" size="30"><br>
+<input type="text" placeholder="전화번호는 숫자만 입력해주세요" name="phone" id="phone" maxlength="11" size="30"><br>
 <div id="div8"></div>
 
 <!-- 이메일 -->
@@ -160,7 +160,7 @@
 
 <!-- 사업자등록번호 -->
 <input type="text" placeholder="사업자등록번호" name="bNum" id="bNum"><br>
-<div id="div11"></div>		
+<div id="div10"></div>		
 
 <!-- 지역 -->
 <select name="address" id="address">
@@ -174,10 +174,10 @@
 <option value="Busan">부산</option>
 <option value="Jeju">제주도</option>
 </select><br>
-<div id="div12"></div>
+<div id="div11"></div>
 
 <input type="checkbox" value="이용약관" id="agree">위 이용약관에 동의합니다. <a href="agree.me">이용약관</a><br>
-<div id="div13"></div>
+<div id="div12"></div>
 <input type="hidden" value="host" name="memberType" id="memberType">
 <input type="button" value="회원가입" id="btn1">
 </div>
@@ -315,21 +315,12 @@ $(document).ready(function(){
 			return false;
 		} else {
 			$('#div7').empty();
-			$('#phone1').focus();
+			$('#phone').focus();
 		}
-		
 		// 전화번호
-    	if($('#phone1').val().length != 3){
+		if($('#phone').val().length != 11){
 	    	$('#div8').html("전화번호를 확인해주세요").css("color","red"); 
-			$('#phone1').focus();
-			return false;
-		}else if($('#phone2').val().length != 4){
-	    	$('#div8').html("전화번호를 확인해주세요").css("color","red"); 
-			$('#phone2').focus();
-			return false;
-		}else if($('#phone3').val().length != 4){
-	    	$('#div8').html("전화번호를 확인해주세요").css("color","red"); 
-			$('#phone3').focus();
+			$('#phone').focus();
 			return false;
 		}else {
 			$('#div8').empty();
@@ -352,29 +343,29 @@ $(document).ready(function(){
 		
 		// 사업자등록번호
 		if($('#bNum').val() == "" ){
-			$('#div11').html("사업자등록번호를 입력해주세요").css("color","red");
+			$('#div10').html("사업자등록번호를 입력해주세요").css("color","red");
 			$('#bNum').focus();
 			return false;
 		} else{
-			$('#div11').empty();
+			$('#div10').empty();
 			$('#address').focus()
 		}
 		
 		//지역
 		if($('#address').val() == "" ){
-			$('#div12').html("지역을 선택해주세요").css("color","red"); 
+			$('#div11').html("지역을 선택해주세요").css("color","red"); 
 			$('#address').focus();
 			return false;
 		}else {
-			$('#div12').empty();
+			$('#div11').empty();
 		}
 		
 		// 이용약관
 		if($('#agree').prop('checked') == false ){
-		    $('#div13').html("이용약관에 동의해주세요").css("color","red"); 
+		    $('#div12').html("이용약관에 동의해주세요").css("color","red"); 
 			return
 		} else {
-		    $('#div13').empty();
+		    $('#div12').empty();
 		}
 		$('#frInsertHost').submit();
 	});
