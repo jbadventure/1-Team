@@ -20,7 +20,7 @@ String memberId = (String)session.getAttribute("memberId");
 if(memberId == null){ %>				
 			<ul id="topMenu">
 				<li><a href="/TeamProject/noticeList.nbo" >공지사항</a></li>
-			    <li><a href="/TeamProject/questionList.qbo">Q&A</a></li>
+			    <li><a href="/TeamProject/questionList.qbo">FAQ</a></li>
 				<li><a href="/TeamProject/classList.cbo">카테고리</a></li>
 				<li><a id="table_search">
 					<form action="listSearch.cbo" method="get">
@@ -34,7 +34,7 @@ if(memberId == null){ %>
 <% }else if(memberId.equals("admin")){ %>			
 			<ul id="topMenu">
 				<li><a href="/TeamProject/noticeList.nbo" >공지사항</a></li>
-			    <li><a href="/TeamProject/questionList.qbo">Q&A</a></li>
+			    <li><a href="/TeamProject/questionList.qbo">FAQ</a></li>
 				<li><a href="/TeamProject/classList.cbo">카테고리</a></li>
 				<li><a id="table_search">
 					<form action="listSearch.cbo" method="get">
@@ -48,7 +48,7 @@ if(memberId == null){ %>
 <% } else { %>
 			<ul id="topMenu">
 				<li><a href="/TeamProject/noticeList.nbo" >공지사항</a></li>
-			    <li><a href="/TeamProject/questionList.qbo">Q&A</a></li>
+			    <li><a href="/TeamProject/questionList.qbo">FAQ</a></li>
 				<li><a href="/TeamProject/classList.cbo">카테고리</a></li>
 				<li><a id="table_search">
 					<form action="listSearch.cbo" method="get">
