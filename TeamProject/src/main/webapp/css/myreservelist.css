@@ -52,6 +52,7 @@ h1 {
 
 #class-content:hover{
 	color: silver;
+	cursor: pointer;
 }
 
 #class-content-p{

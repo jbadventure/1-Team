@@ -138,8 +138,8 @@ for(int i=0; i<reviewboardList.size(); i++){
 	ReviewBoardDTO reviewboardDTO = reviewboardList.get(i);
     %>
 		<div class="review">
-			<div id="reviewID"> 작성자 : <%=reviewboardDTO.getReviewId() %></div>
-			<div id="reviewIssueDate"> 작성일 : <%=reviewboardDTO.getReviewIssueDate() %></div>
+			<div id="reviewID"><%=reviewboardDTO.getReviewId() %>님의 후기</div>
+			<div id="reviewIssueDate"><%=reviewboardDTO.getReviewIssueDate() %></div>
 			<div id="reviewFile"><!--후기첨부파일-->
  <%   if(reviewboardDTO.getReviewFile() != null){  %>
       <img src="upload/<%=reviewboardDTO.getReviewFile() %>" width="320" height="212"  style=" object-fit:	scale-down;">
@@ -149,11 +149,13 @@ for(int i=0; i<reviewboardList.size(); i++){
 	if(memberId.equals(reviewboardDTO.getReviewId())){ %>    	
 			<div class="review-delete-button">
 			<input type="button" value="후기 삭제" class="reviewDbtn" onclick="location.href='reviewDelete.rbo?classNum=<%=reviewboardDTO.getClassNum()%>&reviewNum=<%=reviewboardDTO.getReviewNum()%>'">
-			</div>
+			</div><br>
+		</div>
+		<div id="class-content-l" >
+		</div>			
 			<% } %>
 		<% } %>	
 	<%} %>		
-</div>
 	
 </div>
 </div> <!--  Tabcontainer -->
