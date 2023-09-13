@@ -66,10 +66,10 @@
 		if ("admin".equals(memberId)) {
 		%>
 		<div class="add-button">
-			<button onclick="window.location.href='noticeUpdate.nbo?noticeNum=<%=boardDTO.getNoticeNum()%>'">공지 수정</button>
+			<button class="boardbtn" onclick="window.location.href='noticeUpdate.nbo?noticeNum=<%=boardDTO.getNoticeNum()%>'">공지 수정</button>
 		</div>
 		<div class="add-button">
-			<button onclick="window.location.href='noticeDelete.nbo?noticeNum=<%=boardDTO.getNoticeNum()%>'">공지 삭제</button>
+			<button  class="boardbtn"  onclick="window.location.href='noticeDelete.nbo?noticeNum=<%=boardDTO.getNoticeNum()%>'">공지 삭제</button>
 		</div> </div>
 		<%
 }
@@ -87,8 +87,7 @@
 			if ("admin".equals(memberId)) {
 			%>
 		<div class="add-button">
-			<button onclick="window.location.href='/TeamProject/noticeWrite.nbo'">공지
-				작성</button>
+			<button class="boardbtn" onclick="window.location.href='/TeamProject/noticeWrite.nbo'">공지 작성</button>
 		</div>
 	</div>
 	<%

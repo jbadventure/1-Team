@@ -58,3 +58,17 @@ a{
 a:hover{
 	text-decoration:underline;
 }
+
+.add-button{
+	margin-top: 10px; 
+	float: left;
+}
+
+.boardbtn{
+	font-size: 15px;
+	border: none;
+	border-radius: 10px;
+	width: 80px;
+	height: 30px;
+	margin-right: 5px;
+}

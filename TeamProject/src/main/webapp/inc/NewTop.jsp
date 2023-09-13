@@ -31,15 +31,21 @@ if(memberId == null){ %>
 				<li><a href="/TeamProject/ghselect.me">회원가입</a></li>
 				<li><a href="/TeamProject/login.me" >로그인</a></li>
 			</ul> 
-<%-- <% } else if(memberDTO.getMemberId().equals("admin")){ %>			 --%>
-<!-- 			<ul id="topMenu"> -->
-<!-- 				<li><a href="/TeamProject/noticeList.nbo" >공지사항</a></li> -->
-<!-- 			    <li><a href="/TeamProject/questionList.qbo">Q&A</a></li> -->
-<!-- 				<li><a href="/TeamProject/classList.cbo">카테고리</a></li> -->
-<!-- 				<li><a href="/TeamProject/logout.me" >로그아웃</a></li> -->
-<!-- 				<li><a href="/TeamProject/memberList.me" >회원목록</a></li> -->
-<!-- 			</ul> -->
-<%} else { %>
+<% }else if(memberId.equals("admin")){ %>			
+			<ul id="topMenu">
+				<li><a href="/TeamProject/noticeList.nbo" >공지사항</a></li>
+			    <li><a href="/TeamProject/questionList.qbo">Q&A</a></li>
+				<li><a href="/TeamProject/classList.cbo">카테고리</a></li>
+				<li><a id="table_search">
+					<form action="listSearch.cbo" method="get">
+					<input type="text" name="search" class="search" placeholder="지금 생각나는 취미를 검색하세요!">
+					<input type="submit" value="검색" class="btn">
+					</form>
+					</a></li>
+				<li><a href="/TeamProject/logout.me" >로그아웃</a></li>
+				<li><a href="/TeamProject/memberList.me" >회원목록</a></li>
+			</ul>
+<% } else { %>
 			<ul id="topMenu">
 				<li><a href="/TeamProject/noticeList.nbo" >공지사항</a></li>
 			    <li><a href="/TeamProject/questionList.qbo">Q&A</a></li>
