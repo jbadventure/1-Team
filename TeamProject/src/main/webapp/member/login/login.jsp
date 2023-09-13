@@ -23,10 +23,11 @@
 <h1 id="loghead">로그인</h1>
 <form action="loginPro.me" method="post" name="checkForm" id ="checkForm">
 
+<div id=div2>
 <input type="text" placeholder="아이디" name="memberId" id ="memberId"><br>
 <input type="password" placeholder="비밀번호" name="memberPassword" id = "memberPassword"><br>
-
 <div id="div" style="color:red;"></div>
+</div>
 
 <button type ="button" id="login" onclick="checkForm_check();">로그인</button><br>
 <a href="ghselect.me">회원가입</a> | <a href="findId.me">아이디 찾기</a> | <a href="findPassword.me">비밀번호 찾기</a>
