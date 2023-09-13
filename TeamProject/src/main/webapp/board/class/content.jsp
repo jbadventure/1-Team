@@ -160,7 +160,7 @@ for(int i=0; i<reviewboardList.size(); i++){
 <div id="return">
 <input type="button" value="클래스 목록으로 돌아가기" id="return_btn" onclick = "location.href='classList.cbo'">
 </div>
-
+</div>
 <!-- 푸터들어가는 곳 -->
 <jsp:include page="../../inc/bottom.jsp"></jsp:include>
 <!-- 푸터들어가는 곳 -->

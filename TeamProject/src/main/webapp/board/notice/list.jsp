@@ -122,7 +122,7 @@
 			}
 			%>
 	</div>
-
+	</div>
 	<jsp:include page="../../inc/bottom.jsp"></jsp:include>
 	<!-- 푸터들어가는 곳 -->
 
