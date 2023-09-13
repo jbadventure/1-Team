@@ -3,9 +3,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="icon" href="images/favicon.ico?v=2" type="image/x-icon">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>공지사항 작성</title>
+    <title>palette</title>
 </head>
 <link rel = "stylesheet" href = "./css/write.css">
 <body>

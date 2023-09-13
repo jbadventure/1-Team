@@ -4,8 +4,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="icon" href="images/favicon.ico?v=2" type="image/x-icon">
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>palette</title>
 </head>
 <body>
 	<%

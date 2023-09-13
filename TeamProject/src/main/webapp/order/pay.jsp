@@ -5,13 +5,14 @@
 <html>
 <head>
   <link rel="stylesheet" href="shopcss.css">
+  <link rel="icon" href="images/favicon.ico?v=2" type="image/x-icon">
   <link href="css/NewTop.css" rel="stylesheet" type="text/css">
   <link href="css/NewBottom.css" rel="stylesheet" type="text/css">
   <link href="css/body.css" rel="stylesheet" type="text/css">
   <link href="css/pay.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
 <meta charset="UTF-8">
-<title>결제하기</title>
+<title>palette</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 </head>

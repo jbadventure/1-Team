@@ -5,13 +5,14 @@
 <html>
 <head>
   <link rel="stylesheet" href="shopcss.css">
+  <link rel="icon" href="images/favicon.ico?v=2" type="image/x-icon">
   <link href="css/NewTop.css" rel="stylesheet" type="text/css">
   <link href="css/NewBottom.css" rel="stylesheet" type="text/css">
   <link href="css/body.css" rel="stylesheet" type="text/css">
   <link href="css/reservationInfo.css" rel="stylesheet" type="text/css">  
   <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>palette</title>
 </head>
 <body>
 <!-- 헤더들어가는 곳 -->
