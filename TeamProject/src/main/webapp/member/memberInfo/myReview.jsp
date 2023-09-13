@@ -13,6 +13,7 @@
   <link href="css/NewTop.css" rel="stylesheet" type="text/css">
   <link href="css/NewBottom.css" rel="stylesheet" type="text/css">
   <link href="css/body.css" rel="stylesheet" type="text/css">
+  <link href="css/myreservelist.css" rel="stylesheet" type="text/css"> 
   <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>myReview.jsp</title>
@@ -22,15 +23,14 @@
 <jsp:include page="../../inc/NewTop.jsp"></jsp:include>
 <!-- 헤더들어가는 곳 --> 
 <div id = bodycontainer>
-<div id = bodycontent>
+<div id = content_frame>
 	<%
 List<ReviewBoardDTO> boardList = (List<ReviewBoardDTO>)request.getAttribute("boardList");
 String memberId = (String)session.getAttribute("memberId");
 PageDTO pageDTO = (PageDTO)request.getAttribute("pageDTO");
 %>
-		<h3>클래스 리뷰</h3>
+		&nbsp;<h1 style="30px 0px 20px;">클래스 리뷰</h1><br>
 
-	<div class="container">
 		<%
 for(int i=0; i<boardList.size(); i++){
 	ReviewBoardDTO boardDTO = boardList.get(i);
@@ -39,29 +39,28 @@ for(int i=0; i<boardList.size(); i++){
 		<%-- <div class="review"
 			onclick="window.location.href='reviewContent.rbo?reviewNum=<%=boardDTO.getReviewNum() %>'"> --%>
 
-		<div class="reviewNum">
-			리뷰번호 : <%=boardDTO.getReviewNum() %>
-		</div>
-		<div class="classNum">
-			클래스번호 : <%=boardDTO.getClassNum() %>
-		</div>
-		<div class="reviewContent">
-			후기내용 : <%=boardDTO.getReviewContent() %>
-		</div>
-		<div class="reviewFile">
+		<div class="reservelist-box" style="opacity: 1; display: block;">
+		
 		    <% if(boardDTO.getReviewFile() != null){ %>
-		    <img src="upload/<%=boardDTO.getReviewFile() %>">
+		    <img src="upload/<%=boardDTO.getReviewFile() %>" class="content-image" width="141" height="83" style="margin-top: 20px; margin-left: 20px;">
 		    <% } else { %>
-		    <img src="images/logo-198x66.png" id="default_image">
+		    <img src="images/logo-198x66.png" id="default_image" class="content-image" width="141" height="83" style="margin-top: 20px; margin-left: 20px;">
 		    <% } %>    
-		</div>
-		<br>
 
+		<div id="class-content" onclick="window.location.href='classContent.cbo?classNum=<%=boardDTO.getClassNum() %>'">
+		<table>
+			<tr><td>리뷰번호 : <%=boardDTO.getReviewNum() %></td></tr>
+			<tr><td>클래스번호 : <%=boardDTO.getClassNum() %></td></tr>
+			<tr><td>후기내용 : <%=boardDTO.getReviewContent() %></td></tr>
+		</table>
+		</div>
+		<div id="class-content-l" >
+		</div>
+		</div>
 		<% 
 	}
 }
 %>
-		</div>
 <%-- 		<%
 if(memberId != null) {
 %>

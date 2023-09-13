@@ -23,7 +23,8 @@
 <%
 List<OrdersDTO> ordersList = (List<OrdersDTO>)request.getAttribute("ordersList");
 %>
-	<h1> 예약내역 </h1><br>
+		&nbsp;<h1 style="30px 0px 20px;">예약내역</h1><br>
+		
 <%  for(int i=0; i<ordersList.size(); i++){
 	OrdersDTO ordersDTO = ordersList.get(i); %>
 
