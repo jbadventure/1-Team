@@ -110,6 +110,12 @@ public class ClassBoardController extends HttpServlet {
 			// BoardService 객체생성
 			boardService = new ClassBoardService();
 			ClassBoardDTO boardDTO = boardService.getBoard(request);
+			
+			// 엔터(\r\n)를 <br>태그로 바꾸기 
+			String content=boardDTO.getClassContent();
+			content=content.replace("\r\n", "<br>");
+			boardDTO.setClassContent(content);
+			
 			List<ReviewBoardDTO> reviewboardList = boardService.getReviewBoardList(request);
 			request.setAttribute("boardDTO", boardDTO);
 			request.setAttribute("reviewboardList", reviewboardList);
