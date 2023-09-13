@@ -46,12 +46,14 @@ function checkForm_check() {
 	if(memberId.value ==""){
 		//alert("이름입력하세요");
 		document.getElementById("div").innerHTML = "아이디 입력하세요";
+		memberId.focus();
 		return false; 
 	}
 	
 	if(memberPassword.value ==""){
 		//alert("이름입력하세요");
 		document.getElementById("div").innerHTML = "비밀번호 입력하세요";
+		memberPassword.focus();
 		return false; 
 	}
 	document.checkForm.submit();
