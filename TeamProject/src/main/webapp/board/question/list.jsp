@@ -45,7 +45,7 @@
 	String memberId = (String) session.getAttribute("memberId");
 	%>
 	<div class="container">
-		<h1>자주 묻는 질문</h1>
+		&nbsp;<h1 style="30px 0px 20px;">자주 묻는 질문</h1><br>
 		<%
 		for (int i = 0; i < boardList.size(); i++) {
 			QuestionBoardDTO boardDTO = boardList.get(i);
