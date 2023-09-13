@@ -18,7 +18,7 @@
     box-sizing: inherit;
 }
 h1 {
-	margin: 30px 0px 20px;
+/* 	margin: 30px 0px 20px; */
     line-height: 24px;
     font-size: 24px;
     font-weight: bold;
@@ -128,7 +128,7 @@ p {
 }
 html, body {
     width: 100%;
-    font-size: 14px;
+/*     font-size: 14px; */
     color: black;
     word-break: normal;
     overflow-wrap: break-word;

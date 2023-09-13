@@ -151,10 +151,10 @@ for(int i=0; i<reviewboardList.size(); i++){
 			<input type="button" value="후기 삭제" class="reviewDbtn" onclick="location.href='reviewDelete.rbo?classNum=<%=reviewboardDTO.getClassNum()%>&reviewNum=<%=reviewboardDTO.getReviewNum()%>'">
 			</div><br>
 		</div>
-		<div id="class-content-l" >
-		</div>			
 			<% } %>
 		<% } %>	
+		<div id="class-content-l" >
+		</div>			
 	<%} %>		
 	
 </div>
