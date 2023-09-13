@@ -37,9 +37,9 @@ ClassBoardDTO boardDTO = (ClassBoardDTO)request.getAttribute("boardDTO");
 				<td>카테고리</td>
 				<td>
 				<select style="width: 390px;" name="classCategory" value="<%=boardDTO.getClassCategory()%>" class="form-control" required="required">
-				<option value="야외/체험" selected="selected">야외/체험</option>
-				<option value="만들기">만들기</option>
-				<option value="강의">강의</option>
+				<option value="요리" selected="selected">요리</option>
+				<option value="수공예">수공예</option>
+				<option value="액티비티">액티비티</option>
 				</select></td>
 			</tr>
 			<tr>
