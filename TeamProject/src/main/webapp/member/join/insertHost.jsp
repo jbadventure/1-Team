@@ -367,6 +367,7 @@ $(document).ready(function(){
 		} else {
 		    $('#div12').empty();
 		}
+		alert('회원가입이 완료되었습니다.');
 		$('#frInsertHost').submit();
 	});
 });
