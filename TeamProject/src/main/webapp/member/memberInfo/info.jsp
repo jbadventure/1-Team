@@ -27,9 +27,10 @@ if(memberDTO.getMemberType().equals("guest")){
 <section id="info1">
 <div id="info2">
 <%if(memberDTO.getMemberFile()== null){
-     %>
-                <img src="images/DefaultProfile.jpg" width="100" height="100px">
-     <%		} else { %>           
+ %>	<img src="images/DefaultProfile.jpg" width="100" height="100px">
+ 		<% } else if(memberDTO.getMemberFile().equals("null")){  %>
+		 <img src="images/DefaultProfile.jpg" width="100" height="100px">
+     <%	} else { %>           
             	<img src="upload/<%=memberDTO.getMemberFile() %>" width="100" height="100px">
      <%			 }
 %>
