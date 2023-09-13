@@ -61,7 +61,6 @@
 	border: 1px solid black;
 	border-radius: 4px;
 	font-size: 11pt;
-	margin-bottom: 20px;
 }
 #emailop2{
 	width: 34%;
@@ -70,9 +69,9 @@
 	border: 1px solid black;
 	border-radius: 4px;
 	font-size: 10pt;
-	margin-bottom: 20px;
 }
 #btn{
+	margin-top:20px;
 	margin-bottom:5px;
 	width:70%;
     padding :1px 6px;
