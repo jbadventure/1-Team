@@ -14,7 +14,6 @@
   <link rel="icon" href="images/favicon.ico?v=2" type="image/x-icon">
   <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
   <title>palette</title> 
-  </style>
   <meta charset="utf-8">
   <link rel="stylesheet" href="shopcss.css">
   <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
