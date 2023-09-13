@@ -73,12 +73,12 @@
 						if ("admin".equals(memberId)) {
 						%>
 						<div class="add-button">
-							<button
+							<button  class="boardbtn" 
 								onclick="window.location.href='questionUpdate.qbo?questionNum=<%=boardDTO.getQuestionNum()%>'">질문
 								수정</button>
 						</div>
 						<div class="add-button">
-							<button
+							<button  class="boardbtn" 
 								onclick="window.location.href='questionDelete.qbo?questioneNum=<%=boardDTO.getQuestionNum()%>'">질문
 								삭제</button>
 						</div>
@@ -96,12 +96,8 @@
 		if ("admin".equals(memberId)) {
 		%>
 		<div class="add-button">
-			<button onclick="location.href='questionWrite.qbo'">질문 작성</button>
+			<button  class="boardbtn"  onclick="location.href='questionWrite.qbo'">질문 작성</button>
 		</div>
-		<div class="add-button">
-			<button onclick="location.href='questionDelete.qbo'">질문 삭제</button>
-		</div>
-
 	</div>
 	<%
 }
