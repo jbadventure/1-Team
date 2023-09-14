@@ -101,6 +101,7 @@ ul.tabs li.current{
 	float: right;
 }
 
+
 .reviewDbtn{
 	font-size: 15px;
 	border-radius: 10px;
@@ -108,6 +109,17 @@ ul.tabs li.current{
 	width: 100px;
 	height: 40px;
 }
+
+/* .reviewData{ */
+/* 	margin-bottom:10px; */
+/* } */
+
+/* #reviewFile{ */
+/* border-radius:10px;	 */
+/* width: 320px; */
+/* height:212px; */
+/* object-fit:	scale-down; */
+/* } */
 
 #return{
 	margin: 0 auto;

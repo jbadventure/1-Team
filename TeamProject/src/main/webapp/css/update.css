@@ -2,7 +2,7 @@
 
 #frUpdate {
     margin: 50px auto;
-    height: 750px;
+    min-height: 750px;
 }
 #updateBox {
 	text-align: left;
