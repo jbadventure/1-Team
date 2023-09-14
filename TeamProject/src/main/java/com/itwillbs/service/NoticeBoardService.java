@@ -49,6 +49,7 @@ public class NoticeBoardService {
 			//pageDTO 저장 <- startRow, endRow
 			pageDTO.setStartRow(startRow);
 			pageDTO.setEndRow(endRow);
+			
 			boardDAO = new NoticeBoardDAO();
 			boardList = boardDAO.getBoardList(pageDTO);
 			

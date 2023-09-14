@@ -67,8 +67,10 @@ public class NoticeBoardDAO {
 		List<NoticeBoardDTO> boardList = null;
 		try {
 			con = new SQLConnection().getConnection();
-			String sql = "select * from notice order by noticeNum asc";
+			String sql = "select * from notice order by noticeNum desc limit ?,?";
 			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, pageDTO.getStartRow()-1);
+			pstmt.setInt(2, pageDTO.getPageSize());
 			rs =pstmt.executeQuery();
 			boardList = new ArrayList<>();
 			while(rs.next()) {

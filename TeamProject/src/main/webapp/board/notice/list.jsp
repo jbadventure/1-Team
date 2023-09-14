@@ -101,14 +101,14 @@
 			if (pageDTO.getStartPage() > pageDTO.getPageBlock()) {
 			%>
 		<a
-			href="noticeList.qbo?pageNum=<%=pageDTO.getStartPage() - pageDTO.getPageBlock()%>">Prev</a>
+			href="noticeList.nbo?pageNum=<%=pageDTO.getStartPage() - pageDTO.getPageBlock()%>">Prev</a>
 		<%
 }
 %>
 		<%
 			for (int i = pageDTO.getStartPage(); i <= pageDTO.getEndPage(); i++) {
 			%>
-		<a href="noticeList.qbo?pageNum=<%=i%>"><%=i%></a>
+		<a href="noticeList.nbo?pageNum=<%=i%>"><%=i%></a>
 		<%
 			}
 			%>
@@ -122,7 +122,6 @@
 		<%
 			}
 			%>
-	</div>
 	</div>
 	<jsp:include page="../../inc/bottom.jsp"></jsp:include>
 	<!-- 푸터들어가는 곳 -->

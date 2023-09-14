@@ -5,10 +5,22 @@
 <html>
 <head>
 <link rel="icon" href="images/favicon.ico?v=2" type="image/x-icon">
+<link rel="stylesheet" href="shopcss.css">
+<link href="css/NewTop.css" rel="stylesheet" type="text/css">
+<link href="css/NewBottom.css" rel="stylesheet" type="text/css">
+<link href="css/loginbody.css" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css"
+	rel="stylesheet">
 <meta charset="UTF-8">
 <title>palette</title>
 </head>
 <body>
+<!-- 헤더들어가는 곳 -->
+	<jsp:include page="../../inc/NewTop.jsp"></jsp:include>
+	<!-- 헤더들어가는 곳 -->
+
+<link rel="stylesheet" href="./css/noticeupdate.css">
+
 	<%
 NoticeBoardDTO boardDTO = (NoticeBoardDTO)request.getAttribute("boardDTO");
 %>

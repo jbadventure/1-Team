@@ -95,6 +95,7 @@ public class QuestionBoardController extends HttpServlet{
 		} // questionWrite
 			
 		if(sPath.equals("/questionWritePro.qbo")) {
+			request.setCharacterEncoding("utf-8");
 			System.out.println("주소 비교 : /questionWritePro.qbo");
 			// BoardService 객체생성
 			boardService = new QuestionBoardService();
@@ -121,6 +122,7 @@ public class QuestionBoardController extends HttpServlet{
 			System.out.println("주소 비교 : /questionUpdate.qbo");
 			// boardService 객체생성
 			boardService = new QuestionBoardService();
+			QuestionBoardDTO boardDTO = boardService.getBoard(request);
 			// updateBoard(request) 호출
 			boardService.updateBoard(request);
 			// 주소 변경되면서 이동
@@ -132,8 +134,6 @@ public class QuestionBoardController extends HttpServlet{
 			boardService = new QuestionBoardService();
 			// deleteBoard(request) 호출
 			boardService.deleteBoard(request);
-			String questionNum = request.getParameter("questionNum");
-			System.out.println(questionNum + "QuestionBoardController sex");
 			// 주소 변경되면서 이동
 			response.sendRedirect("questionList.qbo");
 		}

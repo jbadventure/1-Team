@@ -64,12 +64,12 @@ public class NoticeBoardController extends HttpServlet {
 			// 게시판 전체 글 개수 구하기
 			int count = boardService.getBoardCount();
 			// 한화면에 출력될 페이지개수 pageBlock
-			int pageBlock = 5;
+			int pageBlock = 8;
 			// 시작하는 페이지번호 startPage
 			int startPage = (currentPage - 1) / pageBlock * pageBlock + 1;
 			// 끝나는페이지번호 endPage
 			int endPage = startPage + pageBlock - 1;
-			int pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);
+			int pageCount = count/pageSize + (count%pageSize == 0?0:1);
 
 			if (endPage > pageCount) {
 				endPage = pageCount;
@@ -90,11 +90,7 @@ public class NoticeBoardController extends HttpServlet {
 			dispatcher.forward(request, response);
 		} // list
 
-		if (sPath.equals("/questionWrite.qbo")) {
-			// 주소변경없이 이동 board/question/write.jsp
-			dispatcher = request.getRequestDispatcher("board/question/write.jsp");
-			dispatcher.forward(request, response);
-		} // questionWrite
+		
 		if (sPath.equals("/noticeWrite.nbo")) {
 			dispatcher = request.getRequestDispatcher("/board/notice/write.jsp");
 			dispatcher.forward(request, response);
