@@ -4,14 +4,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="icon" href="images/favicon.ico?v=2" type="image/x-icon">
 <link rel="stylesheet" href="shopcss.css">
 <link href="css/NewTop.css" rel="stylesheet" type="text/css">
 <link href="css/NewBottom.css" rel="stylesheet" type="text/css">
 <link href="css/loginbody.css" rel="stylesheet" type="text/css">
 <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css"
 	rel="stylesheet">
-<meta charset="UTF-8">
+<link rel="icon" href="images/favicon.ico?v=2" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>palette</title>
 </head>
 <body>
@@ -24,28 +25,24 @@
 	<%
 NoticeBoardDTO boardDTO = (NoticeBoardDTO)request.getAttribute("boardDTO");
 %>
-	<h1>글수정</h1>
+	<div class="hhh"><h1>글수정</h1></div>
+	<div class="container">
 	<form action="noticeUpdatePro.nbo" method="post">
 		<input type="hidden" name="noticeNum"
 			value="<%=boardDTO.getNoticeNum()%>">
 		<table border="1">
-			<tr>
-				<td>제목</td>
-				<td><input type="text" name="noticeSubject"
-					value="<%=boardDTO.getNoticeSubject() %>"></td>
-			</tr>
-			<tr>
-				<td>글내용</td>
-				<td><textarea name="noticeContent" rows="5"><%=boardDTO.getNoticeContent() %></textarea></td>
-			</tr>
-			<label for="date">수정일</label>
-			<input type="date" id="date" name="noticeIssueDate" required>
-			<button type="submit">수정</button>
-		</table>
-
-		</table>
-
-	</form>
-
+		<div class="title1">
+            <label for="title">제목</label>
+            <input type="text" id="title" name="noticeSubject" required>
+        </div>
+        <div class="content1">
+            <label for="content">내용</label>
+            <textarea id="content" name="noticeContent" rows="5" required></textarea>
+        <button type="submit">수정</button>
+        </div>
+        </table>
+    </form>
+</div>
 </body>
+<jsp:include page="../../inc/bottom.jsp"></jsp:include>
 </html>
